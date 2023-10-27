@@ -40,17 +40,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.shain_button = new System.Windows.Forms.Button();
+            this.kokyaku_button = new System.Windows.Forms.Button();
+            this.juchu_button = new System.Windows.Forms.Button();
+            this.nyuka_button = new System.Windows.Forms.Button();
+            this.shukka_button = new System.Windows.Forms.Button();
+            this.chumon_button = new System.Windows.Forms.Button();
+            this.uriage_button = new System.Windows.Forms.Button();
+            this.shohin_button = new System.Windows.Forms.Button();
+            this.zaiko_button = new System.Windows.Forms.Button();
+            this.nyuko_button = new System.Windows.Forms.Button();
+            this.shukko_button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button15 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -176,120 +176,121 @@
             this.label9.TabIndex = 11;
             this.label9.Text = "label9";
             // 
-            // button4
+            // shain_button
             // 
-            this.button4.Location = new System.Drawing.Point(12, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(533, 91);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "社員管理";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.shain_button.Location = new System.Drawing.Point(12, 19);
+            this.shain_button.Name = "shain_button";
+            this.shain_button.Size = new System.Drawing.Size(533, 91);
+            this.shain_button.TabIndex = 12;
+            this.shain_button.Text = "社員管理";
+            this.shain_button.UseVisualStyleBackColor = true;
+            this.shain_button.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // kokyaku_button
             // 
-            this.button5.Location = new System.Drawing.Point(12, 137);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(102, 43);
-            this.button5.TabIndex = 13;
-            this.button5.Text = "顧客";
-            this.button5.UseVisualStyleBackColor = true;
+            this.kokyaku_button.Location = new System.Drawing.Point(12, 137);
+            this.kokyaku_button.Name = "kokyaku_button";
+            this.kokyaku_button.Size = new System.Drawing.Size(102, 43);
+            this.kokyaku_button.TabIndex = 13;
+            this.kokyaku_button.Text = "顧客";
+            this.kokyaku_button.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // juchu_button
             // 
-            this.button6.Location = new System.Drawing.Point(134, 137);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 43);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "受注";
-            this.button6.UseVisualStyleBackColor = true;
+            this.juchu_button.Location = new System.Drawing.Point(134, 137);
+            this.juchu_button.Name = "juchu_button";
+            this.juchu_button.Size = new System.Drawing.Size(100, 43);
+            this.juchu_button.TabIndex = 14;
+            this.juchu_button.Text = "受注";
+            this.juchu_button.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // nyuka_button
             // 
-            this.button7.Location = new System.Drawing.Point(249, 139);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(106, 41);
-            this.button7.TabIndex = 15;
-            this.button7.Text = "入荷";
-            this.button7.UseVisualStyleBackColor = true;
+            this.nyuka_button.Location = new System.Drawing.Point(249, 139);
+            this.nyuka_button.Name = "nyuka_button";
+            this.nyuka_button.Size = new System.Drawing.Size(106, 41);
+            this.nyuka_button.TabIndex = 15;
+            this.nyuka_button.Text = "入荷";
+            this.nyuka_button.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // shukka_button
             // 
-            this.button8.Location = new System.Drawing.Point(247, 195);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(108, 46);
-            this.button8.TabIndex = 16;
-            this.button8.Text = "出荷";
-            this.button8.UseVisualStyleBackColor = true;
+            this.shukka_button.Location = new System.Drawing.Point(247, 195);
+            this.shukka_button.Name = "shukka_button";
+            this.shukka_button.Size = new System.Drawing.Size(108, 46);
+            this.shukka_button.TabIndex = 16;
+            this.shukka_button.Text = "出荷";
+            this.shukka_button.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // chumon_button
             // 
-            this.button9.Location = new System.Drawing.Point(12, 195);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(102, 46);
-            this.button9.TabIndex = 17;
-            this.button9.Text = "注文";
-            this.button9.UseVisualStyleBackColor = true;
+            this.chumon_button.Location = new System.Drawing.Point(12, 195);
+            this.chumon_button.Name = "chumon_button";
+            this.chumon_button.Size = new System.Drawing.Size(102, 46);
+            this.chumon_button.TabIndex = 17;
+            this.chumon_button.Text = "注文";
+            this.chumon_button.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // uriage_button
             // 
-            this.button10.Location = new System.Drawing.Point(134, 195);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(100, 46);
-            this.button10.TabIndex = 18;
-            this.button10.Text = "売上";
-            this.button10.UseVisualStyleBackColor = true;
+            this.uriage_button.Location = new System.Drawing.Point(134, 195);
+            this.uriage_button.Name = "uriage_button";
+            this.uriage_button.Size = new System.Drawing.Size(100, 46);
+            this.uriage_button.TabIndex = 18;
+            this.uriage_button.Text = "売上";
+            this.uriage_button.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // shohin_button
             // 
-            this.button11.Location = new System.Drawing.Point(12, 309);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(102, 42);
-            this.button11.TabIndex = 19;
-            this.button11.Text = "商品";
-            this.button11.UseVisualStyleBackColor = true;
+            this.shohin_button.Location = new System.Drawing.Point(12, 309);
+            this.shohin_button.Name = "shohin_button";
+            this.shohin_button.Size = new System.Drawing.Size(102, 42);
+            this.shohin_button.TabIndex = 19;
+            this.shohin_button.Text = "商品";
+            this.shohin_button.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // zaiko_button
             // 
-            this.button12.Location = new System.Drawing.Point(134, 309);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(91, 42);
-            this.button12.TabIndex = 20;
-            this.button12.Text = "在庫";
-            this.button12.UseVisualStyleBackColor = true;
+            this.zaiko_button.Location = new System.Drawing.Point(134, 309);
+            this.zaiko_button.Name = "zaiko_button";
+            this.zaiko_button.Size = new System.Drawing.Size(91, 42);
+            this.zaiko_button.TabIndex = 20;
+            this.zaiko_button.Text = "在庫";
+            this.zaiko_button.UseVisualStyleBackColor = true;
+            this.zaiko_button.Click += new System.EventHandler(this.button12_Click);
             // 
-            // button13
+            // nyuko_button
             // 
-            this.button13.Location = new System.Drawing.Point(394, 312);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(102, 39);
-            this.button13.TabIndex = 21;
-            this.button13.Text = "入庫";
-            this.button13.UseVisualStyleBackColor = true;
+            this.nyuko_button.Location = new System.Drawing.Point(394, 312);
+            this.nyuko_button.Name = "nyuko_button";
+            this.nyuko_button.Size = new System.Drawing.Size(102, 39);
+            this.nyuko_button.TabIndex = 21;
+            this.nyuko_button.Text = "入庫";
+            this.nyuko_button.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // shukko_button
             // 
-            this.button14.Location = new System.Drawing.Point(247, 309);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(108, 42);
-            this.button14.TabIndex = 22;
-            this.button14.Text = "出庫";
-            this.button14.UseVisualStyleBackColor = true;
+            this.shukko_button.Location = new System.Drawing.Point(247, 309);
+            this.shukko_button.Name = "shukko_button";
+            this.shukko_button.Size = new System.Drawing.Size(108, 42);
+            this.shukko_button.TabIndex = 22;
+            this.shukko_button.Text = "出庫";
+            this.shukko_button.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
-            this.panel1.Controls.Add(this.button14);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button13);
-            this.panel1.Controls.Add(this.button12);
-            this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.button10);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.shukko_button);
+            this.panel1.Controls.Add(this.shain_button);
+            this.panel1.Controls.Add(this.nyuko_button);
+            this.panel1.Controls.Add(this.zaiko_button);
+            this.panel1.Controls.Add(this.shohin_button);
+            this.panel1.Controls.Add(this.uriage_button);
+            this.panel1.Controls.Add(this.chumon_button);
+            this.panel1.Controls.Add(this.shukka_button);
+            this.panel1.Controls.Add(this.nyuka_button);
+            this.panel1.Controls.Add(this.juchu_button);
+            this.panel1.Controls.Add(this.kokyaku_button);
             this.panel1.Location = new System.Drawing.Point(253, 158);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1835, 783);
@@ -349,17 +350,17 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button shain_button;
+        private System.Windows.Forms.Button kokyaku_button;
+        private System.Windows.Forms.Button juchu_button;
+        private System.Windows.Forms.Button nyuka_button;
+        private System.Windows.Forms.Button shukka_button;
+        private System.Windows.Forms.Button chumon_button;
+        private System.Windows.Forms.Button uriage_button;
+        private System.Windows.Forms.Button shohin_button;
+        private System.Windows.Forms.Button zaiko_button;
+        private System.Windows.Forms.Button nyuko_button;
+        private System.Windows.Forms.Button shukko_button;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button15;
     }
