@@ -61,11 +61,11 @@
   <ItemGroup>
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
-    <Compile Include="F_login.cs">
+    <Compile Include="LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="F_login.Designer.cs">
-      <DependentUpon>F_login.cs</DependentUpon>
+    <Compile Include="LoginPage.Designer.cs">
+      <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Entity\M_Client.cs" />
     <Compile Include="Entity\M_Employee.cs" />
@@ -95,14 +95,56 @@
     <Compile Include="Entity\T_Warehousing.cs" />
     <Compile Include="Entity\T_WarehousingDetail.cs" />
     <Compile Include="SalesManagement_DevContext.cs" />
-    <Compile Include="TopPage.cs">
+    <Compile Include="TopEigyoPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TopPage.Designer.cs">
-      <DependentUpon>TopPage.cs</DependentUpon>
+    <Compile Include="TopEigyoPage.Designer.cs">
+      <DependentUpon>TopEigyoPage.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="F_login.resx">
-      <DependentUpon>F_login.cs</DependentUpon>
+    <Compile Include="TopButsuryuPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TopButsuryuPage.Designer.cs">
+      <DependentUpon>TopButsuryuPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kokyakukanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kokyakukanri.Designer.cs">
+      <DependentUpon>Kokyakukanri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShohinKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShohinKanri.Designer.cs">
+      <DependentUpon>ShohinKanri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShainKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShainKanri.Designer.cs">
+      <DependentUpon>ShainKanri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JuchuKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JuchuKanri.Designer.cs">
+      <DependentUpon>JuchuKanri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChumonKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChumonKanri.Designer.cs">
+      <DependentUpon>ChumonKanri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TopHonshaPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TopHonshaPage.Designer.cs">
+      <DependentUpon>TopHonshaPage.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="LoginPage.resx">
+      <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -114,8 +156,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TopPage.resx">
-      <DependentUpon>TopPage.cs</DependentUpon>
+    <EmbeddedResource Include="TopEigyoPage.resx">
+      <DependentUpon>TopEigyoPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopButsuryuPage.resx">
+      <DependentUpon>TopButsuryuPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kokyakukanri.resx">
+      <DependentUpon>Kokyakukanri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShohinKanri.resx">
+      <DependentUpon>ShohinKanri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShainKanri.resx">
+      <DependentUpon>ShainKanri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JuchuKanri.resx">
+      <DependentUpon>JuchuKanri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChumonKanri.resx">
+      <DependentUpon>ChumonKanri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopHonshaPage.resx">
+      <DependentUpon>TopHonshaPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

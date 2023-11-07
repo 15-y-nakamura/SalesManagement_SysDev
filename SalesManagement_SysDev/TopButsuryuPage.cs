@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class TopPage : Form
+    public partial class TopButsuryuPage : Form
     {   
-        public TopPage()
+        public TopButsuryuPage()
         {
 
             InitializeComponent();
@@ -31,11 +31,6 @@ namespace SalesManagement_SysDev
         private void button4_Click(object sender, EventArgs e)
         {
            
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
