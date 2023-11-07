@@ -1,6 +1,6 @@
 ﻿namespace SalesManagement_SysDev
 {
-    partial class TopPage
+    partial class ChumonKanri
     {
         /// <summary>
         /// Required designer variable.

@@ -14,9 +14,9 @@ using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace SalesManagement_SysDev
 {
-    public partial class F_Login : Form
+    public partial class LoginPage : Form
     {
-        public F_Login()
+        public LoginPage()
         {
             InitializeComponent();
         }
