@@ -42,35 +42,35 @@
             this.TopTantoLbl = new System.Windows.Forms.Label();
             this.RegistBtn = new System.Windows.Forms.Button();
             this.TopShohinPnl = new System.Windows.Forms.Panel();
-            this.TopLogoutBtn = new System.Windows.Forms.Button();
-            this.UpdateBtn = new System.Windows.Forms.Button();
-            this.HiddenBtn = new System.Windows.Forms.Button();
-            this.SearchBtn = new System.Windows.Forms.Button();
-            this.ShohinIDLbl = new System.Windows.Forms.Label();
-            this.ShohinIDTxb = new System.Windows.Forms.TextBox();
-            this.ShohinNameLbl = new System.Windows.Forms.Label();
-            this.ShohinNameTxb = new System.Windows.Forms.TextBox();
-            this.MakerIDLbl = new System.Windows.Forms.Label();
-            this.MakerIDTxb = new System.Windows.Forms.TextBox();
-            this.KakakuLbl = new System.Windows.Forms.Label();
-            this.KakakuTxb = new System.Windows.Forms.TextBox();
-            this.AnzenLbl = new System.Windows.Forms.Label();
-            this.AnzenTxb = new System.Windows.Forms.TextBox();
-            this.DaibunruiLbl = new System.Windows.Forms.Label();
-            this.DaibunruiCmb = new System.Windows.Forms.ComboBox();
-            this.ShoubunruiLbl = new System.Windows.Forms.Label();
-            this.ShoubunruiCmb = new System.Windows.Forms.ComboBox();
-            this.KatabanLbl = new System.Windows.Forms.Label();
-            this.KatabanTxb = new System.Windows.Forms.TextBox();
-            this.IroLbl = new System.Windows.Forms.Label();
-            this.IroTxb = new System.Windows.Forms.TextBox();
-            this.SellLbl = new System.Windows.Forms.Label();
-            this.SellDtm = new System.Windows.Forms.DateTimePicker();
-            this.ShohinKanriLbl = new System.Windows.Forms.Label();
-            this.ShohinKanriCmb = new System.Windows.Forms.ComboBox();
-            this.HihyojiLbl = new System.Windows.Forms.Label();
-            this.HihyojiTxb = new System.Windows.Forms.TextBox();
             this.ShohinKanriDgv = new System.Windows.Forms.DataGridView();
+            this.HihyojiTxb = new System.Windows.Forms.TextBox();
+            this.HihyojiLbl = new System.Windows.Forms.Label();
+            this.ShohinKanriCmb = new System.Windows.Forms.ComboBox();
+            this.ShohinKanriLbl = new System.Windows.Forms.Label();
+            this.SellDtm = new System.Windows.Forms.DateTimePicker();
+            this.SellLbl = new System.Windows.Forms.Label();
+            this.IroTxb = new System.Windows.Forms.TextBox();
+            this.IroLbl = new System.Windows.Forms.Label();
+            this.KatabanTxb = new System.Windows.Forms.TextBox();
+            this.KatabanLbl = new System.Windows.Forms.Label();
+            this.ShoubunruiCmb = new System.Windows.Forms.ComboBox();
+            this.ShoubunruiLbl = new System.Windows.Forms.Label();
+            this.DaibunruiCmb = new System.Windows.Forms.ComboBox();
+            this.DaibunruiLbl = new System.Windows.Forms.Label();
+            this.AnzenTxb = new System.Windows.Forms.TextBox();
+            this.AnzenLbl = new System.Windows.Forms.Label();
+            this.KakakuTxb = new System.Windows.Forms.TextBox();
+            this.KakakuLbl = new System.Windows.Forms.Label();
+            this.MakerIDTxb = new System.Windows.Forms.TextBox();
+            this.MakerIDLbl = new System.Windows.Forms.Label();
+            this.ShohinNameTxb = new System.Windows.Forms.TextBox();
+            this.ShohinNameLbl = new System.Windows.Forms.Label();
+            this.ShohinIDTxb = new System.Windows.Forms.TextBox();
+            this.ShohinIDLbl = new System.Windows.Forms.Label();
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.HiddenBtn = new System.Windows.Forms.Button();
+            this.UpdateBtn = new System.Windows.Forms.Button();
+            this.TopLogoutBtn = new System.Windows.Forms.Button();
             this.TopShohinPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShohinKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -197,7 +197,7 @@
             // 
             // RegistBtn
             // 
-            this.RegistBtn.Location = new System.Drawing.Point(133, 27);
+            this.RegistBtn.Location = new System.Drawing.Point(145, 27);
             this.RegistBtn.Name = "RegistBtn";
             this.RegistBtn.Size = new System.Drawing.Size(305, 92);
             this.RegistBtn.TabIndex = 12;
@@ -243,221 +243,23 @@
             this.TopShohinPnl.TabIndex = 23;
             this.TopShohinPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // TopLogoutBtn
+            // ShohinKanriDgv
             // 
-            this.TopLogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopLogoutBtn.Location = new System.Drawing.Point(12, 795);
-            this.TopLogoutBtn.Name = "TopLogoutBtn";
-            this.TopLogoutBtn.Size = new System.Drawing.Size(210, 146);
-            this.TopLogoutBtn.TabIndex = 23;
-            this.TopLogoutBtn.Text = "ログアウト";
-            this.TopLogoutBtn.UseVisualStyleBackColor = true;
+            this.ShohinKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ShohinKanriDgv.Location = new System.Drawing.Point(102, 520);
+            this.ShohinKanriDgv.Name = "ShohinKanriDgv";
+            this.ShohinKanriDgv.RowHeadersWidth = 62;
+            this.ShohinKanriDgv.RowTemplate.Height = 27;
+            this.ShohinKanriDgv.Size = new System.Drawing.Size(1076, 239);
+            this.ShohinKanriDgv.TabIndex = 51;
             // 
-            // UpdateBtn
+            // HihyojiTxb
             // 
-            this.UpdateBtn.Location = new System.Drawing.Point(546, 27);
-            this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(305, 92);
-            this.UpdateBtn.TabIndex = 23;
-            this.UpdateBtn.Text = "更新";
-            this.UpdateBtn.UseVisualStyleBackColor = true;
-            // 
-            // HiddenBtn
-            // 
-            this.HiddenBtn.Location = new System.Drawing.Point(974, 27);
-            this.HiddenBtn.Name = "HiddenBtn";
-            this.HiddenBtn.Size = new System.Drawing.Size(305, 92);
-            this.HiddenBtn.TabIndex = 24;
-            this.HiddenBtn.Text = "非表示";
-            this.HiddenBtn.UseVisualStyleBackColor = true;
-            // 
-            // SearchBtn
-            // 
-            this.SearchBtn.Location = new System.Drawing.Point(1389, 27);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(305, 92);
-            this.SearchBtn.TabIndex = 25;
-            this.SearchBtn.Text = "検索";
-            this.SearchBtn.UseVisualStyleBackColor = true;
-            // 
-            // ShohinIDLbl
-            // 
-            this.ShohinIDLbl.AutoSize = true;
-            this.ShohinIDLbl.Location = new System.Drawing.Point(142, 166);
-            this.ShohinIDLbl.Name = "ShohinIDLbl";
-            this.ShohinIDLbl.Size = new System.Drawing.Size(60, 18);
-            this.ShohinIDLbl.TabIndex = 27;
-            this.ShohinIDLbl.Text = "商品ID";
-            // 
-            // ShohinIDTxb
-            // 
-            this.ShohinIDTxb.Location = new System.Drawing.Point(227, 159);
-            this.ShohinIDTxb.Name = "ShohinIDTxb";
-            this.ShohinIDTxb.Size = new System.Drawing.Size(211, 25);
-            this.ShohinIDTxb.TabIndex = 28;
-            // 
-            // ShohinNameLbl
-            // 
-            this.ShohinNameLbl.AutoSize = true;
-            this.ShohinNameLbl.Location = new System.Drawing.Point(554, 162);
-            this.ShohinNameLbl.Name = "ShohinNameLbl";
-            this.ShohinNameLbl.Size = new System.Drawing.Size(62, 18);
-            this.ShohinNameLbl.TabIndex = 29;
-            this.ShohinNameLbl.Text = "商品名";
-            // 
-            // ShohinNameTxb
-            // 
-            this.ShohinNameTxb.Location = new System.Drawing.Point(640, 159);
-            this.ShohinNameTxb.Name = "ShohinNameTxb";
-            this.ShohinNameTxb.Size = new System.Drawing.Size(211, 25);
-            this.ShohinNameTxb.TabIndex = 30;
-            // 
-            // MakerIDLbl
-            // 
-            this.MakerIDLbl.AutoSize = true;
-            this.MakerIDLbl.Location = new System.Drawing.Point(972, 166);
-            this.MakerIDLbl.Name = "MakerIDLbl";
-            this.MakerIDLbl.Size = new System.Drawing.Size(79, 18);
-            this.MakerIDLbl.TabIndex = 31;
-            this.MakerIDLbl.Text = "メーカーID";
-            // 
-            // MakerIDTxb
-            // 
-            this.MakerIDTxb.Location = new System.Drawing.Point(1068, 162);
-            this.MakerIDTxb.Name = "MakerIDTxb";
-            this.MakerIDTxb.Size = new System.Drawing.Size(211, 25);
-            this.MakerIDTxb.TabIndex = 32;
-            // 
-            // KakakuLbl
-            // 
-            this.KakakuLbl.AutoSize = true;
-            this.KakakuLbl.Location = new System.Drawing.Point(158, 243);
-            this.KakakuLbl.Name = "KakakuLbl";
-            this.KakakuLbl.Size = new System.Drawing.Size(44, 18);
-            this.KakakuLbl.TabIndex = 33;
-            this.KakakuLbl.Text = "価格";
-            // 
-            // KakakuTxb
-            // 
-            this.KakakuTxb.Location = new System.Drawing.Point(227, 243);
-            this.KakakuTxb.Name = "KakakuTxb";
-            this.KakakuTxb.Size = new System.Drawing.Size(211, 25);
-            this.KakakuTxb.TabIndex = 34;
-            // 
-            // AnzenLbl
-            // 
-            this.AnzenLbl.AutoSize = true;
-            this.AnzenLbl.Location = new System.Drawing.Point(518, 243);
-            this.AnzenLbl.Name = "AnzenLbl";
-            this.AnzenLbl.Size = new System.Drawing.Size(98, 18);
-            this.AnzenLbl.TabIndex = 35;
-            this.AnzenLbl.Text = "安全在庫数";
-            // 
-            // AnzenTxb
-            // 
-            this.AnzenTxb.Location = new System.Drawing.Point(640, 236);
-            this.AnzenTxb.Name = "AnzenTxb";
-            this.AnzenTxb.Size = new System.Drawing.Size(211, 25);
-            this.AnzenTxb.TabIndex = 36;
-            // 
-            // DaibunruiLbl
-            // 
-            this.DaibunruiLbl.AutoSize = true;
-            this.DaibunruiLbl.Location = new System.Drawing.Point(972, 239);
-            this.DaibunruiLbl.Name = "DaibunruiLbl";
-            this.DaibunruiLbl.Size = new System.Drawing.Size(80, 18);
-            this.DaibunruiLbl.TabIndex = 37;
-            this.DaibunruiLbl.Text = "大分類名";
-            // 
-            // DaibunruiCmb
-            // 
-            this.DaibunruiCmb.FormattingEnabled = true;
-            this.DaibunruiCmb.Location = new System.Drawing.Point(1068, 235);
-            this.DaibunruiCmb.Name = "DaibunruiCmb";
-            this.DaibunruiCmb.Size = new System.Drawing.Size(214, 26);
-            this.DaibunruiCmb.TabIndex = 38;
-            // 
-            // ShoubunruiLbl
-            // 
-            this.ShoubunruiLbl.AutoSize = true;
-            this.ShoubunruiLbl.Location = new System.Drawing.Point(1386, 239);
-            this.ShoubunruiLbl.Name = "ShoubunruiLbl";
-            this.ShoubunruiLbl.Size = new System.Drawing.Size(80, 18);
-            this.ShoubunruiLbl.TabIndex = 39;
-            this.ShoubunruiLbl.Text = "小分類名";
-            // 
-            // ShoubunruiCmb
-            // 
-            this.ShoubunruiCmb.FormattingEnabled = true;
-            this.ShoubunruiCmb.Location = new System.Drawing.Point(1480, 235);
-            this.ShoubunruiCmb.Name = "ShoubunruiCmb";
-            this.ShoubunruiCmb.Size = new System.Drawing.Size(214, 26);
-            this.ShoubunruiCmb.TabIndex = 40;
-            // 
-            // KatabanLbl
-            // 
-            this.KatabanLbl.AutoSize = true;
-            this.KatabanLbl.Location = new System.Drawing.Point(158, 320);
-            this.KatabanLbl.Name = "KatabanLbl";
-            this.KatabanLbl.Size = new System.Drawing.Size(44, 18);
-            this.KatabanLbl.TabIndex = 41;
-            this.KatabanLbl.Text = "型番";
-            // 
-            // KatabanTxb
-            // 
-            this.KatabanTxb.Location = new System.Drawing.Point(227, 313);
-            this.KatabanTxb.Name = "KatabanTxb";
-            this.KatabanTxb.Size = new System.Drawing.Size(211, 25);
-            this.KatabanTxb.TabIndex = 42;
-            // 
-            // IroLbl
-            // 
-            this.IroLbl.AutoSize = true;
-            this.IroLbl.Location = new System.Drawing.Point(590, 316);
-            this.IroLbl.Name = "IroLbl";
-            this.IroLbl.Size = new System.Drawing.Size(26, 18);
-            this.IroLbl.TabIndex = 43;
-            this.IroLbl.Text = "色";
-            // 
-            // IroTxb
-            // 
-            this.IroTxb.Location = new System.Drawing.Point(640, 313);
-            this.IroTxb.Name = "IroTxb";
-            this.IroTxb.Size = new System.Drawing.Size(211, 25);
-            this.IroTxb.TabIndex = 44;
-            // 
-            // SellLbl
-            // 
-            this.SellLbl.AutoSize = true;
-            this.SellLbl.Location = new System.Drawing.Point(989, 320);
-            this.SellLbl.Name = "SellLbl";
-            this.SellLbl.Size = new System.Drawing.Size(62, 18);
-            this.SellLbl.TabIndex = 45;
-            this.SellLbl.Text = "発売日";
-            // 
-            // SellDtm
-            // 
-            this.SellDtm.Location = new System.Drawing.Point(1068, 316);
-            this.SellDtm.Name = "SellDtm";
-            this.SellDtm.Size = new System.Drawing.Size(214, 25);
-            this.SellDtm.TabIndex = 46;
-            // 
-            // ShohinKanriLbl
-            // 
-            this.ShohinKanriLbl.AutoSize = true;
-            this.ShohinKanriLbl.Location = new System.Drawing.Point(84, 386);
-            this.ShohinKanriLbl.Name = "ShohinKanriLbl";
-            this.ShohinKanriLbl.Size = new System.Drawing.Size(118, 18);
-            this.ShohinKanriLbl.TabIndex = 47;
-            this.ShohinKanriLbl.Text = "商品管理フラグ";
-            // 
-            // ShohinKanriCmb
-            // 
-            this.ShohinKanriCmb.FormattingEnabled = true;
-            this.ShohinKanriCmb.Location = new System.Drawing.Point(227, 381);
-            this.ShohinKanriCmb.Name = "ShohinKanriCmb";
-            this.ShohinKanriCmb.Size = new System.Drawing.Size(211, 26);
-            this.ShohinKanriCmb.TabIndex = 48;
+            this.HihyojiTxb.Location = new System.Drawing.Point(640, 381);
+            this.HihyojiTxb.Multiline = true;
+            this.HihyojiTxb.Name = "HihyojiTxb";
+            this.HihyojiTxb.Size = new System.Drawing.Size(847, 119);
+            this.HihyojiTxb.TabIndex = 50;
             // 
             // HihyojiLbl
             // 
@@ -468,23 +270,221 @@
             this.HihyojiLbl.TabIndex = 49;
             this.HihyojiLbl.Text = "非表示理由";
             // 
-            // HihyojiTxb
+            // ShohinKanriCmb
             // 
-            this.HihyojiTxb.Location = new System.Drawing.Point(640, 381);
-            this.HihyojiTxb.Multiline = true;
-            this.HihyojiTxb.Name = "HihyojiTxb";
-            this.HihyojiTxb.Size = new System.Drawing.Size(847, 119);
-            this.HihyojiTxb.TabIndex = 50;
+            this.ShohinKanriCmb.FormattingEnabled = true;
+            this.ShohinKanriCmb.Location = new System.Drawing.Point(227, 381);
+            this.ShohinKanriCmb.Name = "ShohinKanriCmb";
+            this.ShohinKanriCmb.Size = new System.Drawing.Size(211, 26);
+            this.ShohinKanriCmb.TabIndex = 48;
             // 
-            // ShohinKanriDgv
+            // ShohinKanriLbl
             // 
-            this.ShohinKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ShohinKanriDgv.Location = new System.Drawing.Point(102, 520);
-            this.ShohinKanriDgv.Name = "ShohinKanriDgv";
-            this.ShohinKanriDgv.RowHeadersWidth = 62;
-            this.ShohinKanriDgv.RowTemplate.Height = 27;
-            this.ShohinKanriDgv.Size = new System.Drawing.Size(1076, 239);
-            this.ShohinKanriDgv.TabIndex = 51;
+            this.ShohinKanriLbl.AutoSize = true;
+            this.ShohinKanriLbl.Location = new System.Drawing.Point(84, 386);
+            this.ShohinKanriLbl.Name = "ShohinKanriLbl";
+            this.ShohinKanriLbl.Size = new System.Drawing.Size(118, 18);
+            this.ShohinKanriLbl.TabIndex = 47;
+            this.ShohinKanriLbl.Text = "商品管理フラグ";
+            // 
+            // SellDtm
+            // 
+            this.SellDtm.Location = new System.Drawing.Point(1068, 316);
+            this.SellDtm.Name = "SellDtm";
+            this.SellDtm.Size = new System.Drawing.Size(214, 25);
+            this.SellDtm.TabIndex = 46;
+            // 
+            // SellLbl
+            // 
+            this.SellLbl.AutoSize = true;
+            this.SellLbl.Location = new System.Drawing.Point(989, 320);
+            this.SellLbl.Name = "SellLbl";
+            this.SellLbl.Size = new System.Drawing.Size(62, 18);
+            this.SellLbl.TabIndex = 45;
+            this.SellLbl.Text = "発売日";
+            // 
+            // IroTxb
+            // 
+            this.IroTxb.Location = new System.Drawing.Point(640, 313);
+            this.IroTxb.Name = "IroTxb";
+            this.IroTxb.Size = new System.Drawing.Size(211, 25);
+            this.IroTxb.TabIndex = 44;
+            // 
+            // IroLbl
+            // 
+            this.IroLbl.AutoSize = true;
+            this.IroLbl.Location = new System.Drawing.Point(590, 316);
+            this.IroLbl.Name = "IroLbl";
+            this.IroLbl.Size = new System.Drawing.Size(26, 18);
+            this.IroLbl.TabIndex = 43;
+            this.IroLbl.Text = "色";
+            // 
+            // KatabanTxb
+            // 
+            this.KatabanTxb.Location = new System.Drawing.Point(227, 313);
+            this.KatabanTxb.Name = "KatabanTxb";
+            this.KatabanTxb.Size = new System.Drawing.Size(211, 25);
+            this.KatabanTxb.TabIndex = 42;
+            // 
+            // KatabanLbl
+            // 
+            this.KatabanLbl.AutoSize = true;
+            this.KatabanLbl.Location = new System.Drawing.Point(158, 320);
+            this.KatabanLbl.Name = "KatabanLbl";
+            this.KatabanLbl.Size = new System.Drawing.Size(44, 18);
+            this.KatabanLbl.TabIndex = 41;
+            this.KatabanLbl.Text = "型番";
+            // 
+            // ShoubunruiCmb
+            // 
+            this.ShoubunruiCmb.FormattingEnabled = true;
+            this.ShoubunruiCmb.Location = new System.Drawing.Point(1480, 235);
+            this.ShoubunruiCmb.Name = "ShoubunruiCmb";
+            this.ShoubunruiCmb.Size = new System.Drawing.Size(214, 26);
+            this.ShoubunruiCmb.TabIndex = 40;
+            // 
+            // ShoubunruiLbl
+            // 
+            this.ShoubunruiLbl.AutoSize = true;
+            this.ShoubunruiLbl.Location = new System.Drawing.Point(1386, 239);
+            this.ShoubunruiLbl.Name = "ShoubunruiLbl";
+            this.ShoubunruiLbl.Size = new System.Drawing.Size(80, 18);
+            this.ShoubunruiLbl.TabIndex = 39;
+            this.ShoubunruiLbl.Text = "小分類名";
+            // 
+            // DaibunruiCmb
+            // 
+            this.DaibunruiCmb.FormattingEnabled = true;
+            this.DaibunruiCmb.Location = new System.Drawing.Point(1068, 235);
+            this.DaibunruiCmb.Name = "DaibunruiCmb";
+            this.DaibunruiCmb.Size = new System.Drawing.Size(214, 26);
+            this.DaibunruiCmb.TabIndex = 38;
+            // 
+            // DaibunruiLbl
+            // 
+            this.DaibunruiLbl.AutoSize = true;
+            this.DaibunruiLbl.Location = new System.Drawing.Point(972, 239);
+            this.DaibunruiLbl.Name = "DaibunruiLbl";
+            this.DaibunruiLbl.Size = new System.Drawing.Size(80, 18);
+            this.DaibunruiLbl.TabIndex = 37;
+            this.DaibunruiLbl.Text = "大分類名";
+            // 
+            // AnzenTxb
+            // 
+            this.AnzenTxb.Location = new System.Drawing.Point(640, 236);
+            this.AnzenTxb.Name = "AnzenTxb";
+            this.AnzenTxb.Size = new System.Drawing.Size(211, 25);
+            this.AnzenTxb.TabIndex = 36;
+            // 
+            // AnzenLbl
+            // 
+            this.AnzenLbl.AutoSize = true;
+            this.AnzenLbl.Location = new System.Drawing.Point(518, 243);
+            this.AnzenLbl.Name = "AnzenLbl";
+            this.AnzenLbl.Size = new System.Drawing.Size(98, 18);
+            this.AnzenLbl.TabIndex = 35;
+            this.AnzenLbl.Text = "安全在庫数";
+            // 
+            // KakakuTxb
+            // 
+            this.KakakuTxb.Location = new System.Drawing.Point(227, 243);
+            this.KakakuTxb.Name = "KakakuTxb";
+            this.KakakuTxb.Size = new System.Drawing.Size(211, 25);
+            this.KakakuTxb.TabIndex = 34;
+            // 
+            // KakakuLbl
+            // 
+            this.KakakuLbl.AutoSize = true;
+            this.KakakuLbl.Location = new System.Drawing.Point(158, 243);
+            this.KakakuLbl.Name = "KakakuLbl";
+            this.KakakuLbl.Size = new System.Drawing.Size(44, 18);
+            this.KakakuLbl.TabIndex = 33;
+            this.KakakuLbl.Text = "価格";
+            // 
+            // MakerIDTxb
+            // 
+            this.MakerIDTxb.Location = new System.Drawing.Point(1068, 162);
+            this.MakerIDTxb.Name = "MakerIDTxb";
+            this.MakerIDTxb.Size = new System.Drawing.Size(211, 25);
+            this.MakerIDTxb.TabIndex = 32;
+            // 
+            // MakerIDLbl
+            // 
+            this.MakerIDLbl.AutoSize = true;
+            this.MakerIDLbl.Location = new System.Drawing.Point(972, 166);
+            this.MakerIDLbl.Name = "MakerIDLbl";
+            this.MakerIDLbl.Size = new System.Drawing.Size(79, 18);
+            this.MakerIDLbl.TabIndex = 31;
+            this.MakerIDLbl.Text = "メーカーID";
+            // 
+            // ShohinNameTxb
+            // 
+            this.ShohinNameTxb.Location = new System.Drawing.Point(640, 159);
+            this.ShohinNameTxb.Name = "ShohinNameTxb";
+            this.ShohinNameTxb.Size = new System.Drawing.Size(211, 25);
+            this.ShohinNameTxb.TabIndex = 30;
+            // 
+            // ShohinNameLbl
+            // 
+            this.ShohinNameLbl.AutoSize = true;
+            this.ShohinNameLbl.Location = new System.Drawing.Point(554, 162);
+            this.ShohinNameLbl.Name = "ShohinNameLbl";
+            this.ShohinNameLbl.Size = new System.Drawing.Size(62, 18);
+            this.ShohinNameLbl.TabIndex = 29;
+            this.ShohinNameLbl.Text = "商品名";
+            // 
+            // ShohinIDTxb
+            // 
+            this.ShohinIDTxb.Location = new System.Drawing.Point(227, 159);
+            this.ShohinIDTxb.Name = "ShohinIDTxb";
+            this.ShohinIDTxb.Size = new System.Drawing.Size(211, 25);
+            this.ShohinIDTxb.TabIndex = 28;
+            // 
+            // ShohinIDLbl
+            // 
+            this.ShohinIDLbl.AutoSize = true;
+            this.ShohinIDLbl.Location = new System.Drawing.Point(142, 166);
+            this.ShohinIDLbl.Name = "ShohinIDLbl";
+            this.ShohinIDLbl.Size = new System.Drawing.Size(60, 18);
+            this.ShohinIDLbl.TabIndex = 27;
+            this.ShohinIDLbl.Text = "商品ID";
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.Location = new System.Drawing.Point(1389, 27);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(305, 92);
+            this.SearchBtn.TabIndex = 25;
+            this.SearchBtn.Text = "検索";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            // 
+            // HiddenBtn
+            // 
+            this.HiddenBtn.Location = new System.Drawing.Point(974, 27);
+            this.HiddenBtn.Name = "HiddenBtn";
+            this.HiddenBtn.Size = new System.Drawing.Size(305, 92);
+            this.HiddenBtn.TabIndex = 24;
+            this.HiddenBtn.Text = "非表示";
+            this.HiddenBtn.UseVisualStyleBackColor = true;
+            // 
+            // UpdateBtn
+            // 
+            this.UpdateBtn.Location = new System.Drawing.Point(546, 27);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(305, 92);
+            this.UpdateBtn.TabIndex = 23;
+            this.UpdateBtn.Text = "更新";
+            this.UpdateBtn.UseVisualStyleBackColor = true;
+            // 
+            // TopLogoutBtn
+            // 
+            this.TopLogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopLogoutBtn.Location = new System.Drawing.Point(12, 795);
+            this.TopLogoutBtn.Name = "TopLogoutBtn";
+            this.TopLogoutBtn.Size = new System.Drawing.Size(210, 146);
+            this.TopLogoutBtn.TabIndex = 23;
+            this.TopLogoutBtn.Text = "ログアウト";
+            this.TopLogoutBtn.UseVisualStyleBackColor = true;
             // 
             // ShohinKanri
             // 
