@@ -37,5 +37,40 @@ namespace SalesManagement_SysDev
         {
 
         }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShohinIDLbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShohinIDTxb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EigyoshoIDTxb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JuchuKanri_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JuchuIDTxb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
