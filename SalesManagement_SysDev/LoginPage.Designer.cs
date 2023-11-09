@@ -29,13 +29,18 @@
         private void InitializeComponent()
         {
             this.btn_CleateDabase = new System.Windows.Forms.Button();
-            this.Lbl_tag = new System.Windows.Forms.Label();
             this.btn_InsertSampleData = new System.Windows.Forms.Button();
+            this.YuzaLbl = new System.Windows.Forms.Label();
+            this.PasuwadoLbl = new System.Windows.Forms.Label();
+            this.YuzaTxb = new System.Windows.Forms.TextBox();
+            this.PasuwadoTxb = new System.Windows.Forms.TextBox();
+            this.RoguinLbl = new System.Windows.Forms.Label();
+            this.RoguinBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_CleateDabase
             // 
-            this.btn_CleateDabase.Location = new System.Drawing.Point(661, 319);
+            this.btn_CleateDabase.Location = new System.Drawing.Point(479, 3);
             this.btn_CleateDabase.Name = "btn_CleateDabase";
             this.btn_CleateDabase.Size = new System.Drawing.Size(106, 49);
             this.btn_CleateDabase.TabIndex = 0;
@@ -43,18 +48,9 @@
             this.btn_CleateDabase.UseVisualStyleBackColor = true;
             this.btn_CleateDabase.Click += new System.EventHandler(this.btn_CleateDabase_Click);
             // 
-            // Lbl_tag
-            // 
-            this.Lbl_tag.AutoSize = true;
-            this.Lbl_tag.Location = new System.Drawing.Point(266, 161);
-            this.Lbl_tag.Name = "Lbl_tag";
-            this.Lbl_tag.Size = new System.Drawing.Size(224, 12);
-            this.Lbl_tag.TabIndex = 1;
-            this.Lbl_tag.Text = "このページはログイン画面として作成してください";
-            // 
             // btn_InsertSampleData
             // 
-            this.btn_InsertSampleData.Location = new System.Drawing.Point(661, 389);
+            this.btn_InsertSampleData.Location = new System.Drawing.Point(479, 63);
             this.btn_InsertSampleData.Name = "btn_InsertSampleData";
             this.btn_InsertSampleData.Size = new System.Drawing.Size(106, 49);
             this.btn_InsertSampleData.TabIndex = 0;
@@ -62,15 +58,78 @@
             this.btn_InsertSampleData.UseVisualStyleBackColor = true;
             this.btn_InsertSampleData.Click += new System.EventHandler(this.btn_InsertSampleData_Click);
             // 
-            // F_Login
+            // YuzaLbl
+            // 
+            this.YuzaLbl.AutoSize = true;
+            this.YuzaLbl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.YuzaLbl.Location = new System.Drawing.Point(36, 158);
+            this.YuzaLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.YuzaLbl.Name = "YuzaLbl";
+            this.YuzaLbl.Size = new System.Drawing.Size(112, 24);
+            this.YuzaLbl.TabIndex = 1;
+            this.YuzaLbl.Text = "ユーザーID";
+            // 
+            // PasuwadoLbl
+            // 
+            this.PasuwadoLbl.AutoSize = true;
+            this.PasuwadoLbl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.PasuwadoLbl.Location = new System.Drawing.Point(36, 220);
+            this.PasuwadoLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PasuwadoLbl.Name = "PasuwadoLbl";
+            this.PasuwadoLbl.Size = new System.Drawing.Size(103, 24);
+            this.PasuwadoLbl.TabIndex = 2;
+            this.PasuwadoLbl.Text = "パスワード";
+            // 
+            // YuzaTxb
+            // 
+            this.YuzaTxb.Location = new System.Drawing.Point(161, 158);
+            this.YuzaTxb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.YuzaTxb.Name = "YuzaTxb";
+            this.YuzaTxb.Size = new System.Drawing.Size(278, 19);
+            this.YuzaTxb.TabIndex = 3;
+            // 
+            // PasuwadoTxb
+            // 
+            this.PasuwadoTxb.Location = new System.Drawing.Point(161, 220);
+            this.PasuwadoTxb.Margin = new System.Windows.Forms.Padding(2);
+            this.PasuwadoTxb.Name = "PasuwadoTxb";
+            this.PasuwadoTxb.Size = new System.Drawing.Size(278, 19);
+            this.PasuwadoTxb.TabIndex = 4;
+            // 
+            // RoguinLbl
+            // 
+            this.RoguinLbl.AutoSize = true;
+            this.RoguinLbl.Font = new System.Drawing.Font("MS UI Gothic", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.RoguinLbl.Location = new System.Drawing.Point(147, 59);
+            this.RoguinLbl.Name = "RoguinLbl";
+            this.RoguinLbl.Size = new System.Drawing.Size(292, 53);
+            this.RoguinLbl.TabIndex = 5;
+            this.RoguinLbl.Text = "ログイン画面";
+            // 
+            // RoguinBtn
+            // 
+            this.RoguinBtn.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.RoguinBtn.Location = new System.Drawing.Point(198, 269);
+            this.RoguinBtn.Name = "RoguinBtn";
+            this.RoguinBtn.Size = new System.Drawing.Size(174, 68);
+            this.RoguinBtn.TabIndex = 6;
+            this.RoguinBtn.Text = "ログイン";
+            this.RoguinBtn.UseVisualStyleBackColor = true;
+            // 
+            // LoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Lbl_tag);
+            this.ClientSize = new System.Drawing.Size(597, 377);
+            this.Controls.Add(this.RoguinBtn);
+            this.Controls.Add(this.RoguinLbl);
+            this.Controls.Add(this.PasuwadoTxb);
+            this.Controls.Add(this.YuzaTxb);
+            this.Controls.Add(this.PasuwadoLbl);
+            this.Controls.Add(this.YuzaLbl);
             this.Controls.Add(this.btn_InsertSampleData);
             this.Controls.Add(this.btn_CleateDabase);
-            this.Name = "F_Login";
+            this.Name = "LoginPage";
             this.Text = "販売管理システムログイン画面";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -80,8 +139,13 @@
         #endregion
 
         private System.Windows.Forms.Button btn_CleateDabase;
-        private System.Windows.Forms.Label Lbl_tag;
         private System.Windows.Forms.Button btn_InsertSampleData;
+        private System.Windows.Forms.Label YuzaLbl;
+        private System.Windows.Forms.Label PasuwadoLbl;
+        private System.Windows.Forms.TextBox YuzaTxb;
+        private System.Windows.Forms.TextBox PasuwadoTxb;
+        private System.Windows.Forms.Label RoguinLbl;
+        private System.Windows.Forms.Button RoguinBtn;
     }
 }
 
