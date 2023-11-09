@@ -32,5 +32,15 @@ namespace SalesManagement_SysDev
         {
            
         }
+
+        private void JuchuKanriBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShukkaKanriBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
