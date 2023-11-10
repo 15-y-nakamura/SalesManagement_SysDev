@@ -196,7 +196,7 @@
             // 
             // TopChumonPnl
             // 
-            this.TopChumonPnl.BackColor = System.Drawing.Color.Gray;
+            this.TopChumonPnl.BackColor = System.Drawing.Color.LightGray;
             this.TopChumonPnl.Controls.Add(this.ChumonKanriFlagCmb);
             this.TopChumonPnl.Controls.Add(this.ChumonjyoutaiFlaguCmb);
             this.TopChumonPnl.Controls.Add(this.HihyojiTxb);

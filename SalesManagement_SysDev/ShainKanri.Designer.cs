@@ -429,6 +429,7 @@
             this.Name = "Shainkanri";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Shainkanri_Load);
             this.TopShainPnl.ResumeLayout(false);
             this.TopShainPnl.PerformLayout();
             this.ResumeLayout(false);
