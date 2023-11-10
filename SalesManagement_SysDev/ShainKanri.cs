@@ -32,5 +32,10 @@ namespace SalesManagement_SysDev
         {
            
         }
+
+        private void Shainkanri_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
