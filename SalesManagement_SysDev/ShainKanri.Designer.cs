@@ -41,11 +41,12 @@
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopTantoLbl = new System.Windows.Forms.Label();
             this.TopShainPnl = new System.Windows.Forms.Panel();
-            this.TopLogoutBtn = new System.Windows.Forms.Button();
-            this.SearchBtn = new System.Windows.Forms.Button();
-            this.HiddenBtn = new System.Windows.Forms.Button();
-            this.UpdateBtn = new System.Windows.Forms.Button();
-            this.RegistBtn = new System.Windows.Forms.Button();
+            this.TelTxb = new System.Windows.Forms.TextBox();
+            this.EigyoshoNameTxb = new System.Windows.Forms.TextBox();
+            this.TelLbl = new System.Windows.Forms.Label();
+            this.EigyoshoNameLbl = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.JuchuJotaiFlagCmb = new System.Windows.Forms.ComboBox();
             this.JoinDateTxb = new System.Windows.Forms.TextBox();
             this.ShainNameTxb = new System.Windows.Forms.TextBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
@@ -56,12 +57,11 @@
             this.HihyojiLbl = new System.Windows.Forms.Label();
             this.ShohinIDLbl = new System.Windows.Forms.Label();
             this.ShainIDLbl = new System.Windows.Forms.Label();
-            this.JuchuJotaiFlagCmb = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.TelTxb = new System.Windows.Forms.TextBox();
-            this.EigyoshoNameTxb = new System.Windows.Forms.TextBox();
-            this.TelLbl = new System.Windows.Forms.Label();
-            this.EigyoshoNameLbl = new System.Windows.Forms.Label();
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.HiddenBtn = new System.Windows.Forms.Button();
+            this.UpdateBtn = new System.Windows.Forms.Button();
+            this.RegistBtn = new System.Windows.Forms.Button();
+            this.TopLogoutBtn = new System.Windows.Forms.Button();
             this.TopShainPnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +75,7 @@
             this.TopHonshaBtn.TabIndex = 0;
             this.TopHonshaBtn.Text = "本社";
             this.TopHonshaBtn.UseVisualStyleBackColor = true;
+            this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
             // 
             // TopEigyoBtn
             // 
@@ -85,6 +86,7 @@
             this.TopEigyoBtn.TabIndex = 1;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
+            this.TopEigyoBtn.Click += new System.EventHandler(this.TopEigyoBtn_Click);
             // 
             // TopButsuryuBtn
             // 
@@ -95,6 +97,7 @@
             this.TopButsuryuBtn.TabIndex = 2;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
+            this.TopButsuryuBtn.Click += new System.EventHandler(this.TopButsuryuBtn_Click);
             // 
             // TopLbl
             // 
@@ -169,7 +172,7 @@
             // 
             this.TopNameLbl.AutoSize = true;
             this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.TopNameLbl.Location = new System.Drawing.Point(1704, 35);
+            this.TopNameLbl.Location = new System.Drawing.Point(1704, 43);
             this.TopNameLbl.Name = "TopNameLbl";
             this.TopNameLbl.Size = new System.Drawing.Size(84, 30);
             this.TopNameLbl.TabIndex = 10;
@@ -214,55 +217,55 @@
             this.TopShainPnl.TabIndex = 23;
             this.TopShainPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // TopLogoutBtn
+            // TelTxb
             // 
-            this.TopLogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopLogoutBtn.Location = new System.Drawing.Point(12, 795);
-            this.TopLogoutBtn.Name = "TopLogoutBtn";
-            this.TopLogoutBtn.Size = new System.Drawing.Size(210, 146);
-            this.TopLogoutBtn.TabIndex = 23;
-            this.TopLogoutBtn.Text = "ログアウト";
-            this.TopLogoutBtn.UseVisualStyleBackColor = true;
+            this.TelTxb.Location = new System.Drawing.Point(1420, 156);
+            this.TelTxb.Name = "TelTxb";
+            this.TelTxb.Size = new System.Drawing.Size(160, 25);
+            this.TelTxb.TabIndex = 21;
             // 
-            // SearchBtn
+            // EigyoshoNameTxb
             // 
-            this.SearchBtn.Font = new System.Drawing.Font("MS UI Gothic", 12F);
-            this.SearchBtn.Location = new System.Drawing.Point(1280, 25);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(300, 90);
-            this.SearchBtn.TabIndex = 3;
-            this.SearchBtn.Text = "検索";
-            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.EigyoshoNameTxb.Location = new System.Drawing.Point(1031, 154);
+            this.EigyoshoNameTxb.Name = "EigyoshoNameTxb";
+            this.EigyoshoNameTxb.Size = new System.Drawing.Size(160, 25);
+            this.EigyoshoNameTxb.TabIndex = 22;
             // 
-            // HiddenBtn
+            // TelLbl
             // 
-            this.HiddenBtn.Font = new System.Drawing.Font("MS UI Gothic", 12F);
-            this.HiddenBtn.Location = new System.Drawing.Point(891, 25);
-            this.HiddenBtn.Name = "HiddenBtn";
-            this.HiddenBtn.Size = new System.Drawing.Size(300, 90);
-            this.HiddenBtn.TabIndex = 4;
-            this.HiddenBtn.Text = "非表示";
-            this.HiddenBtn.UseVisualStyleBackColor = true;
+            this.TelLbl.AutoSize = true;
+            this.TelLbl.Font = new System.Drawing.Font("MS UI Gothic", 16F);
+            this.TelLbl.Location = new System.Drawing.Point(1271, 149);
+            this.TelLbl.Name = "TelLbl";
+            this.TelLbl.Size = new System.Drawing.Size(143, 33);
+            this.TelLbl.TabIndex = 19;
+            this.TelLbl.Text = "電話番号";
             // 
-            // UpdateBtn
+            // EigyoshoNameLbl
             // 
-            this.UpdateBtn.Font = new System.Drawing.Font("MS UI Gothic", 12F);
-            this.UpdateBtn.Location = new System.Drawing.Point(482, 25);
-            this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(300, 90);
-            this.UpdateBtn.TabIndex = 5;
-            this.UpdateBtn.Text = "更新";
-            this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.EigyoshoNameLbl.AutoSize = true;
+            this.EigyoshoNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 16F);
+            this.EigyoshoNameLbl.Location = new System.Drawing.Point(850, 146);
+            this.EigyoshoNameLbl.Name = "EigyoshoNameLbl";
+            this.EigyoshoNameLbl.Size = new System.Drawing.Size(143, 33);
+            this.EigyoshoNameLbl.TabIndex = 20;
+            this.EigyoshoNameLbl.Text = "営業所名";
             // 
-            // RegistBtn
+            // comboBox1
             // 
-            this.RegistBtn.Font = new System.Drawing.Font("MS UI Gothic", 12F);
-            this.RegistBtn.Location = new System.Drawing.Point(77, 25);
-            this.RegistBtn.Name = "RegistBtn";
-            this.RegistBtn.Size = new System.Drawing.Size(300, 90);
-            this.RegistBtn.TabIndex = 2;
-            this.RegistBtn.Text = "登録";
-            this.RegistBtn.UseVisualStyleBackColor = true;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(217, 292);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(160, 26);
+            this.comboBox1.TabIndex = 18;
+            // 
+            // JuchuJotaiFlagCmb
+            // 
+            this.JuchuJotaiFlagCmb.FormattingEnabled = true;
+            this.JuchuJotaiFlagCmb.Location = new System.Drawing.Point(217, 224);
+            this.JuchuJotaiFlagCmb.Name = "JuchuJotaiFlagCmb";
+            this.JuchuJotaiFlagCmb.Size = new System.Drawing.Size(160, 26);
+            this.JuchuJotaiFlagCmb.TabIndex = 18;
             // 
             // JoinDateTxb
             // 
@@ -353,55 +356,55 @@
             this.ShainIDLbl.TabIndex = 11;
             this.ShainIDLbl.Text = "社員ID";
             // 
-            // JuchuJotaiFlagCmb
+            // SearchBtn
             // 
-            this.JuchuJotaiFlagCmb.FormattingEnabled = true;
-            this.JuchuJotaiFlagCmb.Location = new System.Drawing.Point(217, 224);
-            this.JuchuJotaiFlagCmb.Name = "JuchuJotaiFlagCmb";
-            this.JuchuJotaiFlagCmb.Size = new System.Drawing.Size(160, 26);
-            this.JuchuJotaiFlagCmb.TabIndex = 18;
+            this.SearchBtn.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.SearchBtn.Location = new System.Drawing.Point(1280, 25);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(300, 90);
+            this.SearchBtn.TabIndex = 3;
+            this.SearchBtn.Text = "検索";
+            this.SearchBtn.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // HiddenBtn
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(217, 292);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 26);
-            this.comboBox1.TabIndex = 18;
+            this.HiddenBtn.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.HiddenBtn.Location = new System.Drawing.Point(891, 25);
+            this.HiddenBtn.Name = "HiddenBtn";
+            this.HiddenBtn.Size = new System.Drawing.Size(300, 90);
+            this.HiddenBtn.TabIndex = 4;
+            this.HiddenBtn.Text = "非表示";
+            this.HiddenBtn.UseVisualStyleBackColor = true;
             // 
-            // TelTxb
+            // UpdateBtn
             // 
-            this.TelTxb.Location = new System.Drawing.Point(1420, 156);
-            this.TelTxb.Name = "TelTxb";
-            this.TelTxb.Size = new System.Drawing.Size(160, 25);
-            this.TelTxb.TabIndex = 21;
+            this.UpdateBtn.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.UpdateBtn.Location = new System.Drawing.Point(482, 25);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(300, 90);
+            this.UpdateBtn.TabIndex = 5;
+            this.UpdateBtn.Text = "更新";
+            this.UpdateBtn.UseVisualStyleBackColor = true;
             // 
-            // EigyoshoNameTxb
+            // RegistBtn
             // 
-            this.EigyoshoNameTxb.Location = new System.Drawing.Point(1031, 154);
-            this.EigyoshoNameTxb.Name = "EigyoshoNameTxb";
-            this.EigyoshoNameTxb.Size = new System.Drawing.Size(160, 25);
-            this.EigyoshoNameTxb.TabIndex = 22;
+            this.RegistBtn.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.RegistBtn.Location = new System.Drawing.Point(77, 25);
+            this.RegistBtn.Name = "RegistBtn";
+            this.RegistBtn.Size = new System.Drawing.Size(300, 90);
+            this.RegistBtn.TabIndex = 2;
+            this.RegistBtn.Text = "登録";
+            this.RegistBtn.UseVisualStyleBackColor = true;
             // 
-            // TelLbl
+            // TopLogoutBtn
             // 
-            this.TelLbl.AutoSize = true;
-            this.TelLbl.Font = new System.Drawing.Font("MS UI Gothic", 16F);
-            this.TelLbl.Location = new System.Drawing.Point(1271, 149);
-            this.TelLbl.Name = "TelLbl";
-            this.TelLbl.Size = new System.Drawing.Size(143, 33);
-            this.TelLbl.TabIndex = 19;
-            this.TelLbl.Text = "電話番号";
-            // 
-            // EigyoshoNameLbl
-            // 
-            this.EigyoshoNameLbl.AutoSize = true;
-            this.EigyoshoNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 16F);
-            this.EigyoshoNameLbl.Location = new System.Drawing.Point(850, 146);
-            this.EigyoshoNameLbl.Name = "EigyoshoNameLbl";
-            this.EigyoshoNameLbl.Size = new System.Drawing.Size(143, 33);
-            this.EigyoshoNameLbl.TabIndex = 20;
-            this.EigyoshoNameLbl.Text = "営業所名";
+            this.TopLogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopLogoutBtn.Location = new System.Drawing.Point(12, 795);
+            this.TopLogoutBtn.Name = "TopLogoutBtn";
+            this.TopLogoutBtn.Size = new System.Drawing.Size(210, 146);
+            this.TopLogoutBtn.TabIndex = 23;
+            this.TopLogoutBtn.Text = "ログアウト";
+            this.TopLogoutBtn.UseVisualStyleBackColor = true;
             // 
             // Shainkanri
             // 
