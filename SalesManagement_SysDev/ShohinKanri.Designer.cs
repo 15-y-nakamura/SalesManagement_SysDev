@@ -85,6 +85,7 @@
             this.TopHonshaBtn.TabIndex = 0;
             this.TopHonshaBtn.Text = "本社";
             this.TopHonshaBtn.UseVisualStyleBackColor = true;
+            this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
             // 
             // TopEigyoBtn
             // 
@@ -95,6 +96,7 @@
             this.TopEigyoBtn.TabIndex = 1;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
+            this.TopEigyoBtn.Click += new System.EventHandler(this.TopEigyoBtn_Click);
             // 
             // TopButsuryuBtn
             // 
@@ -105,6 +107,7 @@
             this.TopButsuryuBtn.TabIndex = 2;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
+            this.TopButsuryuBtn.Click += new System.EventHandler(this.TopButsuryuBtn_Click);
             // 
             // TopLbl
             // 

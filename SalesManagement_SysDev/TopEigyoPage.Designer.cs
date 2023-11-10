@@ -61,6 +61,7 @@
             this.TopHonshaBtn.TabIndex = 0;
             this.TopHonshaBtn.Text = "本社";
             this.TopHonshaBtn.UseVisualStyleBackColor = true;
+            this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
             // 
             // TopEigyoBtn
             // 
@@ -71,6 +72,7 @@
             this.TopEigyoBtn.TabIndex = 1;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
+            this.TopEigyoBtn.Click += new System.EventHandler(this.TopEigyoBtn_Click);
             // 
             // TopButsuryuBtn
             // 
@@ -81,6 +83,7 @@
             this.TopButsuryuBtn.TabIndex = 2;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
+            this.TopButsuryuBtn.Click += new System.EventHandler(this.TopButsuryuBtn_Click);
             // 
             // TopLbl
             // 
@@ -180,6 +183,7 @@
             this.KokyakuKanriBtn.TabIndex = 13;
             this.KokyakuKanriBtn.Text = "顧客管理";
             this.KokyakuKanriBtn.UseVisualStyleBackColor = true;
+            this.KokyakuKanriBtn.Click += new System.EventHandler(this.KokyakuKanriBtn_Click);
             // 
             // JuchuKanriBtn
             // 
@@ -222,6 +226,7 @@
             this.ChumonKanriBtn.TabIndex = 17;
             this.ChumonKanriBtn.Text = "注文管理";
             this.ChumonKanriBtn.UseVisualStyleBackColor = true;
+            this.ChumonKanriBtn.Click += new System.EventHandler(this.ChumonKanriBtn_Click);
             // 
             // UriageKanriBtn
             // 
@@ -281,6 +286,7 @@
             this.Name = "TopEigyoPage";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.TopEigyoPage_Load);
             this.TopEigyoPnl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
