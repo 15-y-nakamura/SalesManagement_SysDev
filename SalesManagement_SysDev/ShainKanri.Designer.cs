@@ -75,6 +75,7 @@
             this.TopHonshaBtn.TabIndex = 0;
             this.TopHonshaBtn.Text = "本社";
             this.TopHonshaBtn.UseVisualStyleBackColor = true;
+            this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
             // 
             // TopEigyoBtn
             // 
@@ -85,6 +86,7 @@
             this.TopEigyoBtn.TabIndex = 1;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
+            this.TopEigyoBtn.Click += new System.EventHandler(this.TopEigyoBtn_Click);
             // 
             // TopButsuryuBtn
             // 
@@ -95,6 +97,7 @@
             this.TopButsuryuBtn.TabIndex = 2;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
+            this.TopButsuryuBtn.Click += new System.EventHandler(this.TopButsuryuBtn_Click);
             // 
             // TopLbl
             // 
@@ -169,7 +172,7 @@
             // 
             this.TopNameLbl.AutoSize = true;
             this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.TopNameLbl.Location = new System.Drawing.Point(1704, 35);
+            this.TopNameLbl.Location = new System.Drawing.Point(1704, 43);
             this.TopNameLbl.Name = "TopNameLbl";
             this.TopNameLbl.Size = new System.Drawing.Size(84, 30);
             this.TopNameLbl.TabIndex = 10;
@@ -426,7 +429,6 @@
             this.Name = "Shainkanri";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Shainkanri_Load);
             this.TopShainPnl.ResumeLayout(false);
             this.TopShainPnl.PerformLayout();
             this.ResumeLayout(false);

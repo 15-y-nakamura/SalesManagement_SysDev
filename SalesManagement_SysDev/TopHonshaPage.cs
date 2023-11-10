@@ -34,7 +34,7 @@ namespace SalesManagement_SysDev
             this.Visible = false;
 
             //ShainKanriを表示
-            ShainKanri f2 = new ShainKanri();
+            Shainkanri f2 = new Shainkanri();
             f2.Show();
         }
 

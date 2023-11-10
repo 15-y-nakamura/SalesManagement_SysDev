@@ -1,6 +1,6 @@
 ﻿namespace SalesManagement_SysDev
 {
-    partial class KokyakuKanri
+    partial class Kokyakukanri
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.TopHonshaBtn = new System.Windows.Forms.Button();
+            this.TopEigyoBtn = new System.Windows.Forms.Button();
+            this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopIDHyojiLbl = new System.Windows.Forms.Label();
             this.TopJikanHyojiLbl = new System.Windows.Forms.Label();
@@ -71,36 +71,39 @@
             this.TopKokyakuPnl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // TopHonshaBtn
             // 
-            this.button1.AutoSize = true;
-            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.button1.Location = new System.Drawing.Point(12, 158);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(210, 131);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "本社";
-            this.button1.UseVisualStyleBackColor = true;
+            this.TopHonshaBtn.AutoSize = true;
+            this.TopHonshaBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopHonshaBtn.Location = new System.Drawing.Point(12, 158);
+            this.TopHonshaBtn.Name = "TopHonshaBtn";
+            this.TopHonshaBtn.Size = new System.Drawing.Size(210, 131);
+            this.TopHonshaBtn.TabIndex = 0;
+            this.TopHonshaBtn.Text = "本社";
+            this.TopHonshaBtn.UseVisualStyleBackColor = true;
+            this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
             // 
-            // button2
+            // TopEigyoBtn
             // 
-            this.button2.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.button2.Location = new System.Drawing.Point(12, 295);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(210, 123);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "営業";
-            this.button2.UseVisualStyleBackColor = true;
+            this.TopEigyoBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopEigyoBtn.Location = new System.Drawing.Point(12, 295);
+            this.TopEigyoBtn.Name = "TopEigyoBtn";
+            this.TopEigyoBtn.Size = new System.Drawing.Size(210, 123);
+            this.TopEigyoBtn.TabIndex = 1;
+            this.TopEigyoBtn.Text = "営業";
+            this.TopEigyoBtn.UseVisualStyleBackColor = true;
+            this.TopEigyoBtn.Click += new System.EventHandler(this.TopEigyoBtn_Click);
             // 
-            // button3
+            // TopButsuryuBtn
             // 
-            this.button3.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.button3.Location = new System.Drawing.Point(12, 424);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(210, 146);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "物流";
-            this.button3.UseVisualStyleBackColor = true;
+            this.TopButsuryuBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopButsuryuBtn.Location = new System.Drawing.Point(12, 424);
+            this.TopButsuryuBtn.Name = "TopButsuryuBtn";
+            this.TopButsuryuBtn.Size = new System.Drawing.Size(210, 146);
+            this.TopButsuryuBtn.TabIndex = 2;
+            this.TopButsuryuBtn.Text = "物流";
+            this.TopButsuryuBtn.UseVisualStyleBackColor = true;
+            this.TopButsuryuBtn.Click += new System.EventHandler(this.TopButsuryuBtn_Click_1);
             // 
             // TopLbl
             // 
@@ -464,13 +467,42 @@
             this.button15.TabIndex = 23;
             this.button15.Text = "ログアウト";
             this.button15.UseVisualStyleBackColor = true;
+            // 
+            // Kokyakukanri
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.button15);
+            this.Controls.Add(this.TopKokyakuPnl);
+            this.Controls.Add(this.TopTantoLbl);
+            this.Controls.Add(this.TopNameLbl);
+            this.Controls.Add(this.TopJikanLbl);
+            this.Controls.Add(this.TopIDLbl);
+            this.Controls.Add(this.TopTantoHyojiLbl);
+            this.Controls.Add(this.TopNameHyojiLbl);
+            this.Controls.Add(this.TopJikanHyojiLbl);
+            this.Controls.Add(this.TopIDHyojiLbl);
+            this.Controls.Add(this.TopLbl);
+            this.Controls.Add(this.TopButsuryuBtn);
+            this.Controls.Add(this.TopEigyoBtn);
+            this.Controls.Add(this.TopHonshaBtn);
+            this.KeyPreview = true;
+            this.Name = "Kokyakukanri";
+            this.Text = "TopPage";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.TopKokyakuPnl.ResumeLayout(false);
+            this.TopKokyakuPnl.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button TopHonshaBtn;
+        private System.Windows.Forms.Button TopEigyoBtn;
+        private System.Windows.Forms.Button TopButsuryuBtn;
         private System.Windows.Forms.Label TopLbl;
         private System.Windows.Forms.Label TopIDHyojiLbl;
         private System.Windows.Forms.Label TopJikanHyojiLbl;
