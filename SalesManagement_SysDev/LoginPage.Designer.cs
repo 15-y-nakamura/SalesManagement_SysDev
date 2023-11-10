@@ -30,9 +30,9 @@
         {
             this.btn_CleateDabase = new System.Windows.Forms.Button();
             this.btn_InsertSampleData = new System.Windows.Forms.Button();
-            this.YuzaLbl = new System.Windows.Forms.Label();
+            this.ShainLbl = new System.Windows.Forms.Label();
             this.PasuwadoLbl = new System.Windows.Forms.Label();
-            this.YuzaTxb = new System.Windows.Forms.TextBox();
+            this.ShainTxb = new System.Windows.Forms.TextBox();
             this.PasuwadoTxb = new System.Windows.Forms.TextBox();
             this.RoguinLbl = new System.Windows.Forms.Label();
             this.RoguinBtn = new System.Windows.Forms.Button();
@@ -40,9 +40,10 @@
             // 
             // btn_CleateDabase
             // 
-            this.btn_CleateDabase.Location = new System.Drawing.Point(479, 3);
+            this.btn_CleateDabase.Location = new System.Drawing.Point(798, 4);
+            this.btn_CleateDabase.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_CleateDabase.Name = "btn_CleateDabase";
-            this.btn_CleateDabase.Size = new System.Drawing.Size(106, 49);
+            this.btn_CleateDabase.Size = new System.Drawing.Size(177, 74);
             this.btn_CleateDabase.TabIndex = 0;
             this.btn_CleateDabase.Text = "データベース生成";
             this.btn_CleateDabase.UseVisualStyleBackColor = true;
@@ -50,85 +51,85 @@
             // 
             // btn_InsertSampleData
             // 
-            this.btn_InsertSampleData.Location = new System.Drawing.Point(479, 63);
+            this.btn_InsertSampleData.Location = new System.Drawing.Point(798, 94);
+            this.btn_InsertSampleData.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_InsertSampleData.Name = "btn_InsertSampleData";
-            this.btn_InsertSampleData.Size = new System.Drawing.Size(106, 49);
+            this.btn_InsertSampleData.Size = new System.Drawing.Size(177, 74);
             this.btn_InsertSampleData.TabIndex = 0;
             this.btn_InsertSampleData.Text = "サンプルデータ登録";
             this.btn_InsertSampleData.UseVisualStyleBackColor = true;
             this.btn_InsertSampleData.Click += new System.EventHandler(this.btn_InsertSampleData_Click);
             // 
-            // YuzaLbl
+            // ShainLbl
             // 
-            this.YuzaLbl.AutoSize = true;
-            this.YuzaLbl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.YuzaLbl.Location = new System.Drawing.Point(36, 158);
-            this.YuzaLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.YuzaLbl.Name = "YuzaLbl";
-            this.YuzaLbl.Size = new System.Drawing.Size(112, 24);
-            this.YuzaLbl.TabIndex = 1;
-            this.YuzaLbl.Text = "ユーザーID";
+            this.ShainLbl.AutoSize = true;
+            this.ShainLbl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ShainLbl.Location = new System.Drawing.Point(60, 226);
+            this.ShainLbl.Name = "ShainLbl";
+            this.ShainLbl.Size = new System.Drawing.Size(119, 36);
+            this.ShainLbl.TabIndex = 1;
+            this.ShainLbl.Text = "社員ID";
             // 
             // PasuwadoLbl
             // 
             this.PasuwadoLbl.AutoSize = true;
             this.PasuwadoLbl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.PasuwadoLbl.Location = new System.Drawing.Point(36, 220);
-            this.PasuwadoLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PasuwadoLbl.Location = new System.Drawing.Point(60, 330);
             this.PasuwadoLbl.Name = "PasuwadoLbl";
-            this.PasuwadoLbl.Size = new System.Drawing.Size(103, 24);
+            this.PasuwadoLbl.Size = new System.Drawing.Size(155, 36);
             this.PasuwadoLbl.TabIndex = 2;
             this.PasuwadoLbl.Text = "パスワード";
             // 
-            // YuzaTxb
+            // ShainTxb
             // 
-            this.YuzaTxb.Location = new System.Drawing.Point(161, 158);
-            this.YuzaTxb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.YuzaTxb.Name = "YuzaTxb";
-            this.YuzaTxb.Size = new System.Drawing.Size(278, 19);
-            this.YuzaTxb.TabIndex = 3;
+            this.ShainTxb.Location = new System.Drawing.Point(268, 237);
+            this.ShainTxb.Name = "ShainTxb";
+            this.ShainTxb.Size = new System.Drawing.Size(461, 25);
+            this.ShainTxb.TabIndex = 3;
             // 
             // PasuwadoTxb
             // 
-            this.PasuwadoTxb.Location = new System.Drawing.Point(161, 220);
-            this.PasuwadoTxb.Margin = new System.Windows.Forms.Padding(2);
+            this.PasuwadoTxb.Location = new System.Drawing.Point(268, 330);
             this.PasuwadoTxb.Name = "PasuwadoTxb";
-            this.PasuwadoTxb.Size = new System.Drawing.Size(278, 19);
+            this.PasuwadoTxb.Size = new System.Drawing.Size(461, 25);
             this.PasuwadoTxb.TabIndex = 4;
             // 
             // RoguinLbl
             // 
             this.RoguinLbl.AutoSize = true;
             this.RoguinLbl.Font = new System.Drawing.Font("MS UI Gothic", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.RoguinLbl.Location = new System.Drawing.Point(147, 59);
+            this.RoguinLbl.Location = new System.Drawing.Point(245, 88);
+            this.RoguinLbl.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.RoguinLbl.Name = "RoguinLbl";
-            this.RoguinLbl.Size = new System.Drawing.Size(292, 53);
+            this.RoguinLbl.Size = new System.Drawing.Size(438, 80);
             this.RoguinLbl.TabIndex = 5;
             this.RoguinLbl.Text = "ログイン画面";
             // 
             // RoguinBtn
             // 
             this.RoguinBtn.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.RoguinBtn.Location = new System.Drawing.Point(198, 269);
+            this.RoguinBtn.Location = new System.Drawing.Point(330, 404);
+            this.RoguinBtn.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.RoguinBtn.Name = "RoguinBtn";
-            this.RoguinBtn.Size = new System.Drawing.Size(174, 68);
+            this.RoguinBtn.Size = new System.Drawing.Size(290, 102);
             this.RoguinBtn.TabIndex = 6;
             this.RoguinBtn.Text = "ログイン";
             this.RoguinBtn.UseVisualStyleBackColor = true;
             // 
             // LoginPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 377);
+            this.ClientSize = new System.Drawing.Size(995, 566);
             this.Controls.Add(this.RoguinBtn);
             this.Controls.Add(this.RoguinLbl);
             this.Controls.Add(this.PasuwadoTxb);
-            this.Controls.Add(this.YuzaTxb);
+            this.Controls.Add(this.ShainTxb);
             this.Controls.Add(this.PasuwadoLbl);
-            this.Controls.Add(this.YuzaLbl);
+            this.Controls.Add(this.ShainLbl);
             this.Controls.Add(this.btn_InsertSampleData);
             this.Controls.Add(this.btn_CleateDabase);
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "LoginPage";
             this.Text = "販売管理システムログイン画面";
             this.ResumeLayout(false);
@@ -140,9 +141,9 @@
 
         private System.Windows.Forms.Button btn_CleateDabase;
         private System.Windows.Forms.Button btn_InsertSampleData;
-        private System.Windows.Forms.Label YuzaLbl;
+        private System.Windows.Forms.Label ShainLbl;
         private System.Windows.Forms.Label PasuwadoLbl;
-        private System.Windows.Forms.TextBox YuzaTxb;
+        private System.Windows.Forms.TextBox ShainTxb;
         private System.Windows.Forms.TextBox PasuwadoTxb;
         private System.Windows.Forms.Label RoguinLbl;
         private System.Windows.Forms.Button RoguinBtn;
