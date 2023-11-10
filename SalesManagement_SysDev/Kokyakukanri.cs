@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class Kokyakukanri : Form
+    public partial class ShainKanri : Form
     {   
-        public Kokyakukanri()
+        public ShainKanri()
         {
 
             InitializeComponent();
@@ -31,6 +31,11 @@ namespace SalesManagement_SysDev
         private void button4_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void GokeiKingakuLbl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
