@@ -41,33 +41,33 @@
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopTantoLbl = new System.Windows.Forms.Label();
             this.TopChumonPnl = new System.Windows.Forms.Panel();
-            this.TopLogoutBtn = new System.Windows.Forms.Button();
-            this.SearchBtn = new System.Windows.Forms.Button();
-            this.ListDisplayBtn = new System.Windows.Forms.Button();
-            this.HiddenBtn = new System.Windows.Forms.Button();
-            this.ConfirmBtn = new System.Windows.Forms.Button();
-            this.ChumonIDLbl = new System.Windows.Forms.Label();
-            this.SuryoLbl = new System.Windows.Forms.Label();
-            this.ShohinIDLbl = new System.Windows.Forms.Label();
-            this.ChumonnengappiLbl = new System.Windows.Forms.Label();
-            this.JuchuIDLbl = new System.Windows.Forms.Label();
-            this.ShainIDLbl = new System.Windows.Forms.Label();
-            this.KokyakuIDLbl = new System.Windows.Forms.Label();
-            this.EigyoushoIDLbl = new System.Windows.Forms.Label();
-            this.ChumonKanriFlagLbl = new System.Windows.Forms.Label();
-            this.ChumonjyoutaiFlaguLbl = new System.Windows.Forms.Label();
-            this.HihyojiLbl = new System.Windows.Forms.Label();
-            this.ChumonIDTxb = new System.Windows.Forms.TextBox();
-            this.SuryoTxb = new System.Windows.Forms.TextBox();
-            this.KokyakuIDTxb = new System.Windows.Forms.TextBox();
-            this.ShohinIDTxb = new System.Windows.Forms.TextBox();
-            this.ChumonnengappiDtm = new System.Windows.Forms.TextBox();
-            this.JuchuIDTxb = new System.Windows.Forms.TextBox();
-            this.ShainIDTxb = new System.Windows.Forms.TextBox();
-            this.EigyoushoTxb = new System.Windows.Forms.TextBox();
-            this.HihyojiTxb = new System.Windows.Forms.TextBox();
-            this.ChumonjyoutaiFlaguCmb = new System.Windows.Forms.ComboBox();
             this.ChumonKanriFlagCmb = new System.Windows.Forms.ComboBox();
+            this.ChumonjyoutaiFlaguCmb = new System.Windows.Forms.ComboBox();
+            this.HihyojiTxb = new System.Windows.Forms.TextBox();
+            this.EigyoushoTxb = new System.Windows.Forms.TextBox();
+            this.ShainIDTxb = new System.Windows.Forms.TextBox();
+            this.JuchuIDTxb = new System.Windows.Forms.TextBox();
+            this.ChumonnengappiDtm = new System.Windows.Forms.TextBox();
+            this.ShohinIDTxb = new System.Windows.Forms.TextBox();
+            this.KokyakuIDTxb = new System.Windows.Forms.TextBox();
+            this.SuryoTxb = new System.Windows.Forms.TextBox();
+            this.ChumonIDTxb = new System.Windows.Forms.TextBox();
+            this.HihyojiLbl = new System.Windows.Forms.Label();
+            this.ChumonjyoutaiFlaguLbl = new System.Windows.Forms.Label();
+            this.ChumonKanriFlagLbl = new System.Windows.Forms.Label();
+            this.EigyoushoIDLbl = new System.Windows.Forms.Label();
+            this.KokyakuIDLbl = new System.Windows.Forms.Label();
+            this.ShainIDLbl = new System.Windows.Forms.Label();
+            this.JuchuIDLbl = new System.Windows.Forms.Label();
+            this.ChumonnengappiLbl = new System.Windows.Forms.Label();
+            this.ShohinIDLbl = new System.Windows.Forms.Label();
+            this.SuryoLbl = new System.Windows.Forms.Label();
+            this.ChumonIDLbl = new System.Windows.Forms.Label();
+            this.ConfirmBtn = new System.Windows.Forms.Button();
+            this.HiddenBtn = new System.Windows.Forms.Button();
+            this.ListDisplayBtn = new System.Windows.Forms.Button();
+            this.SearchBtn = new System.Windows.Forms.Button();
+            this.TopLogoutBtn = new System.Windows.Forms.Button();
             this.TopChumonPnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -193,7 +193,7 @@
             // 
             // TopChumonPnl
             // 
-            this.TopChumonPnl.BackColor = System.Drawing.Color.Gray;
+            this.TopChumonPnl.BackColor = System.Drawing.Color.LightGray;
             this.TopChumonPnl.Controls.Add(this.ChumonKanriFlagCmb);
             this.TopChumonPnl.Controls.Add(this.ChumonjyoutaiFlaguCmb);
             this.TopChumonPnl.Controls.Add(this.HihyojiTxb);
@@ -226,141 +226,85 @@
             this.TopChumonPnl.TabIndex = 23;
             this.TopChumonPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // TopLogoutBtn
+            // ChumonKanriFlagCmb
             // 
-            this.TopLogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopLogoutBtn.Location = new System.Drawing.Point(12, 795);
-            this.TopLogoutBtn.Name = "TopLogoutBtn";
-            this.TopLogoutBtn.Size = new System.Drawing.Size(210, 146);
-            this.TopLogoutBtn.TabIndex = 23;
-            this.TopLogoutBtn.Text = "ログアウト";
-            this.TopLogoutBtn.UseVisualStyleBackColor = true;
+            this.ChumonKanriFlagCmb.FormattingEnabled = true;
+            this.ChumonKanriFlagCmb.Location = new System.Drawing.Point(580, 318);
+            this.ChumonKanriFlagCmb.Name = "ChumonKanriFlagCmb";
+            this.ChumonKanriFlagCmb.Size = new System.Drawing.Size(121, 26);
+            this.ChumonKanriFlagCmb.TabIndex = 51;
             // 
-            // SearchBtn
+            // ChumonjyoutaiFlaguCmb
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(445, 39);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(305, 92);
-            this.SearchBtn.TabIndex = 26;
-            this.SearchBtn.Text = "検索";
-            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.ChumonjyoutaiFlaguCmb.FormattingEnabled = true;
+            this.ChumonjyoutaiFlaguCmb.Location = new System.Drawing.Point(203, 318);
+            this.ChumonjyoutaiFlaguCmb.Name = "ChumonjyoutaiFlaguCmb";
+            this.ChumonjyoutaiFlaguCmb.Size = new System.Drawing.Size(121, 26);
+            this.ChumonjyoutaiFlaguCmb.TabIndex = 50;
             // 
-            // ListDisplayBtn
+            // HihyojiTxb
             // 
-            this.ListDisplayBtn.Location = new System.Drawing.Point(53, 39);
-            this.ListDisplayBtn.Name = "ListDisplayBtn";
-            this.ListDisplayBtn.Size = new System.Drawing.Size(305, 92);
-            this.ListDisplayBtn.TabIndex = 27;
-            this.ListDisplayBtn.Text = "一覧表示";
-            this.ListDisplayBtn.UseVisualStyleBackColor = true;
+            this.HihyojiTxb.Location = new System.Drawing.Point(188, 379);
+            this.HihyojiTxb.Multiline = true;
+            this.HihyojiTxb.Name = "HihyojiTxb";
+            this.HihyojiTxb.Size = new System.Drawing.Size(527, 97);
+            this.HihyojiTxb.TabIndex = 49;
             // 
-            // HiddenBtn
+            // EigyoushoTxb
             // 
-            this.HiddenBtn.Location = new System.Drawing.Point(827, 39);
-            this.HiddenBtn.Name = "HiddenBtn";
-            this.HiddenBtn.Size = new System.Drawing.Size(305, 92);
-            this.HiddenBtn.TabIndex = 28;
-            this.HiddenBtn.Text = "非表示";
-            this.HiddenBtn.UseVisualStyleBackColor = true;
+            this.EigyoushoTxb.Location = new System.Drawing.Point(537, 174);
+            this.EigyoushoTxb.Name = "EigyoushoTxb";
+            this.EigyoushoTxb.Size = new System.Drawing.Size(100, 25);
+            this.EigyoushoTxb.TabIndex = 48;
             // 
-            // ConfirmBtn
+            // ShainIDTxb
             // 
-            this.ConfirmBtn.Location = new System.Drawing.Point(1189, 39);
-            this.ConfirmBtn.Name = "ConfirmBtn";
-            this.ConfirmBtn.Size = new System.Drawing.Size(305, 92);
-            this.ConfirmBtn.TabIndex = 29;
-            this.ConfirmBtn.Text = "確定";
-            this.ConfirmBtn.UseVisualStyleBackColor = true;
+            this.ShainIDTxb.Location = new System.Drawing.Point(916, 174);
+            this.ShainIDTxb.Name = "ShainIDTxb";
+            this.ShainIDTxb.Size = new System.Drawing.Size(100, 25);
+            this.ShainIDTxb.TabIndex = 47;
             // 
-            // ChumonIDLbl
+            // JuchuIDTxb
             // 
-            this.ChumonIDLbl.AutoSize = true;
-            this.ChumonIDLbl.Location = new System.Drawing.Point(70, 177);
-            this.ChumonIDLbl.Name = "ChumonIDLbl";
-            this.ChumonIDLbl.Size = new System.Drawing.Size(60, 18);
-            this.ChumonIDLbl.TabIndex = 30;
-            this.ChumonIDLbl.Text = "注文ID";
+            this.JuchuIDTxb.Location = new System.Drawing.Point(153, 248);
+            this.JuchuIDTxb.Name = "JuchuIDTxb";
+            this.JuchuIDTxb.Size = new System.Drawing.Size(100, 25);
+            this.JuchuIDTxb.TabIndex = 46;
             // 
-            // SuryoLbl
+            // ChumonnengappiDtm
             // 
-            this.SuryoLbl.AutoSize = true;
-            this.SuryoLbl.Location = new System.Drawing.Point(1208, 251);
-            this.SuryoLbl.Name = "SuryoLbl";
-            this.SuryoLbl.Size = new System.Drawing.Size(44, 18);
-            this.SuryoLbl.TabIndex = 31;
-            this.SuryoLbl.Text = "数量";
+            this.ChumonnengappiDtm.Location = new System.Drawing.Point(560, 248);
+            this.ChumonnengappiDtm.Name = "ChumonnengappiDtm";
+            this.ChumonnengappiDtm.Size = new System.Drawing.Size(100, 25);
+            this.ChumonnengappiDtm.TabIndex = 45;
             // 
-            // ShohinIDLbl
+            // ShohinIDTxb
             // 
-            this.ShohinIDLbl.AutoSize = true;
-            this.ShohinIDLbl.Location = new System.Drawing.Point(824, 251);
-            this.ShohinIDLbl.Name = "ShohinIDLbl";
-            this.ShohinIDLbl.Size = new System.Drawing.Size(60, 18);
-            this.ShohinIDLbl.TabIndex = 32;
-            this.ShohinIDLbl.Text = "商品ID";
+            this.ShohinIDTxb.Location = new System.Drawing.Point(916, 248);
+            this.ShohinIDTxb.Name = "ShohinIDTxb";
+            this.ShohinIDTxb.Size = new System.Drawing.Size(100, 25);
+            this.ShohinIDTxb.TabIndex = 44;
             // 
-            // ChumonnengappiLbl
+            // KokyakuIDTxb
             // 
-            this.ChumonnengappiLbl.AutoSize = true;
-            this.ChumonnengappiLbl.Location = new System.Drawing.Point(456, 251);
-            this.ChumonnengappiLbl.Name = "ChumonnengappiLbl";
-            this.ChumonnengappiLbl.Size = new System.Drawing.Size(98, 18);
-            this.ChumonnengappiLbl.TabIndex = 33;
-            this.ChumonnengappiLbl.Text = "注文年月日";
+            this.KokyakuIDTxb.Location = new System.Drawing.Point(1289, 174);
+            this.KokyakuIDTxb.Name = "KokyakuIDTxb";
+            this.KokyakuIDTxb.Size = new System.Drawing.Size(100, 25);
+            this.KokyakuIDTxb.TabIndex = 43;
             // 
-            // JuchuIDLbl
+            // SuryoTxb
             // 
-            this.JuchuIDLbl.AutoSize = true;
-            this.JuchuIDLbl.Location = new System.Drawing.Point(70, 251);
-            this.JuchuIDLbl.Name = "JuchuIDLbl";
-            this.JuchuIDLbl.Size = new System.Drawing.Size(60, 18);
-            this.JuchuIDLbl.TabIndex = 34;
-            this.JuchuIDLbl.Text = "受注ID";
+            this.SuryoTxb.Location = new System.Drawing.Point(1289, 251);
+            this.SuryoTxb.Name = "SuryoTxb";
+            this.SuryoTxb.Size = new System.Drawing.Size(100, 25);
+            this.SuryoTxb.TabIndex = 42;
             // 
-            // ShainIDLbl
+            // ChumonIDTxb
             // 
-            this.ShainIDLbl.AutoSize = true;
-            this.ShainIDLbl.Location = new System.Drawing.Point(824, 177);
-            this.ShainIDLbl.Name = "ShainIDLbl";
-            this.ShainIDLbl.Size = new System.Drawing.Size(60, 18);
-            this.ShainIDLbl.TabIndex = 35;
-            this.ShainIDLbl.Text = "社員ID";
-            // 
-            // KokyakuIDLbl
-            // 
-            this.KokyakuIDLbl.AutoSize = true;
-            this.KokyakuIDLbl.Location = new System.Drawing.Point(1208, 177);
-            this.KokyakuIDLbl.Name = "KokyakuIDLbl";
-            this.KokyakuIDLbl.Size = new System.Drawing.Size(60, 18);
-            this.KokyakuIDLbl.TabIndex = 36;
-            this.KokyakuIDLbl.Text = "顧客ID";
-            // 
-            // EigyoushoIDLbl
-            // 
-            this.EigyoushoIDLbl.AutoSize = true;
-            this.EigyoushoIDLbl.Location = new System.Drawing.Point(456, 177);
-            this.EigyoushoIDLbl.Name = "EigyoushoIDLbl";
-            this.EigyoushoIDLbl.Size = new System.Drawing.Size(78, 18);
-            this.EigyoushoIDLbl.TabIndex = 37;
-            this.EigyoushoIDLbl.Text = "営業所ID";
-            // 
-            // ChumonKanriFlagLbl
-            // 
-            this.ChumonKanriFlagLbl.AutoSize = true;
-            this.ChumonKanriFlagLbl.Location = new System.Drawing.Point(456, 321);
-            this.ChumonKanriFlagLbl.Name = "ChumonKanriFlagLbl";
-            this.ChumonKanriFlagLbl.Size = new System.Drawing.Size(118, 18);
-            this.ChumonKanriFlagLbl.TabIndex = 38;
-            this.ChumonKanriFlagLbl.Text = "注文管理フラグ";
-            // 
-            // ChumonjyoutaiFlaguLbl
-            // 
-            this.ChumonjyoutaiFlaguLbl.AutoSize = true;
-            this.ChumonjyoutaiFlaguLbl.Location = new System.Drawing.Point(70, 321);
-            this.ChumonjyoutaiFlaguLbl.Name = "ChumonjyoutaiFlaguLbl";
-            this.ChumonjyoutaiFlaguLbl.Size = new System.Drawing.Size(118, 18);
-            this.ChumonjyoutaiFlaguLbl.TabIndex = 39;
-            this.ChumonjyoutaiFlaguLbl.Text = "注文状態フラグ";
+            this.ChumonIDTxb.Location = new System.Drawing.Point(153, 174);
+            this.ChumonIDTxb.Name = "ChumonIDTxb";
+            this.ChumonIDTxb.Size = new System.Drawing.Size(100, 25);
+            this.ChumonIDTxb.TabIndex = 41;
             // 
             // HihyojiLbl
             // 
@@ -371,85 +315,141 @@
             this.HihyojiLbl.TabIndex = 40;
             this.HihyojiLbl.Text = "非表示理由";
             // 
-            // ChumonIDTxb
+            // ChumonjyoutaiFlaguLbl
             // 
-            this.ChumonIDTxb.Location = new System.Drawing.Point(153, 174);
-            this.ChumonIDTxb.Name = "ChumonIDTxb";
-            this.ChumonIDTxb.Size = new System.Drawing.Size(100, 25);
-            this.ChumonIDTxb.TabIndex = 41;
+            this.ChumonjyoutaiFlaguLbl.AutoSize = true;
+            this.ChumonjyoutaiFlaguLbl.Location = new System.Drawing.Point(70, 321);
+            this.ChumonjyoutaiFlaguLbl.Name = "ChumonjyoutaiFlaguLbl";
+            this.ChumonjyoutaiFlaguLbl.Size = new System.Drawing.Size(118, 18);
+            this.ChumonjyoutaiFlaguLbl.TabIndex = 39;
+            this.ChumonjyoutaiFlaguLbl.Text = "注文状態フラグ";
             // 
-            // SuryoTxb
+            // ChumonKanriFlagLbl
             // 
-            this.SuryoTxb.Location = new System.Drawing.Point(1289, 251);
-            this.SuryoTxb.Name = "SuryoTxb";
-            this.SuryoTxb.Size = new System.Drawing.Size(100, 25);
-            this.SuryoTxb.TabIndex = 42;
+            this.ChumonKanriFlagLbl.AutoSize = true;
+            this.ChumonKanriFlagLbl.Location = new System.Drawing.Point(456, 321);
+            this.ChumonKanriFlagLbl.Name = "ChumonKanriFlagLbl";
+            this.ChumonKanriFlagLbl.Size = new System.Drawing.Size(118, 18);
+            this.ChumonKanriFlagLbl.TabIndex = 38;
+            this.ChumonKanriFlagLbl.Text = "注文管理フラグ";
             // 
-            // KokyakuIDTxb
+            // EigyoushoIDLbl
             // 
-            this.KokyakuIDTxb.Location = new System.Drawing.Point(1289, 174);
-            this.KokyakuIDTxb.Name = "KokyakuIDTxb";
-            this.KokyakuIDTxb.Size = new System.Drawing.Size(100, 25);
-            this.KokyakuIDTxb.TabIndex = 43;
+            this.EigyoushoIDLbl.AutoSize = true;
+            this.EigyoushoIDLbl.Location = new System.Drawing.Point(456, 177);
+            this.EigyoushoIDLbl.Name = "EigyoushoIDLbl";
+            this.EigyoushoIDLbl.Size = new System.Drawing.Size(78, 18);
+            this.EigyoushoIDLbl.TabIndex = 37;
+            this.EigyoushoIDLbl.Text = "営業所ID";
             // 
-            // ShohinIDTxb
+            // KokyakuIDLbl
             // 
-            this.ShohinIDTxb.Location = new System.Drawing.Point(916, 248);
-            this.ShohinIDTxb.Name = "ShohinIDTxb";
-            this.ShohinIDTxb.Size = new System.Drawing.Size(100, 25);
-            this.ShohinIDTxb.TabIndex = 44;
+            this.KokyakuIDLbl.AutoSize = true;
+            this.KokyakuIDLbl.Location = new System.Drawing.Point(1208, 177);
+            this.KokyakuIDLbl.Name = "KokyakuIDLbl";
+            this.KokyakuIDLbl.Size = new System.Drawing.Size(60, 18);
+            this.KokyakuIDLbl.TabIndex = 36;
+            this.KokyakuIDLbl.Text = "顧客ID";
             // 
-            // ChumonnengappiDtm
+            // ShainIDLbl
             // 
-            this.ChumonnengappiDtm.Location = new System.Drawing.Point(560, 248);
-            this.ChumonnengappiDtm.Name = "ChumonnengappiDtm";
-            this.ChumonnengappiDtm.Size = new System.Drawing.Size(100, 25);
-            this.ChumonnengappiDtm.TabIndex = 45;
+            this.ShainIDLbl.AutoSize = true;
+            this.ShainIDLbl.Location = new System.Drawing.Point(824, 177);
+            this.ShainIDLbl.Name = "ShainIDLbl";
+            this.ShainIDLbl.Size = new System.Drawing.Size(60, 18);
+            this.ShainIDLbl.TabIndex = 35;
+            this.ShainIDLbl.Text = "社員ID";
             // 
-            // JuchuIDTxb
+            // JuchuIDLbl
             // 
-            this.JuchuIDTxb.Location = new System.Drawing.Point(153, 248);
-            this.JuchuIDTxb.Name = "JuchuIDTxb";
-            this.JuchuIDTxb.Size = new System.Drawing.Size(100, 25);
-            this.JuchuIDTxb.TabIndex = 46;
+            this.JuchuIDLbl.AutoSize = true;
+            this.JuchuIDLbl.Location = new System.Drawing.Point(70, 251);
+            this.JuchuIDLbl.Name = "JuchuIDLbl";
+            this.JuchuIDLbl.Size = new System.Drawing.Size(60, 18);
+            this.JuchuIDLbl.TabIndex = 34;
+            this.JuchuIDLbl.Text = "受注ID";
             // 
-            // ShainIDTxb
+            // ChumonnengappiLbl
             // 
-            this.ShainIDTxb.Location = new System.Drawing.Point(916, 174);
-            this.ShainIDTxb.Name = "ShainIDTxb";
-            this.ShainIDTxb.Size = new System.Drawing.Size(100, 25);
-            this.ShainIDTxb.TabIndex = 47;
+            this.ChumonnengappiLbl.AutoSize = true;
+            this.ChumonnengappiLbl.Location = new System.Drawing.Point(456, 251);
+            this.ChumonnengappiLbl.Name = "ChumonnengappiLbl";
+            this.ChumonnengappiLbl.Size = new System.Drawing.Size(98, 18);
+            this.ChumonnengappiLbl.TabIndex = 33;
+            this.ChumonnengappiLbl.Text = "注文年月日";
             // 
-            // EigyoushoTxb
+            // ShohinIDLbl
             // 
-            this.EigyoushoTxb.Location = new System.Drawing.Point(537, 174);
-            this.EigyoushoTxb.Name = "EigyoushoTxb";
-            this.EigyoushoTxb.Size = new System.Drawing.Size(100, 25);
-            this.EigyoushoTxb.TabIndex = 48;
+            this.ShohinIDLbl.AutoSize = true;
+            this.ShohinIDLbl.Location = new System.Drawing.Point(824, 251);
+            this.ShohinIDLbl.Name = "ShohinIDLbl";
+            this.ShohinIDLbl.Size = new System.Drawing.Size(60, 18);
+            this.ShohinIDLbl.TabIndex = 32;
+            this.ShohinIDLbl.Text = "商品ID";
             // 
-            // HihyojiTxb
+            // SuryoLbl
             // 
-            this.HihyojiTxb.Location = new System.Drawing.Point(188, 379);
-            this.HihyojiTxb.Multiline = true;
-            this.HihyojiTxb.Name = "HihyojiTxb";
-            this.HihyojiTxb.Size = new System.Drawing.Size(527, 97);
-            this.HihyojiTxb.TabIndex = 49;
+            this.SuryoLbl.AutoSize = true;
+            this.SuryoLbl.Location = new System.Drawing.Point(1208, 251);
+            this.SuryoLbl.Name = "SuryoLbl";
+            this.SuryoLbl.Size = new System.Drawing.Size(44, 18);
+            this.SuryoLbl.TabIndex = 31;
+            this.SuryoLbl.Text = "数量";
             // 
-            // ChumonjyoutaiFlaguCmb
+            // ChumonIDLbl
             // 
-            this.ChumonjyoutaiFlaguCmb.FormattingEnabled = true;
-            this.ChumonjyoutaiFlaguCmb.Location = new System.Drawing.Point(203, 318);
-            this.ChumonjyoutaiFlaguCmb.Name = "ChumonjyoutaiFlaguCmb";
-            this.ChumonjyoutaiFlaguCmb.Size = new System.Drawing.Size(121, 26);
-            this.ChumonjyoutaiFlaguCmb.TabIndex = 50;
+            this.ChumonIDLbl.AutoSize = true;
+            this.ChumonIDLbl.Location = new System.Drawing.Point(70, 177);
+            this.ChumonIDLbl.Name = "ChumonIDLbl";
+            this.ChumonIDLbl.Size = new System.Drawing.Size(60, 18);
+            this.ChumonIDLbl.TabIndex = 30;
+            this.ChumonIDLbl.Text = "注文ID";
             // 
-            // ChumonKanriFlagCmb
+            // ConfirmBtn
             // 
-            this.ChumonKanriFlagCmb.FormattingEnabled = true;
-            this.ChumonKanriFlagCmb.Location = new System.Drawing.Point(580, 318);
-            this.ChumonKanriFlagCmb.Name = "ChumonKanriFlagCmb";
-            this.ChumonKanriFlagCmb.Size = new System.Drawing.Size(121, 26);
-            this.ChumonKanriFlagCmb.TabIndex = 51;
+            this.ConfirmBtn.Location = new System.Drawing.Point(1189, 39);
+            this.ConfirmBtn.Name = "ConfirmBtn";
+            this.ConfirmBtn.Size = new System.Drawing.Size(305, 92);
+            this.ConfirmBtn.TabIndex = 29;
+            this.ConfirmBtn.Text = "確定";
+            this.ConfirmBtn.UseVisualStyleBackColor = true;
+            // 
+            // HiddenBtn
+            // 
+            this.HiddenBtn.Location = new System.Drawing.Point(827, 39);
+            this.HiddenBtn.Name = "HiddenBtn";
+            this.HiddenBtn.Size = new System.Drawing.Size(305, 92);
+            this.HiddenBtn.TabIndex = 28;
+            this.HiddenBtn.Text = "非表示";
+            this.HiddenBtn.UseVisualStyleBackColor = true;
+            // 
+            // ListDisplayBtn
+            // 
+            this.ListDisplayBtn.Location = new System.Drawing.Point(53, 39);
+            this.ListDisplayBtn.Name = "ListDisplayBtn";
+            this.ListDisplayBtn.Size = new System.Drawing.Size(305, 92);
+            this.ListDisplayBtn.TabIndex = 27;
+            this.ListDisplayBtn.Text = "一覧表示";
+            this.ListDisplayBtn.UseVisualStyleBackColor = true;
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.Location = new System.Drawing.Point(445, 39);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(305, 92);
+            this.SearchBtn.TabIndex = 26;
+            this.SearchBtn.Text = "検索";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            // 
+            // TopLogoutBtn
+            // 
+            this.TopLogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopLogoutBtn.Location = new System.Drawing.Point(12, 795);
+            this.TopLogoutBtn.Name = "TopLogoutBtn";
+            this.TopLogoutBtn.Size = new System.Drawing.Size(210, 146);
+            this.TopLogoutBtn.TabIndex = 23;
+            this.TopLogoutBtn.Text = "ログアウト";
+            this.TopLogoutBtn.UseVisualStyleBackColor = true;
             // 
             // ChumonKanri
             // 

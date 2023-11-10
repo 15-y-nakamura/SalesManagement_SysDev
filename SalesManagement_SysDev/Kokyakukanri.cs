@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class ShainKanri : Form
+    public partial class KokyakuKanri : Form
     {   
-        public ShainKanri()
+        public KokyakuKanri()
         {
 
             InitializeComponent();
