@@ -47,6 +47,9 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
-        
+        private void ShainIDLbl_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

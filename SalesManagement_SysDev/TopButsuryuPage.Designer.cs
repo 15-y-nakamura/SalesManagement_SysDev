@@ -211,7 +211,7 @@
             // 
             // TopButsuryuPnl
             // 
-            this.TopButsuryuPnl.BackColor = System.Drawing.Color.Gray;
+            this.TopButsuryuPnl.BackColor = System.Drawing.Color.LightGray;
             this.TopButsuryuPnl.Controls.Add(this.HatchuKanriBtn);
             this.TopButsuryuPnl.Controls.Add(this.ShukkoKanriBtn);
             this.TopButsuryuPnl.Controls.Add(this.NyukoKanriBtn);
