@@ -115,7 +115,6 @@
             this.TopLbl.Size = new System.Drawing.Size(617, 93);
             this.TopLbl.TabIndex = 3;
             this.TopLbl.Text = "受注管理画面";
-            this.TopLbl.Click += new System.EventHandler(this.label1_Click);
             // 
             // TopIDHyojiLbl
             // 
@@ -162,9 +161,8 @@
             this.TopIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopIDLbl.Location = new System.Drawing.Point(1302, 32);
             this.TopIDLbl.Name = "TopIDLbl";
-            this.TopIDLbl.Size = new System.Drawing.Size(84, 30);
+            this.TopIDLbl.Size = new System.Drawing.Size(0, 30);
             this.TopIDLbl.TabIndex = 8;
-            this.TopIDLbl.Text = "label6";
             // 
             // TopJikanLbl
             // 
@@ -172,9 +170,8 @@
             this.TopJikanLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopJikanLbl.Location = new System.Drawing.Point(1302, 94);
             this.TopJikanLbl.Name = "TopJikanLbl";
-            this.TopJikanLbl.Size = new System.Drawing.Size(84, 30);
+            this.TopJikanLbl.Size = new System.Drawing.Size(0, 30);
             this.TopJikanLbl.TabIndex = 9;
-            this.TopJikanLbl.Text = "label7";
             // 
             // TopNameLbl
             // 
@@ -182,9 +179,8 @@
             this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopNameLbl.Location = new System.Drawing.Point(1703, 34);
             this.TopNameLbl.Name = "TopNameLbl";
-            this.TopNameLbl.Size = new System.Drawing.Size(84, 30);
+            this.TopNameLbl.Size = new System.Drawing.Size(0, 30);
             this.TopNameLbl.TabIndex = 10;
-            this.TopNameLbl.Text = "label8";
             // 
             // TopTantoLbl
             // 
@@ -192,9 +188,8 @@
             this.TopTantoLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopTantoLbl.Location = new System.Drawing.Point(1703, 98);
             this.TopTantoLbl.Name = "TopTantoLbl";
-            this.TopTantoLbl.Size = new System.Drawing.Size(84, 30);
+            this.TopTantoLbl.Size = new System.Drawing.Size(0, 30);
             this.TopTantoLbl.TabIndex = 11;
-            this.TopTantoLbl.Text = "label9";
             // 
             // TopJuchuPnl
             // 
@@ -231,7 +226,6 @@
             this.TopJuchuPnl.Name = "TopJuchuPnl";
             this.TopJuchuPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopJuchuPnl.TabIndex = 23;
-            this.TopJuchuPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // JuchuKanriFlagCmb
             // 
@@ -276,7 +270,6 @@
             this.EigyoshoIDTxb.Name = "EigyoshoIDTxb";
             this.EigyoshoIDTxb.Size = new System.Drawing.Size(160, 25);
             this.EigyoshoIDTxb.TabIndex = 3;
-            this.EigyoshoIDTxb.TextChanged += new System.EventHandler(this.EigyoshoIDTxb_TextChanged);
             // 
             // GokeiKingakuTxb
             // 
@@ -284,7 +277,6 @@
             this.GokeiKingakuTxb.Name = "GokeiKingakuTxb";
             this.GokeiKingakuTxb.Size = new System.Drawing.Size(160, 25);
             this.GokeiKingakuTxb.TabIndex = 3;
-            this.GokeiKingakuTxb.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // SuryoTxb
             // 
@@ -292,7 +284,6 @@
             this.SuryoTxb.Name = "SuryoTxb";
             this.SuryoTxb.Size = new System.Drawing.Size(160, 25);
             this.SuryoTxb.TabIndex = 3;
-            this.SuryoTxb.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // HihyojiTxb
             // 
@@ -301,7 +292,6 @@
             this.HihyojiTxb.Name = "HihyojiTxb";
             this.HihyojiTxb.Size = new System.Drawing.Size(1349, 150);
             this.HihyojiTxb.TabIndex = 3;
-            this.HihyojiTxb.TextChanged += new System.EventHandler(this.ShohinIDTxb_TextChanged);
             // 
             // ShohinIDTxb
             // 
@@ -309,7 +299,6 @@
             this.ShohinIDTxb.Name = "ShohinIDTxb";
             this.ShohinIDTxb.Size = new System.Drawing.Size(160, 25);
             this.ShohinIDTxb.TabIndex = 3;
-            this.ShohinIDTxb.TextChanged += new System.EventHandler(this.ShohinIDTxb_TextChanged);
             // 
             // KokyakuTantoNameTxb
             // 
@@ -324,7 +313,6 @@
             this.JuchuIDTxb.Name = "JuchuIDTxb";
             this.JuchuIDTxb.Size = new System.Drawing.Size(160, 25);
             this.JuchuIDTxb.TabIndex = 3;
-            this.JuchuIDTxb.TextChanged += new System.EventHandler(this.JuchuIDTxb_TextChanged);
             // 
             // KokyakuIDLbl
             // 
@@ -335,7 +323,6 @@
             this.KokyakuIDLbl.Size = new System.Drawing.Size(108, 33);
             this.KokyakuIDLbl.TabIndex = 2;
             this.KokyakuIDLbl.Text = "顧客ID";
-            this.KokyakuIDLbl.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // ShainIDLbl
             // 
@@ -346,7 +333,6 @@
             this.ShainIDLbl.Size = new System.Drawing.Size(108, 33);
             this.ShainIDLbl.TabIndex = 2;
             this.ShainIDLbl.Text = "社員ID";
-            this.ShainIDLbl.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // JuchuKanriFlagLbl
             // 
@@ -407,7 +393,6 @@
             this.GokeiKingakuLbl.Size = new System.Drawing.Size(143, 33);
             this.GokeiKingakuLbl.TabIndex = 2;
             this.GokeiKingakuLbl.Text = "合計金額";
-            this.GokeiKingakuLbl.Click += new System.EventHandler(this.ShohinIDLbl_Click);
             // 
             // SuryoLbl
             // 
@@ -418,7 +403,6 @@
             this.SuryoLbl.Size = new System.Drawing.Size(79, 33);
             this.SuryoLbl.TabIndex = 2;
             this.SuryoLbl.Text = "数量";
-            this.SuryoLbl.Click += new System.EventHandler(this.ShohinIDLbl_Click);
             // 
             // HihyojiLbl
             // 
@@ -429,7 +413,6 @@
             this.HihyojiLbl.Size = new System.Drawing.Size(175, 33);
             this.HihyojiLbl.TabIndex = 2;
             this.HihyojiLbl.Text = "非表示理由";
-            this.HihyojiLbl.Click += new System.EventHandler(this.ShohinIDLbl_Click);
             // 
             // ShohinIDLbl
             // 
@@ -440,7 +423,6 @@
             this.ShohinIDLbl.Size = new System.Drawing.Size(108, 33);
             this.ShohinIDLbl.TabIndex = 2;
             this.ShohinIDLbl.Text = "商品ID";
-            this.ShohinIDLbl.Click += new System.EventHandler(this.ShohinIDLbl_Click);
             // 
             // JuchuIDLbl
             // 
@@ -525,7 +507,6 @@
             this.Name = "JuchuKanri";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.JuchuKanri_Load);
             this.TopJuchuPnl.ResumeLayout(false);
             this.TopJuchuPnl.PerformLayout();
             this.ResumeLayout(false);

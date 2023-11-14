@@ -11,30 +11,12 @@ using System.Windows.Forms;
 namespace SalesManagement_SysDev
 {
     public partial class TopButsuryuPage : Form
-    {   
+    {
         public TopButsuryuPage()
         {
 
             InitializeComponent();
-        }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
 
         }
 
