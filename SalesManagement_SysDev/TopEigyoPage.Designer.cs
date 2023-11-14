@@ -240,7 +240,7 @@
             // 
             // TopEigyoPnl
             // 
-            this.TopEigyoPnl.BackColor = System.Drawing.Color.Gray;
+            this.TopEigyoPnl.BackColor = System.Drawing.Color.LightGray;
             this.TopEigyoPnl.Controls.Add(this.UriageKanriBtn);
             this.TopEigyoPnl.Controls.Add(this.ChumonKanriBtn);
             this.TopEigyoPnl.Controls.Add(this.ShukkaKanriBtn);

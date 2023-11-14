@@ -183,7 +183,7 @@
             // 
             // TopHonshaPnl
             // 
-            this.TopHonshaPnl.BackColor = System.Drawing.Color.Gray;
+            this.TopHonshaPnl.BackColor = System.Drawing.Color.LightGray;
             this.TopHonshaPnl.Controls.Add(this.ShainKanriBtn);
             this.TopHonshaPnl.Location = new System.Drawing.Point(253, 158);
             this.TopHonshaPnl.Name = "TopHonshaPnl";

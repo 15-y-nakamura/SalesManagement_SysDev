@@ -67,5 +67,10 @@ namespace SalesManagement_SysDev
             TopButsuryuPage f2 = new TopButsuryuPage();
             f2.Show();
         }
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
