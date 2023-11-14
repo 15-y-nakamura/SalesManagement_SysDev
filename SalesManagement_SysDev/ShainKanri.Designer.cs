@@ -111,7 +111,6 @@
             this.TopLbl.Size = new System.Drawing.Size(617, 93);
             this.TopLbl.TabIndex = 3;
             this.TopLbl.Text = "社員管理画面";
-            this.TopLbl.Click += new System.EventHandler(this.label1_Click);
             // 
             // TopIDHyojiLbl
             // 
@@ -158,9 +157,8 @@
             this.TopIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopIDLbl.Location = new System.Drawing.Point(1301, 32);
             this.TopIDLbl.Name = "TopIDLbl";
-            this.TopIDLbl.Size = new System.Drawing.Size(97, 30);
+            this.TopIDLbl.Size = new System.Drawing.Size(0, 30);
             this.TopIDLbl.TabIndex = 8;
-            this.TopIDLbl.Text = "xxxxxx";
             // 
             // TopJikanLbl
             // 
@@ -168,9 +166,8 @@
             this.TopJikanLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopJikanLbl.Location = new System.Drawing.Point(1301, 95);
             this.TopJikanLbl.Name = "TopJikanLbl";
-            this.TopJikanLbl.Size = new System.Drawing.Size(97, 30);
+            this.TopJikanLbl.Size = new System.Drawing.Size(0, 30);
             this.TopJikanLbl.TabIndex = 9;
-            this.TopJikanLbl.Text = "xxxxxx";
             // 
             // TopNameLbl
             // 
@@ -178,9 +175,8 @@
             this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopNameLbl.Location = new System.Drawing.Point(1704, 43);
             this.TopNameLbl.Name = "TopNameLbl";
-            this.TopNameLbl.Size = new System.Drawing.Size(97, 30);
+            this.TopNameLbl.Size = new System.Drawing.Size(0, 30);
             this.TopNameLbl.TabIndex = 10;
-            this.TopNameLbl.Text = "xxxxxx";
             // 
             // TopTantoLbl
             // 
@@ -188,9 +184,8 @@
             this.TopTantoLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopTantoLbl.Location = new System.Drawing.Point(1704, 98);
             this.TopTantoLbl.Name = "TopTantoLbl";
-            this.TopTantoLbl.Size = new System.Drawing.Size(97, 30);
+            this.TopTantoLbl.Size = new System.Drawing.Size(0, 30);
             this.TopTantoLbl.TabIndex = 11;
-            this.TopTantoLbl.Text = "xxxxxx";
             // 
             // TopShainPnl
             // 
@@ -222,7 +217,6 @@
             this.TopShainPnl.Name = "TopShainPnl";
             this.TopShainPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopShainPnl.TabIndex = 23;
-            this.TopShainPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // TelTxb
             // 

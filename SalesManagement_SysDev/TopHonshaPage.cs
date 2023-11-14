@@ -16,19 +16,10 @@ namespace SalesManagement_SysDev
         {
 
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void ShainKanriBtn_Click(object sender, EventArgs e)
         {
             //現画面を非表示
             this.Visible = false;
@@ -46,6 +37,7 @@ namespace SalesManagement_SysDev
             //TopEigyoPageを表示
             TopEigyoPage f2 = new TopEigyoPage();
             f2.Show();
+
         }
 
         private void TopButsuryuBtn_Click(object sender, EventArgs e)
@@ -66,12 +58,6 @@ namespace SalesManagement_SysDev
             //TopHonshaPageを表示
             TopHonshaPage f2 = new TopHonshaPage();
             f2.Show();
-        }
-
-        private void TopHonshaPage_Load(object sender, EventArgs e)
-        {
-            
-            
         }
     }
 }

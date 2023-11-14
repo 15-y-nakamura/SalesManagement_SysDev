@@ -17,22 +17,6 @@ namespace SalesManagement_SysDev
 
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
             //現画面を非表示

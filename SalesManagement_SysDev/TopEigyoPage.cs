@@ -18,21 +18,6 @@ namespace SalesManagement_SysDev
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void JuchuKanriBtn_Click(object sender, EventArgs e)
         {
             //現画面を非表示
@@ -42,12 +27,6 @@ namespace SalesManagement_SysDev
             JuchuKanri f2 = new JuchuKanri();
             f2.Show();
         }
-
-        private void ShukkaKanriBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
             //現画面を非表示
@@ -98,9 +77,6 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
-        private void TopEigyoPage_Load(object sender, EventArgs e)
-        {
-           
-        }
+        
     }
 }

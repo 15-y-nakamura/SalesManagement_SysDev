@@ -117,7 +117,6 @@
             this.TopLbl.Size = new System.Drawing.Size(617, 93);
             this.TopLbl.TabIndex = 3;
             this.TopLbl.Text = "商品管理画面";
-            this.TopLbl.Click += new System.EventHandler(this.label1_Click);
             // 
             // TopIDHyojiLbl
             // 
@@ -164,9 +163,8 @@
             this.TopIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopIDLbl.Location = new System.Drawing.Point(1302, 32);
             this.TopIDLbl.Name = "TopIDLbl";
-            this.TopIDLbl.Size = new System.Drawing.Size(97, 30);
+            this.TopIDLbl.Size = new System.Drawing.Size(0, 30);
             this.TopIDLbl.TabIndex = 8;
-            this.TopIDLbl.Text = "xxxxxx";
             // 
             // TopJikanLbl
             // 
@@ -174,9 +172,8 @@
             this.TopJikanLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopJikanLbl.Location = new System.Drawing.Point(1302, 94);
             this.TopJikanLbl.Name = "TopJikanLbl";
-            this.TopJikanLbl.Size = new System.Drawing.Size(97, 30);
+            this.TopJikanLbl.Size = new System.Drawing.Size(0, 30);
             this.TopJikanLbl.TabIndex = 9;
-            this.TopJikanLbl.Text = "xxxxxx";
             // 
             // TopNameLbl
             // 
@@ -184,9 +181,8 @@
             this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopNameLbl.Location = new System.Drawing.Point(1703, 34);
             this.TopNameLbl.Name = "TopNameLbl";
-            this.TopNameLbl.Size = new System.Drawing.Size(97, 30);
+            this.TopNameLbl.Size = new System.Drawing.Size(0, 30);
             this.TopNameLbl.TabIndex = 10;
-            this.TopNameLbl.Text = "xxxxxx";
             // 
             // TopTantoLbl
             // 
@@ -194,9 +190,8 @@
             this.TopTantoLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopTantoLbl.Location = new System.Drawing.Point(1703, 98);
             this.TopTantoLbl.Name = "TopTantoLbl";
-            this.TopTantoLbl.Size = new System.Drawing.Size(97, 30);
+            this.TopTantoLbl.Size = new System.Drawing.Size(0, 30);
             this.TopTantoLbl.TabIndex = 11;
-            this.TopTantoLbl.Text = "xxxxxx";
             // 
             // RegistBtn
             // 
@@ -207,7 +202,6 @@
             this.RegistBtn.TabIndex = 12;
             this.RegistBtn.Text = "登録";
             this.RegistBtn.UseVisualStyleBackColor = true;
-            this.RegistBtn.Click += new System.EventHandler(this.button4_Click);
             // 
             // TopShohinPnl
             // 
@@ -245,7 +239,6 @@
             this.TopShohinPnl.Name = "TopShohinPnl";
             this.TopShohinPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopShohinPnl.TabIndex = 23;
-            this.TopShohinPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // HihyojiTxb
             // 
