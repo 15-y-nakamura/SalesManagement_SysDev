@@ -261,6 +261,7 @@
             this.Controls.Add(this.TopButsuryuBtn);
             this.Controls.Add(this.TopEigyoBtn);
             this.Controls.Add(this.TopHonshaBtn);
+            this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "TopButsuryuPage";
             this.Text = "TopPage";

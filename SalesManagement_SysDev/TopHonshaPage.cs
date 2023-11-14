@@ -36,7 +36,7 @@ namespace SalesManagement_SysDev
 
             //TopEigyoPageを表示
             TopEigyoPage f2 = new TopEigyoPage();
-            f2.Show();
+            f2.ShowDialog();
 
         }
 
@@ -47,7 +47,7 @@ namespace SalesManagement_SysDev
 
             //TopButsuryuPageを表示
             TopButsuryuPage f2 = new TopButsuryuPage();
-            f2.Show();
+            f2.ShowDialog();
         }
 
         private void TopHonshaBtn_Click(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace SalesManagement_SysDev
 
             //TopHonshaPageを表示
             TopHonshaPage f2 = new TopHonshaPage();
-            f2.Show();
+            f2.ShowDialog();
         }
     }
 }
