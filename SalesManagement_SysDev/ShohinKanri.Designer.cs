@@ -42,6 +42,7 @@
             this.TopTantoLbl = new System.Windows.Forms.Label();
             this.RegistBtn = new System.Windows.Forms.Button();
             this.TopShohinPnl = new System.Windows.Forms.Panel();
+            this.ShohinKanriDgv = new System.Windows.Forms.DataGridView();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
             this.HihyojiLbl = new System.Windows.Forms.Label();
             this.ShohinKanriCmb = new System.Windows.Forms.ComboBox();
@@ -70,9 +71,8 @@
             this.HiddenBtn = new System.Windows.Forms.Button();
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.TopLogoutBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TopShohinPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShohinKanriDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // TopHonshaBtn
@@ -206,7 +206,7 @@
             // TopShohinPnl
             // 
             this.TopShohinPnl.BackColor = System.Drawing.Color.LightGray;
-            this.TopShohinPnl.Controls.Add(this.dataGridView1);
+            this.TopShohinPnl.Controls.Add(this.ShohinKanriDgv);
             this.TopShohinPnl.Controls.Add(this.HihyojiTxb);
             this.TopShohinPnl.Controls.Add(this.HihyojiLbl);
             this.TopShohinPnl.Controls.Add(this.ShohinKanriCmb);
@@ -239,6 +239,16 @@
             this.TopShohinPnl.Name = "TopShohinPnl";
             this.TopShohinPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopShohinPnl.TabIndex = 23;
+            // 
+            // ShohinKanriDgv
+            // 
+            this.ShohinKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ShohinKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.ShohinKanriDgv.Name = "ShohinKanriDgv";
+            this.ShohinKanriDgv.RowHeadersWidth = 62;
+            this.ShohinKanriDgv.RowTemplate.Height = 27;
+            this.ShohinKanriDgv.Size = new System.Drawing.Size(1633, 256);
+            this.ShohinKanriDgv.TabIndex = 52;
             // 
             // HihyojiTxb
             // 
@@ -512,16 +522,6 @@
             this.TopLogoutBtn.Text = "ログアウト";
             this.TopLogoutBtn.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(97, 492);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1633, 256);
-            this.dataGridView1.TabIndex = 52;
-            // 
             // ShohinKanri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -547,7 +547,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.TopShohinPnl.ResumeLayout(false);
             this.TopShohinPnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShohinKanriDgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -597,6 +597,6 @@
         private System.Windows.Forms.Label HihyojiLbl;
         private System.Windows.Forms.ComboBox ShohinKanriCmb;
         private System.Windows.Forms.Label ShohinKanriLbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ShohinKanriDgv;
     }
 }

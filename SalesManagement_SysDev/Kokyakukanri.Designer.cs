@@ -41,6 +41,7 @@
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopTantoLbl = new System.Windows.Forms.Label();
             this.TopKokyakuPnl = new System.Windows.Forms.Panel();
+            this.KokyakuKanriDgv = new System.Windows.Forms.DataGridView();
             this.KokyakuKanriFlagCmb = new System.Windows.Forms.ComboBox();
             this.RegistBtn = new System.Windows.Forms.Button();
             this.UpdateBtn = new System.Windows.Forms.Button();
@@ -68,9 +69,8 @@
             this.EigyoshoNameLbl = new System.Windows.Forms.Label();
             this.FaxLbl = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TopKokyakuPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KokyakuKanriDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // TopHonshaBtn
@@ -195,7 +195,7 @@
             // 
             this.TopKokyakuPnl.AutoSize = true;
             this.TopKokyakuPnl.BackColor = System.Drawing.Color.LightGray;
-            this.TopKokyakuPnl.Controls.Add(this.dataGridView1);
+            this.TopKokyakuPnl.Controls.Add(this.KokyakuKanriDgv);
             this.TopKokyakuPnl.Controls.Add(this.KokyakuKanriFlagCmb);
             this.TopKokyakuPnl.Controls.Add(this.RegistBtn);
             this.TopKokyakuPnl.Controls.Add(this.UpdateBtn);
@@ -226,6 +226,16 @@
             this.TopKokyakuPnl.Name = "TopKokyakuPnl";
             this.TopKokyakuPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopKokyakuPnl.TabIndex = 23;
+            // 
+            // KokyakuKanriDgv
+            // 
+            this.KokyakuKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.KokyakuKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.KokyakuKanriDgv.Name = "KokyakuKanriDgv";
+            this.KokyakuKanriDgv.RowHeadersWidth = 62;
+            this.KokyakuKanriDgv.RowTemplate.Height = 27;
+            this.KokyakuKanriDgv.Size = new System.Drawing.Size(1633, 256);
+            this.KokyakuKanriDgv.TabIndex = 50;
             // 
             // KokyakuKanriFlagCmb
             // 
@@ -489,16 +499,6 @@
             this.button15.Text = "ログアウト";
             this.button15.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(97, 492);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1633, 256);
-            this.dataGridView1.TabIndex = 50;
-            // 
             // Kokyakukanri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -524,7 +524,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.TopKokyakuPnl.ResumeLayout(false);
             this.TopKokyakuPnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KokyakuKanriDgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -572,6 +572,6 @@
         private System.Windows.Forms.TextBox TelTxb;
         private System.Windows.Forms.Label KokyakuKanriFlagLbl;
         private System.Windows.Forms.ComboBox KokyakuKanriFlagCmb;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView KokyakuKanriDgv;
     }
 }

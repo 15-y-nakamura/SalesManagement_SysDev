@@ -41,7 +41,7 @@
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopTantoLbl = new System.Windows.Forms.Label();
             this.TopChumonPnl = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ChumonKanriDgv = new System.Windows.Forms.DataGridView();
             this.ChumonKanriFlagCmb = new System.Windows.Forms.ComboBox();
             this.ChumonjyoutaiFlaguCmb = new System.Windows.Forms.ComboBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
@@ -70,7 +70,7 @@
             this.SearchBtn = new System.Windows.Forms.Button();
             this.TopLogoutBtn = new System.Windows.Forms.Button();
             this.TopChumonPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChumonKanriDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // TopHonshaBtn
@@ -194,7 +194,7 @@
             // TopChumonPnl
             // 
             this.TopChumonPnl.BackColor = System.Drawing.Color.LightGray;
-            this.TopChumonPnl.Controls.Add(this.dataGridView1);
+            this.TopChumonPnl.Controls.Add(this.ChumonKanriDgv);
             this.TopChumonPnl.Controls.Add(this.ChumonKanriFlagCmb);
             this.TopChumonPnl.Controls.Add(this.ChumonjyoutaiFlaguCmb);
             this.TopChumonPnl.Controls.Add(this.HihyojiTxb);
@@ -226,15 +226,15 @@
             this.TopChumonPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopChumonPnl.TabIndex = 23;
             // 
-            // dataGridView1
+            // ChumonKanriDgv
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(97, 492);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1633, 256);
-            this.dataGridView1.TabIndex = 52;
+            this.ChumonKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ChumonKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.ChumonKanriDgv.Name = "ChumonKanriDgv";
+            this.ChumonKanriDgv.RowHeadersWidth = 62;
+            this.ChumonKanriDgv.RowTemplate.Height = 27;
+            this.ChumonKanriDgv.Size = new System.Drawing.Size(1633, 256);
+            this.ChumonKanriDgv.TabIndex = 52;
             // 
             // ChumonKanriFlagCmb
             // 
@@ -523,7 +523,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.TopChumonPnl.ResumeLayout(false);
             this.TopChumonPnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChumonKanriDgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -571,6 +571,6 @@
         private System.Windows.Forms.Label HihyojiLbl;
         private System.Windows.Forms.Label ChumonjyoutaiFlaguLbl;
         private System.Windows.Forms.Label ChumonKanriFlagLbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ChumonKanriDgv;
     }
 }
