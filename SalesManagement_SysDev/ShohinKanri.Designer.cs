@@ -42,6 +42,7 @@
             this.TopTantoLbl = new System.Windows.Forms.Label();
             this.RegistBtn = new System.Windows.Forms.Button();
             this.TopShohinPnl = new System.Windows.Forms.Panel();
+            this.ShohinKanriDgv = new System.Windows.Forms.DataGridView();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
             this.HihyojiLbl = new System.Windows.Forms.Label();
             this.ShohinKanriCmb = new System.Windows.Forms.ComboBox();
@@ -60,8 +61,8 @@
             this.AnzenLbl = new System.Windows.Forms.Label();
             this.KakakuTxb = new System.Windows.Forms.TextBox();
             this.KakakuLbl = new System.Windows.Forms.Label();
-            this.MakerIDTxb = new System.Windows.Forms.TextBox();
-            this.MakerIDLbl = new System.Windows.Forms.Label();
+            this.MakerNameTxb = new System.Windows.Forms.TextBox();
+            this.MakerNameLbl = new System.Windows.Forms.Label();
             this.ShohinNameTxb = new System.Windows.Forms.TextBox();
             this.ShohinNameLbl = new System.Windows.Forms.Label();
             this.ShohinIDTxb = new System.Windows.Forms.TextBox();
@@ -70,9 +71,8 @@
             this.HiddenBtn = new System.Windows.Forms.Button();
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.TopLogoutBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TopShohinPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShohinKanriDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // TopHonshaBtn
@@ -206,7 +206,7 @@
             // TopShohinPnl
             // 
             this.TopShohinPnl.BackColor = System.Drawing.Color.LightGray;
-            this.TopShohinPnl.Controls.Add(this.dataGridView1);
+            this.TopShohinPnl.Controls.Add(this.ShohinKanriDgv);
             this.TopShohinPnl.Controls.Add(this.HihyojiTxb);
             this.TopShohinPnl.Controls.Add(this.HihyojiLbl);
             this.TopShohinPnl.Controls.Add(this.ShohinKanriCmb);
@@ -225,8 +225,8 @@
             this.TopShohinPnl.Controls.Add(this.AnzenLbl);
             this.TopShohinPnl.Controls.Add(this.KakakuTxb);
             this.TopShohinPnl.Controls.Add(this.KakakuLbl);
-            this.TopShohinPnl.Controls.Add(this.MakerIDTxb);
-            this.TopShohinPnl.Controls.Add(this.MakerIDLbl);
+            this.TopShohinPnl.Controls.Add(this.MakerNameTxb);
+            this.TopShohinPnl.Controls.Add(this.MakerNameLbl);
             this.TopShohinPnl.Controls.Add(this.ShohinNameTxb);
             this.TopShohinPnl.Controls.Add(this.ShohinNameLbl);
             this.TopShohinPnl.Controls.Add(this.ShohinIDTxb);
@@ -239,6 +239,16 @@
             this.TopShohinPnl.Name = "TopShohinPnl";
             this.TopShohinPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopShohinPnl.TabIndex = 23;
+            // 
+            // ShohinKanriDgv
+            // 
+            this.ShohinKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ShohinKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.ShohinKanriDgv.Name = "ShohinKanriDgv";
+            this.ShohinKanriDgv.RowHeadersWidth = 62;
+            this.ShohinKanriDgv.RowTemplate.Height = 27;
+            this.ShohinKanriDgv.Size = new System.Drawing.Size(1633, 256);
+            this.ShohinKanriDgv.TabIndex = 52;
             // 
             // HihyojiTxb
             // 
@@ -415,24 +425,24 @@
             this.KakakuLbl.TabIndex = 33;
             this.KakakuLbl.Text = "価格";
             // 
-            // MakerIDTxb
+            // MakerNameTxb
             // 
-            this.MakerIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MakerNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MakerIDTxb.Location = new System.Drawing.Point(1051, 150);
-            this.MakerIDTxb.Name = "MakerIDTxb";
-            this.MakerIDTxb.Size = new System.Drawing.Size(200, 25);
-            this.MakerIDTxb.TabIndex = 32;
+            this.MakerNameTxb.Location = new System.Drawing.Point(1051, 150);
+            this.MakerNameTxb.Name = "MakerNameTxb";
+            this.MakerNameTxb.Size = new System.Drawing.Size(200, 25);
+            this.MakerNameTxb.TabIndex = 32;
             // 
-            // MakerIDLbl
+            // MakerNameLbl
             // 
-            this.MakerIDLbl.AutoSize = true;
-            this.MakerIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.MakerIDLbl.Location = new System.Drawing.Point(913, 150);
-            this.MakerIDLbl.Name = "MakerIDLbl";
-            this.MakerIDLbl.Size = new System.Drawing.Size(122, 28);
-            this.MakerIDLbl.TabIndex = 31;
-            this.MakerIDLbl.Text = "メーカーID";
+            this.MakerNameLbl.AutoSize = true;
+            this.MakerNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.MakerNameLbl.Location = new System.Drawing.Point(913, 150);
+            this.MakerNameLbl.Name = "MakerNameLbl";
+            this.MakerNameLbl.Size = new System.Drawing.Size(125, 28);
+            this.MakerNameLbl.TabIndex = 31;
+            this.MakerNameLbl.Text = "メーカー名";
             // 
             // ShohinNameTxb
             // 
@@ -512,16 +522,6 @@
             this.TopLogoutBtn.Text = "ログアウト";
             this.TopLogoutBtn.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(97, 492);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1633, 256);
-            this.dataGridView1.TabIndex = 52;
-            // 
             // ShohinKanri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -547,7 +547,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.TopShohinPnl.ResumeLayout(false);
             this.TopShohinPnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShohinKanriDgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -579,8 +579,8 @@
         private System.Windows.Forms.Label AnzenLbl;
         private System.Windows.Forms.TextBox KakakuTxb;
         private System.Windows.Forms.Label KakakuLbl;
-        private System.Windows.Forms.TextBox MakerIDTxb;
-        private System.Windows.Forms.Label MakerIDLbl;
+        private System.Windows.Forms.TextBox MakerNameTxb;
+        private System.Windows.Forms.Label MakerNameLbl;
         private System.Windows.Forms.TextBox ShohinNameTxb;
         private System.Windows.Forms.Label ShohinNameLbl;
         private System.Windows.Forms.DateTimePicker SellDtm;
@@ -597,6 +597,6 @@
         private System.Windows.Forms.Label HihyojiLbl;
         private System.Windows.Forms.ComboBox ShohinKanriCmb;
         private System.Windows.Forms.Label ShohinKanriLbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ShohinKanriDgv;
     }
 }

@@ -41,7 +41,7 @@
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopTantoLbl = new System.Windows.Forms.Label();
             this.TopJuchuPnl = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.JuchuKanriDgv = new System.Windows.Forms.DataGridView();
             this.JuchuKanriFlagCmb = new System.Windows.Forms.ComboBox();
             this.JuchuJotaiFlagCmb = new System.Windows.Forms.ComboBox();
             this.KokyakuIDTxb = new System.Windows.Forms.TextBox();
@@ -72,7 +72,7 @@
             this.RegistBtn = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.TopJuchuPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JuchuKanriDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // TopHonshaBtn
@@ -196,7 +196,7 @@
             // TopJuchuPnl
             // 
             this.TopJuchuPnl.BackColor = System.Drawing.Color.LightGray;
-            this.TopJuchuPnl.Controls.Add(this.dataGridView1);
+            this.TopJuchuPnl.Controls.Add(this.JuchuKanriDgv);
             this.TopJuchuPnl.Controls.Add(this.JuchuKanriFlagCmb);
             this.TopJuchuPnl.Controls.Add(this.JuchuJotaiFlagCmb);
             this.TopJuchuPnl.Controls.Add(this.KokyakuIDTxb);
@@ -230,15 +230,15 @@
             this.TopJuchuPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopJuchuPnl.TabIndex = 23;
             // 
-            // dataGridView1
+            // JuchuKanriDgv
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(97, 492);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1633, 256);
-            this.dataGridView1.TabIndex = 51;
+            this.JuchuKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.JuchuKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.JuchuKanriDgv.Name = "JuchuKanriDgv";
+            this.JuchuKanriDgv.RowHeadersWidth = 62;
+            this.JuchuKanriDgv.RowTemplate.Height = 27;
+            this.JuchuKanriDgv.Size = new System.Drawing.Size(1633, 256);
+            this.JuchuKanriDgv.TabIndex = 51;
             // 
             // JuchuKanriFlagCmb
             // 
@@ -546,7 +546,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.TopJuchuPnl.ResumeLayout(false);
             this.TopJuchuPnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JuchuKanriDgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -596,6 +596,6 @@
         private System.Windows.Forms.TextBox HihyojiTxb;
         private System.Windows.Forms.Label GokeiKingakuLbl;
         private System.Windows.Forms.Label HihyojiLbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView JuchuKanriDgv;
     }
 }

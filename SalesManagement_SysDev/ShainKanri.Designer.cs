@@ -41,6 +41,7 @@
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopTantoLbl = new System.Windows.Forms.Label();
             this.TopShainPnl = new System.Windows.Forms.Panel();
+            this.ShainKanriDgv = new System.Windows.Forms.DataGridView();
             this.TelTxb = new System.Windows.Forms.TextBox();
             this.EigyoshoNameTxb = new System.Windows.Forms.TextBox();
             this.TelLbl = new System.Windows.Forms.Label();
@@ -50,9 +51,11 @@
             this.JoinDateTxb = new System.Windows.Forms.TextBox();
             this.ShainNameTxb = new System.Windows.Forms.TextBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
+            this.PasuwadoTxb = new System.Windows.Forms.TextBox();
             this.ShainIDTxb = new System.Windows.Forms.TextBox();
             this.ShainNameLbl = new System.Windows.Forms.Label();
             this.JoinDateLbl = new System.Windows.Forms.Label();
+            this.PasuwadoLbl = new System.Windows.Forms.Label();
             this.YakushokuNameLbl = new System.Windows.Forms.Label();
             this.HihyojiLbl = new System.Windows.Forms.Label();
             this.ShohinIDLbl = new System.Windows.Forms.Label();
@@ -62,11 +65,8 @@
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.RegistBtn = new System.Windows.Forms.Button();
             this.TopLogoutBtn = new System.Windows.Forms.Button();
-            this.PasuwadoLbl = new System.Windows.Forms.Label();
-            this.PasuwadoTxb = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TopShainPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShainKanriDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // TopHonshaBtn
@@ -190,7 +190,7 @@
             // TopShainPnl
             // 
             this.TopShainPnl.BackColor = System.Drawing.Color.LightGray;
-            this.TopShainPnl.Controls.Add(this.dataGridView1);
+            this.TopShainPnl.Controls.Add(this.ShainKanriDgv);
             this.TopShainPnl.Controls.Add(this.TelTxb);
             this.TopShainPnl.Controls.Add(this.EigyoshoNameTxb);
             this.TopShainPnl.Controls.Add(this.TelLbl);
@@ -217,6 +217,16 @@
             this.TopShainPnl.Name = "TopShainPnl";
             this.TopShainPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopShainPnl.TabIndex = 23;
+            // 
+            // ShainKanriDgv
+            // 
+            this.ShainKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ShainKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.ShainKanriDgv.Name = "ShainKanriDgv";
+            this.ShainKanriDgv.RowHeadersWidth = 62;
+            this.ShainKanriDgv.RowTemplate.Height = 27;
+            this.ShainKanriDgv.Size = new System.Drawing.Size(1633, 256);
+            this.ShainKanriDgv.TabIndex = 51;
             // 
             // TelTxb
             // 
@@ -304,6 +314,15 @@
             this.HihyojiTxb.Size = new System.Drawing.Size(609, 90);
             this.HihyojiTxb.TabIndex = 14;
             // 
+            // PasuwadoTxb
+            // 
+            this.PasuwadoTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PasuwadoTxb.Location = new System.Drawing.Point(237, 220);
+            this.PasuwadoTxb.Name = "PasuwadoTxb";
+            this.PasuwadoTxb.Size = new System.Drawing.Size(200, 25);
+            this.PasuwadoTxb.TabIndex = 17;
+            // 
             // ShainIDTxb
             // 
             this.ShainIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -332,6 +351,16 @@
             this.JoinDateLbl.Size = new System.Drawing.Size(152, 28);
             this.JoinDateLbl.TabIndex = 7;
             this.JoinDateLbl.Text = "入社年月日";
+            // 
+            // PasuwadoLbl
+            // 
+            this.PasuwadoLbl.AutoSize = true;
+            this.PasuwadoLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.PasuwadoLbl.Location = new System.Drawing.Point(98, 220);
+            this.PasuwadoLbl.Name = "PasuwadoLbl";
+            this.PasuwadoLbl.Size = new System.Drawing.Size(120, 28);
+            this.PasuwadoLbl.TabIndex = 8;
+            this.PasuwadoLbl.Text = "パスワード";
             // 
             // YakushokuNameLbl
             // 
@@ -424,35 +453,6 @@
             this.TopLogoutBtn.Text = "ログアウト";
             this.TopLogoutBtn.UseVisualStyleBackColor = true;
             // 
-            // PasuwadoLbl
-            // 
-            this.PasuwadoLbl.AutoSize = true;
-            this.PasuwadoLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.PasuwadoLbl.Location = new System.Drawing.Point(98, 220);
-            this.PasuwadoLbl.Name = "PasuwadoLbl";
-            this.PasuwadoLbl.Size = new System.Drawing.Size(120, 28);
-            this.PasuwadoLbl.TabIndex = 8;
-            this.PasuwadoLbl.Text = "パスワード";
-            // 
-            // PasuwadoTxb
-            // 
-            this.PasuwadoTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PasuwadoTxb.Location = new System.Drawing.Point(237, 220);
-            this.PasuwadoTxb.Name = "PasuwadoTxb";
-            this.PasuwadoTxb.Size = new System.Drawing.Size(200, 25);
-            this.PasuwadoTxb.TabIndex = 17;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(97, 492);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(1633, 256);
-            this.dataGridView1.TabIndex = 51;
-            // 
             // Shainkanri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -478,7 +478,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.TopShainPnl.ResumeLayout(false);
             this.TopShainPnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShainKanriDgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -522,6 +522,6 @@
         private System.Windows.Forms.Label EigyoshoNameLbl;
         private System.Windows.Forms.TextBox PasuwadoTxb;
         private System.Windows.Forms.Label PasuwadoLbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ShainKanriDgv;
     }
 }
