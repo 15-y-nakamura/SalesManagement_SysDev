@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
+    <Compile Include="Common\InputCheck.cs" />
     <Compile Include="LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
