@@ -511,9 +511,9 @@
             this.TopJikanHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
             this.TopJikanHyojiLbl.Location = new System.Drawing.Point(1723, 28);
             this.TopJikanHyojiLbl.Name = "TopJikanHyojiLbl";
-            this.TopJikanHyojiLbl.Size = new System.Drawing.Size(117, 40);
+            this.TopJikanHyojiLbl.Size = new System.Drawing.Size(236, 40);
             this.TopJikanHyojiLbl.TabIndex = 58;
-            this.TopJikanHyojiLbl.Text = "時間：";
+            this.TopJikanHyojiLbl.Text = "ログイン時間：";
             // 
             // TopYakushokuLbl
             // 
