@@ -36,11 +36,12 @@
             this.PasuwadoTxb = new System.Windows.Forms.TextBox();
             this.RoguinLbl = new System.Windows.Forms.Label();
             this.RoguinBtn = new System.Windows.Forms.Button();
+            this.LogoutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_CleateDabase
             // 
-            this.btn_CleateDabase.Location = new System.Drawing.Point(798, 4);
+            this.btn_CleateDabase.Location = new System.Drawing.Point(798, 397);
             this.btn_CleateDabase.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_CleateDabase.Name = "btn_CleateDabase";
             this.btn_CleateDabase.Size = new System.Drawing.Size(177, 74);
@@ -51,7 +52,7 @@
             // 
             // btn_InsertSampleData
             // 
-            this.btn_InsertSampleData.Location = new System.Drawing.Point(798, 94);
+            this.btn_InsertSampleData.Location = new System.Drawing.Point(798, 479);
             this.btn_InsertSampleData.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_InsertSampleData.Name = "btn_InsertSampleData";
             this.btn_InsertSampleData.Size = new System.Drawing.Size(177, 74);
@@ -116,11 +117,22 @@
             this.RoguinBtn.Text = "ログイン";
             this.RoguinBtn.UseVisualStyleBackColor = true;
             // 
+            // LogoutBtn
+            // 
+            this.LogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.LogoutBtn.Location = new System.Drawing.Point(870, 12);
+            this.LogoutBtn.Name = "LogoutBtn";
+            this.LogoutBtn.Size = new System.Drawing.Size(105, 63);
+            this.LogoutBtn.TabIndex = 24;
+            this.LogoutBtn.Text = "閉じる";
+            this.LogoutBtn.UseVisualStyleBackColor = true;
+            // 
             // LoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 566);
+            this.Controls.Add(this.LogoutBtn);
             this.Controls.Add(this.RoguinBtn);
             this.Controls.Add(this.RoguinLbl);
             this.Controls.Add(this.PasuwadoTxb);
@@ -147,6 +159,7 @@
         private System.Windows.Forms.TextBox PasuwadoTxb;
         private System.Windows.Forms.Label RoguinLbl;
         private System.Windows.Forms.Button RoguinBtn;
+        private System.Windows.Forms.Button LogoutBtn;
     }
 }
 
