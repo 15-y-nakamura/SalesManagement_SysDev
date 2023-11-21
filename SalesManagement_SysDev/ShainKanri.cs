@@ -17,6 +17,37 @@ namespace SalesManagement_SysDev
 
             InitializeComponent();
         }
+
+        private void Shainkanri_Load(object sender, EventArgs e)
+        {
+            PlaceHolderText();
+        }
+
+        private void PlaceHolderText()
+        {
+            TelTxb.Text = "ハイフンあり";
+            TelTxb.ForeColor = SystemColors.GrayText;
+            TelTxb.Enter += TelTxb_Enter;
+            TelTxb.Leave += TelTxb_Leave;
+        }
+
+        private void TelTxb_Enter(object sender, EventArgs e)
+        {
+            if (TelTxb.Text == "ハイフンあり")
+            {
+                TelTxb.Text = "";
+                TelTxb.ForeColor = SystemColors.WindowText;
+            }
+        }
+        private void TelTxb_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TelTxb.Text))
+            {
+                TelTxb.Text = "ハイフンあり";
+                TelTxb.ForeColor = SystemColors.GrayText;
+            }
+        }
+
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
             //現画面を非表示

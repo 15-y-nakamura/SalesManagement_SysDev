@@ -32,15 +32,8 @@
             this.TopEigyoBtn = new System.Windows.Forms.Button();
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
-            this.TopIDHyojiLbl = new System.Windows.Forms.Label();
-            this.TopJikanHyojiLbl = new System.Windows.Forms.Label();
-            this.TopNameHyojiLbl = new System.Windows.Forms.Label();
-            this.TopTantoHyojiLbl = new System.Windows.Forms.Label();
-            this.TopIDLbl = new System.Windows.Forms.Label();
-            this.TopJikanLbl = new System.Windows.Forms.Label();
-            this.TopNameLbl = new System.Windows.Forms.Label();
-            this.TopTantoLbl = new System.Windows.Forms.Label();
             this.TopKokyakuPnl = new System.Windows.Forms.Panel();
+            this.EigyoshoNameCmb = new System.Windows.Forms.ComboBox();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.KokyakuKanriDgv = new System.Windows.Forms.DataGridView();
             this.KokyakuKanriFlagCmb = new System.Windows.Forms.ComboBox();
@@ -69,7 +62,16 @@
             this.EigyoshoNameLbl = new System.Windows.Forms.Label();
             this.FaxLbl = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
-            this.EigyoshoNameCmb = new System.Windows.Forms.ComboBox();
+            this.TopIDHyojiLbl = new System.Windows.Forms.Label();
+            this.TopIDLbl = new System.Windows.Forms.Label();
+            this.TopEigyoshoLbl = new System.Windows.Forms.Label();
+            this.TopEigyoshoHyojiLbl = new System.Windows.Forms.Label();
+            this.TopJikanLbl = new System.Windows.Forms.Label();
+            this.TopJikanHyojiLbl = new System.Windows.Forms.Label();
+            this.TopYakushokuLbl = new System.Windows.Forms.Label();
+            this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
+            this.TopNameLbl = new System.Windows.Forms.Label();
+            this.TopNameHyojiLbl = new System.Windows.Forms.Label();
             this.TopKokyakuPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KokyakuKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -117,81 +119,6 @@
             this.TopLbl.TabIndex = 3;
             this.TopLbl.Text = "顧客管理画面";
             // 
-            // TopIDHyojiLbl
-            // 
-            this.TopIDHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopIDHyojiLbl.Location = new System.Drawing.Point(1220, 24);
-            this.TopIDHyojiLbl.Name = "TopIDHyojiLbl";
-            this.TopIDHyojiLbl.Size = new System.Drawing.Size(92, 50);
-            this.TopIDHyojiLbl.TabIndex = 4;
-            this.TopIDHyojiLbl.Text = "ID：";
-            // 
-            // TopJikanHyojiLbl
-            // 
-            this.TopJikanHyojiLbl.AutoSize = true;
-            this.TopJikanHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopJikanHyojiLbl.Location = new System.Drawing.Point(1178, 87);
-            this.TopJikanHyojiLbl.Name = "TopJikanHyojiLbl";
-            this.TopJikanHyojiLbl.Size = new System.Drawing.Size(117, 40);
-            this.TopJikanHyojiLbl.TabIndex = 5;
-            this.TopJikanHyojiLbl.Text = "時間：";
-            // 
-            // TopNameHyojiLbl
-            // 
-            this.TopNameHyojiLbl.AutoSize = true;
-            this.TopNameHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopNameHyojiLbl.Location = new System.Drawing.Point(1582, 27);
-            this.TopNameHyojiLbl.Name = "TopNameHyojiLbl";
-            this.TopNameHyojiLbl.Size = new System.Drawing.Size(117, 40);
-            this.TopNameHyojiLbl.TabIndex = 6;
-            this.TopNameHyojiLbl.Text = "名前：";
-            // 
-            // TopTantoHyojiLbl
-            // 
-            this.TopTantoHyojiLbl.AutoSize = true;
-            this.TopTantoHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopTantoHyojiLbl.Location = new System.Drawing.Point(1582, 90);
-            this.TopTantoHyojiLbl.Name = "TopTantoHyojiLbl";
-            this.TopTantoHyojiLbl.Size = new System.Drawing.Size(117, 40);
-            this.TopTantoHyojiLbl.TabIndex = 7;
-            this.TopTantoHyojiLbl.Text = "担当：";
-            // 
-            // TopIDLbl
-            // 
-            this.TopIDLbl.AutoSize = true;
-            this.TopIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.TopIDLbl.Location = new System.Drawing.Point(1302, 32);
-            this.TopIDLbl.Name = "TopIDLbl";
-            this.TopIDLbl.Size = new System.Drawing.Size(0, 30);
-            this.TopIDLbl.TabIndex = 8;
-            // 
-            // TopJikanLbl
-            // 
-            this.TopJikanLbl.AutoSize = true;
-            this.TopJikanLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.TopJikanLbl.Location = new System.Drawing.Point(1302, 94);
-            this.TopJikanLbl.Name = "TopJikanLbl";
-            this.TopJikanLbl.Size = new System.Drawing.Size(0, 30);
-            this.TopJikanLbl.TabIndex = 9;
-            // 
-            // TopNameLbl
-            // 
-            this.TopNameLbl.AutoSize = true;
-            this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.TopNameLbl.Location = new System.Drawing.Point(1703, 34);
-            this.TopNameLbl.Name = "TopNameLbl";
-            this.TopNameLbl.Size = new System.Drawing.Size(0, 30);
-            this.TopNameLbl.TabIndex = 10;
-            // 
-            // TopTantoLbl
-            // 
-            this.TopTantoLbl.AutoSize = true;
-            this.TopTantoLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.TopTantoLbl.Location = new System.Drawing.Point(1703, 98);
-            this.TopTantoLbl.Name = "TopTantoLbl";
-            this.TopTantoLbl.Size = new System.Drawing.Size(0, 30);
-            this.TopTantoLbl.TabIndex = 11;
-            // 
             // TopKokyakuPnl
             // 
             this.TopKokyakuPnl.AutoSize = true;
@@ -228,6 +155,14 @@
             this.TopKokyakuPnl.Name = "TopKokyakuPnl";
             this.TopKokyakuPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopKokyakuPnl.TabIndex = 23;
+            // 
+            // EigyoshoNameCmb
+            // 
+            this.EigyoshoNameCmb.FormattingEnabled = true;
+            this.EigyoshoNameCmb.Location = new System.Drawing.Point(1052, 149);
+            this.EigyoshoNameCmb.Name = "EigyoshoNameCmb";
+            this.EigyoshoNameCmb.Size = new System.Drawing.Size(206, 26);
+            this.EigyoshoNameCmb.TabIndex = 55;
             // 
             // GamenKousinBtn
             // 
@@ -433,6 +368,7 @@
             this.KokyakuTantoNameTxb.Name = "KokyakuTantoNameTxb";
             this.KokyakuTantoNameTxb.Size = new System.Drawing.Size(201, 25);
             this.KokyakuTantoNameTxb.TabIndex = 41;
+            this.KokyakuTantoNameTxb.UseWaitCursor = true;
             // 
             // JushoLbl
             // 
@@ -503,29 +439,118 @@
             this.button15.Text = "ログアウト";
             this.button15.UseVisualStyleBackColor = true;
             // 
-            // EigyoshoNameCmb
+            // TopIDHyojiLbl
             // 
-            this.EigyoshoNameCmb.FormattingEnabled = true;
-            this.EigyoshoNameCmb.Location = new System.Drawing.Point(1052, 149);
-            this.EigyoshoNameCmb.Name = "EigyoshoNameCmb";
-            this.EigyoshoNameCmb.Size = new System.Drawing.Size(206, 26);
-            this.EigyoshoNameCmb.TabIndex = 55;
+            this.TopIDHyojiLbl.AutoSize = true;
+            this.TopIDHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopIDHyojiLbl.Location = new System.Drawing.Point(898, 28);
+            this.TopIDHyojiLbl.Name = "TopIDHyojiLbl";
+            this.TopIDHyojiLbl.Size = new System.Drawing.Size(73, 40);
+            this.TopIDHyojiLbl.TabIndex = 73;
+            this.TopIDHyojiLbl.Text = "ID：";
+            // 
+            // TopIDLbl
+            // 
+            this.TopIDLbl.AutoSize = true;
+            this.TopIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopIDLbl.Location = new System.Drawing.Point(977, 28);
+            this.TopIDLbl.Name = "TopIDLbl";
+            this.TopIDLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopIDLbl.TabIndex = 72;
+            // 
+            // TopEigyoshoLbl
+            // 
+            this.TopEigyoshoLbl.AutoSize = true;
+            this.TopEigyoshoLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopEigyoshoLbl.Location = new System.Drawing.Point(1055, 91);
+            this.TopEigyoshoLbl.Name = "TopEigyoshoLbl";
+            this.TopEigyoshoLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopEigyoshoLbl.TabIndex = 71;
+            // 
+            // TopEigyoshoHyojiLbl
+            // 
+            this.TopEigyoshoHyojiLbl.AutoSize = true;
+            this.TopEigyoshoHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopEigyoshoHyojiLbl.Location = new System.Drawing.Point(892, 91);
+            this.TopEigyoshoHyojiLbl.Name = "TopEigyoshoHyojiLbl";
+            this.TopEigyoshoHyojiLbl.Size = new System.Drawing.Size(157, 40);
+            this.TopEigyoshoHyojiLbl.TabIndex = 70;
+            this.TopEigyoshoHyojiLbl.Text = "営業所：";
+            // 
+            // TopJikanLbl
+            // 
+            this.TopJikanLbl.AutoSize = true;
+            this.TopJikanLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopJikanLbl.Location = new System.Drawing.Point(1846, 28);
+            this.TopJikanLbl.Name = "TopJikanLbl";
+            this.TopJikanLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopJikanLbl.TabIndex = 69;
+            // 
+            // TopJikanHyojiLbl
+            // 
+            this.TopJikanHyojiLbl.AutoSize = true;
+            this.TopJikanHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopJikanHyojiLbl.Location = new System.Drawing.Point(1723, 28);
+            this.TopJikanHyojiLbl.Name = "TopJikanHyojiLbl";
+            this.TopJikanHyojiLbl.Size = new System.Drawing.Size(236, 40);
+            this.TopJikanHyojiLbl.TabIndex = 68;
+            this.TopJikanHyojiLbl.Text = "ログイン時間：";
+            // 
+            // TopYakushokuLbl
+            // 
+            this.TopYakushokuLbl.AutoSize = true;
+            this.TopYakushokuLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopYakushokuLbl.Location = new System.Drawing.Point(1431, 91);
+            this.TopYakushokuLbl.Name = "TopYakushokuLbl";
+            this.TopYakushokuLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopYakushokuLbl.TabIndex = 67;
+            // 
+            // TopYakushokuHyojiLbl
+            // 
+            this.TopYakushokuHyojiLbl.AutoSize = true;
+            this.TopYakushokuHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopYakushokuHyojiLbl.Location = new System.Drawing.Point(1308, 91);
+            this.TopYakushokuHyojiLbl.Name = "TopYakushokuHyojiLbl";
+            this.TopYakushokuHyojiLbl.Size = new System.Drawing.Size(117, 40);
+            this.TopYakushokuHyojiLbl.TabIndex = 66;
+            this.TopYakushokuHyojiLbl.Text = "役職：";
+            // 
+            // TopNameLbl
+            // 
+            this.TopNameLbl.AutoSize = true;
+            this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopNameLbl.Location = new System.Drawing.Point(1431, 28);
+            this.TopNameLbl.Name = "TopNameLbl";
+            this.TopNameLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopNameLbl.TabIndex = 65;
+            // 
+            // TopNameHyojiLbl
+            // 
+            this.TopNameHyojiLbl.AutoSize = true;
+            this.TopNameHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopNameHyojiLbl.Location = new System.Drawing.Point(1308, 28);
+            this.TopNameHyojiLbl.Name = "TopNameHyojiLbl";
+            this.TopNameHyojiLbl.Size = new System.Drawing.Size(117, 40);
+            this.TopNameHyojiLbl.TabIndex = 64;
+            this.TopNameHyojiLbl.Text = "名前：";
             // 
             // Kokyakukanri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 700);
+            this.Controls.Add(this.TopIDHyojiLbl);
+            this.Controls.Add(this.TopIDLbl);
+            this.Controls.Add(this.TopEigyoshoLbl);
+            this.Controls.Add(this.TopEigyoshoHyojiLbl);
+            this.Controls.Add(this.TopJikanLbl);
+            this.Controls.Add(this.TopJikanHyojiLbl);
+            this.Controls.Add(this.TopYakushokuLbl);
+            this.Controls.Add(this.TopYakushokuHyojiLbl);
+            this.Controls.Add(this.TopNameLbl);
+            this.Controls.Add(this.TopNameHyojiLbl);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.TopKokyakuPnl);
-            this.Controls.Add(this.TopTantoLbl);
-            this.Controls.Add(this.TopNameLbl);
-            this.Controls.Add(this.TopJikanLbl);
-            this.Controls.Add(this.TopIDLbl);
-            this.Controls.Add(this.TopTantoHyojiLbl);
-            this.Controls.Add(this.TopNameHyojiLbl);
-            this.Controls.Add(this.TopJikanHyojiLbl);
-            this.Controls.Add(this.TopIDHyojiLbl);
             this.Controls.Add(this.TopLbl);
             this.Controls.Add(this.TopButsuryuBtn);
             this.Controls.Add(this.TopEigyoBtn);
@@ -534,6 +559,7 @@
             this.Name = "Kokyakukanri";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Kokyakukanri_Load);
             this.TopKokyakuPnl.ResumeLayout(false);
             this.TopKokyakuPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KokyakuKanriDgv)).EndInit();
@@ -548,14 +574,6 @@
         private System.Windows.Forms.Button TopEigyoBtn;
         private System.Windows.Forms.Button TopButsuryuBtn;
         private System.Windows.Forms.Label TopLbl;
-        private System.Windows.Forms.Label TopIDHyojiLbl;
-        private System.Windows.Forms.Label TopJikanHyojiLbl;
-        private System.Windows.Forms.Label TopNameHyojiLbl;
-        private System.Windows.Forms.Label TopTantoHyojiLbl;
-        private System.Windows.Forms.Label TopIDLbl;
-        private System.Windows.Forms.Label TopJikanLbl;
-        private System.Windows.Forms.Label TopNameLbl;
-        private System.Windows.Forms.Label TopTantoLbl;
         private System.Windows.Forms.Panel TopKokyakuPnl;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button RegistBtn;
@@ -586,5 +604,15 @@
         private System.Windows.Forms.DataGridView KokyakuKanriDgv;
         private System.Windows.Forms.Button GamenKousinBtn;
         private System.Windows.Forms.ComboBox EigyoshoNameCmb;
+        private System.Windows.Forms.Label TopIDHyojiLbl;
+        private System.Windows.Forms.Label TopIDLbl;
+        private System.Windows.Forms.Label TopEigyoshoLbl;
+        private System.Windows.Forms.Label TopEigyoshoHyojiLbl;
+        private System.Windows.Forms.Label TopJikanLbl;
+        private System.Windows.Forms.Label TopJikanHyojiLbl;
+        private System.Windows.Forms.Label TopYakushokuLbl;
+        private System.Windows.Forms.Label TopYakushokuHyojiLbl;
+        private System.Windows.Forms.Label TopNameLbl;
+        private System.Windows.Forms.Label TopNameHyojiLbl;
     }
 }
