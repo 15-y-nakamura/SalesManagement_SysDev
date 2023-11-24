@@ -74,6 +74,8 @@
     <Compile Include="Entity\M_Position.cs" />
     <Compile Include="Entity\M_SalesOffice.cs" />
     <Compile Include="Entity\M_SmallClassification.cs" />
+    <Compile Include="MessageDsp.cs" />
+    <Compile Include="M_Message.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entity\T_Arrival.cs" />
