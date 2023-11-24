@@ -40,6 +40,7 @@ namespace SalesManagement_SysDev
         public DbSet<T_SyukkoDetail> T_SyukkoDetails { get; set; }
         public DbSet<T_Warehousing> T_Warehousings { get; set; }
         public DbSet<T_WarehousingDetail> T_WarehousingDetails { get; set; }
+        public DbSet<M_Message> M_Messages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
