@@ -59,7 +59,6 @@
             this.ChumonIDLbl = new System.Windows.Forms.Label();
             this.ConfirmBtn = new System.Windows.Forms.Button();
             this.HiddenBtn = new System.Windows.Forms.Button();
-            this.ListDisplayBtn = new System.Windows.Forms.Button();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.TopLogoutBtn = new System.Windows.Forms.Button();
             this.TopIDLbl = new System.Windows.Forms.Label();
@@ -148,7 +147,6 @@
             this.TopChumonPnl.Controls.Add(this.ChumonIDLbl);
             this.TopChumonPnl.Controls.Add(this.ConfirmBtn);
             this.TopChumonPnl.Controls.Add(this.HiddenBtn);
-            this.TopChumonPnl.Controls.Add(this.ListDisplayBtn);
             this.TopChumonPnl.Controls.Add(this.SearchBtn);
             this.TopChumonPnl.Location = new System.Drawing.Point(253, 158);
             this.TopChumonPnl.Name = "TopChumonPnl";
@@ -389,7 +387,7 @@
             // ConfirmBtn
             // 
             this.ConfirmBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ConfirmBtn.Location = new System.Drawing.Point(1375, 26);
+            this.ConfirmBtn.Location = new System.Drawing.Point(1009, 20);
             this.ConfirmBtn.Name = "ConfirmBtn";
             this.ConfirmBtn.Size = new System.Drawing.Size(300, 90);
             this.ConfirmBtn.TabIndex = 29;
@@ -399,27 +397,17 @@
             // HiddenBtn
             // 
             this.HiddenBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.HiddenBtn.Location = new System.Drawing.Point(960, 26);
+            this.HiddenBtn.Location = new System.Drawing.Point(581, 26);
             this.HiddenBtn.Name = "HiddenBtn";
             this.HiddenBtn.Size = new System.Drawing.Size(300, 90);
             this.HiddenBtn.TabIndex = 28;
             this.HiddenBtn.Text = "非表示";
             this.HiddenBtn.UseVisualStyleBackColor = true;
             // 
-            // ListDisplayBtn
-            // 
-            this.ListDisplayBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ListDisplayBtn.Location = new System.Drawing.Point(138, 26);
-            this.ListDisplayBtn.Name = "ListDisplayBtn";
-            this.ListDisplayBtn.Size = new System.Drawing.Size(300, 90);
-            this.ListDisplayBtn.TabIndex = 27;
-            this.ListDisplayBtn.Text = "一覧表示";
-            this.ListDisplayBtn.UseVisualStyleBackColor = true;
-            // 
             // SearchBtn
             // 
             this.SearchBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.SearchBtn.Location = new System.Drawing.Point(545, 26);
+            this.SearchBtn.Location = new System.Drawing.Point(133, 26);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(300, 90);
             this.SearchBtn.TabIndex = 26;
@@ -572,7 +560,6 @@
         private System.Windows.Forms.Label TopLbl;
         private System.Windows.Forms.Panel TopChumonPnl;
         private System.Windows.Forms.Button TopLogoutBtn;
-        private System.Windows.Forms.Button ListDisplayBtn;
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Button HiddenBtn;
         private System.Windows.Forms.Label EigyoushoNameLbl;
