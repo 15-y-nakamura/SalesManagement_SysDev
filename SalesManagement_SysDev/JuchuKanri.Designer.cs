@@ -33,6 +33,7 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopJuchuPnl = new System.Windows.Forms.Panel();
+            this.ConfirmBtn = new System.Windows.Forms.Button();
             this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
             this.JuchuDateDtm = new System.Windows.Forms.DateTimePicker();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
@@ -124,6 +125,7 @@
             // TopJuchuPnl
             // 
             this.TopJuchuPnl.BackColor = System.Drawing.Color.LightGray;
+            this.TopJuchuPnl.Controls.Add(this.ConfirmBtn);
             this.TopJuchuPnl.Controls.Add(this.EigyoushoNameCmb);
             this.TopJuchuPnl.Controls.Add(this.JuchuDateDtm);
             this.TopJuchuPnl.Controls.Add(this.GamenKousinBtn);
@@ -158,6 +160,16 @@
             this.TopJuchuPnl.Name = "TopJuchuPnl";
             this.TopJuchuPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopJuchuPnl.TabIndex = 23;
+            // 
+            // ConfirmBtn
+            // 
+            this.ConfirmBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ConfirmBtn.Location = new System.Drawing.Point(1390, 26);
+            this.ConfirmBtn.Name = "ConfirmBtn";
+            this.ConfirmBtn.Size = new System.Drawing.Size(300, 90);
+            this.ConfirmBtn.TabIndex = 57;
+            this.ConfirmBtn.Text = "確定";
+            this.ConfirmBtn.UseVisualStyleBackColor = true;
             // 
             // EigyoushoNameCmb
             // 
@@ -411,7 +423,7 @@
             // SearchBtn
             // 
             this.SearchBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.SearchBtn.Location = new System.Drawing.Point(1375, 26);
+            this.SearchBtn.Location = new System.Drawing.Point(1052, 26);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(300, 90);
             this.SearchBtn.TabIndex = 1;
@@ -421,7 +433,7 @@
             // HiddenBtn
             // 
             this.HiddenBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.HiddenBtn.Location = new System.Drawing.Point(960, 26);
+            this.HiddenBtn.Location = new System.Drawing.Point(713, 26);
             this.HiddenBtn.Name = "HiddenBtn";
             this.HiddenBtn.Size = new System.Drawing.Size(300, 90);
             this.HiddenBtn.TabIndex = 1;
@@ -431,7 +443,7 @@
             // UpdateBtn
             // 
             this.UpdateBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.UpdateBtn.Location = new System.Drawing.Point(545, 26);
+            this.UpdateBtn.Location = new System.Drawing.Point(370, 26);
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(300, 90);
             this.UpdateBtn.TabIndex = 1;
@@ -441,7 +453,7 @@
             // RegistBtn
             // 
             this.RegistBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.RegistBtn.Location = new System.Drawing.Point(138, 26);
+            this.RegistBtn.Location = new System.Drawing.Point(28, 26);
             this.RegistBtn.Name = "RegistBtn";
             this.RegistBtn.Size = new System.Drawing.Size(300, 90);
             this.RegistBtn.TabIndex = 0;
@@ -634,5 +646,6 @@
         private System.Windows.Forms.Label TopYakushokuHyojiLbl;
         private System.Windows.Forms.Label TopNameLbl;
         private System.Windows.Forms.Label TopNameHyojiLbl;
+        private System.Windows.Forms.Button ConfirmBtn;
     }
 }
