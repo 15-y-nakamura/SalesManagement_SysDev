@@ -23,6 +23,7 @@ namespace SalesManagement_SysDev
             PlaceHolderText();
         }
 
+        //テキストボックス内に灰色の文字を表示
         private void PlaceHolderText()
         {
             TelTxb.Text = "ハイフンあり";
@@ -31,6 +32,7 @@ namespace SalesManagement_SysDev
             TelTxb.Leave += TelTxb_Leave;
         }
 
+        //電話番号のテキストボックスが選択されていない場合
         private void TelTxb_Enter(object sender, EventArgs e)
         {
             if (TelTxb.Text == "ハイフンあり")
@@ -39,6 +41,8 @@ namespace SalesManagement_SysDev
                 TelTxb.ForeColor = SystemColors.WindowText;
             }
         }
+
+        //電話番号のテキストボックスが選択されていない・入力されていない場合
         private void TelTxb_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(TelTxb.Text))
