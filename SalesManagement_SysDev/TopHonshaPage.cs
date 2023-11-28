@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesManagement_SysDev.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,14 @@ using System.Windows.Forms;
 namespace SalesManagement_SysDev
 {
     public partial class TopHonshaPage : Form
-    {   
+    {
+        //メッセージ表示用クラスのインスタンス化
+        MessageDsp messageDsp = new MessageDsp();
+        EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
+        InputCheck inputCheck = new InputCheck();
+
+
+
         public TopHonshaPage()
         {
 
@@ -58,6 +66,12 @@ namespace SalesManagement_SysDev
             //TopHonshaPageを表示
             TopHonshaPage f2 = new TopHonshaPage();
             f2.ShowDialog();
+        }
+
+        private void TopHonshaPage_Load(object sender, EventArgs e)
+        {
+            empDataAccess.GetTopData(1);
+
         }
     }
 }

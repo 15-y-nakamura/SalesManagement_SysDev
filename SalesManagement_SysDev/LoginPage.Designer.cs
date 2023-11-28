@@ -116,6 +116,7 @@
             this.RoguinBtn.TabIndex = 6;
             this.RoguinBtn.Text = "ログイン";
             this.RoguinBtn.UseVisualStyleBackColor = true;
+            this.RoguinBtn.Click += new System.EventHandler(this.RoguinBtn_Click);
             // 
             // LogoutBtn
             // 

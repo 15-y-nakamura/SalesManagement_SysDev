@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesManagement_SysDev.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,10 @@ namespace SalesManagement_SysDev
 {
     public partial class LoginPage : Form
     {
+        MessageDsp messageDsp = new MessageDsp();
+        EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
+        InputCheck inputCheck = new InputCheck();
+
         public LoginPage()
         {
             InitializeComponent();
@@ -734,5 +739,72 @@ namespace SalesManagement_SysDev
 
             MessageBox.Show("サンプルデータ登録完了");
         }
+
+        private void RoguinBtn_Click(object sender, EventArgs e)
+        {
+            string logonID = ShainTxb.Text;
+            string logonPass = PasuwadoTxb.Text;
+
+            if (logonID.Trim() == "" || logonID == null || logonPass.Trim() == "" || logonPass == null)
+            {
+                //ID・PW未入力メッセージ
+                messageDsp.DspMsg("M0002");
+                return;
+            }
+
+            if(!inputCheck.CheckSuuti(logonID))
+            {
+                //不一致メッセージ
+                messageDsp.DspMsg("M0003");
+                return;
+            }
+            else if(!inputCheck.CheckSuuti(logonPass))
+            {
+                messageDsp.DspMsg("M0003");
+                return;
+            }
+
+
+            if (!empDataAccess.PasswordCheck(int.Parse(ShainTxb.Text), PasuwadoTxb.Text))
+           {
+                messageDsp.DspMsg("M0003");
+           }
+           else
+           {
+                int PoID = empDataAccess.GetPositiomID(int.Parse(logonID));
+
+                if (PoID == 1)
+                {
+                    //現画面を非表示
+                    this.Visible = false;
+
+                    //TopHonshaPageを表示
+                    TopHonshaPage f2 = new TopHonshaPage();
+                    f2.Show();
+                }
+                else if (PoID == 2)
+                {
+                    //現画面を非表示
+                    this.Visible = false;
+
+                    //TopEigyoPageを表示
+                    TopEigyoPage f2 = new TopEigyoPage();
+                    f2.Show();
+
+                }
+                else if(PoID == 3)
+                {
+                    //現画面を非表示
+                    this.Visible = false;
+
+                    //TopButsuryuPageを表示
+                    TopButsuryuPage f2 = new TopButsuryuPage();
+                    f2.Show();
+                }
+
+            }
+        }
+
+            
     }
 }

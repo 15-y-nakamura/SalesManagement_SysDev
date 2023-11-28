@@ -243,6 +243,7 @@
             this.Name = "TopHonshaPage";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.TopHonshaPage_Load);
             this.TopHonshaPnl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
