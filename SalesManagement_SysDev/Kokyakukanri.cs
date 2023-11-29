@@ -25,12 +25,13 @@ namespace SalesManagement_SysDev
             PlaceHolderText();
         }
 
+        //テキストボックス内に灰色の文字を表示
         private void PlaceHolderText()
         {
-            KokyakuTantoNameTxb.Text = "ハイフンなし";
-            KokyakuTantoNameTxb.ForeColor = SystemColors.GrayText;
-            KokyakuTantoNameTxb.Enter += KokyakuTantoNameTxb_Enter;
-            KokyakuTantoNameTxb.Leave += KokyakuTantoNameTxb_Leave;
+            YubinTxb.Text = "ハイフンなし";
+            YubinTxb.ForeColor = SystemColors.GrayText;
+            YubinTxb.Enter += YubinTxb_Enter;
+            YubinTxb.Leave += YubinTxb_Leave;
 
             JushoTxb.Text = "ハイフンあり";
             JushoTxb.ForeColor = SystemColors.GrayText;
@@ -48,23 +49,27 @@ namespace SalesManagement_SysDev
             FaxTxb.Leave += FaxTxb_Leave;
         }
 
-        private void KokyakuTantoNameTxb_Enter(object sender, EventArgs e)
+        //郵便番号のテキストボックスが選択されている場合
+        private void YubinTxb_Enter(object sender, EventArgs e)
         {
-            if (KokyakuTantoNameTxb.Text == "ハイフンなし")
+            if (YubinTxb.Text == "ハイフンなし")
             {
-                KokyakuTantoNameTxb.Text = "";
-                KokyakuTantoNameTxb.ForeColor = SystemColors.WindowText;
-            }
-        }
-        private void KokyakuTantoNameTxb_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(KokyakuTantoNameTxb.Text))
-            {
-                KokyakuTantoNameTxb.Text = "ハイフンなし";
-                KokyakuTantoNameTxb.ForeColor = SystemColors.GrayText;
+                YubinTxb.Text = "";
+                YubinTxb.ForeColor = SystemColors.WindowText;
             }
         }
 
+        //郵便番号のテキストボックスが選択されていない・入力されていない場合
+        private void YubinTxb_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(YubinTxb.Text))
+            {
+                YubinTxb.Text = "ハイフンなし";
+                YubinTxb.ForeColor = SystemColors.GrayText;
+            }
+        }
+
+        //住所のテキストボックスが選択されている場合
         private void JushoTxb_Enter(object sender, EventArgs e)
         {
             if (JushoTxb.Text == "ハイフンあり")
@@ -72,15 +77,9 @@ namespace SalesManagement_SysDev
                JushoTxb.Text = "";
                JushoTxb.ForeColor = SystemColors.WindowText;
             }
-
-            
-            if (JushoTxb.Text == "ハイフンあり")
-            {
-                JushoTxb.Text = "";
-                JushoTxb.ForeColor = SystemColors.WindowText;
-            }
         }
 
+        //住所のテキストボックスが選択されていない・入力されていない場合
         private void JushoTxb_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(JushoTxb.Text))
@@ -88,16 +87,9 @@ namespace SalesManagement_SysDev
                 JushoTxb.Text = "ハイフンあり";
                 JushoTxb.ForeColor = SystemColors.GrayText;
             }
-
-
-
-            if (string.IsNullOrWhiteSpace(JushoTxb.Text))
-            {
-                JushoTxb.Text = "ハイフンあり";
-                JushoTxb.ForeColor = SystemColors.GrayText;
-            }
         }
 
+        //電話番号のテキストボックスが選択されている場合
         private void TelTxb_Enter(object sender, EventArgs e)
         {
             if (TelTxb.Text == "ハイフンあり")
@@ -107,6 +99,7 @@ namespace SalesManagement_SysDev
             }
         }
 
+        //電話番号のテキストボックスが選択されていない・入力されていない場合
         private void TelTxb_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(TelTxb.Text))
@@ -116,6 +109,7 @@ namespace SalesManagement_SysDev
             }
         }
 
+        //FAXのテキストボックスが選択されている場合
         private void FaxTxb_Enter(object sender, EventArgs e)
         {
             if (FaxTxb.Text == "ハイフンあり")
@@ -125,6 +119,7 @@ namespace SalesManagement_SysDev
             }
         }
 
+        //FAXのテキストボックスが選択されていない・入力されていない場合
         private void FaxTxb_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(FaxTxb.Text))

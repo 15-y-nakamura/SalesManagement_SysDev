@@ -53,8 +53,8 @@
             this.SuryoLbl = new System.Windows.Forms.Label();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
             this.ShohinIDTxb = new System.Windows.Forms.TextBox();
-            this.YubinTxb = new System.Windows.Forms.Label();
-            this.KokyakuTantoNameTxb = new System.Windows.Forms.TextBox();
+            this.YubinLbl = new System.Windows.Forms.Label();
+            this.YubinTxb = new System.Windows.Forms.TextBox();
             this.JushoLbl = new System.Windows.Forms.Label();
             this.KokyakuIDTxb = new System.Windows.Forms.TextBox();
             this.KokyakuNameLbl = new System.Windows.Forms.Label();
@@ -143,8 +143,8 @@
             this.TopKokyakuPnl.Controls.Add(this.SuryoLbl);
             this.TopKokyakuPnl.Controls.Add(this.HihyojiTxb);
             this.TopKokyakuPnl.Controls.Add(this.ShohinIDTxb);
+            this.TopKokyakuPnl.Controls.Add(this.YubinLbl);
             this.TopKokyakuPnl.Controls.Add(this.YubinTxb);
-            this.TopKokyakuPnl.Controls.Add(this.KokyakuTantoNameTxb);
             this.TopKokyakuPnl.Controls.Add(this.JushoLbl);
             this.TopKokyakuPnl.Controls.Add(this.KokyakuIDTxb);
             this.TopKokyakuPnl.Controls.Add(this.KokyakuNameLbl);
@@ -350,25 +350,25 @@
             this.ShohinIDTxb.Size = new System.Drawing.Size(201, 25);
             this.ShohinIDTxb.TabIndex = 42;
             // 
+            // YubinLbl
+            // 
+            this.YubinLbl.AutoSize = true;
+            this.YubinLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.YubinLbl.Location = new System.Drawing.Point(92, 220);
+            this.YubinLbl.Name = "YubinLbl";
+            this.YubinLbl.Size = new System.Drawing.Size(124, 28);
+            this.YubinLbl.TabIndex = 33;
+            this.YubinLbl.Text = "郵便番号";
+            // 
             // YubinTxb
             // 
-            this.YubinTxb.AutoSize = true;
-            this.YubinTxb.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.YubinTxb.Location = new System.Drawing.Point(92, 220);
-            this.YubinTxb.Name = "YubinTxb";
-            this.YubinTxb.Size = new System.Drawing.Size(124, 28);
-            this.YubinTxb.TabIndex = 33;
-            this.YubinTxb.Text = "郵便番号";
-            // 
-            // KokyakuTantoNameTxb
-            // 
-            this.KokyakuTantoNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.YubinTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KokyakuTantoNameTxb.Location = new System.Drawing.Point(237, 220);
-            this.KokyakuTantoNameTxb.Name = "KokyakuTantoNameTxb";
-            this.KokyakuTantoNameTxb.Size = new System.Drawing.Size(201, 25);
-            this.KokyakuTantoNameTxb.TabIndex = 41;
-            this.KokyakuTantoNameTxb.UseWaitCursor = true;
+            this.YubinTxb.Location = new System.Drawing.Point(237, 220);
+            this.YubinTxb.Name = "YubinTxb";
+            this.YubinTxb.Size = new System.Drawing.Size(201, 25);
+            this.YubinTxb.TabIndex = 41;
+            this.YubinTxb.UseWaitCursor = true;
             // 
             // JushoLbl
             // 
@@ -589,8 +589,8 @@
         private System.Windows.Forms.Label SuryoLbl;
         private System.Windows.Forms.TextBox HihyojiTxb;
         private System.Windows.Forms.TextBox ShohinIDTxb;
-        private System.Windows.Forms.Label YubinTxb;
-        private System.Windows.Forms.TextBox KokyakuTantoNameTxb;
+        private System.Windows.Forms.Label YubinLbl;
+        private System.Windows.Forms.TextBox YubinTxb;
         private System.Windows.Forms.Label JushoLbl;
         private System.Windows.Forms.TextBox KokyakuIDTxb;
         private System.Windows.Forms.Label KokyakuNameLbl;
