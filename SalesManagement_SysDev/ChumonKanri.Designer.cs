@@ -519,7 +519,7 @@
             this.Controls.Add(this.TopHonshaBtn);
             this.KeyPreview = true;
             this.Name = "ChumonKanri";
-            this.Text = "TopPage";
+            this.Text = "販売在庫管理システム - 営業管理画面 - 注文管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ChumonKanri_Load);
             this.TopChumonPnl.ResumeLayout(false);

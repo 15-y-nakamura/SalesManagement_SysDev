@@ -289,7 +289,7 @@
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "TopButsuryuPage";
-            this.Text = "TopPage";
+            this.Text = "販売在庫管理システム - 物流管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TopButsuryuPage_Load);
             this.TopButsuryuPnl.ResumeLayout(false);

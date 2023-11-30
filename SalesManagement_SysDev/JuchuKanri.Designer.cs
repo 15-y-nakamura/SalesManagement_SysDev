@@ -589,7 +589,7 @@
             this.Controls.Add(this.TopHonshaBtn);
             this.KeyPreview = true;
             this.Name = "JuchuKanri";
-            this.Text = "TopPage";
+            this.Text = "販売在庫管理システム - 営業管理画面 - 受注管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.JuchuKanri_Load);
             this.TopJuchuPnl.ResumeLayout(false);
