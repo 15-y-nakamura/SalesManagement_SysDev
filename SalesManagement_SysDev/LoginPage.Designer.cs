@@ -120,13 +120,15 @@
             // 
             // LogoutBtn
             // 
+            this.LogoutBtn.AutoSize = true;
             this.LogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LogoutBtn.Location = new System.Drawing.Point(870, 12);
+            this.LogoutBtn.Location = new System.Drawing.Point(840, 32);
             this.LogoutBtn.Name = "LogoutBtn";
-            this.LogoutBtn.Size = new System.Drawing.Size(105, 63);
+            this.LogoutBtn.Size = new System.Drawing.Size(104, 55);
             this.LogoutBtn.TabIndex = 24;
             this.LogoutBtn.Text = "閉じる";
             this.LogoutBtn.UseVisualStyleBackColor = true;
+            this.LogoutBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
             // 
             // LoginPage
             // 
