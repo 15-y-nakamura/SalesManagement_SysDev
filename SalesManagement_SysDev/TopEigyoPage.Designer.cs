@@ -303,7 +303,7 @@
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "TopEigyoPage";
-            this.Text = "TopPage";
+            this.Text = "販売在庫管理システム - 営業管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TopEigyoPage_Load);
             this.TopEigyoPnl.ResumeLayout(false);

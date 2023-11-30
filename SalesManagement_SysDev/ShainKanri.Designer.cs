@@ -509,7 +509,7 @@
             this.Controls.Add(this.TopHonshaBtn);
             this.KeyPreview = true;
             this.Name = "Shainkanri";
-            this.Text = "TopPage";
+            this.Text = "販売在庫管理システム - 本社管理画面 - 社員管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Shainkanri_Load);
             this.TopShainPnl.ResumeLayout(false);

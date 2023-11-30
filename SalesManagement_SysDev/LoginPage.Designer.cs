@@ -146,7 +146,7 @@
             this.Controls.Add(this.btn_CleateDabase);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "LoginPage";
-            this.Text = "販売管理システムログイン画面";
+            this.Text = "販売在庫管理システム - ログイン画面";
             this.ResumeLayout(false);
             this.PerformLayout();
 

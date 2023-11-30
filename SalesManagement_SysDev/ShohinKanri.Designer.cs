@@ -582,7 +582,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "ShohinKanri";
-            this.Text = "TopPage";
+            this.Text = "販売在庫管理システム - 物流管理画面 - 商品管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ShohinKanri_Load);
             this.TopShohinPnl.ResumeLayout(false);

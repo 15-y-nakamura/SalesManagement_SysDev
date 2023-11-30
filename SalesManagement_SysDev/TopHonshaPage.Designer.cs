@@ -242,7 +242,7 @@
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "TopHonshaPage";
-            this.Text = "TopPage";
+            this.Text = "販売在庫管理システム - 本社管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TopHonshaPage_Load);
             this.TopHonshaPnl.ResumeLayout(false);
