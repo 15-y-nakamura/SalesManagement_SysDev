@@ -768,6 +768,7 @@ namespace SalesManagement_SysDev
             if (!empDataAccess.PasswordCheck(int.Parse(ShainTxb.Text), PasuwadoTxb.Text))
            {
                 messageDsp.DspMsg("M0003");
+                return;
            }
            else
            {
@@ -775,6 +776,8 @@ namespace SalesManagement_SysDev
 
                 if (PoID == 1)
                 {
+                    TopHonshaPage.EmID = int.Parse(logonID);
+
                     //現画面を非表示
                     this.Visible = false;
 
@@ -784,6 +787,8 @@ namespace SalesManagement_SysDev
                 }
                 else if (PoID == 2)
                 {
+                    TopEigyoPage.EmID = int.Parse(logonID);
+
                     //現画面を非表示
                     this.Visible = false;
 
@@ -794,6 +799,8 @@ namespace SalesManagement_SysDev
                 }
                 else if(PoID == 3)
                 {
+                    TopButsuryuPage.EmID = int.Parse(logonID);
+
                     //現画面を非表示
                     this.Visible = false;
 

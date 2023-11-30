@@ -590,6 +590,7 @@
             this.Name = "JuchuKanri";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.JuchuKanri_Load);
             this.TopJuchuPnl.ResumeLayout(false);
             this.TopJuchuPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JuchuKanriDgv)).EndInit();

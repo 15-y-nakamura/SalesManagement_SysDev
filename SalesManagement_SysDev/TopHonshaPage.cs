@@ -18,6 +18,7 @@ namespace SalesManagement_SysDev
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
         InputCheck inputCheck = new InputCheck();
 
+        internal static int EmID = 0;
 
 
         public TopHonshaPage()
@@ -29,6 +30,8 @@ namespace SalesManagement_SysDev
 
         private void ShainKanriBtn_Click(object sender, EventArgs e)
         {
+            Shainkanri.EmID = EmID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -70,8 +73,17 @@ namespace SalesManagement_SysDev
 
         private void TopHonshaPage_Load(object sender, EventArgs e)
         {
-            empDataAccess.GetTopData(1);
 
+            string[] TopData = new string[4];
+            TopData = empDataAccess.GetTopData(EmID);
+
+            string emID = EmID.ToString();
+
+            TopIDLbl.Text = emID;
+            TopNameLbl.Text = TopData[0];
+            TopYakushokuLbl.Text = TopData[1];
+            TopEigyoshoLbl.Text = TopData[2];
+            TopJikanLbl.Text = TopData[3];
         }
     }
 }
