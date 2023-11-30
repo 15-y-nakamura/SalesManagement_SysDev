@@ -582,6 +582,7 @@
             this.Name = "ShohinKanri";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ShohinKanri_Load);
             this.TopShohinPnl.ResumeLayout(false);
             this.TopShohinPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShohinKanriDgv)).EndInit();

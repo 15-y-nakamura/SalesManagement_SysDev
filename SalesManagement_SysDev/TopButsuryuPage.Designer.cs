@@ -290,6 +290,7 @@
             this.Name = "TopButsuryuPage";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.TopButsuryuPage_Load);
             this.TopButsuryuPnl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

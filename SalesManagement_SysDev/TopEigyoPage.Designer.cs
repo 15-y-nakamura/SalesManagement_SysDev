@@ -304,6 +304,7 @@
             this.Name = "TopEigyoPage";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.TopEigyoPage_Load);
             this.TopEigyoPnl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesManagement_SysDev.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,14 @@ using System.Windows.Forms;
 namespace SalesManagement_SysDev
 {
     public partial class JuchuKanri : Form
-    {   
+    {
+
+        MessageDsp messageDsp = new MessageDsp();
+        EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
+        InputCheck inputCheck = new InputCheck();
+
+        internal static int EmID = 0;
+
         public JuchuKanri()
         {
 
@@ -46,6 +54,21 @@ namespace SalesManagement_SysDev
             //TopButsuryuPageを表示
             TopButsuryuPage f2 = new TopButsuryuPage();
             f2.Show();
+        }
+
+        private void JuchuKanri_Load(object sender, EventArgs e)
+        {
+            string[] TopData = new string[4];
+            TopData = empDataAccess.GetTopData(EmID);
+
+            string emID = EmID.ToString();
+
+            TopIDLbl.Text = emID;
+            TopNameLbl.Text = TopData[0];
+            TopYakushokuLbl.Text = TopData[1];
+            TopEigyoshoLbl.Text = TopData[2];
+            TopJikanLbl.Text = TopData[3];
+
         }
     }
 }
