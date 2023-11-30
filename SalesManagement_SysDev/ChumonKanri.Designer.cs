@@ -520,6 +520,7 @@
             this.Name = "ChumonKanri";
             this.Text = "TopPage";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ChumonKanri_Load);
             this.TopChumonPnl.ResumeLayout(false);
             this.TopChumonPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChumonKanriDgv)).EndInit();

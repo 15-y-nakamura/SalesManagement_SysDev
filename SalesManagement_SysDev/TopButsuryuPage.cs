@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesManagement_SysDev.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,14 @@ namespace SalesManagement_SysDev
 {
     public partial class TopButsuryuPage : Form
     {
+        
+        MessageDsp messageDsp = new MessageDsp();
+        EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
+        InputCheck inputCheck = new InputCheck();
+
+        internal static int EmID = 0;
+
+
         public TopButsuryuPage()
         {
 
@@ -58,6 +67,21 @@ namespace SalesManagement_SysDev
             //TopHonshaPageを表示
             TopHonshaPage f2 = new TopHonshaPage();
             f2.Show();
+        }
+
+        private void TopButsuryuPage_Load(object sender, EventArgs e)
+        {
+            string[] TopData = new string[4];
+            TopData = empDataAccess.GetTopData(EmID);
+
+            string emID = EmID.ToString();
+
+            TopIDLbl.Text = emID;
+            TopNameLbl.Text = TopData[0];
+            TopYakushokuLbl.Text = TopData[1];
+            TopEigyoshoLbl.Text = TopData[2];
+            TopJikanLbl.Text = TopData[3];
+
         }
     }
 }
