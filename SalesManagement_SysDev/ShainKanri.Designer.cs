@@ -44,11 +44,9 @@
             this.JuchuJotaiFlagCmb = new System.Windows.Forms.ComboBox();
             this.ShainNameTxb = new System.Windows.Forms.TextBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
-            this.PasuwadoTxb = new System.Windows.Forms.TextBox();
             this.ShainIDTxb = new System.Windows.Forms.TextBox();
             this.ShainNameLbl = new System.Windows.Forms.Label();
             this.JoinDateLbl = new System.Windows.Forms.Label();
-            this.PasuwadoLbl = new System.Windows.Forms.Label();
             this.YakushokuNameLbl = new System.Windows.Forms.Label();
             this.HihyojiLbl = new System.Windows.Forms.Label();
             this.ShohinIDLbl = new System.Windows.Forms.Label();
@@ -129,11 +127,9 @@
             this.TopShainPnl.Controls.Add(this.JuchuJotaiFlagCmb);
             this.TopShainPnl.Controls.Add(this.ShainNameTxb);
             this.TopShainPnl.Controls.Add(this.HihyojiTxb);
-            this.TopShainPnl.Controls.Add(this.PasuwadoTxb);
             this.TopShainPnl.Controls.Add(this.ShainIDTxb);
             this.TopShainPnl.Controls.Add(this.ShainNameLbl);
             this.TopShainPnl.Controls.Add(this.JoinDateLbl);
-            this.TopShainPnl.Controls.Add(this.PasuwadoLbl);
             this.TopShainPnl.Controls.Add(this.YakushokuNameLbl);
             this.TopShainPnl.Controls.Add(this.HihyojiLbl);
             this.TopShainPnl.Controls.Add(this.ShohinIDLbl);
@@ -157,7 +153,7 @@
             // 
             // JoinDateDtm
             // 
-            this.JoinDateDtm.Location = new System.Drawing.Point(1052, 220);
+            this.JoinDateDtm.Location = new System.Drawing.Point(642, 219);
             this.JoinDateDtm.Name = "JoinDateDtm";
             this.JoinDateDtm.Size = new System.Drawing.Size(201, 25);
             this.JoinDateDtm.TabIndex = 55;
@@ -227,7 +223,7 @@
             this.JuchuJotaiFlagCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.JuchuJotaiFlagCmb.FormattingEnabled = true;
-            this.JuchuJotaiFlagCmb.Location = new System.Drawing.Point(642, 220);
+            this.JuchuJotaiFlagCmb.Location = new System.Drawing.Point(237, 218);
             this.JuchuJotaiFlagCmb.Name = "JuchuJotaiFlagCmb";
             this.JuchuJotaiFlagCmb.Size = new System.Drawing.Size(201, 26);
             this.JuchuJotaiFlagCmb.TabIndex = 18;
@@ -250,15 +246,6 @@
             this.HihyojiTxb.Name = "HihyojiTxb";
             this.HihyojiTxb.Size = new System.Drawing.Size(609, 90);
             this.HihyojiTxb.TabIndex = 14;
-            // 
-            // PasuwadoTxb
-            // 
-            this.PasuwadoTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PasuwadoTxb.Location = new System.Drawing.Point(237, 220);
-            this.PasuwadoTxb.Name = "PasuwadoTxb";
-            this.PasuwadoTxb.Size = new System.Drawing.Size(201, 25);
-            this.PasuwadoTxb.TabIndex = 17;
             // 
             // ShainIDTxb
             // 
@@ -283,27 +270,17 @@
             // 
             this.JoinDateLbl.AutoSize = true;
             this.JoinDateLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.JoinDateLbl.Location = new System.Drawing.Point(880, 220);
+            this.JoinDateLbl.Location = new System.Drawing.Point(474, 216);
             this.JoinDateLbl.Name = "JoinDateLbl";
             this.JoinDateLbl.Size = new System.Drawing.Size(152, 28);
             this.JoinDateLbl.TabIndex = 7;
             this.JoinDateLbl.Text = "入社年月日";
             // 
-            // PasuwadoLbl
-            // 
-            this.PasuwadoLbl.AutoSize = true;
-            this.PasuwadoLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.PasuwadoLbl.Location = new System.Drawing.Point(98, 220);
-            this.PasuwadoLbl.Name = "PasuwadoLbl";
-            this.PasuwadoLbl.Size = new System.Drawing.Size(120, 28);
-            this.PasuwadoLbl.TabIndex = 8;
-            this.PasuwadoLbl.Text = "パスワード";
-            // 
             // YakushokuNameLbl
             // 
             this.YakushokuNameLbl.AutoSize = true;
             this.YakushokuNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.YakushokuNameLbl.Location = new System.Drawing.Point(530, 220);
+            this.YakushokuNameLbl.Location = new System.Drawing.Point(121, 219);
             this.YakushokuNameLbl.Name = "YakushokuNameLbl";
             this.YakushokuNameLbl.Size = new System.Drawing.Size(96, 28);
             this.YakushokuNameLbl.TabIndex = 8;
@@ -546,8 +523,6 @@
         private System.Windows.Forms.TextBox TelTxb;
         private System.Windows.Forms.Label TelLbl;
         private System.Windows.Forms.Label EigyoshoNameLbl;
-        private System.Windows.Forms.TextBox PasuwadoTxb;
-        private System.Windows.Forms.Label PasuwadoLbl;
         private System.Windows.Forms.DataGridView ShainKanriDgv;
         private System.Windows.Forms.Button GamenKousinBtn;
         private System.Windows.Forms.DateTimePicker JoinDateDtm;
