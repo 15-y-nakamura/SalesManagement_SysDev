@@ -438,6 +438,7 @@
             this.button15.TabIndex = 23;
             this.button15.Text = "ログアウト";
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // TopIDHyojiLbl
             // 
@@ -538,7 +539,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 700);
+            this.ClientSize = new System.Drawing.Size(1898, 1024);
             this.Controls.Add(this.TopIDHyojiLbl);
             this.Controls.Add(this.TopIDLbl);
             this.Controls.Add(this.TopEigyoshoLbl);
