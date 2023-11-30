@@ -42,6 +42,8 @@ namespace SalesManagement_SysDev
 
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
+            TopEigyoPage.EmID = EmID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -53,6 +55,8 @@ namespace SalesManagement_SysDev
 
         private void TopButsuryuBtn_Click(object sender, EventArgs e)
         {
+            TopButsuryuPage.EmID = EmID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -84,6 +88,27 @@ namespace SalesManagement_SysDev
             TopYakushokuLbl.Text = TopData[1];
             TopEigyoshoLbl.Text = TopData[2];
             TopJikanLbl.Text = TopData[3];
+        }
+
+        private void TopLogoutBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = messageDsp.DspMsg("M0004");
+
+            if (result == DialogResult.OK)
+            {
+                // OKの時の処理
+                //現画面を非表示
+                this.Visible = false;
+
+                //TopButsuryuPageを表示
+                LoginPage f2 = new LoginPage();
+                f2.ShowDialog();
+            }
+            else
+            {
+                // キャンセルの時の処理
+            }
+
         }
     }
 }
