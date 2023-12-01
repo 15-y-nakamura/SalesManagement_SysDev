@@ -40,8 +40,8 @@
             this.TelTxb = new System.Windows.Forms.TextBox();
             this.TelLbl = new System.Windows.Forms.Label();
             this.EigyoshoNameLbl = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.JuchuJotaiFlagCmb = new System.Windows.Forms.ComboBox();
+            this.ShainKanriFlagCmb = new System.Windows.Forms.ComboBox();
+            this.YakushokuNameTxb = new System.Windows.Forms.ComboBox();
             this.ShainNameTxb = new System.Windows.Forms.TextBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
             this.ShainIDTxb = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             this.JoinDateLbl = new System.Windows.Forms.Label();
             this.YakushokuNameLbl = new System.Windows.Forms.Label();
             this.HihyojiLbl = new System.Windows.Forms.Label();
-            this.ShohinIDLbl = new System.Windows.Forms.Label();
+            this.ShainKanriFlagLbl = new System.Windows.Forms.Label();
             this.ShainIDLbl = new System.Windows.Forms.Label();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.HiddenBtn = new System.Windows.Forms.Button();
@@ -123,8 +123,8 @@
             this.TopShainPnl.Controls.Add(this.TelTxb);
             this.TopShainPnl.Controls.Add(this.TelLbl);
             this.TopShainPnl.Controls.Add(this.EigyoshoNameLbl);
-            this.TopShainPnl.Controls.Add(this.comboBox1);
-            this.TopShainPnl.Controls.Add(this.JuchuJotaiFlagCmb);
+            this.TopShainPnl.Controls.Add(this.ShainKanriFlagCmb);
+            this.TopShainPnl.Controls.Add(this.YakushokuNameTxb);
             this.TopShainPnl.Controls.Add(this.ShainNameTxb);
             this.TopShainPnl.Controls.Add(this.HihyojiTxb);
             this.TopShainPnl.Controls.Add(this.ShainIDTxb);
@@ -132,7 +132,7 @@
             this.TopShainPnl.Controls.Add(this.JoinDateLbl);
             this.TopShainPnl.Controls.Add(this.YakushokuNameLbl);
             this.TopShainPnl.Controls.Add(this.HihyojiLbl);
-            this.TopShainPnl.Controls.Add(this.ShohinIDLbl);
+            this.TopShainPnl.Controls.Add(this.ShainKanriFlagLbl);
             this.TopShainPnl.Controls.Add(this.ShainIDLbl);
             this.TopShainPnl.Controls.Add(this.SearchBtn);
             this.TopShainPnl.Controls.Add(this.HiddenBtn);
@@ -208,25 +208,25 @@
             this.EigyoshoNameLbl.TabIndex = 20;
             this.EigyoshoNameLbl.Text = "営業所名";
             // 
-            // comboBox1
+            // ShainKanriFlagCmb
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ShainKanriFlagCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(237, 290);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(201, 26);
-            this.comboBox1.TabIndex = 18;
+            this.ShainKanriFlagCmb.FormattingEnabled = true;
+            this.ShainKanriFlagCmb.Location = new System.Drawing.Point(237, 290);
+            this.ShainKanriFlagCmb.Name = "ShainKanriFlagCmb";
+            this.ShainKanriFlagCmb.Size = new System.Drawing.Size(201, 26);
+            this.ShainKanriFlagCmb.TabIndex = 18;
             // 
-            // JuchuJotaiFlagCmb
+            // YakushokuNameTxb
             // 
-            this.JuchuJotaiFlagCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.YakushokuNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.JuchuJotaiFlagCmb.FormattingEnabled = true;
-            this.JuchuJotaiFlagCmb.Location = new System.Drawing.Point(237, 218);
-            this.JuchuJotaiFlagCmb.Name = "JuchuJotaiFlagCmb";
-            this.JuchuJotaiFlagCmb.Size = new System.Drawing.Size(201, 26);
-            this.JuchuJotaiFlagCmb.TabIndex = 18;
+            this.YakushokuNameTxb.FormattingEnabled = true;
+            this.YakushokuNameTxb.Location = new System.Drawing.Point(237, 218);
+            this.YakushokuNameTxb.Name = "YakushokuNameTxb";
+            this.YakushokuNameTxb.Size = new System.Drawing.Size(201, 26);
+            this.YakushokuNameTxb.TabIndex = 18;
             // 
             // ShainNameTxb
             // 
@@ -296,15 +296,15 @@
             this.HihyojiLbl.TabIndex = 9;
             this.HihyojiLbl.Text = "非表示理由";
             // 
-            // ShohinIDLbl
+            // ShainKanriFlagLbl
             // 
-            this.ShohinIDLbl.AutoSize = true;
-            this.ShohinIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ShohinIDLbl.Location = new System.Drawing.Point(33, 290);
-            this.ShohinIDLbl.Name = "ShohinIDLbl";
-            this.ShohinIDLbl.Size = new System.Drawing.Size(184, 28);
-            this.ShohinIDLbl.TabIndex = 10;
-            this.ShohinIDLbl.Text = "社員管理フラグ";
+            this.ShainKanriFlagLbl.AutoSize = true;
+            this.ShainKanriFlagLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ShainKanriFlagLbl.Location = new System.Drawing.Point(33, 290);
+            this.ShainKanriFlagLbl.Name = "ShainKanriFlagLbl";
+            this.ShainKanriFlagLbl.Size = new System.Drawing.Size(184, 28);
+            this.ShainKanriFlagLbl.TabIndex = 10;
+            this.ShainKanriFlagLbl.Text = "社員管理フラグ";
             // 
             // ShainIDLbl
             // 
@@ -516,10 +516,10 @@
         private System.Windows.Forms.Label JoinDateLbl;
         private System.Windows.Forms.Label YakushokuNameLbl;
         private System.Windows.Forms.Label HihyojiLbl;
-        private System.Windows.Forms.Label ShohinIDLbl;
+        private System.Windows.Forms.Label ShainKanriFlagLbl;
         private System.Windows.Forms.Label ShainIDLbl;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox JuchuJotaiFlagCmb;
+        private System.Windows.Forms.ComboBox ShainKanriFlagCmb;
+        private System.Windows.Forms.ComboBox YakushokuNameTxb;
         private System.Windows.Forms.TextBox TelTxb;
         private System.Windows.Forms.Label TelLbl;
         private System.Windows.Forms.Label EigyoshoNameLbl;
