@@ -777,6 +777,7 @@ namespace SalesManagement_SysDev
                 if (PoID == 1)
                 {
                     TopHonshaPage.EmID = int.Parse(logonID);
+                    TopHonshaPage.PoID = PoID;
 
                     //現画面を非表示
                     this.Visible = false;
@@ -788,6 +789,7 @@ namespace SalesManagement_SysDev
                 else if (PoID == 2)
                 {
                     TopEigyoPage.EmID = int.Parse(logonID);
+                    TopEigyoPage.PoID = PoID;
 
                     //現画面を非表示
                     this.Visible = false;
@@ -800,6 +802,7 @@ namespace SalesManagement_SysDev
                 else if(PoID == 3)
                 {
                     TopButsuryuPage.EmID = int.Parse(logonID);
+                    TopButsuryuPage.PoID = PoID;
 
                     //現画面を非表示
                     this.Visible = false;
