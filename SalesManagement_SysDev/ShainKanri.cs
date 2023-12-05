@@ -42,6 +42,19 @@ namespace SalesManagement_SysDev
             TopEigyoshoLbl.Text = TopData[2];
             TopJikanLbl.Text = TopData[3];
 
+            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+            TopHonshaBtn.FlatAppearance.BorderSize = 1;
+            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+            TopEigyoBtn.FlatAppearance.BorderSize = 2;
+            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+
         }
 
         //テキストボックス内に灰色の文字を表示
@@ -75,6 +88,9 @@ namespace SalesManagement_SysDev
 
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
+            TopHonshaPage.EmID = EmID;
+            TopHonshaPage.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -109,8 +125,25 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
-        private void ShainIDLbl_Click(object sender, EventArgs e)
+
+        private void TopLogoutBtn_Click(object sender, EventArgs e)
         {
+            DialogResult result = messageDsp.DspMsg("M0004");
+
+            if (result == DialogResult.OK)
+            {
+                // OKの時の処理
+                //現画面を非表示
+                this.Visible = false;
+
+                //TopButsuryuPageを表示
+                LoginPage f2 = new LoginPage();
+                f2.ShowDialog();
+            }
+            else
+            {
+                // キャンセルの時の処理
+            }
 
         }
     }

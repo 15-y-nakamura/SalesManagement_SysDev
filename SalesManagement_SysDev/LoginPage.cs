@@ -20,6 +20,8 @@ namespace SalesManagement_SysDev
         MessageDsp messageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
         InputCheck inputCheck = new InputCheck();
+        //ログインパスワード用クラスのインスタンス化
+        LoginDataAccess loginDataAccess = new LoginDataAccess();
 
         public LoginPage()
         {
@@ -777,6 +779,7 @@ namespace SalesManagement_SysDev
                 if (PoID == 1)
                 {
                     TopHonshaPage.EmID = int.Parse(logonID);
+                    TopHonshaPage.PoID = PoID;
 
                     //現画面を非表示
                     this.Visible = false;
@@ -784,6 +787,11 @@ namespace SalesManagement_SysDev
                     //TopHonshaPageを表示
                     TopHonshaPage f2 = new TopHonshaPage();
                     f2.Show();
+
+                    if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
+                    {
+                        MessageBox.Show("一致するデータがありました");
+                    }
                 }
                 else if (PoID == 2)
                 {
@@ -797,10 +805,16 @@ namespace SalesManagement_SysDev
                     TopEigyoPage f2 = new TopEigyoPage();
                     f2.Show();
 
+                    if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
+                    {
+                        MessageBox.Show("一致するデータがありました");
+                    }
+
                 }
                 else if(PoID == 3)
                 {
                     TopButsuryuPage.EmID = int.Parse(logonID);
+                    TopButsuryuPage.PoID = PoID;
 
                     //現画面を非表示
                     this.Visible = false;
@@ -808,13 +822,31 @@ namespace SalesManagement_SysDev
                     //TopButsuryuPageを表示
                     TopButsuryuPage f2 = new TopButsuryuPage();
                     f2.Show();
-                }
 
+                    if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
+                    {
+                        MessageBox.Show("一致するデータがありました");
+                    }
+                }
             }
         }
 
-        private void ShainTxb_TextChanged(object sender, EventArgs e)
+        private void LogoutBtn_Click(object sender, EventArgs e)
         {
+            /* フォームを閉じる確認メッセージの表示
+            DialogResult result = messageDsp.DspMsg("M0001");
+
+            if (result == DialogResult.OK)
+            {
+                // OKの時の処理
+                this.Close();
+            }
+            else
+            {
+                // キャンセルの時の処理
+            }*/
+
+            this.Close();
 
         }
     }

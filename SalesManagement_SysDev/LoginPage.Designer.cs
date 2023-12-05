@@ -121,13 +121,15 @@
             // 
             // LogoutBtn
             // 
+            this.LogoutBtn.AutoSize = true;
             this.LogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.LogoutBtn.Location = new System.Drawing.Point(870, 12);
+            this.LogoutBtn.Location = new System.Drawing.Point(840, 32);
             this.LogoutBtn.Name = "LogoutBtn";
-            this.LogoutBtn.Size = new System.Drawing.Size(105, 63);
+            this.LogoutBtn.Size = new System.Drawing.Size(104, 55);
             this.LogoutBtn.TabIndex = 24;
             this.LogoutBtn.Text = "閉じる";
             this.LogoutBtn.UseVisualStyleBackColor = true;
+            this.LogoutBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
             // 
             // LoginPage
             // 
@@ -145,7 +147,7 @@
             this.Controls.Add(this.btn_CleateDabase);
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "LoginPage";
-            this.Text = "販売管理システムログイン画面";
+            this.Text = "販売在庫管理システム - ログイン画面";
             this.ResumeLayout(false);
             this.PerformLayout();
 

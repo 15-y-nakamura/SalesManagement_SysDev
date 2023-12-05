@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
+    <Compile Include="DataAccess\LoginDataAccess.cs" />
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Common\InputCheck.cs" />
@@ -77,6 +78,12 @@
     <Compile Include="Entity\M_SmallClassification.cs" />
     <Compile Include="MessageDsp.cs" />
     <Compile Include="M_Message.cs" />
+    <Compile Include="PasswordChangePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordChangePage.Designer.cs">
+      <DependentUpon>PasswordChangePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entity\T_Arrival.cs" />
@@ -149,6 +156,9 @@
     </Compile>
     <EmbeddedResource Include="LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordChangePage.resx">
+      <DependentUpon>PasswordChangePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
