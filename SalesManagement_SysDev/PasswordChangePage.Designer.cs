@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.PassChnLbl = new System.Windows.Forms.Label();
-            this.PassLbl = new System.Windows.Forms.Label();
+            this.NewPassLbl = new System.Windows.Forms.Label();
             this.RepeatPassLbl = new System.Windows.Forms.Label();
-            this.PassTxb = new System.Windows.Forms.TextBox();
+            this.NewPassTxb = new System.Windows.Forms.TextBox();
             this.RepeatPassTxb = new System.Windows.Forms.TextBox();
             this.KeepBtn = new System.Windows.Forms.Button();
+            this.ReturnBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PassChnLbl
@@ -47,36 +48,36 @@
             this.PassChnLbl.TabIndex = 6;
             this.PassChnLbl.Text = "パスワード変更画面";
             // 
-            // PassLbl
+            // NewPassLbl
             // 
-            this.PassLbl.AutoSize = true;
-            this.PassLbl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.PassLbl.Location = new System.Drawing.Point(177, 183);
-            this.PassLbl.Name = "PassLbl";
-            this.PassLbl.Size = new System.Drawing.Size(246, 36);
-            this.PassLbl.TabIndex = 7;
-            this.PassLbl.Text = "新しいパスワード";
+            this.NewPassLbl.AutoSize = true;
+            this.NewPassLbl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.NewPassLbl.Location = new System.Drawing.Point(177, 183);
+            this.NewPassLbl.Name = "NewPassLbl";
+            this.NewPassLbl.Size = new System.Drawing.Size(246, 36);
+            this.NewPassLbl.TabIndex = 7;
+            this.NewPassLbl.Text = "新しいパスワード";
             // 
             // RepeatPassLbl
             // 
             this.RepeatPassLbl.AutoSize = true;
             this.RepeatPassLbl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.RepeatPassLbl.Location = new System.Drawing.Point(177, 290);
+            this.RepeatPassLbl.Location = new System.Drawing.Point(177, 330);
             this.RepeatPassLbl.Name = "RepeatPassLbl";
             this.RepeatPassLbl.Size = new System.Drawing.Size(390, 36);
             this.RepeatPassLbl.TabIndex = 8;
             this.RepeatPassLbl.Text = "新しいパスワード（確認用）";
             // 
-            // PassTxb
+            // NewPassTxb
             // 
-            this.PassTxb.Location = new System.Drawing.Point(269, 241);
-            this.PassTxb.Name = "PassTxb";
-            this.PassTxb.Size = new System.Drawing.Size(461, 25);
-            this.PassTxb.TabIndex = 9;
+            this.NewPassTxb.Location = new System.Drawing.Point(269, 238);
+            this.NewPassTxb.Name = "NewPassTxb";
+            this.NewPassTxb.Size = new System.Drawing.Size(461, 25);
+            this.NewPassTxb.TabIndex = 9;
             // 
             // RepeatPassTxb
             // 
-            this.RepeatPassTxb.Location = new System.Drawing.Point(269, 343);
+            this.RepeatPassTxb.Location = new System.Drawing.Point(269, 387);
             this.RepeatPassTxb.Name = "RepeatPassTxb";
             this.RepeatPassTxb.Size = new System.Drawing.Size(461, 25);
             this.RepeatPassTxb.TabIndex = 10;
@@ -84,24 +85,38 @@
             // KeepBtn
             // 
             this.KeepBtn.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.KeepBtn.Location = new System.Drawing.Point(340, 407);
+            this.KeepBtn.Location = new System.Drawing.Point(342, 498);
             this.KeepBtn.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.KeepBtn.Name = "KeepBtn";
             this.KeepBtn.Size = new System.Drawing.Size(290, 102);
             this.KeepBtn.TabIndex = 11;
             this.KeepBtn.Text = "保存";
             this.KeepBtn.UseVisualStyleBackColor = true;
+            this.KeepBtn.Click += new System.EventHandler(this.KeepBtn_Click);
+            // 
+            // ReturnBtn
+            // 
+            this.ReturnBtn.AutoSize = true;
+            this.ReturnBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ReturnBtn.Location = new System.Drawing.Point(840, 32);
+            this.ReturnBtn.Name = "ReturnBtn";
+            this.ReturnBtn.Size = new System.Drawing.Size(104, 55);
+            this.ReturnBtn.TabIndex = 25;
+            this.ReturnBtn.Text = "戻る";
+            this.ReturnBtn.UseVisualStyleBackColor = true;
+            this.ReturnBtn.Click += new System.EventHandler(this.ReturnBtn_Click);
             // 
             // PasswordChangePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 566);
+            this.ClientSize = new System.Drawing.Size(978, 652);
+            this.Controls.Add(this.ReturnBtn);
             this.Controls.Add(this.KeepBtn);
             this.Controls.Add(this.RepeatPassTxb);
-            this.Controls.Add(this.PassTxb);
+            this.Controls.Add(this.NewPassTxb);
             this.Controls.Add(this.RepeatPassLbl);
-            this.Controls.Add(this.PassLbl);
+            this.Controls.Add(this.NewPassLbl);
             this.Controls.Add(this.PassChnLbl);
             this.Name = "PasswordChangePage";
             this.Text = "販売管理システムパスワード変更画面";
@@ -113,10 +128,11 @@
         #endregion
 
         private System.Windows.Forms.Label PassChnLbl;
-        private System.Windows.Forms.Label PassLbl;
+        private System.Windows.Forms.Label NewPassLbl;
         private System.Windows.Forms.Label RepeatPassLbl;
-        private System.Windows.Forms.TextBox PassTxb;
+        private System.Windows.Forms.TextBox NewPassTxb;
         private System.Windows.Forms.TextBox RepeatPassTxb;
         private System.Windows.Forms.Button KeepBtn;
+        private System.Windows.Forms.Button ReturnBtn;
     }
 }
