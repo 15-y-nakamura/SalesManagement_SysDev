@@ -19,12 +19,12 @@ namespace SalesManagement_SysDev
         [Required]
         public string MsgComments { get; set; }
 
-
         [MaxLength(20)]
         [Required]
         public string MsgTitle { get; set; }
-
+           
         public int MsgButton { get; set; }
+        
         public int MsgICon { get; set; }
     }
 }

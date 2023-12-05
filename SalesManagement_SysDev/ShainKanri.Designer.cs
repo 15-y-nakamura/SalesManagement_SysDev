@@ -41,6 +41,7 @@
             this.TelLbl = new System.Windows.Forms.Label();
             this.EigyoshoNameLbl = new System.Windows.Forms.Label();
             this.ShainKanriFlagCmb = new System.Windows.Forms.ComboBox();
+            this.YakushokuNameCmb = new System.Windows.Forms.ComboBox();
             this.YakushokuNameTxb = new System.Windows.Forms.ComboBox();
             this.ShainNameTxb = new System.Windows.Forms.TextBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
@@ -127,6 +128,7 @@
             this.TopShainPnl.Controls.Add(this.TelLbl);
             this.TopShainPnl.Controls.Add(this.EigyoshoNameLbl);
             this.TopShainPnl.Controls.Add(this.ShainKanriFlagCmb);
+            this.TopShainPnl.Controls.Add(this.YakushokuNameCmb);
             this.TopShainPnl.Controls.Add(this.YakushokuNameTxb);
             this.TopShainPnl.Controls.Add(this.ShainNameTxb);
             this.TopShainPnl.Controls.Add(this.HihyojiTxb);
@@ -358,6 +360,7 @@
             this.RegistBtn.TabIndex = 2;
             this.RegistBtn.Text = "登録";
             this.RegistBtn.UseVisualStyleBackColor = true;
+            this.RegistBtn.Click += new System.EventHandler(this.RegistBtn_Click);
             // 
             // TopLogoutBtn
             // 

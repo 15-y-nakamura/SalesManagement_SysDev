@@ -18,6 +18,7 @@ namespace SalesManagement_SysDev
 
         [Key]
         public int McID { get; set; }           //大分類ID
+        
         [MaxLength(50)]
         [Required]
         public string McName { get; set; }      //大分類名		
