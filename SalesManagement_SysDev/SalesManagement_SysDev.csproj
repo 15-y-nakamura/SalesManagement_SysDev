@@ -66,6 +66,12 @@
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Common\InputCheck.cs" />
+    <Compile Include="ZaikoKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZaikoKanri.Designer.cs">
+      <DependentUpon>ZaikoKanri.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     <Compile Include="TopHonshaPage.Designer.cs">
       <DependentUpon>TopHonshaPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ZaikoKanri.resx">
+      <DependentUpon>ZaikoKanri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
