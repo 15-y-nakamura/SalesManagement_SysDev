@@ -20,7 +20,6 @@ namespace SalesManagement_SysDev
 
         internal static int PoID = 0;
         internal static int EmID = 0;
-        internal static int PoID = 0;
 
         public ChumonKanri()
         {
