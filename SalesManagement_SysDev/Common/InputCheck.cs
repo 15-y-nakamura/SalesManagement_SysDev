@@ -48,7 +48,7 @@ namespace SalesManagement_SysDev
         public bool CheckSuuti (string text)
         {
             Regex regex = new Regex("^[0-9]+$");
-            if (!regex.IsMatch(text))
+            if (regex.IsMatch(text))
             {
                 return true;
             }
