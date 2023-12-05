@@ -18,7 +18,7 @@ namespace SalesManagement_SysDev
         InputCheck inputCheck = new InputCheck();
 
         internal static int EmID = 0;
-        internal static int PoID = 0;
+        internal static int PoID = 0; 
 
 
         public ShohinKanri()

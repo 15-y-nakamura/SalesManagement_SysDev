@@ -48,7 +48,6 @@ namespace SalesManagement_SysDev
             TopEigyoPage.EmID = EmID;
             TopEigyoPage.PoID = PoID;
 
-
             //現画面を非表示
             this.Visible = false;
 
@@ -82,6 +81,7 @@ namespace SalesManagement_SysDev
 
         private void TopButsuryuPage_Load(object sender, EventArgs e)
         {
+
             string[] TopData = new string[4];
             TopData = empDataAccess.GetTopData(EmID);
 

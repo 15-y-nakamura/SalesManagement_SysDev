@@ -20,6 +20,7 @@ namespace SalesManagement_SysDev
 
         internal static int PoID = 0;
         internal static int EmID = 0;
+        
 
         public JuchuKanri()
         {
@@ -43,6 +44,7 @@ namespace SalesManagement_SysDev
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
             TopEigyoPage.EmID = EmID;
+            
             TopEigyoPage.PoID = PoID;
 
             //現画面を非表示

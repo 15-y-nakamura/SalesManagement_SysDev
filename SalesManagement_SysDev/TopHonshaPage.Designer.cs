@@ -54,7 +54,7 @@
             TopLbl.Font = new System.Drawing.Font("MS UI Gothic", 40F);
             TopLbl.Location = new System.Drawing.Point(251, 37);
             TopLbl.Name = "TopLbl";
-            TopLbl.Size = new System.Drawing.Size(617, 93);
+            TopLbl.Size = new System.Drawing.Size(550, 93);
             TopLbl.TabIndex = 3;
             TopLbl.Text = "本社管理画面";
             // 
@@ -99,7 +99,7 @@
             // ShainKanriBtn
             // 
             this.ShainKanriBtn.Font = new System.Drawing.Font("MS UI Gothic", 30F);
-            this.ShainKanriBtn.Location = new System.Drawing.Point(61, 47);
+            this.ShainKanriBtn.Location = new System.Drawing.Point(66, 48);
             this.ShainKanriBtn.Name = "ShainKanriBtn";
             this.ShainKanriBtn.Size = new System.Drawing.Size(772, 132);
             this.ShainKanriBtn.TabIndex = 12;
@@ -131,7 +131,7 @@
             // 
             this.TopIDHyojiLbl.AutoSize = true;
             this.TopIDHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.TopIDHyojiLbl.Location = new System.Drawing.Point(902, 28);
+            this.TopIDHyojiLbl.Location = new System.Drawing.Point(898, 28);
             this.TopIDHyojiLbl.Name = "TopIDHyojiLbl";
             this.TopIDHyojiLbl.Size = new System.Drawing.Size(54, 30);
             this.TopIDHyojiLbl.TabIndex = 93;
@@ -159,7 +159,7 @@
             // 
             this.TopEigyoshoHyojiLbl.AutoSize = true;
             this.TopEigyoshoHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
-            this.TopEigyoshoHyojiLbl.Location = new System.Drawing.Point(896, 91);
+            this.TopEigyoshoHyojiLbl.Location = new System.Drawing.Point(892, 91);
             this.TopEigyoshoHyojiLbl.Name = "TopEigyoshoHyojiLbl";
             this.TopEigyoshoHyojiLbl.Size = new System.Drawing.Size(118, 30);
             this.TopEigyoshoHyojiLbl.TabIndex = 90;

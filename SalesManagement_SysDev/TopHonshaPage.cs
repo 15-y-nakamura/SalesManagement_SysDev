@@ -61,7 +61,6 @@ namespace SalesManagement_SysDev
             TopButsuryuPage.EmID = EmID;
             TopButsuryuPage.PoID = PoID;
 
-
             //現画面を非表示
             this.Visible = false;
 
@@ -72,6 +71,7 @@ namespace SalesManagement_SysDev
 
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
+
             //現画面を非表示
             this.Visible = false;
 
