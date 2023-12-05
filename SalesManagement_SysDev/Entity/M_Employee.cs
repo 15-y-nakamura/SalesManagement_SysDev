@@ -47,7 +47,8 @@ namespace SalesManagement_SysDev
         //[Required]
         // public String EmBarcode { get; set; }    //社員バーコード		
         public int EmFlag { get; set; }             //社員管理フラグ
-        public string EmHidden { get; set; }	    //非表示理由		
+        public string EmHidden { get; set; }        //非表示理由		
+        public string FirstPass { get; set; }	    //初期パスワード	
 
         public virtual M_Position M_Position { get; set; }
         public virtual M_SalesOffice M_SalesOffice { get; set; }

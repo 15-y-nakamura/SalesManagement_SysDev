@@ -80,7 +80,7 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：CheckPhone()
+        //メソッド名：CheckPhoneFAX()
         //引　数   ：文字列
         //戻り値   ：True:異常なし、False:異常あり
         //機　能   ：電話番号形式／FAX形式のチェック

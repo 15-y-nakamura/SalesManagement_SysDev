@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesManagement_SysDev.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,12 @@ namespace SalesManagement_SysDev
 {
     public partial class LoginPage : Form
     {
+        MessageDsp messageDsp = new MessageDsp();
+        EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
+        InputCheck inputCheck = new InputCheck();
+        //ログインパスワード用クラスのインスタンス化
+        LoginDataAccess loginDataAccess = new LoginDataAccess();
+
         public LoginPage()
         {
             InitializeComponent();
@@ -733,6 +740,114 @@ namespace SalesManagement_SysDev
             context.Dispose();
 
             MessageBox.Show("サンプルデータ登録完了");
+        }
+
+        private void RoguinBtn_Click(object sender, EventArgs e)
+        {
+            string logonID = ShainTxb.Text;
+            string logonPass = PasuwadoTxb.Text;
+
+            if (logonID.Trim() == "" || logonID == null || logonPass.Trim() == "" || logonPass == null)
+            {
+                //ID・PW未入力メッセージ
+                messageDsp.DspMsg("M0002");
+                return;
+            }
+
+            if(!inputCheck.CheckSuuti(logonID))
+            {
+                //不一致メッセージ
+                messageDsp.DspMsg("M0003");
+                return;
+            }
+            else if(!inputCheck.CheckSuuti(logonPass))
+            {
+                messageDsp.DspMsg("M0003");
+                return;
+            }
+
+
+            if (!empDataAccess.PasswordCheck(int.Parse(ShainTxb.Text), PasuwadoTxb.Text))
+           {
+                messageDsp.DspMsg("M0003");
+                return;
+           }
+           else
+           {
+                int PoID = empDataAccess.GetPositiomID(int.Parse(logonID));
+
+                if (PoID == 1)
+                {
+                    TopHonshaPage.EmID = int.Parse(logonID);
+                    TopHonshaPage.PoID = PoID;
+
+                    //現画面を非表示
+                    this.Visible = false;
+
+                    //TopHonshaPageを表示
+                    TopHonshaPage f2 = new TopHonshaPage();
+                    f2.Show();
+
+                    if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
+                    {
+                        MessageBox.Show("一致するデータがありました");
+                    }
+                }
+                else if (PoID == 2)
+                {
+                    TopEigyoPage.EmID = int.Parse(logonID);
+                    TopEigyoPage.PoID = PoID;
+
+                    //現画面を非表示
+                    this.Visible = false;
+
+                    //TopEigyoPageを表示
+                    TopEigyoPage f2 = new TopEigyoPage();
+                    f2.Show();
+
+                    if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
+                    {
+                        MessageBox.Show("一致するデータがありました");
+                    }
+
+                }
+                else if(PoID == 3)
+                {
+                    TopButsuryuPage.EmID = int.Parse(logonID);
+                    TopButsuryuPage.PoID = PoID;
+
+                    //現画面を非表示
+                    this.Visible = false;
+
+                    //TopButsuryuPageを表示
+                    TopButsuryuPage f2 = new TopButsuryuPage();
+                    f2.Show();
+
+                    if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
+                    {
+                        MessageBox.Show("一致するデータがありました");
+                    }
+                }
+            }
+        }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            /* フォームを閉じる確認メッセージの表示
+            DialogResult result = messageDsp.DspMsg("M0001");
+
+            if (result == DialogResult.OK)
+            {
+                // OKの時の処理
+                this.Close();
+            }
+            else
+            {
+                // キャンセルの時の処理
+            }*/
+
+            this.Close();
+
         }
     }
 }

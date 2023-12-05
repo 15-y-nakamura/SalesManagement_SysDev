@@ -28,6 +28,13 @@ namespace SalesManagement_SysDev
         InputCheck InputCheck = new InputCheck();
 
 
+        MessageDsp messageDsp = new MessageDsp();
+        EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
+        InputCheck inputCheck = new InputCheck();
+
+        internal static int EmID = 0;
+        internal static int PoID = 0;
+
         public Shainkanri()
         {
 
@@ -87,6 +94,36 @@ namespace SalesManagement_SysDev
         }
 
         /*private void PlaceHolderText()
+            PlaceHolderText();
+
+            string[] TopData = new string[4];
+            TopData = empDataAccess.GetTopData(EmID);
+
+            string emID = EmID.ToString();
+
+            TopIDLbl.Text = emID;
+            TopNameLbl.Text = TopData[0];
+            TopYakushokuLbl.Text = TopData[1];
+            TopEigyoshoLbl.Text = TopData[2];
+            TopJikanLbl.Text = TopData[3];
+
+            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+            TopHonshaBtn.FlatAppearance.BorderSize = 1;
+            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+            TopEigyoBtn.FlatAppearance.BorderSize = 2;
+            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+
+        }
+
+        //テキストボックス内に灰色の文字を表示
+        private void PlaceHolderText()
         {
             TelTxb.Text = "ハイフンあり";
             TelTxb.ForeColor = SystemColors.GrayText;
@@ -94,6 +131,7 @@ namespace SalesManagement_SysDev
             TelTxb.Leave += TelTxb_Leave;
         }
 
+        //電話番号のテキストボックスが選択されていない場合
         private void TelTxb_Enter(object sender, EventArgs e)
         {
            if (TelTxb.Text == "ハイフンあり")
@@ -102,6 +140,8 @@ namespace SalesManagement_SysDev
                 TelTxb.ForeColor = SystemColors.WindowText;
             }
         }
+
+        //電話番号のテキストボックスが選択されていない・入力されていない場合
         private void TelTxb_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(TelTxb.Text))
@@ -113,6 +153,9 @@ namespace SalesManagement_SysDev
 
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
+            TopHonshaPage.EmID = EmID;
+            TopHonshaPage.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -123,6 +166,9 @@ namespace SalesManagement_SysDev
 
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
+            TopEigyoPage.EmID = EmID;
+            TopEigyoPage.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -133,6 +179,9 @@ namespace SalesManagement_SysDev
 
         private void TopButsuryuBtn_Click(object sender, EventArgs e)
         {
+            TopButsuryuPage.EmID = EmID;
+            TopButsuryuPage.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -141,11 +190,26 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
-        private void ShainIDLbl_Click(object sender, EventArgs e)
-        {
-            //ミス?
-        }
 
+        private void TopLogoutBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = messageDsp.DspMsg("M0004");
+
+            if (result == DialogResult.OK)
+            {
+                // OKの時の処理
+                //現画面を非表示
+                this.Visible = false;
+
+                //TopButsuryuPageを表示
+                LoginPage f2 = new LoginPage();
+                f2.ShowDialog();
+            }
+            else
+            {
+                // キャンセルの時の処理
+            }
+        }
         ///////////////////////////////
         //メソッド名：SetFormSyainKanriGridView()
         //引　数   ：なし

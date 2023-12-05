@@ -81,6 +81,7 @@
             // TopHonshaBtn
             // 
             this.TopHonshaBtn.AutoSize = true;
+            this.TopHonshaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TopHonshaBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
             this.TopHonshaBtn.Location = new System.Drawing.Point(12, 158);
             this.TopHonshaBtn.Name = "TopHonshaBtn";
@@ -92,10 +93,11 @@
             // 
             // TopEigyoBtn
             // 
+            this.TopEigyoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TopEigyoBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopEigyoBtn.Location = new System.Drawing.Point(12, 296);
+            this.TopEigyoBtn.Location = new System.Drawing.Point(12, 294);
             this.TopEigyoBtn.Name = "TopEigyoBtn";
-            this.TopEigyoBtn.Size = new System.Drawing.Size(210, 123);
+            this.TopEigyoBtn.Size = new System.Drawing.Size(210, 130);
             this.TopEigyoBtn.TabIndex = 1;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
@@ -103,10 +105,11 @@
             // 
             // TopButsuryuBtn
             // 
+            this.TopButsuryuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TopButsuryuBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopButsuryuBtn.Location = new System.Drawing.Point(12, 424);
+            this.TopButsuryuBtn.Location = new System.Drawing.Point(12, 430);
             this.TopButsuryuBtn.Name = "TopButsuryuBtn";
-            this.TopButsuryuBtn.Size = new System.Drawing.Size(210, 146);
+            this.TopButsuryuBtn.Size = new System.Drawing.Size(210, 130);
             this.TopButsuryuBtn.TabIndex = 2;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
@@ -461,6 +464,7 @@
             this.TopLogoutBtn.TabIndex = 23;
             this.TopLogoutBtn.Text = "ログアウト";
             this.TopLogoutBtn.UseVisualStyleBackColor = true;
+            this.TopLogoutBtn.Click += new System.EventHandler(this.TopLogoutBtn_Click);
             // 
             // TopIDHyojiLbl
             // 
@@ -513,7 +517,7 @@
             // 
             this.TopJikanHyojiLbl.AutoSize = true;
             this.TopJikanHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopJikanHyojiLbl.Location = new System.Drawing.Point(1723, 28);
+            this.TopJikanHyojiLbl.Location = new System.Drawing.Point(1621, 28);
             this.TopJikanHyojiLbl.Name = "TopJikanHyojiLbl";
             this.TopJikanHyojiLbl.Size = new System.Drawing.Size(236, 40);
             this.TopJikanHyojiLbl.TabIndex = 88;
@@ -532,7 +536,7 @@
             // 
             this.TopYakushokuHyojiLbl.AutoSize = true;
             this.TopYakushokuHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopYakushokuHyojiLbl.Location = new System.Drawing.Point(1308, 91);
+            this.TopYakushokuHyojiLbl.Location = new System.Drawing.Point(1264, 91);
             this.TopYakushokuHyojiLbl.Name = "TopYakushokuHyojiLbl";
             this.TopYakushokuHyojiLbl.Size = new System.Drawing.Size(117, 40);
             this.TopYakushokuHyojiLbl.TabIndex = 86;
@@ -551,7 +555,7 @@
             // 
             this.TopNameHyojiLbl.AutoSize = true;
             this.TopNameHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopNameHyojiLbl.Location = new System.Drawing.Point(1308, 28);
+            this.TopNameHyojiLbl.Location = new System.Drawing.Point(1264, 28);
             this.TopNameHyojiLbl.Name = "TopNameHyojiLbl";
             this.TopNameHyojiLbl.Size = new System.Drawing.Size(117, 40);
             this.TopNameHyojiLbl.TabIndex = 84;
@@ -561,7 +565,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 700);
+            this.ClientSize = new System.Drawing.Size(1898, 1024);
             this.Controls.Add(this.TopIDHyojiLbl);
             this.Controls.Add(this.TopIDLbl);
             this.Controls.Add(this.TopEigyoshoLbl);
@@ -578,10 +582,12 @@
             this.Controls.Add(this.TopButsuryuBtn);
             this.Controls.Add(this.TopEigyoBtn);
             this.Controls.Add(this.TopHonshaBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "ShohinKanri";
-            this.Text = "TopPage";
+            this.Text = "販売在庫管理システム - 物流管理画面 - 商品管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ShohinKanri_Load);
             this.TopShohinPnl.ResumeLayout(false);
             this.TopShohinPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShohinKanriDgv)).EndInit();

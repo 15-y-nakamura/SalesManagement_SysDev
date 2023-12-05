@@ -15,7 +15,6 @@ namespace SalesManagement_SysDev
         [Required]
         public string MsgCD { get; set; }
 
-
         [MaxLength(150)]
         [Required]
         public string MsgComments { get; set; }
@@ -23,8 +22,7 @@ namespace SalesManagement_SysDev
         [MaxLength(20)]
         [Required]
         public string MsgTitle { get; set; }
-        
-        
+           
         public int MsgButton { get; set; }
         
         public int MsgICon { get; set; }

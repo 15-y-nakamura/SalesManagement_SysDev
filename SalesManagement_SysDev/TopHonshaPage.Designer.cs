@@ -61,21 +61,24 @@
             // TopHonshaBtn
             // 
             this.TopHonshaBtn.AutoSize = true;
+            this.TopHonshaBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.TopHonshaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TopHonshaBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
             this.TopHonshaBtn.Location = new System.Drawing.Point(12, 158);
             this.TopHonshaBtn.Name = "TopHonshaBtn";
-            this.TopHonshaBtn.Size = new System.Drawing.Size(210, 131);
+            this.TopHonshaBtn.Size = new System.Drawing.Size(210, 130);
             this.TopHonshaBtn.TabIndex = 0;
             this.TopHonshaBtn.Text = "本社";
-            this.TopHonshaBtn.UseVisualStyleBackColor = true;
+            this.TopHonshaBtn.UseVisualStyleBackColor = false;
             this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
             // 
             // TopEigyoBtn
             // 
+            this.TopEigyoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TopEigyoBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopEigyoBtn.Location = new System.Drawing.Point(12, 295);
+            this.TopEigyoBtn.Location = new System.Drawing.Point(12, 294);
             this.TopEigyoBtn.Name = "TopEigyoBtn";
-            this.TopEigyoBtn.Size = new System.Drawing.Size(210, 123);
+            this.TopEigyoBtn.Size = new System.Drawing.Size(210, 130);
             this.TopEigyoBtn.TabIndex = 1;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
@@ -83,10 +86,11 @@
             // 
             // TopButsuryuBtn
             // 
+            this.TopButsuryuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TopButsuryuBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopButsuryuBtn.Location = new System.Drawing.Point(12, 424);
+            this.TopButsuryuBtn.Location = new System.Drawing.Point(12, 430);
             this.TopButsuryuBtn.Name = "TopButsuryuBtn";
-            this.TopButsuryuBtn.Size = new System.Drawing.Size(210, 146);
+            this.TopButsuryuBtn.Size = new System.Drawing.Size(210, 130);
             this.TopButsuryuBtn.TabIndex = 2;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
@@ -121,99 +125,100 @@
             this.TopLogoutBtn.TabIndex = 23;
             this.TopLogoutBtn.Text = "ログアウト";
             this.TopLogoutBtn.UseVisualStyleBackColor = true;
+            this.TopLogoutBtn.Click += new System.EventHandler(this.TopLogoutBtn_Click);
             // 
             // TopIDHyojiLbl
             // 
             this.TopIDHyojiLbl.AutoSize = true;
-            this.TopIDHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopIDHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopIDHyojiLbl.Location = new System.Drawing.Point(902, 28);
             this.TopIDHyojiLbl.Name = "TopIDHyojiLbl";
-            this.TopIDHyojiLbl.Size = new System.Drawing.Size(73, 40);
+            this.TopIDHyojiLbl.Size = new System.Drawing.Size(54, 30);
             this.TopIDHyojiLbl.TabIndex = 93;
             this.TopIDHyojiLbl.Text = "ID：";
             // 
             // TopIDLbl
             // 
             this.TopIDLbl.AutoSize = true;
-            this.TopIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopIDLbl.Location = new System.Drawing.Point(981, 28);
+            this.TopIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopIDLbl.Location = new System.Drawing.Point(953, 28);
             this.TopIDLbl.Name = "TopIDLbl";
-            this.TopIDLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopIDLbl.Size = new System.Drawing.Size(0, 30);
             this.TopIDLbl.TabIndex = 92;
             // 
             // TopEigyoshoLbl
             // 
             this.TopEigyoshoLbl.AutoSize = true;
-            this.TopEigyoshoLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopEigyoshoLbl.Location = new System.Drawing.Point(1059, 91);
+            this.TopEigyoshoLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopEigyoshoLbl.Location = new System.Drawing.Point(1010, 91);
             this.TopEigyoshoLbl.Name = "TopEigyoshoLbl";
-            this.TopEigyoshoLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopEigyoshoLbl.Size = new System.Drawing.Size(0, 30);
             this.TopEigyoshoLbl.TabIndex = 91;
             // 
             // TopEigyoshoHyojiLbl
             // 
             this.TopEigyoshoHyojiLbl.AutoSize = true;
-            this.TopEigyoshoHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopEigyoshoHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopEigyoshoHyojiLbl.Location = new System.Drawing.Point(896, 91);
             this.TopEigyoshoHyojiLbl.Name = "TopEigyoshoHyojiLbl";
-            this.TopEigyoshoHyojiLbl.Size = new System.Drawing.Size(157, 40);
+            this.TopEigyoshoHyojiLbl.Size = new System.Drawing.Size(118, 30);
             this.TopEigyoshoHyojiLbl.TabIndex = 90;
             this.TopEigyoshoHyojiLbl.Text = "営業所：";
             // 
             // TopJikanLbl
             // 
             this.TopJikanLbl.AutoSize = true;
-            this.TopJikanLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopJikanLbl.Location = new System.Drawing.Point(1850, 28);
+            this.TopJikanLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopJikanLbl.Location = new System.Drawing.Point(1800, 28);
             this.TopJikanLbl.Name = "TopJikanLbl";
-            this.TopJikanLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopJikanLbl.Size = new System.Drawing.Size(0, 30);
             this.TopJikanLbl.TabIndex = 89;
             // 
             // TopJikanHyojiLbl
             // 
             this.TopJikanHyojiLbl.AutoSize = true;
-            this.TopJikanHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopJikanHyojiLbl.Location = new System.Drawing.Point(1727, 28);
+            this.TopJikanHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopJikanHyojiLbl.Location = new System.Drawing.Point(1621, 28);
             this.TopJikanHyojiLbl.Name = "TopJikanHyojiLbl";
-            this.TopJikanHyojiLbl.Size = new System.Drawing.Size(236, 40);
+            this.TopJikanHyojiLbl.Size = new System.Drawing.Size(177, 30);
             this.TopJikanHyojiLbl.TabIndex = 88;
             this.TopJikanHyojiLbl.Text = "ログイン時間：";
             // 
             // TopYakushokuLbl
             // 
             this.TopYakushokuLbl.AutoSize = true;
-            this.TopYakushokuLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopYakushokuLbl.Location = new System.Drawing.Point(1435, 91);
+            this.TopYakushokuLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopYakushokuLbl.Location = new System.Drawing.Point(1345, 91);
             this.TopYakushokuLbl.Name = "TopYakushokuLbl";
-            this.TopYakushokuLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopYakushokuLbl.Size = new System.Drawing.Size(0, 30);
             this.TopYakushokuLbl.TabIndex = 87;
             // 
             // TopYakushokuHyojiLbl
             // 
             this.TopYakushokuHyojiLbl.AutoSize = true;
-            this.TopYakushokuHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopYakushokuHyojiLbl.Location = new System.Drawing.Point(1312, 91);
+            this.TopYakushokuHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopYakushokuHyojiLbl.Location = new System.Drawing.Point(1264, 91);
             this.TopYakushokuHyojiLbl.Name = "TopYakushokuHyojiLbl";
-            this.TopYakushokuHyojiLbl.Size = new System.Drawing.Size(117, 40);
+            this.TopYakushokuHyojiLbl.Size = new System.Drawing.Size(88, 30);
             this.TopYakushokuHyojiLbl.TabIndex = 86;
             this.TopYakushokuHyojiLbl.Text = "役職：";
             // 
             // TopNameLbl
             // 
             this.TopNameLbl.AutoSize = true;
-            this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopNameLbl.Location = new System.Drawing.Point(1435, 28);
+            this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopNameLbl.Location = new System.Drawing.Point(1345, 28);
             this.TopNameLbl.Name = "TopNameLbl";
-            this.TopNameLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopNameLbl.Size = new System.Drawing.Size(0, 30);
             this.TopNameLbl.TabIndex = 85;
             // 
             // TopNameHyojiLbl
             // 
             this.TopNameHyojiLbl.AutoSize = true;
-            this.TopNameHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopNameHyojiLbl.Location = new System.Drawing.Point(1312, 28);
+            this.TopNameHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopNameHyojiLbl.Location = new System.Drawing.Point(1264, 28);
             this.TopNameHyojiLbl.Name = "TopNameHyojiLbl";
-            this.TopNameHyojiLbl.Size = new System.Drawing.Size(117, 40);
+            this.TopNameHyojiLbl.Size = new System.Drawing.Size(88, 30);
             this.TopNameHyojiLbl.TabIndex = 84;
             this.TopNameHyojiLbl.Text = "名前：";
             // 
@@ -241,8 +246,9 @@
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "TopHonshaPage";
-            this.Text = "TopPage";
+            this.Text = "販売在庫管理システム - 本社管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.TopHonshaPage_Load);
             this.TopHonshaPnl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
