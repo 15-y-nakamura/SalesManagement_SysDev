@@ -18,6 +18,7 @@ namespace SalesManagement_SysDev
         InputCheck inputCheck = new InputCheck();
 
         internal static int EmID = 0;
+        internal static int PoID = 0;
 
 
         public TopEigyoPage()
@@ -28,6 +29,9 @@ namespace SalesManagement_SysDev
 
         private void JuchuKanriBtn_Click(object sender, EventArgs e)
         {
+            JuchuKanri.EmID = EmID;
+            JuchuKanri.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -37,6 +41,9 @@ namespace SalesManagement_SysDev
         }
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
+            TopHonshaPage.EmID = EmID;
+            TopHonshaPage.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -57,6 +64,9 @@ namespace SalesManagement_SysDev
 
         private void TopButsuryuBtn_Click(object sender, EventArgs e)
         {
+            TopButsuryuPage.EmID = EmID;
+            TopButsuryuPage.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -67,6 +77,9 @@ namespace SalesManagement_SysDev
 
         private void KokyakuKanriBtn_Click(object sender, EventArgs e)
         {
+            Kokyakukanri.EmID = EmID;
+            Kokyakukanri.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -77,6 +90,8 @@ namespace SalesManagement_SysDev
 
         private void ChumonKanriBtn_Click(object sender, EventArgs e)
         {
+            ChumonKanri.EmID = EmID;
+            ChumonKanri.PoID = PoID;
             //現画面を非表示
             this.Visible = false;
 
@@ -87,6 +102,7 @@ namespace SalesManagement_SysDev
 
         private void TopEigyoPage_Load(object sender, EventArgs e)
         {
+
             string[] TopData = new string[4];
             TopData = empDataAccess.GetTopData(EmID);
 

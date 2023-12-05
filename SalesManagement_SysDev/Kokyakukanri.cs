@@ -20,6 +20,7 @@ namespace SalesManagement_SysDev
         InputCheck inputCheck = new InputCheck();
 
         internal static int EmID = 0;
+        internal static int PoID = 0;
 
         public Kokyakukanri()
         {
@@ -151,6 +152,9 @@ namespace SalesManagement_SysDev
 
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
+            TopHonshaPage.EmID = EmID;
+            TopHonshaPage.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -161,6 +165,9 @@ namespace SalesManagement_SysDev
 
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
+            TopEigyoPage.EmID = EmID;
+            TopEigyoPage.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 

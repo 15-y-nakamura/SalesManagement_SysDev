@@ -87,6 +87,7 @@
             this.ShainTxb.Name = "ShainTxb";
             this.ShainTxb.Size = new System.Drawing.Size(461, 25);
             this.ShainTxb.TabIndex = 3;
+            this.ShainTxb.TextChanged += new System.EventHandler(this.ShainTxb_TextChanged);
             // 
             // PasuwadoTxb
             // 

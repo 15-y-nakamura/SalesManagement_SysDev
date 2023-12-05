@@ -393,95 +393,95 @@
             // TopIDHyojiLbl
             // 
             this.TopIDHyojiLbl.AutoSize = true;
-            this.TopIDHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopIDHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopIDHyojiLbl.Location = new System.Drawing.Point(898, 28);
             this.TopIDHyojiLbl.Name = "TopIDHyojiLbl";
-            this.TopIDHyojiLbl.Size = new System.Drawing.Size(73, 40);
+            this.TopIDHyojiLbl.Size = new System.Drawing.Size(54, 30);
             this.TopIDHyojiLbl.TabIndex = 83;
             this.TopIDHyojiLbl.Text = "ID：";
             // 
             // TopIDLbl
             // 
             this.TopIDLbl.AutoSize = true;
-            this.TopIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopIDLbl.Location = new System.Drawing.Point(977, 28);
+            this.TopIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopIDLbl.Location = new System.Drawing.Point(953, 28);
             this.TopIDLbl.Name = "TopIDLbl";
-            this.TopIDLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopIDLbl.Size = new System.Drawing.Size(0, 30);
             this.TopIDLbl.TabIndex = 82;
             // 
             // TopEigyoshoLbl
             // 
             this.TopEigyoshoLbl.AutoSize = true;
-            this.TopEigyoshoLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopEigyoshoLbl.Location = new System.Drawing.Point(1055, 91);
+            this.TopEigyoshoLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopEigyoshoLbl.Location = new System.Drawing.Point(1010, 91);
             this.TopEigyoshoLbl.Name = "TopEigyoshoLbl";
-            this.TopEigyoshoLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopEigyoshoLbl.Size = new System.Drawing.Size(0, 30);
             this.TopEigyoshoLbl.TabIndex = 81;
             // 
             // TopEigyoshoHyojiLbl
             // 
             this.TopEigyoshoHyojiLbl.AutoSize = true;
-            this.TopEigyoshoHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopEigyoshoHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopEigyoshoHyojiLbl.Location = new System.Drawing.Point(892, 91);
             this.TopEigyoshoHyojiLbl.Name = "TopEigyoshoHyojiLbl";
-            this.TopEigyoshoHyojiLbl.Size = new System.Drawing.Size(157, 40);
+            this.TopEigyoshoHyojiLbl.Size = new System.Drawing.Size(118, 30);
             this.TopEigyoshoHyojiLbl.TabIndex = 80;
             this.TopEigyoshoHyojiLbl.Text = "営業所：";
             // 
             // TopJikanLbl
             // 
             this.TopJikanLbl.AutoSize = true;
-            this.TopJikanLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopJikanLbl.Location = new System.Drawing.Point(1846, 28);
+            this.TopJikanLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopJikanLbl.Location = new System.Drawing.Point(1800, 28);
             this.TopJikanLbl.Name = "TopJikanLbl";
-            this.TopJikanLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopJikanLbl.Size = new System.Drawing.Size(0, 30);
             this.TopJikanLbl.TabIndex = 79;
             // 
             // TopJikanHyojiLbl
             // 
             this.TopJikanHyojiLbl.AutoSize = true;
-            this.TopJikanHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopJikanHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopJikanHyojiLbl.Location = new System.Drawing.Point(1621, 28);
             this.TopJikanHyojiLbl.Name = "TopJikanHyojiLbl";
-            this.TopJikanHyojiLbl.Size = new System.Drawing.Size(236, 40);
+            this.TopJikanHyojiLbl.Size = new System.Drawing.Size(177, 30);
             this.TopJikanHyojiLbl.TabIndex = 78;
             this.TopJikanHyojiLbl.Text = "ログイン時間：";
             // 
             // TopYakushokuLbl
             // 
             this.TopYakushokuLbl.AutoSize = true;
-            this.TopYakushokuLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopYakushokuLbl.Location = new System.Drawing.Point(1435, 91);
+            this.TopYakushokuLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopYakushokuLbl.Location = new System.Drawing.Point(1345, 91);
             this.TopYakushokuLbl.Name = "TopYakushokuLbl";
-            this.TopYakushokuLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopYakushokuLbl.Size = new System.Drawing.Size(0, 30);
             this.TopYakushokuLbl.TabIndex = 77;
             // 
             // TopYakushokuHyojiLbl
             // 
             this.TopYakushokuHyojiLbl.AutoSize = true;
-            this.TopYakushokuHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopYakushokuHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopYakushokuHyojiLbl.Location = new System.Drawing.Point(1264, 91);
             this.TopYakushokuHyojiLbl.Name = "TopYakushokuHyojiLbl";
-            this.TopYakushokuHyojiLbl.Size = new System.Drawing.Size(117, 40);
+            this.TopYakushokuHyojiLbl.Size = new System.Drawing.Size(88, 30);
             this.TopYakushokuHyojiLbl.TabIndex = 76;
             this.TopYakushokuHyojiLbl.Text = "役職：";
             // 
             // TopNameLbl
             // 
             this.TopNameLbl.AutoSize = true;
-            this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.TopNameLbl.Location = new System.Drawing.Point(1431, 28);
+            this.TopNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
+            this.TopNameLbl.Location = new System.Drawing.Point(1345, 28);
             this.TopNameLbl.Name = "TopNameLbl";
-            this.TopNameLbl.Size = new System.Drawing.Size(0, 40);
+            this.TopNameLbl.Size = new System.Drawing.Size(0, 30);
             this.TopNameLbl.TabIndex = 75;
             // 
             // TopNameHyojiLbl
             // 
             this.TopNameHyojiLbl.AutoSize = true;
-            this.TopNameHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopNameHyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 15F);
             this.TopNameHyojiLbl.Location = new System.Drawing.Point(1264, 28);
             this.TopNameHyojiLbl.Name = "TopNameHyojiLbl";
-            this.TopNameHyojiLbl.Size = new System.Drawing.Size(117, 40);
+            this.TopNameHyojiLbl.Size = new System.Drawing.Size(88, 30);
             this.TopNameHyojiLbl.TabIndex = 74;
             this.TopNameHyojiLbl.Text = "名前：";
             // 

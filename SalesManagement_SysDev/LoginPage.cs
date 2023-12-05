@@ -788,6 +788,7 @@ namespace SalesManagement_SysDev
                 else if (PoID == 2)
                 {
                     TopEigyoPage.EmID = int.Parse(logonID);
+                    TopEigyoPage.PoID = PoID;
 
                     //現画面を非表示
                     this.Visible = false;
@@ -812,6 +813,9 @@ namespace SalesManagement_SysDev
             }
         }
 
-            
+        private void ShainTxb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
