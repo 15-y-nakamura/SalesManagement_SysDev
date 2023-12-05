@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
+    <Compile Include="DataAccess\LoginDataAccess.cs" />
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Common\InputCheck.cs" />
