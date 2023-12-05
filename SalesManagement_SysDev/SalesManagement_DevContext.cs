@@ -338,18 +338,6 @@ namespace SalesManagement_SysDev
                     .HasForeignKey(x => x.EmID)
                     .WillCascadeOnDelete(false);
             }
-            {
-                modelBuilder.Entity<T_WarehousingDetail>()
-                    .HasRequired<T_Warehousing>(x => x.T_Warehousing)
-                    .WithMany(x => x.T_WarehousingDetail)
-                    .HasForeignKey(x => x.WaID)
-                    .WillCascadeOnDelete(false);
-                modelBuilder.Entity<T_WarehousingDetail>()
-                    .HasRequired<M_Product>(x => x.M_Product)
-                    .WithMany(x => x.T_WarehousingDetail)
-                    .HasForeignKey(x => x.PrID)
-                    .WillCascadeOnDelete(false);
-            }
         }
     }
 }

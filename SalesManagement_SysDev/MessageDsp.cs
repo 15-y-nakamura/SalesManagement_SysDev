@@ -15,7 +15,6 @@ namespace SalesManagement_SysDev
         //戻り値   ：メッセージのボタン値
         //機　能   ：メッセージを取得して表示
         ///////////////////////////////
-
         public DialogResult DspMsg(string msgCD)
         {
             DialogResult result = DialogResult.None;
@@ -47,7 +46,7 @@ namespace SalesManagement_SysDev
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return result;
+           
         }
-
     }
 }
