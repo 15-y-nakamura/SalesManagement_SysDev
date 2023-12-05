@@ -65,8 +65,8 @@ namespace SalesManagement_SysDev
             EigyoushoNameCmb.Items.Clear();
             EigyoushoNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             TelTxb.Text = "";
-            YakushokuNameCmb.Items.Clear();
-            YakushokuNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            YakushokuNameTxb.Items.Clear();
+            YakushokuNameTxb.DropDownStyle = ComboBoxStyle.DropDownList;
             ShainKanriFlagCmb.Items.Clear();
             ShainKanriFlagCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             HihyojiTxb.Text = "";
@@ -77,7 +77,7 @@ namespace SalesManagement_SysDev
             //役職名をコンボボックスに追加
             foreach (string Poname in PoName.Reverse())
             {
-                YakushokuNameCmb.Items.Add(Poname);
+                YakushokuNameTxb.Items.Add(Poname);
             }
 
             //営業所名を取得
@@ -343,9 +343,9 @@ namespace SalesManagement_SysDev
             }
 
             //役職名の入力チェック
-            if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
+            if (!InputCheck.CheckPoNameCmb(YakushokuNameTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameCmb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameTxb.Text).Msg);
                 return false;
             }
 
@@ -360,7 +360,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_Employee SetEmployeeData()
         {
-            int PoID = PositionDA.GetPoID(YakushokuNameCmb.Text);
+            int PoID = PositionDA.GetPoID(YakushokuNameTxb.Text);
             int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
             int EmFlg;
 
