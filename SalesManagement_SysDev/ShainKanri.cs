@@ -93,7 +93,7 @@ namespace SalesManagement_SysDev
             ShainKanriFlagCmb.Items.Add("非表示");
         }
 
-        /*private void PlaceHolderText()
+        /*private void PlaceHolderText(){
             PlaceHolderText();
 
             string[] TopData = new string[4];

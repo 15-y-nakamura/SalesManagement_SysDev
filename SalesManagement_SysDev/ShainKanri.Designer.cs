@@ -42,7 +42,6 @@
             this.EigyoshoNameLbl = new System.Windows.Forms.Label();
             this.ShainKanriFlagCmb = new System.Windows.Forms.ComboBox();
             this.YakushokuNameTxb = new System.Windows.Forms.ComboBox();
-            this.YakushokuNameTxb = new System.Windows.Forms.ComboBox();
             this.ShainNameTxb = new System.Windows.Forms.TextBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
             this.ShainIDTxb = new System.Windows.Forms.TextBox();
