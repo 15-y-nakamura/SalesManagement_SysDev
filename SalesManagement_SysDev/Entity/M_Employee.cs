@@ -73,14 +73,8 @@ namespace SalesManagement_SysDev
         [DisplayName("社員名")]
         public string EmName { get; set; }
 
-        [DisplayName("営業ID")]
-        public int SoID { get; set; }
-
         [DisplayName("営業名")]
         public string SoName { get; set; }
-
-        [DisplayName("役職ID")]
-        public int PoID { get; set; }
 
         [DisplayName("役職名")]
         public string PoName { get; set; }
