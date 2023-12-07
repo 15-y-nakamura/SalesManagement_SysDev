@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -61,5 +62,42 @@ namespace SalesManagement_SysDev
         public virtual ICollection<T_Warehousing> T_Warehousing { get; set; }
         public virtual ICollection<T_LoginHistory> T_LoginHistory { get; set; }
         public virtual ICollection<T_OperationHistory> T_OperationHistory { get; set; }
+    }
+
+    //データグリッド表示用
+    class M_EmployeeDsp
+    {
+        [DisplayName("社員ID")]
+        public int EmID { get; set; }
+
+        [DisplayName("社員名")]
+        public string EmName { get; set; }
+
+        [DisplayName("営業ID")]
+        public int SoID { get; set; }
+
+        [DisplayName("営業名")]
+        public string SoName { get; set; }
+
+        [DisplayName("役職ID")]
+        public int PoID { get; set; }
+
+        [DisplayName("役職名")]
+        public string PoName { get; set; }
+
+        [DisplayName("入社年月日")]
+        public DateTime? EmHiredate { get; set; }
+
+        [DisplayName("電話番号")]
+        public string EmPhone { get; set; }
+
+        //[DisplayName("社員バーコード")]
+        // public String EmBarcode { get; set; }
+
+        [DisplayName("社員管理フラグ")]
+        public int EmFlag { get; set; }
+
+        [DisplayName("非表示理由")]
+        public string EmHidden { get; set; }
     }
 }

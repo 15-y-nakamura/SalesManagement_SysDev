@@ -118,6 +118,7 @@
             this.ZaikoKanriBtn.TabIndex = 20;
             this.ZaikoKanriBtn.Text = "在庫管理";
             this.ZaikoKanriBtn.UseVisualStyleBackColor = true;
+            this.ZaikoKanriBtn.Click += new System.EventHandler(this.ZaikoKanriBtn_Click);
             // 
             // NyukoKanriBtn
             // 

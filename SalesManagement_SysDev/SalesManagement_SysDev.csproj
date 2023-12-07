@@ -60,10 +60,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
+    <Compile Include="DataAccess\PositionDataAccess.cs" />
+    <Compile Include="DataAccess\SalesOfficeDataAccess.cs" />
     <Compile Include="DataAccess\LoginDataAccess.cs" />
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Common\InputCheck.cs" />
+    <Compile Include="ZaikoKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZaikoKanri.Designer.cs">
+      <DependentUpon>ZaikoKanri.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,7 +85,7 @@
     <Compile Include="Entity\M_SalesOffice.cs" />
     <Compile Include="Entity\M_SmallClassification.cs" />
     <Compile Include="MessageDsp.cs" />
-    <Compile Include="M_Message.cs" />
+    <Compile Include="Entity\M_Message.cs" />
     <Compile Include="PasswordChangePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +162,9 @@
     <Compile Include="TopHonshaPage.Designer.cs">
       <DependentUpon>TopHonshaPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ZaikoKanri.resx">
+      <DependentUpon>ZaikoKanri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
