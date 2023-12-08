@@ -89,6 +89,11 @@
     </Compile>
     <Compile Include="ShukkoKanri.Designer.cs">
       <DependentUpon>ShukkoKanri.cs</DependentUpon>
+    <Compile Include="ZaikoKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZaikoKanri.Designer.cs">
+      <DependentUpon>ZaikoKanri.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginPage.cs">
       <SubType>Form</SubType>
@@ -191,6 +196,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShukkoKanri.resx">
       <DependentUpon>ShukkoKanri.cs</DependentUpon>
+    <EmbeddedResource Include="ZaikoKanri.resx">
+      <DependentUpon>ZaikoKanri.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
