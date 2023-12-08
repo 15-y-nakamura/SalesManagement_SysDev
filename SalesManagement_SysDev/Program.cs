@@ -16,7 +16,7 @@ namespace SalesManagement_SysDev
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Shainkanri());
+            Application.Run(new LoginPage());
         }
     }
 }
