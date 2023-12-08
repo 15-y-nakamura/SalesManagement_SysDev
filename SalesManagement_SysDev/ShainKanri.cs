@@ -43,6 +43,30 @@ namespace SalesManagement_SysDev
 
         private void Shainkanri_Load(object sender, EventArgs e)
         {
+            string[] TopData = new string[4];
+            TopData = empDataAccess.GetTopData(EmID);
+
+            string emID = EmID.ToString();
+
+            TopIDLbl.Text = emID;
+            TopNameLbl.Text = TopData[0];
+            TopYakushokuLbl.Text = TopData[1];
+            TopEigyoshoLbl.Text = TopData[2];
+            TopJikanLbl.Text = TopData[3];
+
+            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+            TopHonshaBtn.FlatAppearance.BorderSize = 1;
+            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+            TopEigyoBtn.FlatAppearance.BorderSize = 2;
+            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+
             //PlaceHolderText();
 
             //コントロールの初期設定
@@ -65,8 +89,8 @@ namespace SalesManagement_SysDev
             EigyoushoNameCmb.Items.Clear();
             EigyoushoNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             TelTxb.Text = "";
-            YakushokuNameTxb.Items.Clear();
-            YakushokuNameTxb.DropDownStyle = ComboBoxStyle.DropDownList;
+            YakushokuNameCmb.Items.Clear();
+            YakushokuNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             ShainKanriFlagCmb.Items.Clear();
             ShainKanriFlagCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             HihyojiTxb.Text = "";
@@ -77,7 +101,7 @@ namespace SalesManagement_SysDev
             //役職名をコンボボックスに追加
             foreach (string Poname in PoName.Reverse())
             {
-                YakushokuNameTxb.Items.Add(Poname);
+                YakushokuNameCmb.Items.Add(Poname);
             }
 
             //営業所名を取得
@@ -95,29 +119,6 @@ namespace SalesManagement_SysDev
 
         /*private void PlaceHolderText(){
             PlaceHolderText();
-
-            string[] TopData = new string[4];
-            TopData = empDataAccess.GetTopData(EmID);
-
-            string emID = EmID.ToString();
-
-            TopIDLbl.Text = emID;
-            TopNameLbl.Text = TopData[0];
-            TopYakushokuLbl.Text = TopData[1];
-            TopEigyoshoLbl.Text = TopData[2];
-            TopJikanLbl.Text = TopData[3];
-
-            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopHonshaBtn.FlatAppearance.BorderSize = 1;
-            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
-            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopEigyoBtn.FlatAppearance.BorderSize = 2;
-            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
-            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
-            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
 
         }
@@ -318,6 +319,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckRegistEmID(ShainIDTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistEmID(ShainIDTxb.Text).Msg);
+                ShainIDTxb.Focus();
                 return false;
             }
 
@@ -325,6 +327,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckEmname(ShainNameTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckEmname(ShainNameTxb.Text).Msg);
+                ShainNameTxb.Focus();
                 return false;
             }
 
@@ -332,6 +335,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckEmPhone(TelTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckEmPhone(TelTxb.Text).Msg);
+                TelTxb.Focus();
                 return false;
             }
 
@@ -343,9 +347,9 @@ namespace SalesManagement_SysDev
             }
 
             //役職名の入力チェック
-            if (!InputCheck.CheckPoNameCmb(YakushokuNameTxb.Text).flg)
+            if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).Msg);
                 return false;
             }
 
@@ -360,7 +364,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_Employee SetEmployeeData()
         {
-            int PoID = PositionDA.GetPoID(YakushokuNameTxb.Text);
+            int PoID = PositionDA.GetPoID(YakushokuNameCmb.Text);
             int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
             int EmFlg;
 

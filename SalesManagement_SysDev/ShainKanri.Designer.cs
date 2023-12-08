@@ -41,7 +41,7 @@
             this.TelLbl = new System.Windows.Forms.Label();
             this.EigyoshoNameLbl = new System.Windows.Forms.Label();
             this.ShainKanriFlagCmb = new System.Windows.Forms.ComboBox();
-            this.YakushokuNameTxb = new System.Windows.Forms.ComboBox();
+            this.YakushokuNameCmb = new System.Windows.Forms.ComboBox();
             this.ShainNameTxb = new System.Windows.Forms.TextBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
             this.ShainIDTxb = new System.Windows.Forms.TextBox();
@@ -127,8 +127,7 @@
             this.TopShainPnl.Controls.Add(this.TelLbl);
             this.TopShainPnl.Controls.Add(this.EigyoshoNameLbl);
             this.TopShainPnl.Controls.Add(this.ShainKanriFlagCmb);
-            this.TopShainPnl.Controls.Add(this.YakushokuNameTxb);
-            this.TopShainPnl.Controls.Add(this.YakushokuNameTxb);
+            this.TopShainPnl.Controls.Add(this.YakushokuNameCmb);
             this.TopShainPnl.Controls.Add(this.ShainNameTxb);
             this.TopShainPnl.Controls.Add(this.HihyojiTxb);
             this.TopShainPnl.Controls.Add(this.ShainIDTxb);
@@ -222,15 +221,15 @@
             this.ShainKanriFlagCmb.Size = new System.Drawing.Size(201, 26);
             this.ShainKanriFlagCmb.TabIndex = 18;
             // 
-            // YakushokuNameTxb
+            // YakushokuNameCmb
             // 
-            this.YakushokuNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.YakushokuNameCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.YakushokuNameTxb.FormattingEnabled = true;
-            this.YakushokuNameTxb.Location = new System.Drawing.Point(237, 218);
-            this.YakushokuNameTxb.Name = "YakushokuNameTxb";
-            this.YakushokuNameTxb.Size = new System.Drawing.Size(201, 26);
-            this.YakushokuNameTxb.TabIndex = 18;
+            this.YakushokuNameCmb.FormattingEnabled = true;
+            this.YakushokuNameCmb.Location = new System.Drawing.Point(237, 218);
+            this.YakushokuNameCmb.Name = "YakushokuNameCmb";
+            this.YakushokuNameCmb.Size = new System.Drawing.Size(201, 26);
+            this.YakushokuNameCmb.TabIndex = 18;
             // 
             // ShainNameTxb
             // 
@@ -523,7 +522,7 @@
         private System.Windows.Forms.Label ShainKanriFlagLbl;
         private System.Windows.Forms.Label ShainIDLbl;
         private System.Windows.Forms.ComboBox ShainKanriFlagCmb;
-        private System.Windows.Forms.ComboBox YakushokuNameTxb;
+        private System.Windows.Forms.ComboBox YakushokuNameCmb;
         private System.Windows.Forms.TextBox TelTxb;
         private System.Windows.Forms.Label TelLbl;
         private System.Windows.Forms.Label EigyoshoNameLbl;
