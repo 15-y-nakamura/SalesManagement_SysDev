@@ -41,7 +41,7 @@
             this.TelLbl = new System.Windows.Forms.Label();
             this.EigyoshoNameLbl = new System.Windows.Forms.Label();
             this.ShainKanriFlagCmb = new System.Windows.Forms.ComboBox();
-            this.YakushokuNameCmb = new System.Windows.Forms.ComboBox();
+            this.YakushokuNameTxb = new System.Windows.Forms.ComboBox();
             this.ShainNameTxb = new System.Windows.Forms.TextBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
             this.ShainIDTxb = new System.Windows.Forms.TextBox();
@@ -127,7 +127,8 @@
             this.TopShainPnl.Controls.Add(this.TelLbl);
             this.TopShainPnl.Controls.Add(this.EigyoshoNameLbl);
             this.TopShainPnl.Controls.Add(this.ShainKanriFlagCmb);
-            this.TopShainPnl.Controls.Add(this.YakushokuNameCmb);
+            this.TopShainPnl.Controls.Add(this.YakushokuNameTxb);
+            this.TopShainPnl.Controls.Add(this.YakushokuNameTxb);
             this.TopShainPnl.Controls.Add(this.ShainNameTxb);
             this.TopShainPnl.Controls.Add(this.HihyojiTxb);
             this.TopShainPnl.Controls.Add(this.ShainIDTxb);
@@ -175,13 +176,12 @@
             // ShainKanriDgv
             // 
             this.ShainKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ShainKanriDgv.Location = new System.Drawing.Point(126, 481);
+            this.ShainKanriDgv.Location = new System.Drawing.Point(97, 492);
             this.ShainKanriDgv.Name = "ShainKanriDgv";
             this.ShainKanriDgv.RowHeadersWidth = 62;
             this.ShainKanriDgv.RowTemplate.Height = 27;
             this.ShainKanriDgv.Size = new System.Drawing.Size(1633, 256);
             this.ShainKanriDgv.TabIndex = 51;
-            this.ShainKanriDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShainKanriDgv_CellClick);
             // 
             // TelTxb
             // 
@@ -222,15 +222,15 @@
             this.ShainKanriFlagCmb.Size = new System.Drawing.Size(201, 26);
             this.ShainKanriFlagCmb.TabIndex = 18;
             // 
-            // YakushokuNameCmb
+            // YakushokuNameTxb
             // 
-            this.YakushokuNameCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.YakushokuNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.YakushokuNameCmb.FormattingEnabled = true;
-            this.YakushokuNameCmb.Location = new System.Drawing.Point(237, 218);
-            this.YakushokuNameCmb.Name = "YakushokuNameCmb";
-            this.YakushokuNameCmb.Size = new System.Drawing.Size(201, 26);
-            this.YakushokuNameCmb.TabIndex = 18;
+            this.YakushokuNameTxb.FormattingEnabled = true;
+            this.YakushokuNameTxb.Location = new System.Drawing.Point(237, 218);
+            this.YakushokuNameTxb.Name = "YakushokuNameTxb";
+            this.YakushokuNameTxb.Size = new System.Drawing.Size(201, 26);
+            this.YakushokuNameTxb.TabIndex = 18;
             // 
             // ShainNameTxb
             // 
@@ -349,7 +349,6 @@
             this.UpdateBtn.TabIndex = 5;
             this.UpdateBtn.Text = "更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
-            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // RegistBtn
             // 
@@ -524,7 +523,7 @@
         private System.Windows.Forms.Label ShainKanriFlagLbl;
         private System.Windows.Forms.Label ShainIDLbl;
         private System.Windows.Forms.ComboBox ShainKanriFlagCmb;
-        private System.Windows.Forms.ComboBox YakushokuNameCmb;
+        private System.Windows.Forms.ComboBox YakushokuNameTxb;
         private System.Windows.Forms.TextBox TelTxb;
         private System.Windows.Forms.Label TelLbl;
         private System.Windows.Forms.Label EigyoshoNameLbl;
