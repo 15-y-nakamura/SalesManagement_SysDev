@@ -161,6 +161,7 @@
             this.UriageKanriBtn.TabIndex = 18;
             this.UriageKanriBtn.Text = "売上管理";
             this.UriageKanriBtn.UseVisualStyleBackColor = true;
+            this.UriageKanriBtn.Click += new System.EventHandler(this.UriageKanriBtn_Click);
             // 
             // TopEigyoPnl
             // 

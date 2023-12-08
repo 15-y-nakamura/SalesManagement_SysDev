@@ -129,6 +129,7 @@
             this.NyukoKanriBtn.TabIndex = 21;
             this.NyukoKanriBtn.Text = "入庫管理";
             this.NyukoKanriBtn.UseVisualStyleBackColor = true;
+            this.NyukoKanriBtn.Click += new System.EventHandler(this.NyukoKanriBtn_Click);
             // 
             // ShukkoKanriBtn
             // 
@@ -162,6 +163,7 @@
             this.HatchuKanriBtn.TabIndex = 23;
             this.HatchuKanriBtn.Text = "発注管理";
             this.HatchuKanriBtn.UseVisualStyleBackColor = true;
+            this.HatchuKanriBtn.Click += new System.EventHandler(this.HatchuKanriBtn_Click);
             // 
             // TopLogoutBtn
             // 

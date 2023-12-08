@@ -172,6 +172,17 @@ namespace SalesManagement_SysDev
 
         }
 
+        private void UriageKanriBtn_Click(object sender, EventArgs e)
+        {
+            UriageKanri.EmID = EmID;
+            UriageKanri.PoID = PoID;
 
+            //現画面を非表示
+            this.Visible = false;
+
+            //UriageKanriを表示
+            UriageKanri f2 = new UriageKanri();
+            f2.Show();
+        }
     }
 }
