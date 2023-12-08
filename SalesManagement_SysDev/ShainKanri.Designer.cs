@@ -128,7 +128,6 @@
             this.TopShainPnl.Controls.Add(this.EigyoshoNameLbl);
             this.TopShainPnl.Controls.Add(this.ShainKanriFlagCmb);
             this.TopShainPnl.Controls.Add(this.YakushokuNameTxb);
-            this.TopShainPnl.Controls.Add(this.YakushokuNameTxb);
             this.TopShainPnl.Controls.Add(this.ShainNameTxb);
             this.TopShainPnl.Controls.Add(this.HihyojiTxb);
             this.TopShainPnl.Controls.Add(this.ShainIDTxb);
@@ -176,7 +175,7 @@
             // ShainKanriDgv
             // 
             this.ShainKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ShainKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.ShainKanriDgv.Location = new System.Drawing.Point(126, 481);
             this.ShainKanriDgv.Name = "ShainKanriDgv";
             this.ShainKanriDgv.RowHeadersWidth = 62;
             this.ShainKanriDgv.RowTemplate.Height = 27;
