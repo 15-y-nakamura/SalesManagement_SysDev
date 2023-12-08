@@ -136,5 +136,10 @@ namespace SalesManagement_SysDev
             }
 
         }
+
+        private void ShohinKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //ミス
+        }
     }
 }

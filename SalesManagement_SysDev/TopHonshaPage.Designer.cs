@@ -52,9 +52,9 @@
             // TopLbl
             // 
             TopLbl.Font = new System.Drawing.Font("MS UI Gothic", 40F);
-            TopLbl.Location = new System.Drawing.Point(251, 37);
+            TopLbl.Location = new System.Drawing.Point(253, 38);
             TopLbl.Name = "TopLbl";
-            TopLbl.Size = new System.Drawing.Size(550, 93);
+            TopLbl.Size = new System.Drawing.Size(617, 93);
             TopLbl.TabIndex = 3;
             TopLbl.Text = "本社管理画面";
             // 

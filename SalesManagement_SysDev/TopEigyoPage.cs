@@ -77,14 +77,14 @@ namespace SalesManagement_SysDev
 
         private void KokyakuKanriBtn_Click(object sender, EventArgs e)
         {
-            Kokyakukanri.EmID = EmID;
-            Kokyakukanri.PoID = PoID;
+            ShukkoKanri.EmID = EmID;
+            ShukkoKanri.PoID = PoID;
 
             //現画面を非表示
             this.Visible = false;
 
             //Kokyakukanriを表示
-            Kokyakukanri f2 = new Kokyakukanri();
+            ShukkoKanri f2 = new ShukkoKanri();
             f2.Show();
         }
 
