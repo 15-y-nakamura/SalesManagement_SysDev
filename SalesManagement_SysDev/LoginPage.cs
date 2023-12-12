@@ -846,8 +846,6 @@ namespace SalesManagement_SysDev
                 // キャンセルの時の処理
             }
 
-            this.Close();
-
         }
     }
 }

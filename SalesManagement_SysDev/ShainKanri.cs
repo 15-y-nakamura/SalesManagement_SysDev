@@ -43,6 +43,30 @@ namespace SalesManagement_SysDev
 
         private void Shainkanri_Load(object sender, EventArgs e)
         {
+            string[] TopData = new string[4];
+            TopData = empDataAccess.GetTopData(EmID);
+
+            string emID = EmID.ToString();
+
+            TopIDLbl.Text = emID;
+            TopNameLbl.Text = TopData[0];
+            TopYakushokuLbl.Text = TopData[1];
+            TopEigyoshoLbl.Text = TopData[2];
+            TopJikanLbl.Text = TopData[3];
+
+            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+            TopHonshaBtn.FlatAppearance.BorderSize = 1;
+            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+            TopEigyoBtn.FlatAppearance.BorderSize = 2;
+            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+
             //PlaceHolderText();
 
             //コントロールの初期設定
@@ -95,29 +119,6 @@ namespace SalesManagement_SysDev
 
         /*private void PlaceHolderText(){
             PlaceHolderText();
-
-            string[] TopData = new string[4];
-            TopData = empDataAccess.GetTopData(EmID);
-
-            string emID = EmID.ToString();
-
-            TopIDLbl.Text = emID;
-            TopNameLbl.Text = TopData[0];
-            TopYakushokuLbl.Text = TopData[1];
-            TopEigyoshoLbl.Text = TopData[2];
-            TopJikanLbl.Text = TopData[3];
-
-            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopHonshaBtn.FlatAppearance.BorderSize = 1;
-            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
-            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopEigyoBtn.FlatAppearance.BorderSize = 2;
-            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
-            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
-            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
 
         }
@@ -315,6 +316,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckRegistEmID(ShainIDTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistEmID(ShainIDTxb.Text).Msg);
+                ShainIDTxb.Focus();
                 return false;
             }
 
@@ -322,6 +324,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckEmname(ShainNameTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckEmname(ShainNameTxb.Text).Msg);
+                ShainNameTxb.Focus();
                 return false;
             }
 
@@ -329,6 +332,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckEmPhone(TelTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckEmPhone(TelTxb.Text).Msg);
+                TelTxb.Focus();
                 return false;
             }
 
@@ -342,7 +346,7 @@ namespace SalesManagement_SysDev
             //役職名の入力チェック
             if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameCmb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).Msg);
                 return false;
             }
 
