@@ -33,6 +33,9 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopUriagePnl = new System.Windows.Forms.Panel();
+            this.UriageDateLbl = new System.Windows.Forms.Label();
+            this.UriageDateTxb = new System.Windows.Forms.TextBox();
+            this.EigyoshoNameTxb = new System.Windows.Forms.TextBox();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.JuchuKanriDgv = new System.Windows.Forms.DataGridView();
             this.UriageKanriFlagCmb = new System.Windows.Forms.ComboBox();
@@ -67,9 +70,6 @@
             this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
-            this.EigyoshoNameTxb = new System.Windows.Forms.TextBox();
-            this.UriageDateTxb = new System.Windows.Forms.TextBox();
-            this.UriageDateLbl = new System.Windows.Forms.Label();
             this.TopUriagePnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JuchuKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -149,10 +149,38 @@
             this.TopUriagePnl.Controls.Add(this.JuchuIDLbl);
             this.TopUriagePnl.Controls.Add(this.SearchBtn);
             this.TopUriagePnl.Controls.Add(this.HiddenBtn);
-            this.TopUriagePnl.Location = new System.Drawing.Point(253, 158);
+            this.TopUriagePnl.Location = new System.Drawing.Point(254, 158);
             this.TopUriagePnl.Name = "TopUriagePnl";
             this.TopUriagePnl.Size = new System.Drawing.Size(1835, 783);
             this.TopUriagePnl.TabIndex = 23;
+            // 
+            // UriageDateLbl
+            // 
+            this.UriageDateLbl.AutoSize = true;
+            this.UriageDateLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.UriageDateLbl.Location = new System.Drawing.Point(496, 223);
+            this.UriageDateLbl.Name = "UriageDateLbl";
+            this.UriageDateLbl.Size = new System.Drawing.Size(124, 28);
+            this.UriageDateLbl.TabIndex = 64;
+            this.UriageDateLbl.Text = "売上日時";
+            // 
+            // UriageDateTxb
+            // 
+            this.UriageDateTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.UriageDateTxb.Location = new System.Drawing.Point(642, 226);
+            this.UriageDateTxb.Name = "UriageDateTxb";
+            this.UriageDateTxb.Size = new System.Drawing.Size(201, 25);
+            this.UriageDateTxb.TabIndex = 59;
+            // 
+            // EigyoshoNameTxb
+            // 
+            this.EigyoshoNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EigyoshoNameTxb.Location = new System.Drawing.Point(642, 150);
+            this.EigyoshoNameTxb.Name = "EigyoshoNameTxb";
+            this.EigyoshoNameTxb.Size = new System.Drawing.Size(201, 25);
+            this.EigyoshoNameTxb.TabIndex = 58;
             // 
             // GamenKousinBtn
             // 
@@ -483,34 +511,6 @@
             this.TopNameHyojiLbl.Size = new System.Drawing.Size(88, 30);
             this.TopNameHyojiLbl.TabIndex = 54;
             this.TopNameHyojiLbl.Text = "名前：";
-            // 
-            // EigyoshoNameTxb
-            // 
-            this.EigyoshoNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EigyoshoNameTxb.Location = new System.Drawing.Point(642, 150);
-            this.EigyoshoNameTxb.Name = "EigyoshoNameTxb";
-            this.EigyoshoNameTxb.Size = new System.Drawing.Size(201, 25);
-            this.EigyoshoNameTxb.TabIndex = 58;
-            // 
-            // UriageDateTxb
-            // 
-            this.UriageDateTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UriageDateTxb.Location = new System.Drawing.Point(642, 226);
-            this.UriageDateTxb.Name = "UriageDateTxb";
-            this.UriageDateTxb.Size = new System.Drawing.Size(201, 25);
-            this.UriageDateTxb.TabIndex = 59;
-            // 
-            // UriageDateLbl
-            // 
-            this.UriageDateLbl.AutoSize = true;
-            this.UriageDateLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.UriageDateLbl.Location = new System.Drawing.Point(496, 223);
-            this.UriageDateLbl.Name = "UriageDateLbl";
-            this.UriageDateLbl.Size = new System.Drawing.Size(124, 28);
-            this.UriageDateLbl.TabIndex = 64;
-            this.UriageDateLbl.Text = "売上日時";
             // 
             // UriageKanri
             // 
