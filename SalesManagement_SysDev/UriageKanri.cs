@@ -11,34 +11,23 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class TopEigyoPage : Form
+    public partial class UriageKanri : Form
     {
+
         MessageDsp messageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
         InputCheck inputCheck = new InputCheck();
 
-        internal static int EmID = 0;
         internal static int PoID = 0;
+        internal static int EmID = 0;
+        
 
-
-        public TopEigyoPage()
+        public UriageKanri()
         {
 
             InitializeComponent();
         }
 
-        private void JuchuKanriBtn_Click(object sender, EventArgs e)
-        {
-            JuchuKanri.EmID = EmID;
-            JuchuKanri.PoID = PoID;
-
-            //現画面を非表示
-            this.Visible = false;
-
-            //JuchuKanriを表示
-            JuchuKanri f2 = new JuchuKanri();
-            f2.Show();
-        }
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
             TopHonshaPage.EmID = EmID;
@@ -54,7 +43,10 @@ namespace SalesManagement_SysDev
 
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
+            TopEigyoPage.EmID = EmID;
             
+            TopEigyoPage.PoID = PoID;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -76,34 +68,8 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
-        private void KokyakuKanriBtn_Click(object sender, EventArgs e)
+        private void JuchuKanri_Load(object sender, EventArgs e)
         {
-            Kokyakukanri.EmID = EmID;
-            Kokyakukanri.PoID = PoID;
-
-            //現画面を非表示
-            this.Visible = false;
-
-            //Kokyakukanriを表示
-            Kokyakukanri f2 = new Kokyakukanri();
-            f2.Show();
-        }
-
-        private void ChumonKanriBtn_Click(object sender, EventArgs e)
-        {
-            ChumonKanri.EmID = EmID;
-            ChumonKanri.PoID = PoID;
-            //現画面を非表示
-            this.Visible = false;
-
-            // ChumonKanriを表示
-            ChumonKanri f2 = new ChumonKanri();
-            f2.Show();
-        }
-
-        private void TopEigyoPage_Load(object sender, EventArgs e)
-        {
-
             string[] TopData = new string[4];
             TopData = empDataAccess.GetTopData(EmID);
 
@@ -115,7 +81,7 @@ namespace SalesManagement_SysDev
             TopEigyoshoLbl.Text = TopData[2];
             TopJikanLbl.Text = TopData[3];
 
-            if(PoID == 2)
+            if (PoID == 2)
             {
                 TopHonshaBtn.Enabled = false;
                 TopHonshaBtn.BackColor = Color.DarkGray;
@@ -127,33 +93,33 @@ namespace SalesManagement_SysDev
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.Black;
 
-                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
                 TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
             }
-            else if(PoID == 1)
+            else if (PoID == 1)
             {
-                
-                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+
+                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
                 TopHonshaBtn.FlatAppearance.BorderSize = 1;
                 TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
                 TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
             }
 
+
         }
 
-        private void TopLogoutBtn_Click(object sender, EventArgs e)
+        private void button15_Click(object sender, EventArgs e)
         {
-            
             DialogResult result = messageDsp.DspMsg("M0004");
 
             if (result == DialogResult.OK)
@@ -171,43 +137,6 @@ namespace SalesManagement_SysDev
                 // キャンセルの時の処理
             }
 
-        }
-
-
-        private void UriageKanriBtn_Click(object sender, EventArgs e)
-        {
-            UriageKanri.EmID = EmID;
-            UriageKanri.PoID = PoID;
-
-            //現画面を非表示
-            this.Visible = false;
-
-            //UriageKanriを表示
-            UriageKanri f2 = new UriageKanri();
-        } 
-        private void NyukaKanriBtn_Click(object sender, EventArgs e)
-        {
-            NyukaKanri.EmID = EmID;
-            NyukaKanri.PoID = PoID;
-            //現画面を非表示
-            this.Visible = false;
-
-            // NyukaKanriを表示
-            NyukaKanri f2 = new NyukaKanri();
-            f2.Show();
-        }
-
-        private void ShukkaKanriBtn_Click(object sender, EventArgs e)
-        {
-            ShukkaKanri.EmID = EmID;
-            ShukkaKanri.PoID = PoID;
-            //現画面を非表示
-            this.Visible = false;
-
-            // ShukkaKanriを表示
-            ShukkaKanri f2 = new ShukkaKanri();
-
-            f2.Show();
         }
     }
 }
