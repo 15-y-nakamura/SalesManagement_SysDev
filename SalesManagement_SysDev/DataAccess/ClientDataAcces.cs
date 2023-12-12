@@ -31,6 +31,8 @@ namespace SalesManagement_SysDev.DataAccess
                              t1.ClName,
                              t2.SoName,
                              t1.ClPhone,
+                             t1.ClPostal,
+                             t1.ClAddress,
                              t1.ClFAX,
                              t1.ClFlag,
                              t1.ClHidden
@@ -44,6 +46,8 @@ namespace SalesManagement_SysDev.DataAccess
                         ClName = p.ClName,
                         SoName = p.SoName,
                         ClPhone = p.ClPhone,
+                        ClPostal = p.ClPostal,
+                        ClAddress = p.ClAddress,
                         ClFax = p.ClFAX,
                         ClFlag = p.ClFlag,
                         ClHidden = p.ClHidden
@@ -76,6 +80,32 @@ namespace SalesManagement_SysDev.DataAccess
                 context.SaveChanges();
                 context.Dispose();
 
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateClient(M_Client regClient)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var cli = context.M_Clients.Single(x => x.ClID == regClient.ClID);
+
+                cli.ClName = regClient.ClName;
+                cli.SoID = regClient.SoID;
+                cli.ClPhone = regClient.ClPhone;
+                cli.ClPostal = regClient.ClPostal;
+                cli.ClAddress = regClient.ClAddress;
+                cli.ClFAX = regClient.ClFAX;
+                cli.ClFlag = regClient.ClFlag;
+                cli.ClHidden = regClient.ClHidden;
+
+                context.SaveChanges();
+                context.Dispose();
                 return true;
             }
             catch (Exception ex)
