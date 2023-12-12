@@ -342,7 +342,7 @@ namespace SalesManagement_SysDev
             //役職名の入力チェック
             if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameCmb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).Msg);
                 return false;
             }
 
