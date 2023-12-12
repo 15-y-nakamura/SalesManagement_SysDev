@@ -293,7 +293,8 @@ namespace SalesManagement_SysDev
             KokyakuKanriDgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             KokyakuKanriDgv.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             KokyakuKanriDgv.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
+            KokyakuKanriDgv.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            KokyakuKanriDgv.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             KokyakuKanriDgv.Refresh();
 
         }
@@ -341,6 +342,14 @@ namespace SalesManagement_SysDev
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
+            if (!InputUpdataDataCheck())
+            {
+                return;
+            }
+
+            var updatedata = SetClientUpdateData();
+
+            UpdateClient(updatedata);
 
         }
 
@@ -502,6 +511,137 @@ namespace SalesManagement_SysDev
             }
         }
 
+        private bool InputUpdataDataCheck()
+        {
+            //顧客IDの入力チェック
+            if (!InputCheck.CheckClID(KokyakuIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClID(KokyakuIDTxb.Text).Msg);
+                return false;
+            }
 
+            //顧客名の入力チェック
+            if (!InputCheck.CheckClname(KokyakuNameTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClname(KokyakuNameTxb.Text).Msg);
+                return false;
+            }
+
+            //電話番号の入力チェック
+            if (!InputCheck.CheckClPhone(TelTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClPhone(TelTxb.Text).Msg);
+                return false;
+            }
+
+            //営業所名の入力チェック
+            if (!InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).Msg);
+                return false;
+            }
+
+            //郵便番号の入力チェック
+            if (!InputCheck.CheckClYubin(YubinTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClYubin(YubinTxb.Text).Msg);
+                YubinTxb.Focus();
+                return false;
+            }
+
+            //住所の入力チェック
+            if (!InputCheck.CheckClJusho(JushoTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClJusho(JushoTxb.Text).Msg);
+                JushoTxb.Focus();
+                return false;
+            }
+
+            //FAXの入力チェック
+            if (!InputCheck.CheckClFax(FaxTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClFax(FaxTxb.Text).Msg);
+                FaxTxb.Focus();
+                return false;
+            }
+
+            //非表示理由の入力チェック
+            if (KokyakuKanriFlagCmb.Text == "非表示")
+            {
+                if (!InputCheck.CheckHidden(HihyojiTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckHidden(HihyojiTxb.Text).Msg);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private M_Client SetClientUpdateData()
+        {
+            int SoID = SalesOfficeDA.GetSoID(EigyoshoNameCmb.Text);
+            int ClFlg;
+
+            if (KokyakuKanriFlagCmb.Text == "非表示")
+            {
+                ClFlg = 2;
+            }
+            else
+            {
+                ClFlg = 0;
+            }
+
+            return new M_Client
+            {
+                ClID = int.Parse(KokyakuIDTxb.Text),
+                ClName = KokyakuNameTxb.Text,
+                SoID = SoID,
+                ClPhone = TelTxb.Text,
+                ClPostal = YubinTxb.Text,
+                ClAddress = JushoTxb.Text,
+                ClFAX = FaxTxb.Text,
+                ClFlag = ClFlg,
+                ClHidden = HihyojiTxb.Text
+            };
+        }
+
+        private void UpdateClient(M_Client cli)
+        {
+            if (DialogResult.OK == MessageDsp.DspMsg("M1026"))
+            {
+                if (ClientDA.UpdateClient(cli))
+                {
+                    MessageDsp.DspMsg("M1027");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormKokyakukanriGridView();
+                }
+                else
+                {
+                    MessageDsp.DspMsg("M1028");
+                }
+            }
+        }
+
+        private void KokyakuKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //クリックされた行データをテキストボックスへ
+            KokyakuIDTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
+            KokyakuNameTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
+            EigyoshoNameCmb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
+            TelTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
+            YubinTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
+            JushoTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
+            FaxTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
+            KokyakuKanriFlagCmb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
+            /*if (KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index] != null)
+            {
+                HihyojiTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+
+            }*/
+        }
     }
 }

@@ -521,6 +521,30 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        public (bool flg, string Msg) CheckClID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M1001");
+            }
+
+            if (!EmployeeDA.SonzaiCheckClID(int.Parse(text)))
+            {
+                return (false, "M1024");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M1002");
+            }
+
+            return (true, text);
+        }
 
     }
 }
