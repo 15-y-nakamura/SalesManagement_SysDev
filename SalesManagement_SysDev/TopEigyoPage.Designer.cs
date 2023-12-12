@@ -130,6 +130,7 @@
             this.NyukaKanriBtn.TabIndex = 15;
             this.NyukaKanriBtn.Text = "入荷管理";
             this.NyukaKanriBtn.UseVisualStyleBackColor = true;
+            this.NyukaKanriBtn.Click += new System.EventHandler(this.NyukaKanriBtn_Click);
             // 
             // ShukkaKanriBtn
             // 
@@ -140,6 +141,7 @@
             this.ShukkaKanriBtn.TabIndex = 16;
             this.ShukkaKanriBtn.Text = "出荷管理";
             this.ShukkaKanriBtn.UseVisualStyleBackColor = true;
+            this.ShukkaKanriBtn.Click += new System.EventHandler(this.ShukkaKanriBtn_Click);
             // 
             // ChumonKanriBtn
             // 

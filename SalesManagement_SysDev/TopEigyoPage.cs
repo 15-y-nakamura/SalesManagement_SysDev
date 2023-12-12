@@ -54,6 +54,7 @@ namespace SalesManagement_SysDev
 
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
+            
             //現画面を非表示
             this.Visible = false;
 
@@ -172,6 +173,28 @@ namespace SalesManagement_SysDev
 
         }
 
+        private void NyukaKanriBtn_Click(object sender, EventArgs e)
+        {
+            NyukaKanri.EmID = EmID;
+            NyukaKanri.PoID = PoID;
+            //現画面を非表示
+            this.Visible = false;
 
+            // NyukaKanriを表示
+            NyukaKanri f2 = new NyukaKanri();
+            f2.Show();
+        }
+
+        private void ShukkaKanriBtn_Click(object sender, EventArgs e)
+        {
+            ShukkaKanri.EmID = EmID;
+            ShukkaKanri.PoID = PoID;
+            //現画面を非表示
+            this.Visible = false;
+
+            // ShukkaKanriを表示
+            ShukkaKanri f2 = new ShukkaKanri();
+            f2.Show();
+        }
     }
 }
