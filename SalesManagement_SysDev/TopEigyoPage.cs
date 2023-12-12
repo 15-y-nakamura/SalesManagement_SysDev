@@ -184,7 +184,7 @@ namespace SalesManagement_SysDev
 
             //UriageKanriを表示
             UriageKanri f2 = new UriageKanri();
-            
+        } 
         private void NyukaKanriBtn_Click(object sender, EventArgs e)
         {
             NyukaKanri.EmID = EmID;
