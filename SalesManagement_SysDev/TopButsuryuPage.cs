@@ -164,5 +164,33 @@ namespace SalesManagement_SysDev
             }
 
         }
+
+        private void ShukkoKanriBtn_Click(object sender, EventArgs e)
+        {
+            ShukkoKanri.EmID = EmID;
+            ShukkoKanri.PoID = PoID;
+
+            //現画面を非表示
+            this.Visible = false;
+
+            //ShukkoKanriを表示
+            ShukkoKanri f2 = new ShukkoKanri();
+            f2.Show();
+        }
+
+        private void NyukoKanriBtn_Click(object sender, EventArgs e)
+        {
+            {
+                NyukoKanri.EmID = EmID;
+                NyukoKanri.PoID = PoID;
+
+                //現画面を非表示
+                this.Visible = false;
+
+                //NyukoKanriを表示
+                NyukoKanri f2 = new NyukoKanri();
+                f2.Show();
+            }
+        }
     }
 }
