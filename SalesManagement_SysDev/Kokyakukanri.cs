@@ -14,6 +14,31 @@ namespace SalesManagement_SysDev
 {
     public partial class Kokyakukanri : Form
     {
+        //社員テーブルアクセスクラスのインスタンス化
+        EmployeeDataAccess EmployeeDA = new EmployeeDataAccess();
+
+        //顧客テーブルアクセスのクラスのインスタンス化
+        ClientDataAccess ClientDA = new ClientDataAccess();
+
+        //役職テーブルアクセスクラスのインスタンス化
+        PositionDataAccess PositionDA = new PositionDataAccess();
+
+        //営業所テーブルアクセスクラスのインスタンス化
+        SalesOfficeDataAccess SalesOfficeDA = new SalesOfficeDataAccess();
+
+        //データグリッドビュー用のスタッフデータ
+        private static List<M_EmployeeDsp> Employee;
+
+        //メッセージ表示クラスインスタンス化
+        MessageDsp MessageDsp = new MessageDsp();
+
+        //入力チェッククラスインスタンス化
+        InputCheck InputCheck = new InputCheck();
+
+        //データグリッドビュー用の顧客データ
+        private static List<M_ClientDsp> Client;
+
+
 
         MessageDsp messageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
@@ -31,7 +56,7 @@ namespace SalesManagement_SysDev
         }
         private void Kokyakukanri_Load(object sender, EventArgs e)
         {
-            PlaceHolderText();
+            //PlaceHolderText();
 
             string[] TopData = new string[4];
             TopData = empDataAccess.GetTopData(EmID);
@@ -56,7 +81,7 @@ namespace SalesManagement_SysDev
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.Black;
 
-                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
                 TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
@@ -64,24 +89,32 @@ namespace SalesManagement_SysDev
             else if (PoID == 1)
             {
 
-                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopHonshaBtn.FlatAppearance.BorderSize = 1;
                 TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
                 TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+                //PlaceHolderText();
+
+                //コントロールの初期設定
+                SetCtrlFormat();
+
+                //データグリッドビューの設定
+                SetFormKokyakukanriGridView();
 
             }
 
 
         }
 
-        //テキストボックス内に灰色の文字を表示
+        /*テキストボックス内に灰色の文字を表示
         private void PlaceHolderText()
         {
             YubinTxb.Text = "ハイフンなし";
@@ -97,7 +130,7 @@ namespace SalesManagement_SysDev
             TelTxb.Text = "ハイフンあり";
             TelTxb.ForeColor = SystemColors.GrayText;
             TelTxb.Enter += TelTxb_Enter;
-            TelTxb.Leave += TelTxb_Leave;
+            //TelTxb.Leave += TelTxb_Leave;
 
             FaxTxb.Text = "ハイフンあり";
             FaxTxb.ForeColor = SystemColors.GrayText;
@@ -183,7 +216,89 @@ namespace SalesManagement_SysDev
                 FaxTxb.Text = "ハイフンあり";
                 FaxTxb.ForeColor = SystemColors.GrayText;
             }
+        }*/
+
+        ///////////////////////////////
+        //メソッド名：SetCtrlFormat()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：コントロールの初期設定
+        ///////////////////////////////
+        private void SetCtrlFormat()
+        {
+            KokyakuIDTxb.Text = "";
+            KokyakuNameTxb.Text = "";
+            EigyoshoNameCmb.Items.Clear();
+            EigyoshoNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            YubinTxb.Text = "";
+            JushoTxb.Text = "";
+            TelTxb.Text = "";
+            FaxTxb.Text = "";
+            KokyakuKanriFlagCmb.Items.Clear();
+            KokyakuKanriFlagCmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            HihyojiTxb.Text = "";
+
+            //営業所名を取得
+            var SoName = SalesOfficeDA.GetSoName();
+
+            //営業所名をコンボボックスに追加
+            foreach (string Soname in SoName.Reverse())
+            {
+                EigyoshoNameCmb.Items.Add(Soname);
+            }
+
+            KokyakuKanriFlagCmb.Items.Add("表示");
+            KokyakuKanriFlagCmb.Items.Add("非表示");
         }
+
+        private void SetFormKokyakukanriGridView()
+        {
+            //読み取り専用に指定
+            KokyakuKanriDgv.ReadOnly = true;
+            //行内をクリックすることで行を選択
+            KokyakuKanriDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            //ヘッダー位置の指定
+            KokyakuKanriDgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //データグリッドビューのデータ取得
+            ListDisplay();
+        }
+
+        private void ListDisplay()
+        {
+            // スタッフデータの取得
+            Client = ClientDA.GetClientData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        private void SetDataGridView()
+        {
+            KokyakuKanriDgv.DataSource = Client.ToList();
+
+            //すべての列がコントロールの表示領域の幅いっぱいに表示されるよう列幅を調整
+            KokyakuKanriDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+
+            //行の高さ設定
+            KokyakuKanriDgv.RowTemplate.Height = 40;
+
+            //各列の文字位置の指定
+            KokyakuKanriDgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            KokyakuKanriDgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            KokyakuKanriDgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            KokyakuKanriDgv.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            KokyakuKanriDgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            KokyakuKanriDgv.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            KokyakuKanriDgv.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            KokyakuKanriDgv.Refresh();
+
+        }
+
+
 
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
@@ -249,5 +364,144 @@ namespace SalesManagement_SysDev
             }
 
         }
+
+        private void RegistBtn_Click(object sender, EventArgs e)
+        {
+            //入力チェック
+            if (!InputRegistDataCheck())
+            {
+                return;
+            }
+
+            //形式化
+            var clidata = SetClientData();
+
+            //登録
+            RegistClient(clidata);
+        }
+
+        private bool InputRegistDataCheck()
+        {
+            //顧客IDの入力チェック
+            if (!InputCheck.CheckRegistClID(KokyakuIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckRegistClID(KokyakuIDTxb.Text).Msg);
+                KokyakuIDTxb.Focus();
+                return false;
+            }
+
+            //顧客名の入力チェック
+            if (!InputCheck.CheckClname(KokyakuNameTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClname(KokyakuNameTxb.Text).Msg);
+                KokyakuNameTxb.Focus();
+                return false;
+            }
+
+            //営業所名の入力チェック
+            if (!InputCheck.CheckSoNameEiCmb(EigyoshoNameCmb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckSoNameEiCmb(EigyoshoNameCmb.Text).Msg);
+                return false;
+            }
+
+            //電話番号の入力チェック
+            if (!InputCheck.CheckClPhone(TelTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClPhone(TelTxb.Text).Msg);
+                TelTxb.Focus();
+                return false;
+            }
+
+            //郵便番号の入力チェック
+            if (!InputCheck.CheckClYubin(YubinTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClYubin(YubinTxb.Text).Msg);
+                YubinTxb.Focus();
+                return false;
+            }
+
+            //住所の入力チェック
+            if (!InputCheck.CheckClJusho(JushoTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClJusho(JushoTxb.Text).Msg);
+                JushoTxb.Focus();
+                return false;
+            }
+
+            //FAXの入力チェック
+            if (!InputCheck.CheckClFax(FaxTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClFax(FaxTxb.Text).Msg);
+                FaxTxb.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+
+        ///////////////////////////////
+        //メソッド名：InputRegistDataCheck()
+        //引　数   ：なし
+        //戻り値   ：M_Client
+        //機　能   ：社員情報を形式化する
+        ///////////////////////////////
+        private M_Client SetClientData()
+        {
+            int SoID = SalesOfficeDA.GetSoID(EigyoshoNameCmb.Text);
+            int ClFlg;
+
+            if (KokyakuKanriFlagCmb.Text == "非表示")
+            {
+                ClFlg = 2;
+            }
+            else
+            {
+                ClFlg = 0;
+            }
+
+            return new M_Client
+            {
+                ClID = int.Parse(KokyakuIDTxb.Text),
+                ClName = KokyakuNameTxb.Text,
+                SoID = SoID,
+                ClPhone = TelTxb.Text,
+                ClPostal = YubinTxb.Text,
+                ClAddress = JushoTxb.Text,
+                ClFAX = FaxTxb.Text,
+                ClFlag = ClFlg,
+                ClHidden = HihyojiTxb.Text
+            };
+        }
+
+        ///////////////////////////////
+        //メソッド名：RegistClient()
+        //引　数   ：M_Client
+        //戻り値   ：なし
+        //機　能   ：形式化した顧客情報を登録する
+        ///////////////////////////////
+        private void RegistClient(M_Client cli)
+        {
+            if (DialogResult.OK == MessageDsp.DspMsg("M1021"))
+            {
+                if (ClientDA.RegistClient(cli))
+                {
+                    MessageDsp.DspMsg("M1022");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormKokyakukanriGridView();
+                }
+                else
+                {
+                    MessageDsp.DspMsg("M1023");
+                }
+            }
+        }
+
+
     }
 }

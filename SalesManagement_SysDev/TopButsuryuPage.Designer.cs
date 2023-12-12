@@ -140,6 +140,7 @@
             this.ShukkoKanriBtn.TabIndex = 22;
             this.ShukkoKanriBtn.Text = "出庫管理";
             this.ShukkoKanriBtn.UseVisualStyleBackColor = true;
+            this.ShukkoKanriBtn.Click += new System.EventHandler(this.ShukkoKanriBtn_Click);
             // 
             // TopButsuryuPnl
             // 

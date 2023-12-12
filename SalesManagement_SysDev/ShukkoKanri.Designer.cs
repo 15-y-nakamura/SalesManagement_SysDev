@@ -33,10 +33,10 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopShukkoPnl = new System.Windows.Forms.Panel();
+            this.KokyakuIDTxb = new System.Windows.Forms.TextBox();
             this.ShukkoDateDtm = new System.Windows.Forms.DateTimePicker();
             this.ShukkoJotaiFlagCmb = new System.Windows.Forms.ComboBox();
             this.ComfirmBtn = new System.Windows.Forms.Button();
-            this.EigyoshoNameCmb = new System.Windows.Forms.ComboBox();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.ShukkoKanriDgv = new System.Windows.Forms.DataGridView();
             this.KokyakuKanriFlagCmb = new System.Windows.Forms.ComboBox();
@@ -86,6 +86,7 @@
             this.TopHonshaBtn.TabIndex = 0;
             this.TopHonshaBtn.Text = "本社";
             this.TopHonshaBtn.UseVisualStyleBackColor = true;
+            this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
             // 
             // TopEigyoBtn
             // 
@@ -97,6 +98,7 @@
             this.TopEigyoBtn.TabIndex = 1;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
+            this.TopEigyoBtn.Click += new System.EventHandler(this.TopEigyoBtn_Click);
             // 
             // TopButsuryuBtn
             // 
@@ -108,6 +110,7 @@
             this.TopButsuryuBtn.TabIndex = 2;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
+            this.TopButsuryuBtn.Click += new System.EventHandler(this.TopButsuryuBtn_Click);
             // 
             // TopLbl
             // 
@@ -122,10 +125,10 @@
             // 
             this.TopShukkoPnl.AutoSize = true;
             this.TopShukkoPnl.BackColor = System.Drawing.Color.LightGray;
+            this.TopShukkoPnl.Controls.Add(this.KokyakuIDTxb);
             this.TopShukkoPnl.Controls.Add(this.ShukkoDateDtm);
             this.TopShukkoPnl.Controls.Add(this.ShukkoJotaiFlagCmb);
             this.TopShukkoPnl.Controls.Add(this.ComfirmBtn);
-            this.TopShukkoPnl.Controls.Add(this.EigyoshoNameCmb);
             this.TopShukkoPnl.Controls.Add(this.GamenKousinBtn);
             this.TopShukkoPnl.Controls.Add(this.ShukkoKanriDgv);
             this.TopShukkoPnl.Controls.Add(this.KokyakuKanriFlagCmb);
@@ -154,6 +157,13 @@
             this.TopShukkoPnl.Size = new System.Drawing.Size(1856, 783);
             this.TopShukkoPnl.TabIndex = 23;
             // 
+            // KokyakuIDTxb
+            // 
+            this.KokyakuIDTxb.Location = new System.Drawing.Point(1053, 156);
+            this.KokyakuIDTxb.Name = "KokyakuIDTxb";
+            this.KokyakuIDTxb.Size = new System.Drawing.Size(200, 25);
+            this.KokyakuIDTxb.TabIndex = 59;
+            // 
             // ShukkoDateDtm
             // 
             this.ShukkoDateDtm.Location = new System.Drawing.Point(1053, 294);
@@ -180,14 +190,6 @@
             this.ComfirmBtn.TabIndex = 56;
             this.ComfirmBtn.Text = "確定";
             this.ComfirmBtn.UseVisualStyleBackColor = true;
-            // 
-            // EigyoshoNameCmb
-            // 
-            this.EigyoshoNameCmb.FormattingEnabled = true;
-            this.EigyoshoNameCmb.Location = new System.Drawing.Point(1052, 149);
-            this.EigyoshoNameCmb.Name = "EigyoshoNameCmb";
-            this.EigyoshoNameCmb.Size = new System.Drawing.Size(206, 26);
-            this.EigyoshoNameCmb.TabIndex = 55;
             // 
             // GamenKousinBtn
             // 
@@ -584,7 +586,6 @@
         private System.Windows.Forms.ComboBox KokyakuKanriFlagCmb;
         private System.Windows.Forms.DataGridView ShukkoKanriDgv;
         private System.Windows.Forms.Button GamenKousinBtn;
-        private System.Windows.Forms.ComboBox EigyoshoNameCmb;
         private System.Windows.Forms.Label TopIDHyojiLbl;
         private System.Windows.Forms.Label TopIDLbl;
         private System.Windows.Forms.Label TopEigyoshoLbl;
@@ -598,5 +599,6 @@
         private System.Windows.Forms.Button ComfirmBtn;
         private System.Windows.Forms.ComboBox ShukkoJotaiFlagCmb;
         private System.Windows.Forms.DateTimePicker ShukkoDateDtm;
+        private System.Windows.Forms.TextBox KokyakuIDTxb;
     }
 }

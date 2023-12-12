@@ -59,6 +59,27 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
+        //メソッド名：CheckSuutiHaihun()
+        //引　数   ：文字列
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：半角数字とハイフンのチェック
+        //           半角数字ハイフンのときTrue
+        //           半角数字ハイフン以外のときFalse
+        ///////////////////////////////
+        public bool CheckSuutiHaihun(string text)
+        {
+            Regex regex = new Regex("^[0-9-]+$");
+            if (regex.IsMatch(text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        ///////////////////////////////
         //メソッド名：CheckHankakueisu()
         //引　数   ：文字列
         //戻り値   ：True:異常なし、False:異常あり
@@ -136,7 +157,7 @@ namespace SalesManagement_SysDev
                 return(false, "M4003");
             }
 
-            if (CheckSuuti(text))
+            if (!CheckSuuti(text))
             {
                 return (false, "M4001");
             }
@@ -221,11 +242,20 @@ namespace SalesManagement_SysDev
                 return (false, "M4016");
             }
 
-            if (!CheckPhoneFAX(text))
+            if (!CheckSuutiHaihun(text))
             {
                 return (false, "M4014");
             }
 
+            if (text.Length > 13)
+            {
+                return (false, "M4015");
+            }
+
+            if(text.Length < 12)
+            {
+                return (false, "M4030");
+            }
             return (true, text);
         }
 
@@ -280,18 +310,217 @@ namespace SalesManagement_SysDev
                 return (false, "M4017");
             }
 
+
+
             return (true, text);
         }
 
         public (bool flg, string Msg) CheckHidden(string text)
         {
-            if (text == "")
+            if(text == "")
             {
                 return (false, "M9001");
             }
 
             return (true, text);
         }
+
+        ///////////////////////////////
+        //メソッド名：CheckRegistClID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の顧客ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistClID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M1001");
+            }
+
+            if (EmployeeDA.SonzaiCheckClID(int.Parse(text)))
+            {
+                return (false, "M1032");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M1002");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckClname()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：顧客名入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        public (bool flg, string Msg) CheckClname(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1006");
+            }
+
+            if (!CheckZenkaku(text))
+            {
+                return (false, "M1004");
+            }
+
+            if (text.Length > 50)
+            {
+                return (false, "M1005");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckClPhone()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：電話番号入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        //////////////////////////////////
+        public (bool flg, string Msg) CheckClPhone(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1012");
+            }
+
+            if (!CheckSuutiHaihun(text))
+            {
+                return (false, "M1010");
+            }
+
+            if(text.Length >13)
+            {
+                return (false, "M1011");
+            }
+
+            if(text.Length < 12)
+            {
+                return (false, "M1033");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckSoNameEiCmb()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：営業名入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        //////////////////////////////////
+        public (bool flg, string Msg) CheckSoNameEiCmb(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1007");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckClYubin()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：郵便番号入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        //////////////////////////////////
+        public (bool flg, string Msg) CheckClYubin(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1015");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M1013");
+            }
+
+            if (text.Length != 7)
+            {
+                return (false, "M1014");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckClJusho()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：住所入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        //////////////////////////////////
+        public (bool flg, string Msg) CheckClJusho(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1009");
+            }
+
+            if (text.Length > 50)
+            {
+                return (false, "M1008");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckClFax()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：FAX入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        //////////////////////////////////
+        public (bool flg, string Msg) CheckClFax(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1018");
+            }
+
+            if (!CheckSuutiHaihun(text))
+            {
+                return (false, "M1016");
+            }
+
+            if (text.Length > 13)
+            {
+                return (false, "M1017");
+            }
+
+            if (text.Length < 12)
+            {
+                return (false, "M1034");
+            }
+
+
+            return (true, text);
+        }
+
 
     }
 }
