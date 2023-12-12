@@ -67,6 +67,36 @@
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Common\InputCheck.cs" />
+    <Compile Include="NyukaKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NyukaKanri.Designer.cs">
+      <DependentUpon>NyukaKanri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NyukoKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NyukoKanri.Designer.cs">
+      <DependentUpon>NyukoKanri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShukkaKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShukkaKanri.Designer.cs">
+      <DependentUpon>ShukkaKanri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShukkoKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+	<Compile Include="ShukkoKanri.Designer.cs">
+	  <DependentUpon>ShukkoKanri.cs</DependentUpon>
+	</Compile>
+    <Compile Include="ZaikoKanri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZaikoKanri.Designer.cs">
+      <DependentUpon>ZaikoKanri.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +187,21 @@
     <Compile Include="TopHonshaPage.Designer.cs">
       <DependentUpon>TopHonshaPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="NyukaKanri.resx">
+      <DependentUpon>NyukaKanri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NyukoKanri.resx">
+      <DependentUpon>NyukoKanri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShukkaKanri.resx">
+      <DependentUpon>ShukkaKanri.cs</DependentUpon>
+    </EmbeddedResource>
+	<EmbeddedResource Include="ShukkoKanri.resx">
+		<DependentUpon>ShukkoKanri.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="ZaikoKanri.resx">
+      <DependentUpon>ZaikoKanri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>

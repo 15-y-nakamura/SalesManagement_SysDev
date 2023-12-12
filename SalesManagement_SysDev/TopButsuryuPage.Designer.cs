@@ -92,7 +92,7 @@
             // TopLbl
             // 
             this.TopLbl.Font = new System.Drawing.Font("MS UI Gothic", 40F);
-            this.TopLbl.Location = new System.Drawing.Point(251, 37);
+            this.TopLbl.Location = new System.Drawing.Point(253, 38);
             this.TopLbl.Name = "TopLbl";
             this.TopLbl.Size = new System.Drawing.Size(617, 93);
             this.TopLbl.TabIndex = 3;
@@ -118,6 +118,7 @@
             this.ZaikoKanriBtn.TabIndex = 20;
             this.ZaikoKanriBtn.Text = "在庫管理";
             this.ZaikoKanriBtn.UseVisualStyleBackColor = true;
+            this.ZaikoKanriBtn.Click += new System.EventHandler(this.ZaikoKanriBtn_Click);
             // 
             // NyukoKanriBtn
             // 

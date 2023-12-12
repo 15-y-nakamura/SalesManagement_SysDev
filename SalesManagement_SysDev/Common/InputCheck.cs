@@ -175,6 +175,31 @@ namespace SalesManagement_SysDev
             return(true, text);
         }
 
+        public (bool flg, string Msg) CheckEmID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M4003");
+            }
+
+            if (CheckSuuti(text))
+            {
+                return (false, "M4001");
+            }
+
+            if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
+            {
+                return (false, "M4022");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M4002");
+            }
+
+            return (true, text);
+        }
+
         ///////////////////////////////
         //メソッド名：CheckEmname()
         //引　数   ：文字列
@@ -283,6 +308,18 @@ namespace SalesManagement_SysDev
             if (text == "")
             {
                 return (false, "M4017");
+            }
+
+
+
+            return (true, text);
+        }
+
+        public (bool flg, string Msg) CheckHidden(string text)
+        {
+            if(text == "")
+            {
+                return (false, "M9001");
             }
 
             return (true, text);

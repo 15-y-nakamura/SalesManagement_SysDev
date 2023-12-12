@@ -192,6 +192,7 @@
             this.ShohinKanriDgv.RowTemplate.Height = 27;
             this.ShohinKanriDgv.Size = new System.Drawing.Size(1633, 256);
             this.ShohinKanriDgv.TabIndex = 52;
+            this.ShohinKanriDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShohinKanriDgv_CellClick);
             // 
             // HihyojiTxb
             // 

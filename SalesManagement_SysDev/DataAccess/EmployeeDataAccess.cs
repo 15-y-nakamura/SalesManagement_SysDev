@@ -5,6 +5,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace SalesManagement_SysDev.DataAccess
 {
@@ -173,6 +174,30 @@ namespace SalesManagement_SysDev.DataAccess
             }
         }
 
+        public bool UpdateEmployee(M_Employee regEmployee)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var emp = context.M_Employees.Single(x => x.EmID == regEmployee.EmID);
+
+                emp.EmName = regEmployee.EmName;
+                emp.PoID = regEmployee.PoID;
+                emp.SoID = regEmployee.SoID;
+                emp.EmHiredate = regEmployee.EmHiredate;
+                emp.EmPhone = regEmployee.EmPhone;
+                emp.EmFlag = regEmployee.EmFlag;
+                emp.EmHidden = regEmployee.EmHidden;
+
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+            }catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         ///////////////////////////////
         //メソッド名：GetEmployeeData()
         //引　数   ：なし
@@ -195,9 +220,7 @@ namespace SalesManagement_SysDev.DataAccess
                          {
                              t1.EmID,
                              t1.EmName,
-                             t1.SoID,
                              t2.SoName,
-                             t1.PoID,
                              t3.PoName,
                              t1.EmHiredate,
                              t1.EmPhone,
@@ -211,12 +234,11 @@ namespace SalesManagement_SysDev.DataAccess
                     {
                         EmID = p.EmID,
                         EmName = p.EmName,
-                        SoID = p.SoID,
                         SoName = p.SoName,
-                        PoID = p.PoID,
                         PoName = p.PoName,
                         EmHiredate = p.EmHiredate,
                         EmPhone = p.EmPhone,
+
                         EmFlag = p.EmFlag,
                         EmHidden = p.EmHidden
                     });

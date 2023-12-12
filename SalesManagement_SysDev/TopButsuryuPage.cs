@@ -43,6 +43,19 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
+        private void ZaikoKanriBtn_Click(object sender, EventArgs e)
+        {
+            ZaikoKanri.EmID = EmID;
+            ZaikoKanri.PoID = PoID;
+
+            //現画面を非表示
+            this.Visible = false;
+
+            //ShohinKanriを表示
+            ZaikoKanri f2 = new ZaikoKanri();
+            f2.Show();
+        }
+
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
             TopEigyoPage.EmID = EmID;

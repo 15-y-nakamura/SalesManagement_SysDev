@@ -285,11 +285,8 @@ namespace SalesManagement_SysDev
             ShainKanriDgv.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             ShainKanriDgv.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             ShainKanriDgv.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            ShainKanriDgv.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            ShainKanriDgv.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
+            
             ShainKanriDgv.Refresh();
-
         }
 
         private void RegistBtn_Click(object sender, EventArgs e)
@@ -298,8 +295,8 @@ namespace SalesManagement_SysDev
             if (!InputRegistDataCheck())
             {
                 return;
-            }    
-            
+            }
+
             //形式化
             var empdata = SetEmployeeData();
 
@@ -368,7 +365,7 @@ namespace SalesManagement_SysDev
             int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
             int EmFlg;
 
-            if(ShainKanriFlagCmb.Text == "非表示")
+            if (ShainKanriFlagCmb.Text == "非表示")
             {
                 EmFlg = 2;
             }
@@ -378,7 +375,7 @@ namespace SalesManagement_SysDev
             }
 
             var rmd = new Random();
-            var firstpass =  rmd.Next(1000, 9999);
+            var firstpass = rmd.Next(1000, 9999);
 
             return new M_Employee
             {
@@ -420,5 +417,145 @@ namespace SalesManagement_SysDev
                 }
             }
         }
+
+        private void ShainKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ShainIDTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
+            ShainNameTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
+            EigyoushoNameCmb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
+            YakushokuNameCmb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
+            JoinDateDtm.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
+            TelTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
+            //社員管理フラグを日本語に変換
+            if ((int)ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[6].Value == 0)
+            {
+                ShainKanriFlagCmb.Text = "表示";
+            }
+            else if ((int)ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[6].Value == 2)
+            {
+                ShainKanriFlagCmb.Text = "非表示";
+            }
+
+            if (ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[7].Value == null)
+            {
+                HihyojiTxb.Text = "";
+            }
+            else
+            {
+                HihyojiTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
+            }
+        }
+
+      
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            if (!InputUpdataDataCheck())
+            {
+                return;
+            }
+
+            var updatedata = SetEmployeeUpdateData();
+
+            UpdateEmployee(updatedata);
+        }
+
+        private bool InputUpdataDataCheck()
+        {
+            //社員IDの入力チェック
+            if (!InputCheck.CheckEmID(ShainIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckEmID(ShainIDTxb.Text).Msg);
+                return false;
+            }
+
+            //社員名の入力チェック
+            if (!InputCheck.CheckEmname(ShainNameTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckEmname(ShainNameTxb.Text).Msg);
+                return false;
+            }
+
+            //電話番号の入力チェック
+            if (!InputCheck.CheckEmPhone(TelTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckEmPhone(TelTxb.Text).Msg);
+                return false;
+            }
+
+            //営業所名の入力チェック
+            if (!InputCheck.CheckSoNameCmb(EigyoushoNameCmb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoushoNameCmb.Text).Msg);
+                return false;
+            }
+
+            //役職名の入力チェック
+            if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameCmb.Text).Msg);
+                return false;
+            }
+
+            //非表示理由の入力チェック
+            if (ShainKanriFlagCmb.Text == "非表示")
+            {
+                if (!InputCheck.CheckHidden(HihyojiTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckHidden(HihyojiTxb.Text).Msg);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private M_Employee SetEmployeeUpdateData()
+        {
+            int PoID = PositionDA.GetPoID(YakushokuNameCmb.Text);
+            int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
+            int EmFlg;
+
+            if (ShainKanriFlagCmb.Text == "非表示")
+            {
+                EmFlg = 2;
+            }
+            else
+            {
+                EmFlg = 0;
+            }
+
+            return new M_Employee
+            {
+                EmID = int.Parse(ShainIDTxb.Text),
+                EmName = ShainNameTxb.Text,
+                PoID = PoID,
+                SoID = SoID,
+                EmHiredate = JoinDateDtm.Value,
+                EmPhone = TelTxb.Text,
+                EmFlag = EmFlg,
+                EmHidden = HihyojiTxb.Text
+            };
+        }
+
+        private void UpdateEmployee(M_Employee emp)
+        {
+            if(DialogResult.OK == MessageDsp.DspMsg("M4024"))
+            {
+                if (EmployeeDA.UpdateEmployee(emp))
+                {
+                    MessageDsp.DspMsg("M4025");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormSyainKanriGridView();
+                }
+                else
+                {
+                    MessageDsp.DspMsg("M4026");
+                }
+            }
+        }
     }
 }
+

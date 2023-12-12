@@ -790,7 +790,7 @@ namespace SalesManagement_SysDev
 
                     if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
                     {
-                        MessageBox.Show("一致するデータがありました");
+                        MessageBox.Show("初期パスワードが使用されています。パスワードを変更してください。");
                     }
                 }
                 else if (PoID == 2)
@@ -807,7 +807,7 @@ namespace SalesManagement_SysDev
 
                     if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
                     {
-                        MessageBox.Show("一致するデータがありました");
+                        MessageBox.Show("初期パスワードが使用されています。パスワードを変更してください。");
                     }
 
                 }
@@ -825,7 +825,7 @@ namespace SalesManagement_SysDev
 
                     if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
                     {
-                        MessageBox.Show("一致するデータがありました");
+                        MessageBox.Show("初期パスワードが使用されています。パスワードを変更してください。");
                     }
                 }
             }

@@ -175,12 +175,13 @@
             // ShainKanriDgv
             // 
             this.ShainKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ShainKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.ShainKanriDgv.Location = new System.Drawing.Point(126, 481);
             this.ShainKanriDgv.Name = "ShainKanriDgv";
             this.ShainKanriDgv.RowHeadersWidth = 62;
             this.ShainKanriDgv.RowTemplate.Height = 27;
             this.ShainKanriDgv.Size = new System.Drawing.Size(1633, 256);
             this.ShainKanriDgv.TabIndex = 51;
+            this.ShainKanriDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShainKanriDgv_CellClick);
             // 
             // TelTxb
             // 
@@ -348,6 +349,7 @@
             this.UpdateBtn.TabIndex = 5;
             this.UpdateBtn.Text = "更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // RegistBtn
             // 
