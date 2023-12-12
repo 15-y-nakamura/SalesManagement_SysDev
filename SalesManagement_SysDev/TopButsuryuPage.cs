@@ -13,7 +13,7 @@ namespace SalesManagement_SysDev
 {
     public partial class TopButsuryuPage : Form
     {
-        
+
         MessageDsp messageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
         InputCheck inputCheck = new InputCheck();
@@ -116,7 +116,7 @@ namespace SalesManagement_SysDev
                 TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-                
+
                 TopEigyoBtn.Enabled = false;
                 TopEigyoBtn.BackColor = Color.DarkGray;
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
@@ -167,7 +167,15 @@ namespace SalesManagement_SysDev
 
         private void NyukoKanriBtn_Click(object sender, EventArgs e)
         {
+            NyukoKanri.EmID = EmID;
+            NyukoKanri.PoID = PoID;
 
+            //現画面を非表示
+            this.Visible = false;
+
+            //NyukoKanriを表示
+            NyukoKanri f2 = new NyukoKanri();
+            f2.Show();
         }
 
         private void HatchuKanriBtn_Click(object sender, EventArgs e)
@@ -181,6 +189,7 @@ namespace SalesManagement_SysDev
             //HachuKanriを表示
             HachuKanri f2 = new HachuKanri();
             f2.Show();
+        }
 
         private void ShukkoKanriBtn_Click(object sender, EventArgs e)
         {
@@ -193,21 +202,6 @@ namespace SalesManagement_SysDev
             //ShukkoKanriを表示
             ShukkoKanri f2 = new ShukkoKanri();
             f2.Show();
-        }
-
-        private void NyukoKanriBtn_Click(object sender, EventArgs e)
-        {
-            {
-                NyukoKanri.EmID = EmID;
-                NyukoKanri.PoID = PoID;
-
-                //現画面を非表示
-                this.Visible = false;
-
-                //NyukoKanriを表示
-                NyukoKanri f2 = new NyukoKanri();
-                f2.Show();
-            }
         }
     }
 }
