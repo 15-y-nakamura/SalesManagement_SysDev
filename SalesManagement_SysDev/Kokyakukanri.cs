@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,8 @@ namespace SalesManagement_SysDev
 
         //データグリッドビュー用の顧客データ
         private static List<M_ClientDsp> Client;
+
+        M_Client client = new M_Client();
 
 
 
@@ -517,6 +520,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckClID(KokyakuIDTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckClID(KokyakuIDTxb.Text).Msg);
+                KokyakuIDTxb.Focus();
                 return false;
             }
 
@@ -524,6 +528,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckClname(KokyakuNameTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckClname(KokyakuNameTxb.Text).Msg);
+                KokyakuNameTxb.Focus();
                 return false;
             }
 
@@ -531,6 +536,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckClPhone(TelTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckClPhone(TelTxb.Text).Msg);
+                TelTxb.Focus();
                 return false;
             }
 
@@ -637,11 +643,16 @@ namespace SalesManagement_SysDev
             JushoTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
             FaxTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
             KokyakuKanriFlagCmb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
-            /*if (KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index] != null)
+
+            if (KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[7].Value.ToString() == "2")
             {
                 HihyojiTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+            }
+            else
+            {
+                HihyojiTxb.Text = null;
+            }
 
-            }*/
         }
     }
 }
