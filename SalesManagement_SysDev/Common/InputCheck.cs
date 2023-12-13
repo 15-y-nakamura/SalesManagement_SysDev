@@ -182,7 +182,7 @@ namespace SalesManagement_SysDev
                 return (false, "M4003");
             }
 
-            if (CheckSuuti(text))
+            if (!CheckSuuti(text))
             {
                 return (false, "M4001");
             }
