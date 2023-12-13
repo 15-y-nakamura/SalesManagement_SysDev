@@ -64,7 +64,7 @@
             this.HiddenBtn = new System.Windows.Forms.Button();
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.RegistBtn = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.TopLogoutBtn = new System.Windows.Forms.Button();
             this.TopIDHyojiLbl = new System.Windows.Forms.Label();
             this.TopIDLbl = new System.Windows.Forms.Label();
             this.TopEigyoshoLbl = new System.Windows.Forms.Label();
@@ -452,6 +452,7 @@
             this.UpdateBtn.TabIndex = 1;
             this.UpdateBtn.Text = "更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // RegistBtn
             // 
@@ -463,16 +464,16 @@
             this.RegistBtn.Text = "登録";
             this.RegistBtn.UseVisualStyleBackColor = true;
             // 
-            // button15
+            // TopLogoutBtn
             // 
-            this.button15.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.button15.Location = new System.Drawing.Point(12, 795);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(210, 146);
-            this.button15.TabIndex = 23;
-            this.button15.Text = "ログアウト";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.TopLogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopLogoutBtn.Location = new System.Drawing.Point(12, 795);
+            this.TopLogoutBtn.Name = "TopLogoutBtn";
+            this.TopLogoutBtn.Size = new System.Drawing.Size(210, 146);
+            this.TopLogoutBtn.TabIndex = 23;
+            this.TopLogoutBtn.Text = "ログアウト";
+            this.TopLogoutBtn.UseVisualStyleBackColor = true;
+            this.TopLogoutBtn.Click += new System.EventHandler(this.TopLogoutBtn_Click);
             // 
             // TopIDHyojiLbl
             // 
@@ -584,7 +585,7 @@
             this.Controls.Add(this.TopYakushokuHyojiLbl);
             this.Controls.Add(this.TopNameLbl);
             this.Controls.Add(this.TopNameHyojiLbl);
-            this.Controls.Add(this.button15);
+            this.Controls.Add(this.TopLogoutBtn);
             this.Controls.Add(this.TopJuchuPnl);
             this.Controls.Add(this.TopLbl);
             this.Controls.Add(this.TopButsuryuBtn);
@@ -610,7 +611,7 @@
         private System.Windows.Forms.Button TopButsuryuBtn;
         private System.Windows.Forms.Label TopLbl;
         private System.Windows.Forms.Panel TopJuchuPnl;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button TopLogoutBtn;
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Button HiddenBtn;
         private System.Windows.Forms.Button UpdateBtn;

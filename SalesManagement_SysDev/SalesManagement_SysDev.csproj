@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="DataAccess\ClientDataAcces.cs" />
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
+    <Compile Include="DataAccess\JuchuDataAccess.cs" />
+    <Compile Include="DataAccess\KokyakuDataAccess.cs" />
     <Compile Include="DataAccess\PositionDataAccess.cs" />
     <Compile Include="DataAccess\SalesOfficeDataAccess.cs" />
     <Compile Include="DataAccess\LoginDataAccess.cs" />
@@ -261,6 +263,7 @@
     <EmbeddedResource Include="TopHonshaPage.resx">
       <DependentUpon>TopHonshaPage.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -14,6 +14,7 @@ namespace SalesManagement_SysDev
         //社員テーブルアクセスクラスのインスタンス化
         EmployeeDataAccess EmployeeDA = new EmployeeDataAccess();
 
+
         ///////////////////////////////
         //メソッド名：CheckZenkaku()
         //引　数   ：文字列
@@ -325,6 +326,105 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+
+        //受注管理
+
+        ///////////////////////////////
+        //メソッド名：CheckRegistJuchuID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の受注ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistJuchuID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M6003");
+            }
+
+            if (CheckSuuti(text))
+            {
+                return (false, "M6001");
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckRegistClID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の顧客ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistClID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M1001");
+            }
+
+            if (EmployeeDA.SonzaiCheckClID(int.Parse(text)))
+            {
+                return (false, "M1032");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M6002");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckJuchuSoNameCmb()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：営業名入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        //////////////////////////////////
+        public (bool flg, string Msg) CheckJuchuSoNameCmb(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M6004");
+            }
+        }
+
+        //メソッド名：CheckClname()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：顧客名入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        public (bool flg, string Msg) CheckClname(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1006");
+            }
+
+            if (!CheckZenkaku(text))
+            {
+                return (false, "M1004");
+            }
+
+            if (text.Length > 50)
+            {
+                return (false, "M1005");
+            }
+
+            return (true, text);
+        }
+
         ///////////////////////////////
         //メソッド名：CheckRegistClID()
         //引　数   ：文字列
@@ -354,38 +454,9 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M1002");
             }
-
-            return (true, text);
         }
-
-        ///////////////////////////////
-        //メソッド名：CheckClname()
-        //引　数   ：文字列
-        //戻り値   ：(True:異常なし、False:異常あり,文字列)
-        //機　能   ：顧客名入力チェック
-        //           問題がないときTrue、文字列
-        //           問題があるときFalse、メッセージID
-        public (bool flg, string Msg) CheckClname(string text)
-        {
-            if (text == "")
-            {
-                return (false, "M1006");
-            }
-
-            if (!CheckZenkaku(text))
-            {
-                return (false, "M1004");
-            }
-
-            if (text.Length > 50)
-            {
-                return (false, "M1005");
-            }
-
-            return (true, text);
-        }
-
-        ///////////////////////////////
+      
+        //////////////////////////////////
         //メソッド名：CheckClPhone()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
@@ -418,6 +489,60 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        /*
+        ///////////////////////////////
+        //メソッド名：CheckRegistClTantoName()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の顧客担当者名の入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistClTantoName(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M6009");
+            }
+
+            if (!CheckZenkaku(text))
+            {
+                return (false, "M6007");
+            }
+
+            if (text.Length > 50)
+            {
+                return (false, "M6008");
+            }
+
+            return (true, text);
+        }*/
+
+        ///////////////////////////////
+        //メソッド名：CheckRegistSuryo()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の数量入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistSuryo(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M6018");
+            }
+
+            if (CheckSuuti(text))
+            {
+                return (false, "M6016");
+            }
+
+            if (text.Length > 4)
+            {
+                return (false, "M6017");
+            }
+        }
         ///////////////////////////////
         //メソッド名：CheckSoNameEiCmb()
         //引　数   ：文字列
@@ -488,6 +613,56 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
+        //メソッド名：CheckRegistGokeiKingaku()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の合計金額入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistGokeiKingaku(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M6021");
+            }
+
+            if (CheckSuuti(text))
+            {
+                return (false, "M6019");
+            }
+
+            if (text.Length > 10)
+            {
+                return (false, "M6020");
+            }
+
+            return (true, text);
+        }
+
+        //商品管理
+        ///////////////////////////////
+        //メソッド名：CheckRegistShohinID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の受注ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistShohinID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M2003");
+            }
+
+            if (CheckSuuti(text))
+            {
+                return (false, "M2001");
+            }
+        }
+      
+        //////////////////////////////////
         //メソッド名：CheckClFax()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
@@ -540,11 +715,10 @@ namespace SalesManagement_SysDev
 
             if (text.Length > 6)
             {
-                return (false, "M1002");
+                return (false, "M2002");
             }
 
             return (true, text);
         }
-
     }
 }

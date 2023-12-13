@@ -238,7 +238,6 @@ namespace SalesManagement_SysDev.DataAccess
                         PoName = p.PoName,
                         EmHiredate = p.EmHiredate,
                         EmPhone = p.EmPhone,
-
                         EmFlag = p.EmFlag,
                         EmHidden = p.EmHidden
                     });
@@ -278,6 +277,5 @@ namespace SalesManagement_SysDev.DataAccess
             }
             return flg;
         }
-
     }
 }
