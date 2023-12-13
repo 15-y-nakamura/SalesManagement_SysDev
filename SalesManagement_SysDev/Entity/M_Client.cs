@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -50,4 +51,36 @@ namespace SalesManagement_SysDev
         public virtual ICollection<T_Shipment> T_Shipment { get; set; }
         public virtual ICollection<T_Syukko> T_Syukko { get; set; }
     }
+
+    class M_ClientDsp
+    {
+        [DisplayName("顧客ID")]
+        public int ClID { get; set; }
+
+        [DisplayName("顧客名")]
+        public string ClName { get; set; }
+
+        [DisplayName("営業所名")]
+        public string SoName { get; set; }
+
+        [DisplayName("電話番号")]
+        public string ClPhone { get; set; }
+
+        [DisplayName("郵便番号")]
+        public string ClPostal { get; set; }
+
+        [DisplayName("住所")]
+        public string ClAddress { get; set;}
+
+        [DisplayName("FAX")]
+        public string ClFax { get; set; }
+
+        [DisplayName("顧客管理フラグ")]
+        public int ClFlag { get; set; }
+
+        [DisplayName("非表示理由")]
+        public string ClHidden { get; set; }
+    }
+
+
 }

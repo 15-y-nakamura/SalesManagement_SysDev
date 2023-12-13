@@ -33,9 +33,10 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopNyukoPnl = new System.Windows.Forms.Panel();
+            this.ShohinIDTxb = new System.Windows.Forms.TextBox();
+            this.NyukoDateDtm = new System.Windows.Forms.DateTimePicker();
             this.NyukozumiFlagCmb = new System.Windows.Forms.ComboBox();
             this.ComfirmBtn = new System.Windows.Forms.Button();
-            this.EigyoshoNameCmb = new System.Windows.Forms.ComboBox();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.NyukoKanriDgv = new System.Windows.Forms.DataGridView();
             this.NyukoKanriFlagCmb = new System.Windows.Forms.ComboBox();
@@ -66,7 +67,6 @@
             this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
-            this.NyukoDateDtm = new System.Windows.Forms.DateTimePicker();
             this.TopNyukoPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NyukoKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +82,7 @@
             this.TopHonshaBtn.TabIndex = 0;
             this.TopHonshaBtn.Text = "本社";
             this.TopHonshaBtn.UseVisualStyleBackColor = true;
-
+            this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
             // 
             // TopEigyoBtn
             // 
@@ -94,7 +94,7 @@
             this.TopEigyoBtn.TabIndex = 1;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
-
+            this.TopEigyoBtn.Click += new System.EventHandler(this.TopEigyoBtn_Click);
             // 
             // TopButsuryuBtn
             // 
@@ -106,7 +106,7 @@
             this.TopButsuryuBtn.TabIndex = 2;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
-
+            this.TopButsuryuBtn.Click += new System.EventHandler(this.TopButsuryuBtn_Click);
             // 
             // TopLbl
             // 
@@ -121,10 +121,10 @@
             // 
             this.TopNyukoPnl.AutoSize = true;
             this.TopNyukoPnl.BackColor = System.Drawing.Color.LightGray;
+            this.TopNyukoPnl.Controls.Add(this.ShohinIDTxb);
             this.TopNyukoPnl.Controls.Add(this.NyukoDateDtm);
             this.TopNyukoPnl.Controls.Add(this.NyukozumiFlagCmb);
             this.TopNyukoPnl.Controls.Add(this.ComfirmBtn);
-            this.TopNyukoPnl.Controls.Add(this.EigyoshoNameCmb);
             this.TopNyukoPnl.Controls.Add(this.GamenKousinBtn);
             this.TopNyukoPnl.Controls.Add(this.NyukoKanriDgv);
             this.TopNyukoPnl.Controls.Add(this.NyukoKanriFlagCmb);
@@ -149,6 +149,20 @@
             this.TopNyukoPnl.Size = new System.Drawing.Size(1856, 783);
             this.TopNyukoPnl.TabIndex = 23;
             // 
+            // ShohinIDTxb
+            // 
+            this.ShohinIDTxb.Location = new System.Drawing.Point(1052, 149);
+            this.ShohinIDTxb.Name = "ShohinIDTxb";
+            this.ShohinIDTxb.Size = new System.Drawing.Size(201, 25);
+            this.ShohinIDTxb.TabIndex = 59;
+            // 
+            // NyukoDateDtm
+            // 
+            this.NyukoDateDtm.Location = new System.Drawing.Point(643, 150);
+            this.NyukoDateDtm.Name = "NyukoDateDtm";
+            this.NyukoDateDtm.Size = new System.Drawing.Size(200, 25);
+            this.NyukoDateDtm.TabIndex = 58;
+            // 
             // NyukozumiFlagCmb
             // 
             this.NyukozumiFlagCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -168,14 +182,6 @@
             this.ComfirmBtn.TabIndex = 56;
             this.ComfirmBtn.Text = "確定";
             this.ComfirmBtn.UseVisualStyleBackColor = true;
-            // 
-            // EigyoshoNameCmb
-            // 
-            this.EigyoshoNameCmb.FormattingEnabled = true;
-            this.EigyoshoNameCmb.Location = new System.Drawing.Point(1052, 149);
-            this.EigyoshoNameCmb.Name = "EigyoshoNameCmb";
-            this.EigyoshoNameCmb.Size = new System.Drawing.Size(206, 26);
-            this.EigyoshoNameCmb.TabIndex = 55;
             // 
             // GamenKousinBtn
             // 
@@ -470,13 +476,6 @@
             this.TopNameHyojiLbl.TabIndex = 64;
             this.TopNameHyojiLbl.Text = "名前：";
             // 
-            // NyukoDateDtm
-            // 
-            this.NyukoDateDtm.Location = new System.Drawing.Point(643, 150);
-            this.NyukoDateDtm.Name = "NyukoDateDtm";
-            this.NyukoDateDtm.Size = new System.Drawing.Size(200, 25);
-            this.NyukoDateDtm.TabIndex = 58;
-            // 
             // NyukoKanri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -537,7 +536,6 @@
         private System.Windows.Forms.ComboBox NyukoKanriFlagCmb;
         private System.Windows.Forms.DataGridView NyukoKanriDgv;
         private System.Windows.Forms.Button GamenKousinBtn;
-        private System.Windows.Forms.ComboBox EigyoshoNameCmb;
         private System.Windows.Forms.Label TopIDHyojiLbl;
         private System.Windows.Forms.Label TopIDLbl;
         private System.Windows.Forms.Label TopEigyoshoLbl;
@@ -551,5 +549,6 @@
         private System.Windows.Forms.Button ComfirmBtn;
         private System.Windows.Forms.ComboBox NyukozumiFlagCmb;
         private System.Windows.Forms.DateTimePicker NyukoDateDtm;
+        private System.Windows.Forms.TextBox ShohinIDTxb;
     }
 }

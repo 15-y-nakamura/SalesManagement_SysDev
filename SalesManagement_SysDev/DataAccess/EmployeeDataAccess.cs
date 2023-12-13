@@ -277,7 +277,5 @@ namespace SalesManagement_SysDev.DataAccess
             }
             return flg;
         }
-
-
     }
 }
