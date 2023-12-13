@@ -643,14 +643,23 @@ namespace SalesManagement_SysDev
             JushoTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
             FaxTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
             KokyakuKanriFlagCmb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
-
-            if (KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[7].Value.ToString() == "2")
+            //顧客管理フラグを日本語に変換
+            if ((int)KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[7].Value == 0)
             {
-                HihyojiTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+                KokyakuKanriFlagCmb.Text = "表示";
+            }
+            else if ((int)KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[7].Value == 2)
+            {
+                KokyakuKanriFlagCmb.Text = "非表示";
+            }
+
+            if (KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[8].Value == null)
+            {
+                HihyojiTxb.Text = "";
             }
             else
             {
-                HihyojiTxb.Text = null;
+                HihyojiTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
             }
 
         }
