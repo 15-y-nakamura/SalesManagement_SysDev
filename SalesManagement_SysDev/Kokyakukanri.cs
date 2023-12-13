@@ -642,7 +642,6 @@ namespace SalesManagement_SysDev
             YubinTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
             JushoTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
             FaxTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
-            KokyakuKanriFlagCmb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
             //顧客管理フラグを日本語に変換
             if ((int)KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[7].Value == 0)
             {
