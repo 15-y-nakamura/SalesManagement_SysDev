@@ -21,7 +21,7 @@ namespace SalesManagement_SysDev
         SalesOfficeDataAccess SalesOfficeDA = new SalesOfficeDataAccess();
 
         //顧客テーブルアクセスクラスのインスタンス化
-        KokyakuDataAccess KokyakuDA = new KokyakuDataAccess();
+        ClientDataAccess ClientDA = new ClientDataAccess();
 
         //受注テーブルアクセスクラスのインスタンス化
         JuchuDataAccess JuchuDA = new JuchuDataAccess();
@@ -344,10 +344,10 @@ namespace SalesManagement_SysDev
             }
 
             //形式化
-            //var juchudata = SetJuchuData();
+            var juchudata = SetJuchuData();
 
             //登録
-            //RegistJuchu(juchudata);
+            RegistJuchu(juchudata);
         }
 
         ///////////////////////////////
@@ -359,9 +359,9 @@ namespace SalesManagement_SysDev
         private bool InputRegistDataCheck()
         {
             //受注IDの入力チェック
-            if (!InputCheck.CheckRegistJuchuID(ShainIDTxb.Text).flg)
+            if (!InputCheck.CheckRegistJuchuID(JuchuIDTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckRegistJuchuID(ShainIDTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckRegistJuchuID(JuchuIDTxb.Text).Msg);
                 return false;
             }
 
@@ -379,12 +379,12 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            /*顧客担当者名の入力チェック
+            //顧客担当者名の入力チェック
             if (!InputCheck.CheckRegistClTantoName(KokyakuTantoNameTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistClTantoName(KokyakuTantoNameTxb.Text).Msg);
                 return false;
-            }*/
+            }
 
             //営業所名の入力チェック
             if (!InputCheck.CheckJuchuSoNameCmb(EigyoushoNameCmb.Text).flg)
@@ -423,10 +423,10 @@ namespace SalesManagement_SysDev
         //戻り値   ：T_Order
         //機　能   ：社員情報を形式化する
         ///////////////////////////////
-        /*private T_Order SetJuchuData()
+        private T_Order SetJuchuData()
         {
             int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
-            int CIID = KokyakuDA.GetCIID()
+            int CIID = ClientDA.GetCIID(KokyakuIDTxb.Text);
             int OrFlg;
             int OrStateFlg;
 
@@ -453,21 +453,21 @@ namespace SalesManagement_SysDev
                 OrID = int.Parse(JuchuIDTxb.Text),
                 SoID = SoID,
                 EmID = EmID,
-                ClID = ClID,
-                ClCharge =
-                OrDate = JoinDateDtm.Value,
+                ClID = CIID,
+                ClCharge = KokyakuTantoNameTxb.Text,
+                OrDate = JuchuDateDtm.Value,
                 OrStateFlag = OrStateFlg,
                 OrFlag = OrFlg,
                 OrHidden = HihyojiTxb.Text
 
             };
-        }*/
+        }
 
         ///////////////////////////////
         //メソッド名：RegistEmployee()
         //引　数   ：M_Employee
         //戻り値   ：なし
-        //機　能   ：形式化した受注情報を登録する〇
+        //機　能   ：形式化した受注情報を登録する
         ///////////////////////////////
         private void RegistJuchu(T_Order juchu)
         {
@@ -490,8 +490,44 @@ namespace SalesManagement_SysDev
             }
         }
 
-        private void UpdateBtn_Click(object sender, EventArgs e)
+        private void ShainKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            JuchuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
+            JuchuDateDtm.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
+            ShainIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
+            KokyakuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
+            KokyakuTantoNameTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
+            EigyoushoNameCmb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
+            ShohinIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
+            SuryoTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
+            GokeiKingakuTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+            //受注状態フラグを日本語に変換
+            if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[9].Value == 0)
+            {
+                JuchuJotaiFlagCmb.Text = "未確定";
+            }
+            else if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[9].Value == 1)
+            {
+                JuchuJotaiFlagCmb.Text = "確定";
+            }
+            //受注管理フラグを日本語に変換
+            if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[10].Value == 0)
+            {
+                JuchuKanriFlagCmb.Text = "表示";
+            }
+            else if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[10].Value == 2)
+            {
+                JuchuKanriFlagCmb.Text = "非表示";
+            }
+
+            if (JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[11].Value == null)
+            {
+                HihyojiTxb.Text = "";
+            }
+            else
+            {
+                HihyojiTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[11].Value.ToString();
+            }
         }
     }
 }
