@@ -192,7 +192,9 @@ namespace SalesManagement_SysDev.DataAccess
                 context.SaveChanges();
                 context.Dispose();
                 return true;
-            }catch (Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 return false;
             }

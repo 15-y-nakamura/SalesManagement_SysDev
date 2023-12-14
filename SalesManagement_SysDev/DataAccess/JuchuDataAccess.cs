@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,32 +36,6 @@ namespace SalesManagement_SysDev.DataAccess
                 return false;
             }
         }
-
-        /*更新
-        public bool UpdateJuchu(T_Order regJuchu)
-        {
-            try
-            {
-                var context = new SalesManagement_DevContext();
-                var emp = context.T_Orders.Single(x => x.OrID == regJuchu.OrID);
-
-                emp.EmName = regEmployee.EmName;
-                emp.PoID = regEmployee.PoID;
-                emp.SoID = regEmployee.SoID;
-                emp.EmHiredate = regEmployee.EmHiredate;
-                emp.EmPhone = regEmployee.EmPhone;
-                emp.EmFlag = regEmployee.EmFlag;
-                emp.EmHidden = regEmployee.EmHidden;
-
-                context.SaveChanges();
-                context.Dispose();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }*/
 
         ///////////////////////////////
         //メソッド名：GetJuchuData()
@@ -119,6 +94,32 @@ namespace SalesManagement_SysDev.DataAccess
             }
 
             return Juc;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckOrID()
+        //引　数   ：数値
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員IDの存在チェック
+        //           社員IDが存在するときTrue
+        //           社員IDが存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckOrID(int OrID)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された受注IDに一致するデータが存在するか
+                flg = context.T_Orders.Any(x => x.OrID == OrID);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
         }
     }
 }
