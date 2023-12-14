@@ -66,6 +66,7 @@
             this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
+            this.TelHaiiroLbl = new System.Windows.Forms.Label();
             this.TopShainPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShainKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -119,6 +120,7 @@
             // TopShainPnl
             // 
             this.TopShainPnl.BackColor = System.Drawing.Color.LightGray;
+            this.TopShainPnl.Controls.Add(this.TelHaiiroLbl);
             this.TopShainPnl.Controls.Add(this.EigyoushoNameCmb);
             this.TopShainPnl.Controls.Add(this.JoinDateDtm);
             this.TopShainPnl.Controls.Add(this.GamenKousinBtn);
@@ -468,6 +470,14 @@
             this.TopNameHyojiLbl.TabIndex = 74;
             this.TopNameHyojiLbl.Text = "名前：";
             // 
+            // TelHaiiroLbl
+            // 
+            this.TelHaiiroLbl.AutoSize = true;
+            this.TelHaiiroLbl.Location = new System.Drawing.Point(1432, 153);
+            this.TelHaiiroLbl.Name = "TelHaiiroLbl";
+            this.TelHaiiroLbl.Size = new System.Drawing.Size(0, 18);
+            this.TelHaiiroLbl.TabIndex = 57;
+            // 
             // Shainkanri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -542,5 +552,6 @@
         private System.Windows.Forms.Label TopYakushokuHyojiLbl;
         private System.Windows.Forms.Label TopNameLbl;
         private System.Windows.Forms.Label TopNameHyojiLbl;
+        private System.Windows.Forms.Label TelHaiiroLbl;
     }
 }
