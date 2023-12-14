@@ -79,6 +79,7 @@ namespace SalesManagement_SysDev
             }
         }
 
+        /*
         ///////////////////////////////
         //メソッド名：CheckPhoneFAX()
         //引　数   ：文字列
@@ -99,6 +100,7 @@ namespace SalesManagement_SysDev
                 return false;
             }
         }
+        */
 
         ///////////////////////////////
         //メソッド名：CheckDate()
@@ -136,7 +138,7 @@ namespace SalesManagement_SysDev
                 return(false, "M4003");
             }
 
-            if (CheckSuuti(text))
+            if (!CheckSuuti(text))
             {
                 return (false, "M4001");
             }
@@ -154,6 +156,14 @@ namespace SalesManagement_SysDev
             return(true, text);
         }
 
+        ///////////////////////////////
+        //メソッド名：CheckEmID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：社員ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
         public (bool flg, string Msg) CheckEmID(string text)
         {
             if (text == "")
@@ -161,7 +171,7 @@ namespace SalesManagement_SysDev
                 return (false, "M4003");
             }
 
-            if (CheckSuuti(text))
+            if (!CheckSuuti(text))
             {
                 return (false, "M4001");
             }
@@ -221,9 +231,14 @@ namespace SalesManagement_SysDev
                 return (false, "M4016");
             }
 
-            if (!CheckPhoneFAX(text))
+            if (text.Length > 13)
             {
-                return (false, "M4014");
+                return (false, "M4015");
+            }
+
+            if (text.Length < 12)
+            {
+                return (false, "M4030");
             }
 
             return (true, text);
@@ -283,6 +298,14 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        ///////////////////////////////
+        //メソッド名：CheckHidden()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：非表示理由入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        //////////////////////////////////
         public (bool flg, string Msg) CheckHidden(string text)
         {
             if (text == "")
@@ -293,5 +316,54 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        public (bool flg,string Msg) CheckSearchEmID(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M4001");
+            }
+
+            if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
+            {
+                return (false, "M4022");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M4002");
+            }
+
+            return (true, text);
+        }
+
+        public (bool flg,string Msg) CheckSearchEmname(string text)
+        {
+            if (!CheckZenkaku(text))
+            {
+                return (false, "M4005");
+            }
+
+            if (text.Length > 50)
+            {
+                return (false, "M4006");
+            }
+
+            return (true, text);
+        }
+
+        public (bool flg,string Msg) CheckSearchEmPhone(string text)
+        {
+            if (text.Length > 13)
+            {
+                return (false, "M4015");
+            }
+
+            if (text.Length < 12)
+            {
+                return (false, "M4030");
+            }
+
+            return (true, text);
+        }
     }
 }

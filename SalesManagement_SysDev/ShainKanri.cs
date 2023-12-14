@@ -151,6 +151,7 @@ namespace SalesManagement_SysDev
             }
         }*/
 
+        //本社ボタンクリック
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
             TopHonshaPage.EmID = EmID;
@@ -164,6 +165,7 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
+        //営業ボタンクリック
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
             TopEigyoPage.EmID = EmID;
@@ -177,6 +179,7 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
+        //物流ボタンクリック
         private void TopButsuryuBtn_Click(object sender, EventArgs e)
         {
             TopButsuryuPage.EmID = EmID;
@@ -190,7 +193,7 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
-
+        //ログアウトボタンクリック
         private void TopLogoutBtn_Click(object sender, EventArgs e)
         {
             DialogResult result = messageDsp.DspMsg("M0004");
@@ -210,6 +213,7 @@ namespace SalesManagement_SysDev
                 // キャンセルの時の処理
             }
         }
+
         ///////////////////////////////
         //メソッド名：SetFormSyainKanriGridView()
         //引　数   ：なし
@@ -242,16 +246,16 @@ namespace SalesManagement_SysDev
             Employee = EmployeeDA.GetEmployeeData();
 
             // DataGridViewに表示するデータを指定
-            SetDataGridView();
+            SetDataGridView(Employee);
         }
 
         ///////////////////////////////
         //メソッド名：SetDataGridView()
-        //引　数   ：なし
+        //引　数   ：M_EmployeeDsp
         //戻り値   ：なし
         //機　能   ：データグリッドビューにデータを反映する
         ///////////////////////////////
-        private void SetDataGridView()
+        private void SetDataGridView(List<M_EmployeeDsp> Employee)
         {
             ShainKanriDgv.DataSource = Employee.ToList();
 
@@ -288,6 +292,7 @@ namespace SalesManagement_SysDev
             ShainKanriDgv.Refresh();
         }
 
+        //登録ボタンクリック
         private void RegistBtn_Click(object sender, EventArgs e)
         {
             //入力チェック
@@ -297,7 +302,7 @@ namespace SalesManagement_SysDev
             }
 
             //形式化
-            var empdata = SetEmployeeData();
+            var empdata = SetEmployeeRegistData();
 
             //登録
             RegistEmployee(empdata);
@@ -350,12 +355,12 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：InputRegistDataCheck()
+        //メソッド名：SetEmployeeData()
         //引　数   ：なし
         //戻り値   ：M_Employee
         //機　能   ：社員情報を形式化する
         ///////////////////////////////
-        private M_Employee SetEmployeeData()
+        private M_Employee SetEmployeeRegistData()
         {
             int PoID = PositionDA.GetPoID(YakushokuNameCmb.Text);
             int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
@@ -414,6 +419,7 @@ namespace SalesManagement_SysDev
             }
         }
 
+        //データグリットビュー内のセルをクリック
         private void ShainKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             ShainIDTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
@@ -441,8 +447,8 @@ namespace SalesManagement_SysDev
                 HihyojiTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
             }
         }
-
       
+        //更新ボタンクリック
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
             if (!InputUpdataDataCheck())
@@ -455,6 +461,12 @@ namespace SalesManagement_SysDev
             UpdateEmployee(updatedata);
         }
 
+        ///////////////////////////////
+        //メソッド名：InputUpdataDataCheck()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：社員更新時の入力チェック項目の妥当性をチェックする
+        ///////////////////////////////
         private bool InputUpdataDataCheck()
         {
             //社員IDの入力チェック
@@ -504,6 +516,12 @@ namespace SalesManagement_SysDev
             return true;
         }
 
+        ///////////////////////////////
+        //メソッド名：SetEmployeeUpdateData()
+        //引　数   ：なし
+        //戻り値   ：M_Employee
+        //機　能   ：社員情報を形式化する
+        ///////////////////////////////
         private M_Employee SetEmployeeUpdateData()
         {
             int PoID = PositionDA.GetPoID(YakushokuNameCmb.Text);
@@ -532,6 +550,12 @@ namespace SalesManagement_SysDev
             };
         }
 
+        ///////////////////////////////
+        //メソッド名：UpdateEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：なし
+        //機　能   ：形式化した社員情報を更新する
+        ///////////////////////////////
         private void UpdateEmployee(M_Employee emp)
         {
             if(DialogResult.OK == MessageDsp.DspMsg("M4024"))
@@ -551,6 +575,126 @@ namespace SalesManagement_SysDev
                     MessageDsp.DspMsg("M4026");
                 }
             }
+        }
+
+        //検索ボタンクリック
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            if (!InputSearchDataCheck())
+            {
+                return;
+            }
+
+            var searchdata = SetEmployeeSearchData();
+
+            SearchEmployee(searchdata);
+        }
+
+        private bool InputSearchDataCheck()
+        {
+            //社員IDの入力チェック
+            if (ShainIDTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchEmID(ShainIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckEmID(ShainIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //社員名の入力チェック
+            if (ShainNameTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchEmname(ShainNameTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckEmname(ShainNameTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //電話番号の入力チェック
+            if (TelTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchEmPhone(TelTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckEmPhone(TelTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private M_Employee SetEmployeeSearchData()
+        {
+            int poid = 0;
+            int emid = 0;
+            int soid = 0;
+            int emflg = -1;
+            DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
+
+            if (ShainIDTxb.Text != "")
+            {
+                emid = int.Parse(ShainIDTxb.Text);
+            }
+            
+            if (YakushokuNameCmb.Text != "")
+            { 
+                poid = PositionDA.GetPoID(YakushokuNameCmb.Text);
+            }
+            
+            
+            if(EigyoushoNameCmb.Text != "")
+            {
+                soid = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
+            }
+            
+
+            if(ShainKanriFlagCmb.Text != "")
+            {
+                if (ShainKanriFlagCmb.Text == "非表示")
+                {
+                    emflg = 2;
+                }
+                else
+                {
+                    emflg = 0;
+                }    
+            }
+            
+            if (JoinDateDtm.Checked)
+            {
+                date = JoinDateDtm.Value;
+            }
+
+            M_Employee M_Emp = new M_Employee()
+            {
+                EmID = emid,
+                EmName = ShainNameTxb.Text,
+                SoID = soid,
+                PoID = poid,
+                EmHiredate = date,
+                EmPhone = TelTxb.Text,
+                EmFlag = emflg,
+                EmHidden = HihyojiTxb.Text
+            };
+
+            return M_Emp;
+        }
+
+        private void SearchEmployee(M_Employee searchemp)
+        {
+            var emp = EmployeeDA.SearchEmployee(searchemp);
+
+            SetDataGridView(emp);
+        }
+
+        //画面更新ボタンクリック
+        private void GamenKousinBtn_Click(object sender, EventArgs e)
+        {
+            SetCtrlFormat();
+
+            SetFormSyainKanriGridView();
         }
     }
 }
