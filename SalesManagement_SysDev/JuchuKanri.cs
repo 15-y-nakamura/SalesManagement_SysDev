@@ -1,22 +1,39 @@
 ﻿using SalesManagement_SysDev.DataAccess;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace SalesManagement_SysDev
 {
     public partial class JuchuKanri : Form
     {
+        //社員テーブルアクセスクラスのインスタンス化
+        EmployeeDataAccess EmployeeDA = new EmployeeDataAccess();
 
-        MessageDsp messageDsp = new MessageDsp();
-        EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
-        InputCheck inputCheck = new InputCheck();
+        //役職テーブルアクセスクラスのインスタンス化
+        PositionDataAccess PositionDA = new PositionDataAccess();
+
+        //営業所テーブルアクセスクラスのインスタンス化
+        SalesOfficeDataAccess SalesOfficeDA = new SalesOfficeDataAccess();
+
+        //顧客テーブルアクセスクラスのインスタンス化
+        ClientDataAccess ClientDA = new ClientDataAccess();
+
+        //受注テーブルアクセスクラスのインスタンス化
+        JuchuDataAccess JuchuDA = new JuchuDataAccess();
+
+        //データグリッドビュー用の受注データ
+        private static List<T_OrderDsp> Order;
+
+        //メッセージ表示クラスインスタンス化
+        MessageDsp MessageDsp = new MessageDsp();
+
+        //入力チェッククラスインスタンス化
+        InputCheck InputCheck = new InputCheck();
 
         internal static int PoID = 0;
         internal static int EmID = 0;
@@ -28,50 +45,12 @@ namespace SalesManagement_SysDev
             InitializeComponent();
         }
 
-        private void TopHonshaBtn_Click(object sender, EventArgs e)
-        {
-            TopHonshaPage.EmID = EmID;
-            TopHonshaPage.PoID = PoID;
 
-            //現画面を非表示
-            this.Visible = false;
-
-            //TopHonshaPageを表示
-            TopHonshaPage f2 = new TopHonshaPage();
-            f2.Show();
-        }
-
-        private void TopEigyoBtn_Click(object sender, EventArgs e)
-        {
-            TopEigyoPage.EmID = EmID;
-            
-            TopEigyoPage.PoID = PoID;
-
-            //現画面を非表示
-            this.Visible = false;
-
-            //TopEigyoPageを表示
-            TopEigyoPage f2 = new TopEigyoPage();
-            f2.Show();
-        }
-
-        private void TopButsuryuBtn_Click(object sender, EventArgs e)
-        {
-            TopButsuryuPage.EmID = EmID;
-            TopButsuryuPage.PoID = PoID;
-
-            //現画面を非表示
-            this.Visible = false;
-
-            //TopButsuryuPageを表示
-            TopButsuryuPage f2 = new TopButsuryuPage();
-            f2.Show();
-        }
 
         private void JuchuKanri_Load(object sender, EventArgs e)
         {
             string[] TopData = new string[4];
-            TopData = empDataAccess.GetTopData(EmID);
+            TopData = EmployeeDA.GetTopData(EmID);
 
             string emID = EmID.ToString();
 
@@ -115,12 +94,152 @@ namespace SalesManagement_SysDev
 
             }
 
+            //コントロールの初期設定
+            SetCtrlFormat();
+
+            //データグリッドビューの設定
+            SetFormSyainKanriGridView();
 
         }
 
-        private void button15_Click(object sender, EventArgs e)
+        ///////////////////////////////
+        //メソッド名：SetCtrlFormat()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：コントロールの初期設定
+        ///////////////////////////////
+        private void SetCtrlFormat()
         {
-            DialogResult result = messageDsp.DspMsg("M0004");
+            JuchuIDTxb.Text = "";
+            JuchuDateDtm.Text = DateTime.Now.ToString();
+            ShainIDTxb.Text = "";
+            EigyoushoNameCmb.Items.Clear();
+            EigyoushoNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            KokyakuTantoNameTxb.Text = "";
+            EigyoushoNameCmb.Items.Clear();
+            JuchuJotaiFlagCmb.Items.Clear();
+            JuchuKanriFlagCmb.Items.Clear();
+            ShohinIDTxb.Text = "";
+            SuryoTxb.Text = "";
+            GokeiKingakuTxb.Text = "";
+            HihyojiTxb.Text = "";
+
+            //営業所名を取得
+            var SoName = SalesOfficeDA.GetSoName();
+
+            //営業所名をコンボボックスに追加
+            foreach (string Soname in SoName.Reverse())
+            {
+                EigyoushoNameCmb.Items.Add(Soname);
+            }
+
+            JuchuJotaiFlagCmb.Items.Add("確認");
+            JuchuJotaiFlagCmb.Items.Add("未確定");
+
+            JuchuKanriFlagCmb.Items.Add("表示");
+            JuchuKanriFlagCmb.Items.Add("非表示");
+        }
+
+        /*private void PlaceHolderText(){
+            PlaceHolderText();
+
+            string[] TopData = new string[4];
+            TopData = empDataAccess.GetTopData(EmID);
+
+            string emID = EmID.ToString();
+
+            TopIDLbl.Text = emID;
+            TopNameLbl.Text = TopData[0];
+            TopYakushokuLbl.Text = TopData[1];
+            TopEigyoshoLbl.Text = TopData[2];
+            TopJikanLbl.Text = TopData[3];
+
+            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+            TopHonshaBtn.FlatAppearance.BorderSize = 1;
+            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+            TopEigyoBtn.FlatAppearance.BorderSize = 2;
+            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+
+        }
+
+        //テキストボックス内に灰色の文字を表示
+        private void PlaceHolderText()
+        {
+            TelTxb.Text = "ハイフンあり";
+            TelTxb.ForeColor = SystemColors.GrayText;
+            TelTxb.Enter += TelTxb_Enter;
+            TelTxb.Leave += TelTxb_Leave;
+        }
+
+        //電話番号のテキストボックスが選択されていない場合
+        private void TelTxb_Enter(object sender, EventArgs e)
+        {
+           if (TelTxb.Text == "ハイフンあり")
+            {
+                TelTxb.Text = "";
+                TelTxb.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        //電話番号のテキストボックスが選択されていない・入力されていない場合
+        private void TelTxb_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TelTxb.Text))
+            {
+               TelTxb.Text = "ハイフンあり";
+                TelTxb.ForeColor = SystemColors.GrayText;
+            }
+        }*/
+
+        private void TopHonshaBtn_Click(object sender, EventArgs e)
+        {
+            TopHonshaPage.EmID = EmID;
+            TopHonshaPage.PoID = PoID;
+
+            //現画面を非表示
+            this.Visible = false;
+
+            //TopHonshaPageを表示
+            TopHonshaPage f2 = new TopHonshaPage();
+            f2.Show();
+        }
+
+        private void TopEigyoBtn_Click(object sender, EventArgs e)
+        {
+            TopEigyoPage.EmID = EmID;
+
+            TopEigyoPage.PoID = PoID;
+
+            //現画面を非表示
+            this.Visible = false;
+
+            //TopEigyoPageを表示
+            TopEigyoPage f2 = new TopEigyoPage();
+            f2.Show();
+        }
+
+        private void TopButsuryuBtn_Click(object sender, EventArgs e)
+        {
+            TopButsuryuPage.EmID = EmID;
+            TopButsuryuPage.PoID = PoID;
+
+            //現画面を非表示
+            this.Visible = false;
+
+            //TopButsuryuPageを表示
+            TopButsuryuPage f2 = new TopButsuryuPage();
+            f2.Show();
+        }
+        private void TopLogoutBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageDsp.DspMsg("M0004");
 
             if (result == DialogResult.OK)
             {
@@ -136,7 +255,279 @@ namespace SalesManagement_SysDev
             {
                 // キャンセルの時の処理
             }
+        }
 
+        ///////////////////////////////
+        //メソッド名：SetFormSyainKanriGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの設定
+        ///////////////////////////////
+        private void SetFormSyainKanriGridView()
+        {
+            //読み取り専用に指定
+            JuchuKanriDgv.ReadOnly = true;
+            //行内をクリックすることで行を選択
+            JuchuKanriDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            //ヘッダー位置の指定
+            JuchuKanriDgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //データグリッドビューのデータ取得
+            ListDisplay();
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューの表示
+        ///////////////////////////////
+        private void ListDisplay()
+        {
+            // 受注データの取得
+            Order = JuchuDA.GetJuchuData();
+
+            // DataGridViewに表示するデータを指定
+            SetDataGridView();
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetDataGridView()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューにデータを反映する
+        ///////////////////////////////
+        private void SetDataGridView()
+        {
+            JuchuKanriDgv.DataSource = Order.ToList();
+
+            //すべての列がコントロールの表示領域の幅いっぱいに表示されるよう列幅を調整
+            JuchuKanriDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            /*            
+            //各列幅の指定
+            ShainKanriDgv.Columns[0].Width = 80; //社員ID
+            ShainKanriDgv.Columns[1].Width = 100; //社員名
+            ShainKanriDgv.Columns[2].Width = 80; //営業ID
+            ShainKanriDgv.Columns[3].Width = 100; //営業名
+            ShainKanriDgv.Columns[4].Width = 80; //役職ID
+            ShainKanriDgv.Columns[5].Width = 70; //役職名
+            ShainKanriDgv.Columns[6].Width = 100; //入社年月日
+            ShainKanriDgv.Columns[7].Width = 100; //電話番号
+            ShainKanriDgv.Columns[8].Width = 110; //社員管理フラグ
+            ShainKanriDgv.Columns[9].Width = 160; //非表示理由
+            */
+
+            //行の高さ設定
+            JuchuKanriDgv.RowTemplate.Height = 40;
+
+            //各列の文字位置の指定
+            JuchuKanriDgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            JuchuKanriDgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            JuchuKanriDgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            JuchuKanriDgv.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            JuchuKanriDgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            JuchuKanriDgv.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            JuchuKanriDgv.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            JuchuKanriDgv.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                
+            JuchuKanriDgv.Refresh();
+        }
+
+        private void RegistBtn_Click(object sender, EventArgs e)
+        {
+            //入力チェック
+            if (!InputRegistDataCheck())
+            {
+                return;
+            }
+
+            //形式化
+            var juchudata = SetJuchuData();
+
+            //登録
+            RegistJuchu(juchudata);
+        }
+
+        ///////////////////////////////
+        //メソッド名：InputRegistDataCheck()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：社員登録時の入力チェック項目の妥当性をチェックする
+        ///////////////////////////////
+        private bool InputRegistDataCheck()
+        {
+            //受注IDの入力チェック
+            if (!InputCheck.CheckRegistJuchuID(JuchuIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckRegistJuchuID(JuchuIDTxb.Text).Msg);
+                return false;
+            }
+
+            //社員IDの入力チェック
+            if (!InputCheck.CheckRegistEmID(ShainIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckRegistEmID(ShainIDTxb.Text).Msg);
+                return false;
+            }
+
+            //顧客IDの入力チェック
+            if (!InputCheck.CheckRegistClID(KokyakuIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckRegistClID(KokyakuIDTxb.Text).Msg);
+                return false;
+            }
+
+            //顧客担当者名の入力チェック
+            if (!InputCheck.CheckRegistClTantoName(KokyakuTantoNameTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckRegistClTantoName(KokyakuTantoNameTxb.Text).Msg);
+                return false;
+            }
+
+            //営業所名の入力チェック
+            if (!InputCheck.CheckJuchuSoNameCmb(EigyoushoNameCmb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckJuchuSoNameCmb(EigyoushoNameCmb.Text).Msg);
+                return false;
+            }
+
+            //商品IDの入力チェック
+            if (!InputCheck.CheckRegistShohinID(ShohinIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckRegistShohinID(ShohinIDTxb.Text).Msg);
+                return false;
+            }
+
+            //数量の入力チェック
+            if (!InputCheck.CheckRegistSuryo(SuryoTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckRegistSuryo(SuryoTxb.Text).Msg);
+                return false;
+            }
+
+            //合計金額の入力チェック
+            if (!InputCheck.CheckRegistGokeiKingaku(GokeiKingakuTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckRegistGokeiKingaku(GokeiKingakuTxb.Text).Msg);
+                return false;
+            }
+
+            return true;
+        }
+
+        ///////////////////////////////
+        //メソッド名：InputRegistDataCheck()
+        //引　数   ：なし
+        //戻り値   ：T_Order
+        //機　能   ：社員情報を形式化する
+        ///////////////////////////////
+        private T_Order SetJuchuData()
+        {
+            int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
+            int CIID = ClientDA.GetCIID(KokyakuIDTxb.Text);
+            int OrFlg;
+            int OrStateFlg;
+
+            if (JuchuKanriFlagCmb.Text == "非表示")
+            {
+                OrFlg = 2;
+            }
+            else
+            {
+                OrFlg = 0;
+            }
+
+            if (JuchuJotaiFlagCmb.Text == "確定")
+            {
+                OrStateFlg = 1;
+            }
+            else
+            {
+                OrStateFlg = 0;
+            }
+
+            return new T_Order
+            {
+                OrID = int.Parse(JuchuIDTxb.Text),
+                SoID = SoID,
+                EmID = EmID,
+                ClID = CIID,
+                ClCharge = KokyakuTantoNameTxb.Text,
+                OrDate = JuchuDateDtm.Value,
+                OrStateFlag = OrStateFlg,
+                OrFlag = OrFlg,
+                OrHidden = HihyojiTxb.Text
+
+            };
+        }
+
+        ///////////////////////////////
+        //メソッド名：RegistEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：なし
+        //機　能   ：形式化した受注情報を登録する
+        ///////////////////////////////
+        private void RegistJuchu(T_Order juchu)
+        {
+            if (DialogResult.OK == MessageDsp.DspMsg("M6023"))
+            {
+                if (JuchuDA.RegistJuchu(juchu))
+                {
+                    MessageDsp.DspMsg("M6024");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormSyainKanriGridView();
+                }
+                else
+                {
+                    MessageDsp.DspMsg("M6025");
+                }
+            }
+        }
+
+        private void ShainKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            JuchuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
+            JuchuDateDtm.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
+            ShainIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
+            KokyakuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
+            KokyakuTantoNameTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
+            EigyoushoNameCmb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
+            ShohinIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
+            SuryoTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
+            GokeiKingakuTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+            //受注状態フラグを日本語に変換
+            if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[9].Value == 0)
+            {
+                JuchuJotaiFlagCmb.Text = "未確定";
+            }
+            else if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[9].Value == 1)
+            {
+                JuchuJotaiFlagCmb.Text = "確定";
+            }
+            //受注管理フラグを日本語に変換
+            if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[10].Value == 0)
+            {
+                JuchuKanriFlagCmb.Text = "表示";
+            }
+            else if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[10].Value == 2)
+            {
+                JuchuKanriFlagCmb.Text = "非表示";
+            }
+
+            if (JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[11].Value == null)
+            {
+                HihyojiTxb.Text = "";
+            }
+            else
+            {
+                HihyojiTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[11].Value.ToString();
+            }
         }
     }
 }

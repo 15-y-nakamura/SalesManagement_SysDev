@@ -35,12 +35,12 @@
             this.TopHachuPnl = new System.Windows.Forms.Panel();
             this.HachujyoutaiIDTxb = new System.Windows.Forms.TextBox();
             this.ConfirmBtn = new System.Windows.Forms.Button();
-            this.JuchuDateDtm = new System.Windows.Forms.DateTimePicker();
+            this.HachuDateDtm = new System.Windows.Forms.DateTimePicker();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.HachuKanriDgv = new System.Windows.Forms.DataGridView();
             this.HachukanriFlagCmb = new System.Windows.Forms.ComboBox();
             this.NyukozumiFlagCmb = new System.Windows.Forms.ComboBox();
-            this.MwkaIDTxb = new System.Windows.Forms.TextBox();
+            this.MekaIDTxb = new System.Windows.Forms.TextBox();
             this.ShainIDTxb = new System.Windows.Forms.TextBox();
             this.SuryoTxb = new System.Windows.Forms.TextBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
@@ -50,7 +50,7 @@
             this.ShainIDLbl = new System.Windows.Forms.Label();
             this.HachukanriFlagLbl = new System.Windows.Forms.Label();
             this.NyukozumiFlagLbl = new System.Windows.Forms.Label();
-            this.JuchuDateLbl = new System.Windows.Forms.Label();
+            this.HachuDateLbl = new System.Windows.Forms.Label();
             this.HachujyoutaiIDLbl = new System.Windows.Forms.Label();
             this.SuryoLbl = new System.Windows.Forms.Label();
             this.HihyojiLbl = new System.Windows.Forms.Label();
@@ -126,12 +126,12 @@
             this.TopHachuPnl.BackColor = System.Drawing.Color.LightGray;
             this.TopHachuPnl.Controls.Add(this.HachujyoutaiIDTxb);
             this.TopHachuPnl.Controls.Add(this.ConfirmBtn);
-            this.TopHachuPnl.Controls.Add(this.JuchuDateDtm);
+            this.TopHachuPnl.Controls.Add(this.HachuDateDtm);
             this.TopHachuPnl.Controls.Add(this.GamenKousinBtn);
             this.TopHachuPnl.Controls.Add(this.HachuKanriDgv);
             this.TopHachuPnl.Controls.Add(this.HachukanriFlagCmb);
             this.TopHachuPnl.Controls.Add(this.NyukozumiFlagCmb);
-            this.TopHachuPnl.Controls.Add(this.MwkaIDTxb);
+            this.TopHachuPnl.Controls.Add(this.MekaIDTxb);
             this.TopHachuPnl.Controls.Add(this.ShainIDTxb);
             this.TopHachuPnl.Controls.Add(this.SuryoTxb);
             this.TopHachuPnl.Controls.Add(this.HihyojiTxb);
@@ -141,7 +141,7 @@
             this.TopHachuPnl.Controls.Add(this.ShainIDLbl);
             this.TopHachuPnl.Controls.Add(this.HachukanriFlagLbl);
             this.TopHachuPnl.Controls.Add(this.NyukozumiFlagLbl);
-            this.TopHachuPnl.Controls.Add(this.JuchuDateLbl);
+            this.TopHachuPnl.Controls.Add(this.HachuDateLbl);
             this.TopHachuPnl.Controls.Add(this.HachujyoutaiIDLbl);
             this.TopHachuPnl.Controls.Add(this.SuryoLbl);
             this.TopHachuPnl.Controls.Add(this.HihyojiLbl);
@@ -175,12 +175,12 @@
             this.ConfirmBtn.Text = "確定";
             this.ConfirmBtn.UseVisualStyleBackColor = true;
             // 
-            // JuchuDateDtm
+            // HachuDateDtm
             // 
-            this.JuchuDateDtm.Location = new System.Drawing.Point(1440, 150);
-            this.JuchuDateDtm.Name = "JuchuDateDtm";
-            this.JuchuDateDtm.Size = new System.Drawing.Size(201, 25);
-            this.JuchuDateDtm.TabIndex = 55;
+            this.HachuDateDtm.Location = new System.Drawing.Point(1440, 150);
+            this.HachuDateDtm.Name = "HachuDateDtm";
+            this.HachuDateDtm.Size = new System.Drawing.Size(201, 25);
+            this.HachuDateDtm.TabIndex = 55;
             // 
             // GamenKousinBtn
             // 
@@ -223,14 +223,14 @@
             this.NyukozumiFlagCmb.Size = new System.Drawing.Size(201, 26);
             this.NyukozumiFlagCmb.TabIndex = 4;
             // 
-            // MwkaIDTxb
+            // MekaIDTxb
             // 
-            this.MwkaIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MekaIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MwkaIDTxb.Location = new System.Drawing.Point(642, 150);
-            this.MwkaIDTxb.Name = "MwkaIDTxb";
-            this.MwkaIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.MwkaIDTxb.TabIndex = 3;
+            this.MekaIDTxb.Location = new System.Drawing.Point(642, 150);
+            this.MekaIDTxb.Name = "MekaIDTxb";
+            this.MekaIDTxb.Size = new System.Drawing.Size(201, 25);
+            this.MekaIDTxb.TabIndex = 3;
             // 
             // ShainIDTxb
             // 
@@ -318,15 +318,15 @@
             this.NyukozumiFlagLbl.TabIndex = 2;
             this.NyukozumiFlagLbl.Text = "入庫済みフラグ";
             // 
-            // JuchuDateLbl
+            // HachuDateLbl
             // 
-            this.JuchuDateLbl.AutoSize = true;
-            this.JuchuDateLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.JuchuDateLbl.Location = new System.Drawing.Point(1275, 150);
-            this.JuchuDateLbl.Name = "JuchuDateLbl";
-            this.JuchuDateLbl.Size = new System.Drawing.Size(152, 28);
-            this.JuchuDateLbl.TabIndex = 2;
-            this.JuchuDateLbl.Text = "受注年月日";
+            this.HachuDateLbl.AutoSize = true;
+            this.HachuDateLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.HachuDateLbl.Location = new System.Drawing.Point(1275, 150);
+            this.HachuDateLbl.Name = "HachuDateLbl";
+            this.HachuDateLbl.Size = new System.Drawing.Size(152, 28);
+            this.HachuDateLbl.TabIndex = 2;
+            this.HachuDateLbl.Text = "発注年月日";
             // 
             // HachujyoutaiIDLbl
             // 
@@ -576,13 +576,13 @@
         private System.Windows.Forms.Label HachuIDLbl;
         private System.Windows.Forms.ComboBox HachukanriFlagCmb;
         private System.Windows.Forms.ComboBox NyukozumiFlagCmb;
-        private System.Windows.Forms.TextBox MwkaIDTxb;
+        private System.Windows.Forms.TextBox MekaIDTxb;
         private System.Windows.Forms.TextBox ShainIDTxb;
         private System.Windows.Forms.TextBox ShohinIDTxb;
         private System.Windows.Forms.Label MekaIDLbl;
         private System.Windows.Forms.Label HachukanriFlagLbl;
         private System.Windows.Forms.Label NyukozumiFlagLbl;
-        private System.Windows.Forms.Label JuchuDateLbl;
+        private System.Windows.Forms.Label HachuDateLbl;
         private System.Windows.Forms.Label ShohinIDLbl;
         private System.Windows.Forms.TextBox SuryoTxb;
         private System.Windows.Forms.Label SuryoLbl;
@@ -590,7 +590,7 @@
         private System.Windows.Forms.Label HihyojiLbl;
         private System.Windows.Forms.DataGridView HachuKanriDgv;
         private System.Windows.Forms.Button GamenKousinBtn;
-        private System.Windows.Forms.DateTimePicker JuchuDateDtm;
+        private System.Windows.Forms.DateTimePicker HachuDateDtm;
         private System.Windows.Forms.Label TopIDHyojiLbl;
         private System.Windows.Forms.Label TopIDLbl;
         private System.Windows.Forms.Label TopEigyoshoLbl;

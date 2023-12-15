@@ -114,5 +114,38 @@ namespace SalesManagement_SysDev.DataAccess
             }
         }
 
+        ///////////////////////////////
+        //メソッド名：GetCIID()
+        //引　数   ：なし
+        //戻り値   ：取得した顧客ID
+        //機　能   ：顧客ID取得
+        ///////////////////////////////
+        public int GetCIID(string ciname)
+        {
+            int ciid = 0;
+
+            var context = new SalesManagement_DevContext();
+            try
+            {
+                var tb = from t1 in context.M_Clients
+                         where t1.ClName == ciname
+                         select new
+                         {
+                             t1.ClID
+                         };
+
+                foreach (var p in tb)
+                {
+                    ciid = p.ClID;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return ciid;
+        }
+
     }
 }

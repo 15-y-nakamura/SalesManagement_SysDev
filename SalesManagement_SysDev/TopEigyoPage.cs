@@ -184,6 +184,7 @@ namespace SalesManagement_SysDev
 
             //UriageKanriを表示
             UriageKanri f2 = new UriageKanri();
+            f2.Show();
         } 
         private void NyukaKanriBtn_Click(object sender, EventArgs e)
         {

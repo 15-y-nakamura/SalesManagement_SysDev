@@ -61,9 +61,11 @@
   <ItemGroup>
     <Compile Include="DataAccess\ClientDataAcces.cs" />
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
+    <Compile Include="DataAccess\JuchuDataAccess.cs" />
     <Compile Include="DataAccess\PositionDataAccess.cs" />
     <Compile Include="DataAccess\SalesOfficeDataAccess.cs" />
     <Compile Include="DataAccess\LoginDataAccess.cs" />
+    <Compile Include="DataAccess\ShohinDataAccess.cs" />
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Common\InputCheck.cs" />

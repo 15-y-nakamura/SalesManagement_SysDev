@@ -62,9 +62,8 @@
             this.JuchuIDLbl = new System.Windows.Forms.Label();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.HiddenBtn = new System.Windows.Forms.Button();
-            this.UpdateBtn = new System.Windows.Forms.Button();
             this.RegistBtn = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.TopLogoutBtn = new System.Windows.Forms.Button();
             this.TopIDHyojiLbl = new System.Windows.Forms.Label();
             this.TopIDLbl = new System.Windows.Forms.Label();
             this.TopEigyoshoLbl = new System.Windows.Forms.Label();
@@ -157,7 +156,6 @@
             this.TopJuchuPnl.Controls.Add(this.JuchuIDLbl);
             this.TopJuchuPnl.Controls.Add(this.SearchBtn);
             this.TopJuchuPnl.Controls.Add(this.HiddenBtn);
-            this.TopJuchuPnl.Controls.Add(this.UpdateBtn);
             this.TopJuchuPnl.Controls.Add(this.RegistBtn);
             this.TopJuchuPnl.Location = new System.Drawing.Point(253, 158);
             this.TopJuchuPnl.Name = "TopJuchuPnl";
@@ -167,7 +165,7 @@
             // ConfirmBtn
             // 
             this.ConfirmBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ConfirmBtn.Location = new System.Drawing.Point(1390, 26);
+            this.ConfirmBtn.Location = new System.Drawing.Point(1375, 26);
             this.ConfirmBtn.Name = "ConfirmBtn";
             this.ConfirmBtn.Size = new System.Drawing.Size(300, 90);
             this.ConfirmBtn.TabIndex = 57;
@@ -426,7 +424,7 @@
             // SearchBtn
             // 
             this.SearchBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.SearchBtn.Location = new System.Drawing.Point(1052, 26);
+            this.SearchBtn.Location = new System.Drawing.Point(960, 26);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(300, 90);
             this.SearchBtn.TabIndex = 1;
@@ -436,43 +434,34 @@
             // HiddenBtn
             // 
             this.HiddenBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.HiddenBtn.Location = new System.Drawing.Point(713, 26);
+            this.HiddenBtn.Location = new System.Drawing.Point(545, 26);
             this.HiddenBtn.Name = "HiddenBtn";
             this.HiddenBtn.Size = new System.Drawing.Size(300, 90);
             this.HiddenBtn.TabIndex = 1;
             this.HiddenBtn.Text = "非表示";
             this.HiddenBtn.UseVisualStyleBackColor = true;
             // 
-            // UpdateBtn
-            // 
-            this.UpdateBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.UpdateBtn.Location = new System.Drawing.Point(370, 26);
-            this.UpdateBtn.Name = "UpdateBtn";
-            this.UpdateBtn.Size = new System.Drawing.Size(300, 90);
-            this.UpdateBtn.TabIndex = 1;
-            this.UpdateBtn.Text = "更新";
-            this.UpdateBtn.UseVisualStyleBackColor = true;
-            // 
             // RegistBtn
             // 
             this.RegistBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.RegistBtn.Location = new System.Drawing.Point(28, 26);
+            this.RegistBtn.Location = new System.Drawing.Point(138, 26);
             this.RegistBtn.Name = "RegistBtn";
             this.RegistBtn.Size = new System.Drawing.Size(300, 90);
             this.RegistBtn.TabIndex = 0;
             this.RegistBtn.Text = "登録";
             this.RegistBtn.UseVisualStyleBackColor = true;
+            this.RegistBtn.Click += new System.EventHandler(this.RegistBtn_Click);
             // 
-            // button15
+            // TopLogoutBtn
             // 
-            this.button15.Font = new System.Drawing.Font("MS UI Gothic", 20F);
-            this.button15.Location = new System.Drawing.Point(12, 795);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(210, 146);
-            this.button15.TabIndex = 23;
-            this.button15.Text = "ログアウト";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.TopLogoutBtn.Font = new System.Drawing.Font("MS UI Gothic", 20F);
+            this.TopLogoutBtn.Location = new System.Drawing.Point(12, 795);
+            this.TopLogoutBtn.Name = "TopLogoutBtn";
+            this.TopLogoutBtn.Size = new System.Drawing.Size(210, 146);
+            this.TopLogoutBtn.TabIndex = 23;
+            this.TopLogoutBtn.Text = "ログアウト";
+            this.TopLogoutBtn.UseVisualStyleBackColor = true;
+            this.TopLogoutBtn.Click += new System.EventHandler(this.TopLogoutBtn_Click);
             // 
             // TopIDHyojiLbl
             // 
@@ -584,7 +573,7 @@
             this.Controls.Add(this.TopYakushokuHyojiLbl);
             this.Controls.Add(this.TopNameLbl);
             this.Controls.Add(this.TopNameHyojiLbl);
-            this.Controls.Add(this.button15);
+            this.Controls.Add(this.TopLogoutBtn);
             this.Controls.Add(this.TopJuchuPnl);
             this.Controls.Add(this.TopLbl);
             this.Controls.Add(this.TopButsuryuBtn);
@@ -610,10 +599,9 @@
         private System.Windows.Forms.Button TopButsuryuBtn;
         private System.Windows.Forms.Label TopLbl;
         private System.Windows.Forms.Panel TopJuchuPnl;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button TopLogoutBtn;
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Button HiddenBtn;
-        private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Button RegistBtn;
         private System.Windows.Forms.TextBox JuchuIDTxb;
         private System.Windows.Forms.Label ShainIDLbl;

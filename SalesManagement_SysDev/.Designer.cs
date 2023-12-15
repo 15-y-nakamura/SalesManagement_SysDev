@@ -37,7 +37,7 @@
             this.UriageDateTxb = new System.Windows.Forms.TextBox();
             this.EigyoshoNameTxb = new System.Windows.Forms.TextBox();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
-            this.JuchuKanriDgv = new System.Windows.Forms.DataGridView();
+            this.UriageKanriDgv = new System.Windows.Forms.DataGridView();
             this.UriageKanriFlagCmb = new System.Windows.Forms.ComboBox();
             this.KokyakuIDTxb = new System.Windows.Forms.TextBox();
             this.ShainIDTxb = new System.Windows.Forms.TextBox();
@@ -71,7 +71,7 @@
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
             this.TopUriagePnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.JuchuKanriDgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UriageKanriDgv)).BeginInit();
             this.SuspendLayout();
             // 
             // TopHonshaBtn
@@ -127,7 +127,7 @@
             this.TopUriagePnl.Controls.Add(this.UriageDateTxb);
             this.TopUriagePnl.Controls.Add(this.EigyoshoNameTxb);
             this.TopUriagePnl.Controls.Add(this.GamenKousinBtn);
-            this.TopUriagePnl.Controls.Add(this.JuchuKanriDgv);
+            this.TopUriagePnl.Controls.Add(this.UriageKanriDgv);
             this.TopUriagePnl.Controls.Add(this.UriageKanriFlagCmb);
             this.TopUriagePnl.Controls.Add(this.KokyakuIDTxb);
             this.TopUriagePnl.Controls.Add(this.ShainIDTxb);
@@ -193,15 +193,15 @@
             this.GamenKousinBtn.TabIndex = 54;
             this.GamenKousinBtn.UseVisualStyleBackColor = true;
             // 
-            // JuchuKanriDgv
+            // UriageKanriDgv
             // 
-            this.JuchuKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.JuchuKanriDgv.Location = new System.Drawing.Point(97, 492);
-            this.JuchuKanriDgv.Name = "JuchuKanriDgv";
-            this.JuchuKanriDgv.RowHeadersWidth = 62;
-            this.JuchuKanriDgv.RowTemplate.Height = 27;
-            this.JuchuKanriDgv.Size = new System.Drawing.Size(1633, 256);
-            this.JuchuKanriDgv.TabIndex = 51;
+            this.UriageKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UriageKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.UriageKanriDgv.Name = "UriageKanriDgv";
+            this.UriageKanriDgv.RowHeadersWidth = 62;
+            this.UriageKanriDgv.RowTemplate.Height = 27;
+            this.UriageKanriDgv.Size = new System.Drawing.Size(1633, 256);
+            this.UriageKanriDgv.TabIndex = 51;
             // 
             // UriageKanriFlagCmb
             // 
@@ -389,7 +389,7 @@
             // SearchBtn
             // 
             this.SearchBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.SearchBtn.Location = new System.Drawing.Point(528, 26);
+            this.SearchBtn.Location = new System.Drawing.Point(545, 26);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(300, 90);
             this.SearchBtn.TabIndex = 1;
@@ -399,7 +399,7 @@
             // HiddenBtn
             // 
             this.HiddenBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.HiddenBtn.Location = new System.Drawing.Point(28, 26);
+            this.HiddenBtn.Location = new System.Drawing.Point(138, 26);
             this.HiddenBtn.Name = "HiddenBtn";
             this.HiddenBtn.Size = new System.Drawing.Size(300, 90);
             this.HiddenBtn.TabIndex = 1;
@@ -540,7 +540,7 @@
             this.Load += new System.EventHandler(this.JuchuKanri_Load);
             this.TopUriagePnl.ResumeLayout(false);
             this.TopUriagePnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.JuchuKanriDgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UriageKanriDgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -575,7 +575,7 @@
         private System.Windows.Forms.TextBox HihyojiTxb;
         private System.Windows.Forms.Label GokeiKingakuLbl;
         private System.Windows.Forms.Label HihyojiLbl;
-        private System.Windows.Forms.DataGridView JuchuKanriDgv;
+        private System.Windows.Forms.DataGridView UriageKanriDgv;
         private System.Windows.Forms.Button GamenKousinBtn;
         private System.Windows.Forms.Label TopIDHyojiLbl;
         private System.Windows.Forms.Label TopIDLbl;
