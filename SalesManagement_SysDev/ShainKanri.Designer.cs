@@ -35,7 +35,6 @@
             this.TopShainPnl = new System.Windows.Forms.Panel();
             this.TelHaiiroLbl = new System.Windows.Forms.Label();
             this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
-            this.JoinDateDtm = new System.Windows.Forms.DateTimePicker();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.ShainKanriDgv = new System.Windows.Forms.DataGridView();
             this.TelTxb = new System.Windows.Forms.TextBox();
@@ -67,6 +66,7 @@
             this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
+            this.JoinDateDtm = new System.Windows.Forms.DateTimePicker();
             this.TopShainPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShainKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -123,6 +123,7 @@
             this.TopShainPnl.Controls.Add(this.TelHaiiroLbl);
             this.TopShainPnl.Controls.Add(this.EigyoushoNameCmb);
             this.TopShainPnl.Controls.Add(this.JoinDateDtm);
+            this.TopShainPnl.Controls.Add(this.EigyoushoNameCmb);
             this.TopShainPnl.Controls.Add(this.GamenKousinBtn);
             this.TopShainPnl.Controls.Add(this.ShainKanriDgv);
             this.TopShainPnl.Controls.Add(this.TelTxb);
@@ -166,13 +167,6 @@
             this.EigyoushoNameCmb.Size = new System.Drawing.Size(201, 26);
             this.EigyoushoNameCmb.TabIndex = 56;
             // 
-            // JoinDateDtm
-            // 
-            this.JoinDateDtm.Location = new System.Drawing.Point(642, 219);
-            this.JoinDateDtm.Name = "JoinDateDtm";
-            this.JoinDateDtm.Size = new System.Drawing.Size(201, 25);
-            this.JoinDateDtm.TabIndex = 55;
-            // 
             // GamenKousinBtn
             // 
             this.GamenKousinBtn.BackgroundImage = global::SalesManagement_SysDev.Properties.Resources.reload;
@@ -183,6 +177,7 @@
             this.GamenKousinBtn.Size = new System.Drawing.Size(100, 90);
             this.GamenKousinBtn.TabIndex = 54;
             this.GamenKousinBtn.UseVisualStyleBackColor = true;
+            this.GamenKousinBtn.Click += new System.EventHandler(this.GamenKousinBtn_Click);
             // 
             // ShainKanriDgv
             // 
@@ -342,6 +337,7 @@
             this.SearchBtn.TabIndex = 3;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // HiddenBtn
             // 
@@ -481,6 +477,15 @@
             this.TopNameHyojiLbl.TabIndex = 74;
             this.TopNameHyojiLbl.Text = "名前：";
             // 
+            // JoinDateDtm
+            // 
+            this.JoinDateDtm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.JoinDateDtm.Location = new System.Drawing.Point(642, 219);
+            this.JoinDateDtm.Name = "JoinDateDtm";
+            this.JoinDateDtm.ShowCheckBox = true;
+            this.JoinDateDtm.Size = new System.Drawing.Size(200, 25);
+            this.JoinDateDtm.TabIndex = 57;
+            // 
             // Shainkanri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -543,7 +548,6 @@
         private System.Windows.Forms.Label EigyoshoNameLbl;
         private System.Windows.Forms.DataGridView ShainKanriDgv;
         private System.Windows.Forms.Button GamenKousinBtn;
-        private System.Windows.Forms.DateTimePicker JoinDateDtm;
         private System.Windows.Forms.ComboBox EigyoushoNameCmb;
         private System.Windows.Forms.Label TopIDHyojiLbl;
         private System.Windows.Forms.Label TopIDLbl;
@@ -556,5 +560,7 @@
         private System.Windows.Forms.Label TopNameLbl;
         private System.Windows.Forms.Label TopNameHyojiLbl;
         private System.Windows.Forms.Label TelHaiiroLbl;
+        private System.Windows.Forms.DateTimePicker JoinDateDtm;
+
     }
 }
