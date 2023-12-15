@@ -21,7 +21,6 @@ namespace SalesManagement_SysDev.DataAccess
             try
             {
                 var pPoName = context.M_Positions.Select(x => x.PoName);
-                //商品マスタと在庫マスタの差分取得
                 IEnumerable<string> PoName = pPoName;
                 return PoName;
             }

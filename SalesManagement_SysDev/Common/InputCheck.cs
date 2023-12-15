@@ -368,6 +368,8 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M4002");
             }
+
+            return (true, text);
         }        
         ///////////////////////////////
         //メソッド名：CheckRegistJuchuID()
@@ -403,6 +405,7 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M4005");
             }
+            return (true, text);
         }        
         ///////////////////////////////
         //メソッド名：CheckJuchuSoNameCmb()
@@ -456,6 +459,7 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M4015");
             }
+            return (true, text);
         }        
         ///////////////////////////////
         //メソッド名：CheckRegistClID()
