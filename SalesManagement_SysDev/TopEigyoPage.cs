@@ -54,6 +54,7 @@ namespace SalesManagement_SysDev
 
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
+            
             //現画面を非表示
             this.Visible = false;
 
@@ -126,7 +127,7 @@ namespace SalesManagement_SysDev
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.Black;
 
-                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
                 TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
@@ -134,15 +135,15 @@ namespace SalesManagement_SysDev
             else if(PoID == 1)
             {
                 
-                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopHonshaBtn.FlatAppearance.BorderSize = 1;
                 TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
                 TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
@@ -173,5 +174,41 @@ namespace SalesManagement_SysDev
         }
 
 
+        private void UriageKanriBtn_Click(object sender, EventArgs e)
+        {
+            UriageKanri.EmID = EmID;
+            UriageKanri.PoID = PoID;
+
+            //現画面を非表示
+            this.Visible = false;
+
+            //UriageKanriを表示
+            UriageKanri f2 = new UriageKanri();
+            f2.Show();
+        } 
+        private void NyukaKanriBtn_Click(object sender, EventArgs e)
+        {
+            NyukaKanri.EmID = EmID;
+            NyukaKanri.PoID = PoID;
+            //現画面を非表示
+            this.Visible = false;
+
+            // NyukaKanriを表示
+            NyukaKanri f2 = new NyukaKanri();
+            f2.Show();
+        }
+
+        private void ShukkaKanriBtn_Click(object sender, EventArgs e)
+        {
+            ShukkaKanri.EmID = EmID;
+            ShukkaKanri.PoID = PoID;
+            //現画面を非表示
+            this.Visible = false;
+
+            // ShukkaKanriを表示
+            ShukkaKanri f2 = new ShukkaKanri();
+
+            f2.Show();
+        }
     }
 }

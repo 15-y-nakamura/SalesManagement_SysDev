@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -44,5 +45,36 @@ namespace SalesManagement_SysDev
         public virtual ICollection<T_OrderDetail> T_OrderDetail { get; set; }
         public virtual ICollection<T_Shipment> T_Shipment { get; set; }
         public virtual ICollection<T_Syukko> T_Syukko { get; set; }
+    }
+
+    //データグリッド表示用
+    class T_OrderDsp
+    {
+        [DisplayName("受注ID")]
+        public int OrID { get; set; }
+
+        [DisplayName("営業所名")]
+        public string SoName { get; set; }
+
+        [DisplayName("社員名")]
+        public string EmName { get; set; }
+
+        [DisplayName("顧客名")]
+        public string ClName { get; set; }
+
+        [DisplayName("顧客担当者名")]
+        public string ClCharge { get; set; }
+
+        [DisplayName("受注年月日")]
+        public DateTime? OrDate { get; set; }
+
+        [DisplayName("受注状態フラグ")]
+        public int OrStateFlag { get; set; }
+
+        [DisplayName("受注管理フラグ")]
+        public int OrFlag { get; set; }
+
+        [DisplayName("非表示理由")]
+        public string OrHidden { get; set; }
     }
 }

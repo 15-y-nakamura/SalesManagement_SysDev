@@ -200,7 +200,9 @@ namespace SalesManagement_SysDev.DataAccess
                 context.SaveChanges();
                 context.Dispose();
                 return true;
-            }catch (Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 return false;
             }
@@ -701,7 +703,6 @@ namespace SalesManagement_SysDev.DataAccess
                         PoName = p.PoName,
                         EmHiredate = p.EmHiredate,
                         EmPhone = p.EmPhone,
-
                         EmFlag = p.EmFlag,
                         EmHidden = p.EmHidden
                     });
@@ -716,6 +717,30 @@ namespace SalesManagement_SysDev.DataAccess
             return Emp;
         }
 
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckEmID()
+        //引　数   ：数値
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員IDの存在チェック
+        //           社員IDが存在するときTrue
+        //           社員IDが存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckClID(int ClID)
+        {
+            bool flg = false;
 
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された社員IDに一致するデータが存在するか
+                flg = context.M_Clients.Any(x => x.ClID == ClID);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
     }
 }
