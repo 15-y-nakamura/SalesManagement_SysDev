@@ -63,6 +63,7 @@ namespace SalesManagement_SysDev
             TopButsuryuPage f2 = new TopButsuryuPage();
             f2.Show();
         }
+
     }
 }
 
