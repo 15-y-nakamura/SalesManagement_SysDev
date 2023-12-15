@@ -174,6 +174,14 @@ namespace SalesManagement_SysDev.DataAccess
             }
         }
 
+        ///////////////////////////////
+        //メソッド名：UpdateEmployee(()
+        //引　数   ：M_Employee
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員情報の更新
+        //           更新が成功したときTrue
+        //           更新が失敗したときFalse
+        ///////////////////////////////
         public bool UpdateEmployee(M_Employee regEmployee)
         {
             try

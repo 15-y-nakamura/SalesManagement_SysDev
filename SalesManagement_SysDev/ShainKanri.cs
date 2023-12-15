@@ -232,7 +232,7 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：GetDataGridView()
+        //メソッド名：ListDisplay()
         //引　数   ：なし
         //戻り値   ：なし
         //機　能   ：データグリッドビューの表示
@@ -354,7 +354,7 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：InputRegistDataCheck()
+        //メソッド名：SetEmployeeData()
         //引　数   ：なし
         //戻り値   ：M_Employee
         //機　能   ：社員情報を形式化する
@@ -459,6 +459,14 @@ namespace SalesManagement_SysDev
             UpdateEmployee(updatedata);
         }
 
+
+        ///////////////////////////////
+        //メソッド名：InputUpdataDataCheck()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：社員更新時の入力チェック項目の妥当性をチェックする
+        ///////////////////////////////
+
         private bool InputUpdataDataCheck()
         {
             //社員IDの入力チェック
@@ -492,7 +500,7 @@ namespace SalesManagement_SysDev
             //役職名の入力チェック
             if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameCmb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).Msg);
                 return false;
             }
 
@@ -508,6 +516,12 @@ namespace SalesManagement_SysDev
             return true;
         }
 
+        ///////////////////////////////
+        //メソッド名：SetEmployeeUpdateData()
+        //引　数   ：なし
+        //戻り値   ：M_Employee
+        //機　能   ：社員情報を形式化する
+        ///////////////////////////////
         private M_Employee SetEmployeeUpdateData()
         {
             int PoID = PositionDA.GetPoID(YakushokuNameCmb.Text);
@@ -535,6 +549,12 @@ namespace SalesManagement_SysDev
                 EmHidden = HihyojiTxb.Text
             };
         }
+        ///////////////////////////////
+        //メソッド名：UpdateEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：なし
+        //機　能   ：形式化した社員情報を更新する
+        ///////////////////////////////
 
         private void UpdateEmployee(M_Employee emp)
         {
