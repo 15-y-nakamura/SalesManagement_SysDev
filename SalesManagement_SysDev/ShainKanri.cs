@@ -232,7 +232,7 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：GetDataGridView()
+        //メソッド名：ListDisplay()
         //引　数   ：なし
         //戻り値   ：なし
         //機　能   ：データグリッドビューの表示
@@ -467,7 +467,6 @@ namespace SalesManagement_SysDev
 
             UpdateEmployee(updatedata);
         }
-
         ///////////////////////////////
         //メソッド名：InputUpdataDataCheck()
         //引　数   ：なし
@@ -507,7 +506,7 @@ namespace SalesManagement_SysDev
             //役職名の入力チェック
             if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameCmb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).Msg);
                 return false;
             }
 
@@ -556,6 +555,12 @@ namespace SalesManagement_SysDev
                 EmHidden = HihyojiTxb.Text
             };
         }
+        ///////////////////////////////
+        //メソッド名：UpdateEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：なし
+        //機　能   ：形式化した社員情報を更新する
+        ///////////////////////////////
 
         ///////////////////////////////
         //メソッド名：UpdateEmployee()

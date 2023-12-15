@@ -202,16 +202,18 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M4001");
             }
-
+            
+            if (text.Length > 6)
+            {
+                return (false, "M4002");
+            }
+            
             if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
             {
                 return (false, "M4022");
             }
 
-            if (text.Length > 6)
-            {
-                return (false, "M4002");
-            }
+            
 
             return (true, text);
         }
@@ -223,6 +225,7 @@ namespace SalesManagement_SysDev
         //機　能   ：社員名入力チェック
         //           問題がないときTrue、文字列
         //           問題があるときFalse、メッセージID
+        ///////////////////////////////
         public (bool flg,string Msg) CheckEmname(string text)
         {
             if (text == "")
