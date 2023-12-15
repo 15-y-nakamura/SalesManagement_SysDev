@@ -33,6 +33,7 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopShainPnl = new System.Windows.Forms.Panel();
+            this.TelHaiiroLbl = new System.Windows.Forms.Label();
             this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
             this.JoinDateDtm = new System.Windows.Forms.DateTimePicker();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
-            this.TelHaiiroLbl = new System.Windows.Forms.Label();
             this.TopShainPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShainKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -148,6 +148,16 @@
             this.TopShainPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopShainPnl.TabIndex = 23;
             // 
+            // TelHaiiroLbl
+            // 
+            this.TelHaiiroLbl.AutoSize = true;
+            this.TelHaiiroLbl.Location = new System.Drawing.Point(1432, 153);
+            this.TelHaiiroLbl.Name = "TelHaiiroLbl";
+            this.TelHaiiroLbl.Size = new System.Drawing.Size(0, 18);
+            this.TelHaiiroLbl.TabIndex = 57;
+            this.TelHaiiroLbl.Click += new System.EventHandler(this.TelHaiiroLbl_Click);
+            this.TelHaiiroLbl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TelHaiiroLbl_MouseMove);
+            // 
             // EigyoushoNameCmb
             // 
             this.EigyoushoNameCmb.FormattingEnabled = true;
@@ -193,6 +203,7 @@
             this.TelTxb.Name = "TelTxb";
             this.TelTxb.Size = new System.Drawing.Size(201, 25);
             this.TelTxb.TabIndex = 21;
+            this.TelTxb.Click += new System.EventHandler(this.TelTxb_Click);
             // 
             // TelLbl
             // 
@@ -469,14 +480,6 @@
             this.TopNameHyojiLbl.Size = new System.Drawing.Size(88, 30);
             this.TopNameHyojiLbl.TabIndex = 74;
             this.TopNameHyojiLbl.Text = "名前：";
-            // 
-            // TelHaiiroLbl
-            // 
-            this.TelHaiiroLbl.AutoSize = true;
-            this.TelHaiiroLbl.Location = new System.Drawing.Point(1432, 153);
-            this.TelHaiiroLbl.Name = "TelHaiiroLbl";
-            this.TelHaiiroLbl.Size = new System.Drawing.Size(0, 18);
-            this.TelHaiiroLbl.TabIndex = 57;
             // 
             // Shainkanri
             // 
