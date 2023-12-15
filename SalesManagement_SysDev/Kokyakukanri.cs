@@ -59,7 +59,7 @@ namespace SalesManagement_SysDev
         }
         private void Kokyakukanri_Load(object sender, EventArgs e)
         {
-            //PlaceHolderText();
+            PlaceHolderText();
 
             string[] TopData = new string[4];
             TopData = empDataAccess.GetTopData(EmID);
@@ -117,26 +117,25 @@ namespace SalesManagement_SysDev
 
         }
 
-        /*テキストボックス内に灰色の文字を表示
+        //テキストボックス内に灰色の文字を表示
         private void PlaceHolderText()
         {
-            YubinTxb.Text = "ハイフンなし";
-            YubinTxb.ForeColor = SystemColors.GrayText;
+            YubinHaiiroLbl.Text = "ハイフンなし";
+            YubinHaiiroLbl.ForeColor = Color.Gray;
+            YubinHaiiroLbl.BackColor = Color.White;
             YubinTxb.Enter += YubinTxb_Enter;
             YubinTxb.Leave += YubinTxb_Leave;
 
-            JushoTxb.Text = "ハイフンあり";
-            JushoTxb.ForeColor = SystemColors.GrayText;
-            JushoTxb.Enter += JushoTxb_Enter;
-            JushoTxb.Leave += JushoTxb_Leave;
 
-            TelTxb.Text = "ハイフンあり";
-            TelTxb.ForeColor = SystemColors.GrayText;
+            TelHaiiroLbl.Text = "ハイフンあり";
+            TelHaiiroLbl.ForeColor = Color.Gray;
+            TelHaiiroLbl.BackColor = Color.White;
             TelTxb.Enter += TelTxb_Enter;
-            //TelTxb.Leave += TelTxb_Leave;
+            TelTxb.Leave += TelTxb_Leave;
 
-            FaxTxb.Text = "ハイフンあり";
-            FaxTxb.ForeColor = SystemColors.GrayText;
+            FaxHaiiroLbl.Text = "ハイフンあり";
+            FaxHaiiroLbl.ForeColor = Color.Gray;
+            FaxHaiiroLbl.BackColor = Color.White;
             FaxTxb.Enter += FaxTxb_Enter;
             FaxTxb.Leave += FaxTxb_Leave;
         }
@@ -144,10 +143,10 @@ namespace SalesManagement_SysDev
         //郵便番号のテキストボックスが選択されている場合
         private void YubinTxb_Enter(object sender, EventArgs e)
         {
-            if (YubinTxb.Text == "ハイフンなし")
+            if (YubinHaiiroLbl.Text == "ハイフンなし")
             {
-                YubinTxb.Text = "";
-                YubinTxb.ForeColor = SystemColors.WindowText;
+                YubinHaiiroLbl.Text = "";
+                YubinHaiiroLbl.ForeColor = SystemColors.WindowText;
             }
         }
 
@@ -156,38 +155,19 @@ namespace SalesManagement_SysDev
         {
             if (string.IsNullOrWhiteSpace(YubinTxb.Text))
             {
-                YubinTxb.Text = "ハイフンなし";
-                YubinTxb.ForeColor = SystemColors.GrayText;
+                YubinHaiiroLbl.Text = "ハイフンなし";
+                YubinHaiiroLbl.ForeColor = SystemColors.GrayText;
             }
         }
 
-        //住所のテキストボックスが選択されている場合
-        private void JushoTxb_Enter(object sender, EventArgs e)
-        {
-            if (JushoTxb.Text == "ハイフンあり")
-            {
-               JushoTxb.Text = "";
-               JushoTxb.ForeColor = SystemColors.WindowText;
-            }
-        }
-
-        //住所のテキストボックスが選択されていない・入力されていない場合
-        private void JushoTxb_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(JushoTxb.Text))
-            {
-                JushoTxb.Text = "ハイフンあり";
-                JushoTxb.ForeColor = SystemColors.GrayText;
-            }
-        }
 
         //電話番号のテキストボックスが選択されている場合
         private void TelTxb_Enter(object sender, EventArgs e)
         {
-            if (TelTxb.Text == "ハイフンあり")
+            if (TelHaiiroLbl.Text == "ハイフンあり")
             {
-                TelTxb.Text = "";
-                TelTxb.ForeColor = SystemColors.WindowText;
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
             }
         }
 
@@ -196,18 +176,18 @@ namespace SalesManagement_SysDev
         {
             if (string.IsNullOrWhiteSpace(TelTxb.Text))
             {
-                TelTxb.Text = "ハイフンあり";
-                TelTxb.ForeColor = SystemColors.GrayText;
+                TelHaiiroLbl.Text = "ハイフンあり";
+                TelHaiiroLbl.ForeColor = Color.Gray;
             }
         }
 
         //FAXのテキストボックスが選択されている場合
         private void FaxTxb_Enter(object sender, EventArgs e)
         {
-            if (FaxTxb.Text == "ハイフンあり")
+            if (FaxHaiiroLbl.Text == "ハイフンあり")
             {
-                FaxTxb.Text = "";
-                FaxTxb.ForeColor = SystemColors.WindowText;
+                FaxHaiiroLbl.Text = "";
+                FaxHaiiroLbl.ForeColor = SystemColors.WindowText;
             }
         }
 
@@ -216,10 +196,10 @@ namespace SalesManagement_SysDev
         {
             if (string.IsNullOrWhiteSpace(FaxTxb.Text))
             {
-                FaxTxb.Text = "ハイフンあり";
-                FaxTxb.ForeColor = SystemColors.GrayText;
+                FaxHaiiroLbl.Text = "ハイフンあり";
+                FaxHaiiroLbl.ForeColor = SystemColors.GrayText;
             }
-        }*/
+        }
 
         ///////////////////////////////
         //メソッド名：SetCtrlFormat()
@@ -329,7 +309,7 @@ namespace SalesManagement_SysDev
             TopEigyoPage f2 = new TopEigyoPage();
             f2.Show();
         }
-       
+
         private void TopButsuryuBtn_Click_1(object sender, EventArgs e)
         {
             TopButsuryuPage.EmID = EmID;
@@ -661,6 +641,102 @@ namespace SalesManagement_SysDev
                 HihyojiTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
             }
 
+            if (TelHaiiroLbl.Text == "ハイフンあり")
+            {
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+
+            if (FaxHaiiroLbl.Text == "ハイフンあり")
+            {
+                FaxHaiiroLbl.Text = "";
+                FaxHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+
+            if (YubinHaiiroLbl.Text == "ハイフンなし")
+            {
+                YubinHaiiroLbl.Text = "";
+                YubinHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+
         }
+
+        private void TelTxb_Click(object sender, EventArgs e)
+        {
+            if (TelHaiiroLbl.Text == "ハイフンあり")
+            {
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+
+        }
+
+        private void TelHaiiroLbl_Click(object sender, EventArgs e)
+        {
+            TelTxb.Focus();
+            if (TelHaiiroLbl.Text == "ハイフンあり")
+            {
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+
+        }
+
+        private void TelHaiiroLbl_MouseMove(object sender, MouseEventArgs e)
+        {
+            TelHaiiroLbl.Cursor = Cursors.IBeam;
+        }
+
+        private void FaxTxb_Click(object sender, EventArgs e)
+        {
+            if (FaxHaiiroLbl.Text == "ハイフンあり")
+            {
+                FaxHaiiroLbl.Text = "";
+                FaxHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+
+        }
+
+        private void FaxHaiiroLbl_Click(object sender, EventArgs e)
+        {
+            FaxTxb.Focus();
+            if (FaxHaiiroLbl.Text == "ハイフンあり")
+            {
+                FaxHaiiroLbl.Text = "";
+                FaxHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+
+        }
+
+        private void FaxHaiiroLbl_MouseMove(object sender, MouseEventArgs e)
+        {
+            FaxHaiiroLbl.Cursor = Cursors.IBeam;
+        }
+
+        private void YubinTxb_Click(object sender, EventArgs e)
+        {
+            if (YubinHaiiroLbl.Text == "ハイフンなし")
+            {
+                YubinHaiiroLbl.Text = "";
+                YubinHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void YubinHaiiroLbl_Click(object sender, EventArgs e)
+        {
+            YubinTxb.Focus();
+            if (YubinHaiiroLbl.Text == "ハイフンなし")
+            {
+                YubinHaiiroLbl.Text = "";
+                YubinHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+
+        }
+
+        private void YubinHaiiroLbl_MouseMove(object sender, MouseEventArgs e)
+        {
+            YubinHaiiroLbl.Cursor = Cursors.IBeam;
+        }
+
     }
 }

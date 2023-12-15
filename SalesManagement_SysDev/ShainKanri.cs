@@ -68,7 +68,7 @@ namespace SalesManagement_SysDev
             TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
 
-            //PlaceHolderText();
+            PlaceHolderText();
 
             //コントロールの初期設定
             SetCtrlFormat();
@@ -117,28 +117,24 @@ namespace SalesManagement_SysDev
             ShainKanriFlagCmb.Items.Add("非表示");
         }
 
-        /*private void PlaceHolderText(){
-            PlaceHolderText();
-
-
-        }
 
         //テキストボックス内に灰色の文字を表示
         private void PlaceHolderText()
         {
-            TelTxb.Text = "ハイフンあり";
-            TelTxb.ForeColor = SystemColors.GrayText;
+            TelHaiiroLbl.Text = "ハイフンあり";
+            TelHaiiroLbl.ForeColor = Color.Gray;
+            TelHaiiroLbl.BackColor = Color.White;
             TelTxb.Enter += TelTxb_Enter;
             TelTxb.Leave += TelTxb_Leave;
         }
 
-        //電話番号のテキストボックスが選択されていない場合
+        //電話番号のテキストボックスが選択されている場合
         private void TelTxb_Enter(object sender, EventArgs e)
         {
-           if (TelTxb.Text == "ハイフンあり")
+            if (TelHaiiroLbl.Text == "ハイフンあり")
             {
-                TelTxb.Text = "";
-                TelTxb.ForeColor = SystemColors.WindowText;
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
             }
         }
 
@@ -147,10 +143,10 @@ namespace SalesManagement_SysDev
         {
             if (string.IsNullOrWhiteSpace(TelTxb.Text))
             {
-               TelTxb.Text = "ハイフンあり";
-                TelTxb.ForeColor = SystemColors.GrayText;
+                TelHaiiroLbl.Text = "ハイフンあり";
+                TelHaiiroLbl.ForeColor = Color.Gray;
             }
-        }*/
+        }
 
         //本社ボタンクリック
         private void TopHonshaBtn_Click(object sender, EventArgs e)
@@ -236,7 +232,7 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：GetDataGridView()
+        //メソッド名：ListDisplay()
         //引　数   ：なし
         //戻り値   ：なし
         //機　能   ：データグリッドビューの表示
@@ -448,8 +444,15 @@ namespace SalesManagement_SysDev
             {
                 HihyojiTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
             }
+
+            if (TelHaiiroLbl.Text == "ハイフンあり")
+            {
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+
         }
-      
+        
         //更新ボタンクリック
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
@@ -462,7 +465,6 @@ namespace SalesManagement_SysDev
 
             UpdateEmployee(updatedata);
         }
-
         ///////////////////////////////
         //メソッド名：InputUpdataDataCheck()
         //引　数   ：なし
@@ -502,7 +504,7 @@ namespace SalesManagement_SysDev
             //役職名の入力チェック
             if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameCmb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).Msg);
                 return false;
             }
 
@@ -551,6 +553,12 @@ namespace SalesManagement_SysDev
                 EmHidden = HihyojiTxb.Text
             };
         }
+        ///////////////////////////////
+        //メソッド名：UpdateEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：なし
+        //機　能   ：形式化した社員情報を更新する
+        ///////////////////////////////
 
         ///////////////////////////////
         //メソッド名：UpdateEmployee()
@@ -579,6 +587,30 @@ namespace SalesManagement_SysDev
             }
         }
 
+        private void TelTxb_Click(object sender, EventArgs e)
+        {
+            if (TelHaiiroLbl.Text == "ハイフンあり")
+            {
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TelHaiiroLbl_Click(object sender, EventArgs e)
+        {
+            TelTxb.Focus();
+            if (TelHaiiroLbl.Text == "ハイフンあり")
+            {
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TelHaiiroLbl_MouseMove(object sender, MouseEventArgs e)
+        {
+            TelHaiiroLbl.Cursor = Cursors.IBeam;
+        }
+        
         //検索ボタンクリック
         private void SearchBtn_Click(object sender, EventArgs e)
         {
