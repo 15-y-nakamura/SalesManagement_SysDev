@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
@@ -30,7 +31,7 @@ namespace SalesManagement_SysDev
 
         MessageDsp messageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
-        InputCheck inputCheck = new InputCheck();
+
 
         internal static int EmID = 0;
         internal static int PoID = 0;
@@ -106,7 +107,6 @@ namespace SalesManagement_SysDev
 
             //営業所名を取得
             var SoName = SalesOfficeDA.GetSoName();
-
             //営業所名をコンボボックスに追加
             foreach (string Soname in SoName.Reverse())
             {
@@ -273,8 +273,6 @@ namespace SalesManagement_SysDev
             ShainKanriDgv.Columns[9].Width = 160; //非表示理由
             */
 
-            //行の高さ設定
-            ShainKanriDgv.RowTemplate.Height = 40;
 
             //各列の文字位置の指定
             ShainKanriDgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -731,6 +729,74 @@ namespace SalesManagement_SysDev
             SetCtrlFormat();
 
             SetFormSyainKanriGridView();
+        }
+
+        //非表示ボタンクリック
+        private void HiddenBtn_Click(object sender, EventArgs e)
+        {
+            //入力チェック
+            if (!InputHiddenDataCheck())
+            {
+                return;
+            }
+
+            //形式化
+            var emp =　SetEmployeeHideenData();
+
+            //更新
+            HiddenEmployee(emp);
+
+        }
+
+            private bool InputHiddenDataCheck()
+        {
+            //社員IDチェック
+            if (!InputCheck.CheckEmID(ShainIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckEmID(ShainIDTxb.Text).Msg);
+                return false;
+            }
+
+            //非表示理由チェック
+            if (!InputCheck.CheckHidden(HihyojiTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckHidden(HihyojiTxb.Text).Msg); ;
+                return false;
+            }
+            return true;
+        }
+
+        private M_Employee SetEmployeeHideenData()
+        {
+            M_Employee M_Emp = new M_Employee()
+            {
+                EmID = int.Parse(ShainIDTxb.Text),
+                EmFlag = 2,
+                EmHidden = HihyojiTxb.Text
+            };
+
+            return M_Emp;
+        }
+
+        private void HiddenEmployee(M_Employee emp)
+        {
+            if (DialogResult.OK == MessageDsp.DspMsg("M4027"))
+            {
+                if (EmployeeDA.DeleteEmployee(emp))
+                {
+                    MessageDsp.DspMsg("M4028");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormSyainKanriGridView();
+                }
+                else
+                {
+                    MessageDsp.DspMsg("M4029");
+                }
+            }
         }
     }
 }

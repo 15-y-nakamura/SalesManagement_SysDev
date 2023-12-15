@@ -369,7 +369,6 @@ namespace SalesManagement_SysDev.DataAccess
                              join t3 in context.M_SalesOffices
                              on t1.SoID equals t3.SoID
                              where t1.EmName.Contains(regEmployee.EmName) &&
-                                   t1.EmHiredate == regEmployee.EmHiredate &&
                                    t1.EmHidden.Contains(regEmployee.EmHidden) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone)&&
                                    t1.EmFlag == regEmployee.EmFlag 
@@ -661,7 +660,26 @@ namespace SalesManagement_SysDev.DataAccess
             return emp;
         }
         
-        //public bool DeleteEmployee(M_Employee regEmployee) { }
+        public bool DeleteEmployee(M_Employee regEmployee)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var emp = context.M_Employees.Single(x => x.EmID == regEmployee.EmID);
+
+                emp.EmFlag = regEmployee.EmFlag;
+                emp.EmHidden = regEmployee.EmHidden;
+
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
         ///////////////////////////////
         //メソッド名：GetEmployeeData()
@@ -681,6 +699,7 @@ namespace SalesManagement_SysDev.DataAccess
                          on t1.SoID equals t2.SoID
                          join t3 in context.M_Positions
                          on t1.PoID equals t3.PoID
+                         where t1.EmFlag == 0
                          select new
                          {
                              t1.EmID,

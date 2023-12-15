@@ -33,6 +33,7 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopShainPnl = new System.Windows.Forms.Panel();
+            this.JoinDateDtm = new System.Windows.Forms.DateTimePicker();
             this.TelHaiiroLbl = new System.Windows.Forms.Label();
             this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
-            this.JoinDateDtm = new System.Windows.Forms.DateTimePicker();
             this.TopShainPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShainKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -149,6 +149,14 @@
             this.TopShainPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopShainPnl.TabIndex = 23;
             // 
+            // JoinDateDtm
+            // 
+            this.JoinDateDtm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.JoinDateDtm.Location = new System.Drawing.Point(642, 219);
+            this.JoinDateDtm.Name = "JoinDateDtm";
+            this.JoinDateDtm.ShowCheckBox = true;
+            this.JoinDateDtm.Size = new System.Drawing.Size(200, 25);
+            this.JoinDateDtm.TabIndex = 57;
             // TelHaiiroLbl
             // 
             this.TelHaiiroLbl.AutoSize = true;
@@ -348,6 +356,7 @@
             this.HiddenBtn.TabIndex = 4;
             this.HiddenBtn.Text = "非表示";
             this.HiddenBtn.UseVisualStyleBackColor = true;
+            this.HiddenBtn.Click += new System.EventHandler(this.HiddenBtn_Click);
             // 
             // UpdateBtn
             // 
@@ -476,15 +485,6 @@
             this.TopNameHyojiLbl.Size = new System.Drawing.Size(88, 30);
             this.TopNameHyojiLbl.TabIndex = 74;
             this.TopNameHyojiLbl.Text = "名前：";
-            // 
-            // JoinDateDtm
-            // 
-            this.JoinDateDtm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.JoinDateDtm.Location = new System.Drawing.Point(642, 219);
-            this.JoinDateDtm.Name = "JoinDateDtm";
-            this.JoinDateDtm.ShowCheckBox = true;
-            this.JoinDateDtm.Size = new System.Drawing.Size(200, 25);
-            this.JoinDateDtm.TabIndex = 57;
             // 
             // Shainkanri
             // 

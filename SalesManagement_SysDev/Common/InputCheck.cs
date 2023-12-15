@@ -371,6 +371,10 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M4002");
             }
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
             return (true, text);
         }        
         ///////////////////////////////
@@ -407,7 +411,7 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M4005");
             }
-            return(true, text);
+            return (true, text);
         }        
         ///////////////////////////////
         //メソッド名：CheckJuchuSoNameCmb()
