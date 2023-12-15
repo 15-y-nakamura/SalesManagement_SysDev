@@ -371,10 +371,6 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M4002");
             }
-<<<<<<< HEAD
-
-=======
->>>>>>> main
             return (true, text);
         }        
         ///////////////////////////////
