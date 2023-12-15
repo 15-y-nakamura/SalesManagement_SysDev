@@ -84,6 +84,7 @@
             this.TopHonshaBtn.Name = "TopHonshaBtn";
             this.TopHonshaBtn.Size = new System.Drawing.Size(210, 130);
             this.TopHonshaBtn.TabIndex = 0;
+            this.TopHonshaBtn.TabStop = false;
             this.TopHonshaBtn.Text = "本社";
             this.TopHonshaBtn.UseVisualStyleBackColor = true;
             this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
@@ -96,6 +97,7 @@
             this.TopEigyoBtn.Name = "TopEigyoBtn";
             this.TopEigyoBtn.Size = new System.Drawing.Size(210, 130);
             this.TopEigyoBtn.TabIndex = 1;
+            this.TopEigyoBtn.TabStop = false;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
             this.TopEigyoBtn.Click += new System.EventHandler(this.TopEigyoBtn_Click);
@@ -108,6 +110,7 @@
             this.TopButsuryuBtn.Name = "TopButsuryuBtn";
             this.TopButsuryuBtn.Size = new System.Drawing.Size(210, 130);
             this.TopButsuryuBtn.TabIndex = 2;
+            this.TopButsuryuBtn.TabStop = false;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
             this.TopButsuryuBtn.Click += new System.EventHandler(this.TopButsuryuBtn_Click);
@@ -154,16 +157,17 @@
             this.TopHachuPnl.Location = new System.Drawing.Point(253, 158);
             this.TopHachuPnl.Name = "TopHachuPnl";
             this.TopHachuPnl.Size = new System.Drawing.Size(1835, 783);
-            this.TopHachuPnl.TabIndex = 23;
+            this.TopHachuPnl.TabIndex = 1;
             // 
             // HachujyoutaiIDTxb
             // 
             this.HachujyoutaiIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.HachujyoutaiIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.HachujyoutaiIDTxb.Location = new System.Drawing.Point(1052, 228);
             this.HachujyoutaiIDTxb.Name = "HachujyoutaiIDTxb";
             this.HachujyoutaiIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.HachujyoutaiIDTxb.TabIndex = 58;
+            this.HachujyoutaiIDTxb.TabIndex = 6;
             // 
             // ConfirmBtn
             // 
@@ -172,6 +176,7 @@
             this.ConfirmBtn.Name = "ConfirmBtn";
             this.ConfirmBtn.Size = new System.Drawing.Size(300, 90);
             this.ConfirmBtn.TabIndex = 57;
+            this.ConfirmBtn.TabStop = false;
             this.ConfirmBtn.Text = "確定";
             this.ConfirmBtn.UseVisualStyleBackColor = true;
             // 
@@ -180,7 +185,7 @@
             this.HachuDateDtm.Location = new System.Drawing.Point(1440, 150);
             this.HachuDateDtm.Name = "HachuDateDtm";
             this.HachuDateDtm.Size = new System.Drawing.Size(201, 25);
-            this.HachuDateDtm.TabIndex = 55;
+            this.HachuDateDtm.TabIndex = 3;
             // 
             // GamenKousinBtn
             // 
@@ -191,6 +196,7 @@
             this.GamenKousinBtn.Name = "GamenKousinBtn";
             this.GamenKousinBtn.Size = new System.Drawing.Size(100, 90);
             this.GamenKousinBtn.TabIndex = 54;
+            this.GamenKousinBtn.TabStop = false;
             this.GamenKousinBtn.UseVisualStyleBackColor = true;
             // 
             // HachuKanriDgv
@@ -202,6 +208,7 @@
             this.HachuKanriDgv.RowTemplate.Height = 27;
             this.HachuKanriDgv.Size = new System.Drawing.Size(1633, 256);
             this.HachuKanriDgv.TabIndex = 51;
+            this.HachuKanriDgv.TabStop = false;
             // 
             // HachukanriFlagCmb
             // 
@@ -211,7 +218,7 @@
             this.HachukanriFlagCmb.Location = new System.Drawing.Point(642, 222);
             this.HachukanriFlagCmb.Name = "HachukanriFlagCmb";
             this.HachukanriFlagCmb.Size = new System.Drawing.Size(201, 26);
-            this.HachukanriFlagCmb.TabIndex = 4;
+            this.HachukanriFlagCmb.TabIndex = 5;
             // 
             // NyukozumiFlagCmb
             // 
@@ -227,56 +234,62 @@
             // 
             this.MekaIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MekaIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.MekaIDTxb.Location = new System.Drawing.Point(642, 150);
             this.MekaIDTxb.Name = "MekaIDTxb";
             this.MekaIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.MekaIDTxb.TabIndex = 3;
+            this.MekaIDTxb.TabIndex = 1;
             // 
             // ShainIDTxb
             // 
             this.ShainIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShainIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.ShainIDTxb.Location = new System.Drawing.Point(1052, 150);
             this.ShainIDTxb.Name = "ShainIDTxb";
             this.ShainIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.ShainIDTxb.TabIndex = 3;
+            this.ShainIDTxb.TabIndex = 2;
             // 
             // SuryoTxb
             // 
             this.SuryoTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.SuryoTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.SuryoTxb.Location = new System.Drawing.Point(642, 290);
             this.SuryoTxb.Name = "SuryoTxb";
             this.SuryoTxb.Size = new System.Drawing.Size(201, 25);
-            this.SuryoTxb.TabIndex = 3;
+            this.SuryoTxb.TabIndex = 8;
             // 
             // HihyojiTxb
             // 
             this.HihyojiTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.HihyojiTxb.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.HihyojiTxb.Location = new System.Drawing.Point(237, 364);
             this.HihyojiTxb.Multiline = true;
             this.HihyojiTxb.Name = "HihyojiTxb";
             this.HihyojiTxb.Size = new System.Drawing.Size(606, 90);
-            this.HihyojiTxb.TabIndex = 3;
+            this.HihyojiTxb.TabIndex = 9;
             // 
             // ShohinIDTxb
             // 
             this.ShohinIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShohinIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.ShohinIDTxb.Location = new System.Drawing.Point(237, 290);
             this.ShohinIDTxb.Name = "ShohinIDTxb";
             this.ShohinIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.ShohinIDTxb.TabIndex = 3;
+            this.ShohinIDTxb.TabIndex = 7;
             // 
             // JuchuIDTxb
             // 
             this.JuchuIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.JuchuIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.JuchuIDTxb.Location = new System.Drawing.Point(237, 150);
             this.JuchuIDTxb.Name = "JuchuIDTxb";
             this.JuchuIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.JuchuIDTxb.TabIndex = 3;
+            this.JuchuIDTxb.TabIndex = 0;
             // 
             // MekaIDLbl
             // 
@@ -385,6 +398,7 @@
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(300, 90);
             this.SearchBtn.TabIndex = 1;
+            this.SearchBtn.TabStop = false;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
             // 
@@ -395,6 +409,7 @@
             this.HiddenBtn.Name = "HiddenBtn";
             this.HiddenBtn.Size = new System.Drawing.Size(300, 90);
             this.HiddenBtn.TabIndex = 1;
+            this.HiddenBtn.TabStop = false;
             this.HiddenBtn.Text = "非表示";
             this.HiddenBtn.UseVisualStyleBackColor = true;
             // 
@@ -405,6 +420,7 @@
             this.ListingBtn.Name = "ListingBtn";
             this.ListingBtn.Size = new System.Drawing.Size(300, 90);
             this.ListingBtn.TabIndex = 1;
+            this.ListingBtn.TabStop = false;
             this.ListingBtn.Text = "一覧表示";
             this.ListingBtn.UseVisualStyleBackColor = true;
             // 
@@ -415,6 +431,7 @@
             this.RegistBtn.Name = "RegistBtn";
             this.RegistBtn.Size = new System.Drawing.Size(300, 90);
             this.RegistBtn.TabIndex = 0;
+            this.RegistBtn.TabStop = false;
             this.RegistBtn.Text = "登録";
             this.RegistBtn.UseVisualStyleBackColor = true;
             // 
@@ -425,6 +442,7 @@
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(210, 146);
             this.button15.TabIndex = 23;
+            this.button15.TabStop = false;
             this.button15.Text = "ログアウト";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);

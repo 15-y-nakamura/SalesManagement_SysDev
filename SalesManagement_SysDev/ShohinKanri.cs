@@ -100,7 +100,7 @@ namespace SalesManagement_SysDev
             {
 
                 TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
-                TopHonshaBtn.FlatAppearance.BorderSize = 1;
+                TopHonshaBtn.FlatAppearance.BorderSize = 2;
                 TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
                 TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
