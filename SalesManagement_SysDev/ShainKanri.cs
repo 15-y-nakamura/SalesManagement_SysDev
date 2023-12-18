@@ -95,6 +95,7 @@ namespace SalesManagement_SysDev
             ShainKanriFlagCmb.Items.Clear();
             ShainKanriFlagCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             HihyojiTxb.Text = "";
+            JoinDateDtm.Checked = false;
 
             //役職名を取得
             var PoName = PositionDA.GetPoName();
