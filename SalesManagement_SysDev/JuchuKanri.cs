@@ -24,10 +24,16 @@ namespace SalesManagement_SysDev
         ClientDataAccess ClientDA = new ClientDataAccess();
 
         //受注テーブルアクセスクラスのインスタンス化
-        JuchuDataAccess JuchuDA = new JuchuDataAccess();
+        OrderDataAccess OrderDA = new OrderDataAccess();
+
+        //受注詳細テーブルアクセスクラスのインスタンス化
+        OrderDetailDataAccess OrderDetailDA = new OrderDetailDataAccess();
 
         //データグリッドビュー用の受注データ
-        private static List<T_OrderDsp> Order;
+        private static List<T_OrderDsp> Orderdsp;
+
+        //データグリッドビュー用の受注データ
+        private static List<T_OrderDetailDsp> OrderDetaildsp;
 
         //メッセージ表示クラスインスタンス化
         MessageDsp MessageDsp = new MessageDsp();
@@ -37,6 +43,8 @@ namespace SalesManagement_SysDev
 
         internal static int PoID = 0;
         internal static int EmID = 0;
+        internal static int SoID = 0;
+        internal static int CIID = 0;
         
 
         public JuchuKanri()
@@ -98,7 +106,7 @@ namespace SalesManagement_SysDev
             SetCtrlFormat();
 
             //データグリッドビューの設定
-            SetFormSyainKanriGridView();
+            SetFormJuchuKanriGridView();
 
         }
 
@@ -111,14 +119,17 @@ namespace SalesManagement_SysDev
         private void SetCtrlFormat()
         {
             JuchuIDTxb.Text = "";
-            JuchuDateDtm.Text = DateTime.Now.ToString();
-            ShainIDTxb.Text = "";
-            EigyoushoNameCmb.Items.Clear();
-            EigyoushoNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            JuchuDateDtm.Checked = false;
+            ShainNameTxb.Text = "";
+            KokyakuNameTxb.Text = "";
             KokyakuTantoNameTxb.Text = "";
             EigyoushoNameCmb.Items.Clear();
+            EigyoushoNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             JuchuJotaiFlagCmb.Items.Clear();
+            JuchuJotaiFlagCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             JuchuKanriFlagCmb.Items.Clear();
+            JuchuKanriFlagCmb.Items.Clear();
+            JuchuDetailIDTxb.Text = "";
             ShohinIDTxb.Text = "";
             SuryoTxb.Text = "";
             GokeiKingakuTxb.Text = "";
@@ -140,36 +151,7 @@ namespace SalesManagement_SysDev
             JuchuKanriFlagCmb.Items.Add("非表示");
         }
 
-        /*private void PlaceHolderText(){
-            PlaceHolderText();
-
-            string[] TopData = new string[4];
-            TopData = empDataAccess.GetTopData(EmID);
-
-            string emID = EmID.ToString();
-
-            TopIDLbl.Text = emID;
-            TopNameLbl.Text = TopData[0];
-            TopYakushokuLbl.Text = TopData[1];
-            TopEigyoshoLbl.Text = TopData[2];
-            TopJikanLbl.Text = TopData[3];
-
-            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopHonshaBtn.FlatAppearance.BorderSize = 1;
-            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
-            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopEigyoBtn.FlatAppearance.BorderSize = 2;
-            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
-            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
-            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
-
-        }
-
-        //テキストボックス内に灰色の文字を表示
+        /*テキストボックス内に灰色の文字を表示
         private void PlaceHolderText()
         {
             TelTxb.Text = "ハイフンあり";
@@ -263,7 +245,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：データグリッドビューの設定
         ///////////////////////////////
-        private void SetFormSyainKanriGridView()
+        private void SetFormJuchuKanriGridView()
         {
             //読み取り専用に指定
             JuchuKanriDgv.ReadOnly = true;
@@ -286,7 +268,10 @@ namespace SalesManagement_SysDev
         private void ListDisplay()
         {
             // 受注データの取得
-            Order = JuchuDA.GetJuchuData();
+            Orderdsp = OrderDA.GetOrderData();
+
+            //受注詳細データの取得
+            OrderDetaildsp = OrderDetailDA.GetOrderDetailData().
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
@@ -300,7 +285,9 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SetDataGridView()
         {
-            JuchuKanriDgv.DataSource = Order.ToList();
+            JuchuKanriDgv.DataSource = Orderdsp.ToList();
+            JuchuKanriDgv.DataSource = OrderDetaildsp.ToList();
+
 
             //すべての列がコントロールの表示領域の幅いっぱいに表示されるよう列幅を調整
             JuchuKanriDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -331,7 +318,9 @@ namespace SalesManagement_SysDev
             JuchuKanriDgv.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             JuchuKanriDgv.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             JuchuKanriDgv.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                
+            JuchuKanriDgv.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            JuchuKanriDgv.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
             JuchuKanriDgv.Refresh();
         }
 
@@ -344,10 +333,13 @@ namespace SalesManagement_SysDev
             }
 
             //形式化
-            var juchudata = SetJuchuData();
+            var order = SetOrderData();
+
+            //形式化
+            var orderdetail = SetOrderDetailData();
 
             //登録
-            RegistJuchu(juchudata);
+            RegistOrder(order,orderdetail);
         }
 
         ///////////////////////////////
@@ -358,7 +350,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private bool InputRegistDataCheck()
         {
-            //受注IDの入力チェック
+            /*受注IDの入力チェック
             if (!InputCheck.CheckRegistJuchuID(JuchuIDTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistJuchuID(JuchuIDTxb.Text).Msg);
@@ -366,16 +358,16 @@ namespace SalesManagement_SysDev
             }
 
             //社員IDの入力チェック
-            if (!InputCheck.CheckRegistEmID(ShainIDTxb.Text).flg)
+            if (!InputCheck.CheckRegistEmID(ShainNameTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckRegistEmID(ShainIDTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckRegistEmID(ShainNameTxb.Text).Msg);
                 return false;
             }
 
             //顧客IDの入力チェック
-            if (!InputCheck.CheckRegistClID(KokyakuIDTxb.Text).flg)
+            if (!InputCheck.CheckRegistClID(KokyakuNameTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckRegistClID(KokyakuIDTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckRegistClID(KokyakuNameTxb.Text).Msg);
                 return false;
             }
 
@@ -412,7 +404,7 @@ namespace SalesManagement_SysDev
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistGokeiKingaku(GokeiKingakuTxb.Text).Msg);
                 return false;
-            }
+            }*/
 
             return true;
         }
@@ -421,12 +413,14 @@ namespace SalesManagement_SysDev
         //メソッド名：InputRegistDataCheck()
         //引　数   ：なし
         //戻り値   ：T_Order
-        //機　能   ：社員情報を形式化する
+        //機　能   ：受注情報を形式化する
         ///////////////////////////////
-        private T_Order SetJuchuData()
+        private T_Order SetOrderData()
         {
             int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
-            int CIID = ClientDA.GetCIID(KokyakuIDTxb.Text);
+            int EmID = EmployeeDA.GetEmID(ShainNameTxb.Text);
+            int CIID = ClientDA.GetCIID(KokyakuNameTxb.Text);
+
             int OrFlg;
             int OrStateFlg;
 
@@ -459,7 +453,24 @@ namespace SalesManagement_SysDev
                 OrStateFlag = OrStateFlg,
                 OrFlag = OrFlg,
                 OrHidden = HihyojiTxb.Text
+            };
+        }
 
+        ///////////////////////////////
+        //メソッド名：SetOrderDetailData()
+        //引　数   ：なし
+        //戻り値   ：T_OrderDetail
+        //機　能   ：受注詳細情報を形式化する
+        ///////////////////////////////
+        private T_OrderDetail SetOrderDetailData()
+        {
+            return new T_OrderDetail
+            {
+                OrDetailID = int.Parse(JuchuDetailIDTxb.Text),
+                OrID = int.Parse(JuchuIDTxb.Text),
+                PrID = int.Parse(ShohinIDTxb.Text),
+                OrQuantity = int.Parse(SuryoTxb.Text),
+                OrTotalPrice = Convert.ToDecimal(GokeiKingakuTxb.Text),
             };
         }
 
@@ -469,23 +480,26 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：形式化した受注情報を登録する
         ///////////////////////////////
-        private void RegistJuchu(T_Order juchu)
+        private void RegistOrder(T_Order order, T_OrderDetail orderdetail)
         {
-            if (DialogResult.OK == MessageDsp.DspMsg("M6023"))
+            if (DialogResult.OK == MessageDsp.DspMsg("M6024"))
             {
-                if (JuchuDA.RegistJuchu(juchu))
+                if (OrderDA.RegistOrder(order))
                 {
-                    MessageDsp.DspMsg("M6024");
+                    if(OrderDetailDA.RegistOrderDetail(orderdetail))
+                    {
+                        MessageDsp.DspMsg("M6025");
 
-                    //コントロールの初期設定
-                    SetCtrlFormat();
+                        //コントロールの初期設定
+                        SetCtrlFormat();
 
-                    //データグリッドビューの設定
-                    SetFormSyainKanriGridView();
+                        //データグリッドビューの設定
+                        SetFormJuchuKanriGridView();
+                    }
                 }
                 else
                 {
-                    MessageDsp.DspMsg("M6025");
+                    MessageDsp.DspMsg("M6026");
                 }
             }
         }
@@ -494,8 +508,8 @@ namespace SalesManagement_SysDev
         {
             JuchuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
             JuchuDateDtm.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
-            ShainIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
-            KokyakuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
+            ShainNameTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
+            KokyakuNameTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
             KokyakuTantoNameTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
             EigyoushoNameCmb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
             ShohinIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();

@@ -10,32 +10,9 @@ using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace SalesManagement_SysDev.DataAccess
 {
-    internal class JuchuDataAccess
+    internal class OrderDataAccess
     {
-        ///////////////////////////////
-        //メソッド名：RegistJuchu()
-        //引　数   ：T_Order
-        //戻り値   ：True:異常なし、False:異常あり
-        //機　能   ：受注情報の登録
-        //           登録が成功したときTrue
-        //           登録が失敗したときFalse
-        ///////////////////////////////
-        public bool RegistJuchu(T_Order regJuchu)
-        {
-            try
-            {
-                var context = new SalesManagement_DevContext();
-                context.T_Orders.Add(regJuchu);
-                context.SaveChanges();
-                context.Dispose();
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
 
         ///////////////////////////////
         //メソッド名：GetJuchuData()
@@ -43,7 +20,7 @@ namespace SalesManagement_SysDev.DataAccess
         //戻り値   ：List<T_OrderDsp>
         //機　能   ：全受注データの取得
         ///////////////////////////////
-        public List<T_OrderDsp> GetJuchuData()
+        public List<T_OrderDsp> GetOrderData()
         {
             List<T_OrderDsp> Juc = new List<T_OrderDsp>();
 
@@ -97,12 +74,37 @@ namespace SalesManagement_SysDev.DataAccess
         }
 
         ///////////////////////////////
+        //メソッド名：RegistJuchu()
+        //引　数   ：T_Order
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：受注情報の登録
+        //           登録が成功したときTrue
+        //           登録が失敗したときFalse
+        ///////////////////////////////
+        public bool RegistOrder(T_Order regJuchu)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                context.T_Orders.Add(regJuchu);
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        ///////////////////////////////
         //メソッド名：SonzaiCheckOrID()
         //引　数   ：数値
         //戻り値   ：True:異常なし、False:異常あり
-        //機　能   ：社員IDの存在チェック
-        //           社員IDが存在するときTrue
-        //           社員IDが存在しないときFalse
+        //機　能   ：受注IDの存在チェック
+        //           受注IDが存在するときTrue
+        //           受注IDが存在しないときFalse
         ///////////////////////////////
         public bool SonzaiCheckOrID(int OrID)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -20,5 +21,27 @@ namespace SalesManagement_SysDev
 
         public virtual M_Product M_Product { get; set; }
         public virtual T_Order T_Order { get; set; }
+    }
+
+    //データグリッド表示用
+    class T_OrderDetailDsp
+    {
+        [DisplayName("受注詳細ID")]
+        public int OrDetailID { get; set; }
+
+        [DisplayName("受注ID")]
+        public int OrID { get; set; }
+
+        [DisplayName("商品ID")]
+        public int PrID { get; set; }
+
+        [DisplayName("数量")]
+        public int OrQuantity { get; set; }
+
+        [DisplayName("顧客担当者名")]
+        public string ClCharge { get; set; }
+
+        [DisplayName("合計金額")]
+        public decimal OrTotalPrice { get; set; }
     }
 }

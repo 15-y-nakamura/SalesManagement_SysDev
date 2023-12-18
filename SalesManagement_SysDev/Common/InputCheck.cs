@@ -15,7 +15,7 @@ namespace SalesManagement_SysDev
         EmployeeDataAccess EmployeeDA = new EmployeeDataAccess();
 
         //受注テーブルアクセスクラスのインスタンス化
-        JuchuDataAccess JuchuDA = new JuchuDataAccess();
+        OrderDataAccess JuchuDA = new OrderDataAccess();
 
         //商品テーブルアクセスクラスのインスタンス化
         ShohinDataAccess ShohinDA = new ShohinDataAccess();
