@@ -272,7 +272,8 @@ namespace SalesManagement_SysDev.DataAccess
                              join t3 in context.M_SalesOffices
                              on t1.SoID equals t3.SoID
                              where t1.EmName.Contains(regEmployee.EmName) &&
-                                   t1.EmHidden.Contains(regEmployee.EmHidden) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone)
                              select new
                              {
@@ -320,9 +321,10 @@ namespace SalesManagement_SysDev.DataAccess
                              join t3 in context.M_SalesOffices
                              on t1.SoID equals t3.SoID
                              where t1.EmName.Contains(regEmployee.EmName) &&
-                                   t1.EmHidden.Contains(regEmployee.EmHidden) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone) &&
-                                   t1.SoID == regEmployee.SoID
+                                   t1.SoID == (regEmployee.SoID)
                              select new
                              {
                                  t1.EmID,
@@ -369,7 +371,8 @@ namespace SalesManagement_SysDev.DataAccess
                              join t3 in context.M_SalesOffices
                              on t1.SoID equals t3.SoID
                              where t1.EmName.Contains(regEmployee.EmName) &&
-                                   t1.EmHidden.Contains(regEmployee.EmHidden) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone)&&
                                    t1.EmFlag == regEmployee.EmFlag 
                              select new
@@ -419,7 +422,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t1.SoID equals t3.SoID
                              where t1.EmName.Contains(regEmployee.EmName) &&
                                    t1.EmHiredate == regEmployee.EmHiredate &&
-                                   t1.EmHidden.Contains(regEmployee.EmHidden) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) || 
+                                   t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone)
                              select new
                              {
@@ -468,7 +472,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t1.SoID equals t3.SoID
                              where t1.EmName.Contains(regEmployee.EmName) &&
                                    t1.SoID == regEmployee.SoID &&
-                                   t1.EmHidden.Contains(regEmployee.EmHidden) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) || 
+                                   t1.EmHidden == null) &&
                                    t1.EmHiredate == regEmployee.EmHiredate &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone)
                              select new
@@ -519,7 +524,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.EmName.Contains(regEmployee.EmName) &&
                                    t1.EmFlag == regEmployee.EmFlag &&
                                    t1.EmHiredate == regEmployee.EmHiredate &&
-                                   t1.EmHidden.Contains(regEmployee.EmHidden) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone)
                              select new
                              {
@@ -569,7 +575,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.EmName.Contains(regEmployee.EmName) &&
                                    t1.EmFlag == regEmployee.EmFlag &&
                                    t1.SoID == regEmployee.SoID &&
-                                   t1.EmHidden.Contains(regEmployee.EmHidden) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone)
                              select new
                              {
@@ -620,7 +627,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.EmFlag == regEmployee.EmFlag &&
                                    t1.SoID == regEmployee.SoID &&
                                    t1.EmHiredate == regEmployee.EmHiredate &&
-                                   t1.EmHidden.Contains(regEmployee.EmHidden) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone)
                              select new
                              {
