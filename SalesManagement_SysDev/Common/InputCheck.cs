@@ -803,5 +803,14 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        public (bool flg, string Msg) CheckSearchClPhone(string text)
+        {
+            if (text.Length > 13)
+            {
+                return (false, "M1011");
+            }
+            return (true, text);
+        }
+
     }
 }

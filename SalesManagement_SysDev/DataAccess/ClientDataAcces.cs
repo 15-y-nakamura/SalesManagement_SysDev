@@ -147,11 +147,11 @@ namespace SalesManagement_SysDev.DataAccess
             return ciid;
         }
 
-        public List<M_ClientDsp> SearchClient(M_ClientDsp regClient)
+        public List<M_ClientDsp> SearchClient(M_Client regClient)
         {
             List<M_ClientDsp> cli = new List<M_ClientDsp>();
 
-            /*if (regClient.ClID != 0)
+            if (regClient.ClID != 0)
             {
                 try
                 {
@@ -160,6 +160,7 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.M_Clients
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
+                             where t1.ClID == regClient.ClID
                              select new
                              {
                                  t1.ClID,
@@ -196,7 +197,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (regClient.SoID == 0 && regClient.ClFlag == -1 && regClient.ClName == "")
+            else if (regClient.ClID == 0 && regClient.ClFlag == -1 && regClient.SoID == 0)
             {
                 try
                 {
@@ -205,7 +206,9 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.M_Clients
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-                             where t1.ClHidden.Contains(regClient.ClHidden) &&
+                             where t1.ClName.Contains(regClient.ClName) &&
+                                   (t1.ClHidden.Contains(regClient.ClHidden) ||
+                                   t1.ClHidden == null) &&
                                    t1.ClPhone.Contains(regClient.ClPhone) &&
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
@@ -246,7 +249,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (regClient.SoID != 0 && regClient.ClFlag == -1 && regClient.ClName == "")
+            else if (regClient.ClID != 0 && regClient.ClFlag == -1 && regClient.SoID == 0)
             {
                 try
                 {
@@ -255,12 +258,14 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.M_Clients
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-                             where t1.ClHidden.Contains(regClient.ClHidden) &&
+                             where t1.ClName.Contains(regClient.ClName) &&
+                                   (t1.ClHidden.Contains(regClient.ClHidden) ||
+                                   t1.ClHidden == null) &&
                                    t1.ClPhone.Contains(regClient.ClPhone) &&
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
                                    t1.ClFAX.Contains(regClient.ClFAX)  &&
-                                   t1.SoID == regClient.SoID
+                                   t1.ClID == (regClient.ClID)
                              select new
                              {
                                  t1.ClID,
@@ -297,7 +302,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (regClient.SoID == 0 && regClient.ClFlag != -1 && regClient.ClName == "")
+            else if (regClient.ClID == 0 && regClient.ClFlag != -1 && regClient.SoID == 0)
             {
                 try
                 {
@@ -306,7 +311,9 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.M_Clients
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-                             where t1.ClHidden.Contains(regClient.ClHidden) &&
+                             where t1.ClName.Contains(regClient.ClName) &&
+                                   (t1.ClHidden.Contains(regClient.ClHidden) || 
+                                   t1.ClHidden == null) &&
                                    t1.ClPhone.Contains(regClient.ClPhone) &&
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
@@ -348,7 +355,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (regClient.SoID == 0 && regClient.ClFlag == -1 && regClient.ClName != "")
+            else if (regClient.ClID == 0 && regClient.ClFlag == -1 && regClient.SoID != 0)
             {
                 try
                 {
@@ -357,12 +364,14 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.M_Clients
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-                             where t1.ClHidden.Contains(regClient.ClHidden) &&
+                             where t1.ClName.Contains(regClient.ClName) &&
+                                   (t1.ClHidden.Contains(regClient.ClHidden) || 
+                                   t1.ClHidden == null) &&
                                    t1.ClPhone.Contains(regClient.ClPhone) &&
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
                                    t1.ClFAX.Contains(regClient.ClFAX) &&
-                                   t1.ClName == regClient.ClName
+                                   t2.SoID == regClient.SoID
                              select new
                              {
                                  t1.ClID,
@@ -398,8 +407,9 @@ namespace SalesManagement_SysDev.DataAccess
                 {
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
-            else if (regClient.SoID != 0 && regClient.ClFlag == -1 && regClient.ClName != "")
+            else if (regClient.ClID == 0 && regClient.ClFlag != -1 && regClient.SoID != 0)
             {
                 try
                 {
@@ -408,12 +418,15 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.M_Clients
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-                             where t1.ClHidden.Contains(regClient.ClHidden) &&
+                             where t1.ClName.Contains(regClient.ClName) &&
+                                   (t1.ClHidden.Contains(regClient.ClHidden) || 
+                                   t1.ClHidden == null) &&
                                    t1.ClPhone.Contains(regClient.ClPhone) &&
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
-                                   t1.SoID == regClient.SoID &&
-                                   t1.ClName == regClient.ClName
+                                   t1.ClFAX.Contains(regClient.ClFAX) &&
+                                   t2.SoID == regClient.SoID &&
+                                   t1.ClFlag == regClient.ClFlag
                              select new
                              {
                                  t1.ClID,
@@ -449,8 +462,9 @@ namespace SalesManagement_SysDev.DataAccess
                 {
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
-            else if (regClient.SoID == 0 && regClient.ClFlag != -1 && regClient.ClName != "")
+            else if (regClient.ClID != 0 && regClient.ClFlag != -1 && regClient.SoID != 0)
             {
                 try
                 {
@@ -459,12 +473,16 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.M_Clients
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-                             where t1.ClHidden.Contains(regClient.ClHidden) &&
+                             where t1.ClName.Contains(regClient.ClName) &&
+                                   (t1.ClHidden.Contains(regClient.ClHidden) || 
+                                   t1.ClHidden == null) &&
                                    t1.ClPhone.Contains(regClient.ClPhone) &&
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
+                                   t1.ClFAX.Contains(regClient.ClFAX) &&
+                                   t2.SoID == regClient.SoID &&
                                    t1.ClFlag == regClient.ClFlag &&
-                                   t1.ClName == regClient.ClName
+                                   t1.ClID == regClient.ClID
                              select new
                              {
                                  t1.ClID,
@@ -500,8 +518,9 @@ namespace SalesManagement_SysDev.DataAccess
                 {
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
-            else if (regClient.SoID != 0 && regClient.ClFlag != -1 && regClient.ClName == "")
+            else if (regClient.ClID != 0 && regClient.ClFlag == -1 && regClient.SoID != 0)
             {
                 try
                 {
@@ -510,12 +529,15 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.M_Clients
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-                             where t1.ClHidden.Contains(regClient.ClHidden) &&
+                             where t1.ClName.Contains(regClient.ClName) &&
+                                   (t1.ClHidden.Contains(regClient.ClHidden) || 
+                                   t1.ClHidden == null) &&
                                    t1.ClPhone.Contains(regClient.ClPhone) &&
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
-                                   t1.ClFlag == regClient.ClFlag &&
-                                   t1.SoID == regClient.SoID
+                                   t1.ClFAX.Contains(regClient.ClFAX) &&
+                                   t2.SoID == regClient.SoID &&
+                                   t1.ClID == regClient.ClID
                              select new
                              {
                                  t1.ClID,
@@ -551,8 +573,9 @@ namespace SalesManagement_SysDev.DataAccess
                 {
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
-            else
+            else if (regClient.ClID != 0 && regClient.ClFlag != -1 && regClient.SoID == 0)
             {
                 try
                 {
@@ -561,13 +584,15 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.M_Clients
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-                             where t1.ClHidden.Contains(regClient.ClHidden) &&
+                             where t1.ClName.Contains(regClient.ClName) &&
+                                   (t1.ClHidden.Contains(regClient.ClHidden) || 
+                                   t1.ClHidden == null) &&
                                    t1.ClPhone.Contains(regClient.ClPhone) &&
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
+                                   t1.ClFAX.Contains(regClient.ClFAX) &&
                                    t1.ClFlag == regClient.ClFlag &&
-                                   t1.SoID == regClient.SoID &&
-                                   t1.ClName == regClient.ClName
+                                   t1.ClID == regClient.ClID
                              select new
                              {
                                  t1.ClID,
@@ -603,56 +628,10 @@ namespace SalesManagement_SysDev.DataAccess
                 {
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }*/
 
-            try
-            {
-                var context = new SalesManagement_DevContext();
-                // tbはIEnumerable型
-                var tb = from t1 in context.M_Clients
-                         join t2 in context.M_SalesOffices
-                         on t1.SoID equals t2.SoID
-                         where t1.ClID == (regClient.ClID) &&
-                               t1.ClName.Contains(regClient.ClName) &&
-                               t2.SoName.Contains(regClient.SoName)
-                         select new
-                         {
-                             t1.ClID,
-                             t1.ClName,
-                             t2.SoName,
-                             t1.ClPhone,
-                             t1.ClPostal,
-                             t1.ClAddress,
-                             t1.ClFAX,
-                             t1.ClFlag,
-                             t1.ClHidden
-                         };
-
-                // IEnumerable型のデータをList型へ
-                foreach (var p in tb)
-                {
-                    cli.Add(new M_ClientDsp()
-                    {
-                        ClID = p.ClID,
-                        ClName = p.ClName,
-                        SoName = p.SoName,
-                        ClPhone = p.ClPhone,
-                        ClPostal = p.ClPostal,
-                        ClAddress = p.ClAddress,
-                        ClFax = p.ClFAX,
-                        ClFlag = p.ClFlag,
-                        ClHidden = p.ClHidden
-                    });
-                }
-                context.Dispose();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return cli;
-
         }
 
     }

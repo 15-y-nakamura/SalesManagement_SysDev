@@ -39,9 +39,6 @@ namespace SalesManagement_SysDev
         //データグリッドビュー用の顧客データ
         private static List<M_ClientDsp> Client;
 
-        M_Client client = new M_Client();
-
-
 
         MessageDsp messageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
@@ -772,48 +769,75 @@ namespace SalesManagement_SysDev
                     return false;
                 }
             }
+
+            //電話番号の入力チェック
+            if (TelTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchClPhone(TelTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClPhone(TelTxb.Text).Msg);
+                    return false;
+                }
+            }
+
             return true;
         }
 
-        private M_ClientDsp SetClientSearchData()
+        private M_Client SetClientSearchData()
         {
-            string SoName = "";
+            int clid = 0;
+            int soid = 0;
+            int clflg = -1;
+
+            if (KokyakuIDTxb.Text != "")
+            {
+                clid = int.Parse(KokyakuIDTxb.Text);
+            }
+
 
             if (EigyoshoNameCmb.Text != "")
             {
-                SoName = EigyoshoNameCmb.Text;
+                soid = SalesOfficeDA.GetSoID(EigyoshoNameCmb.Text);
             }
 
-            if(KokyakuIDTxb.Text == "")
+
+            if (KokyakuKanriFlagCmb.Text != "")
             {
-                M_ClientDsp M_Cli = new M_ClientDsp()
+                if (KokyakuKanriFlagCmb.Text == "非表示")
                 {
-                    ClName = KokyakuNameTxb.Text,
-                    SoName = SoName,
-                };
-
-                return M_Cli;
-
+                    clflg = 2;
+                }
+                else
+                {
+                    clflg = 0;
+                }
             }
-            else
+
+
+            M_Client M_Cli = new M_Client()
             {
-                M_ClientDsp M_Cli = new M_ClientDsp()
-                {
-                    ClID = int.Parse(KokyakuIDTxb.Text),
-                    ClName = KokyakuNameTxb.Text,
-                    SoName = SoName,
-                };
+                ClID = clid,
+                ClName = KokyakuNameTxb.Text,
+                SoID = soid,
+                ClPhone = TelTxb.Text,
+                ClPostal = YubinTxb.Text,
+                ClAddress = JushoTxb.Text,
+                ClFAX = FaxTxb.Text,
+                ClFlag = clflg,
+                ClHidden = HihyojiTxb.Text
+            };
 
-                return M_Cli;
-            }
+            return M_Cli;
         }
 
-        private void SearchClient(M_ClientDsp searchcli)
+        private void SearchClient(M_Client searchcli)
         {
-            var cli = ClientDA.SearchClient(searchcli);
+            var cli= ClientDA.SearchClient(searchcli);
 
             SetDataGridView(cli);
         }
 
+
     }
+
 }
