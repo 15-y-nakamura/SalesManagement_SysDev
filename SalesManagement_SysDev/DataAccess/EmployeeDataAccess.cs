@@ -737,12 +737,12 @@ namespace SalesManagement_SysDev.DataAccess
         }
 
         ///////////////////////////////
-        //メソッド名：SonzaiCheckEmID()
+        //メソッド名：SonzaiCheckClID()
         //引　数   ：数値
         //戻り値   ：True:異常なし、False:異常あり
-        //機　能   ：社員IDの存在チェック
-        //           社員IDが存在するときTrue
-        //           社員IDが存在しないときFalse
+        //機　能   ：顧客IDの存在チェック
+        //           顧客IDが存在するときTrue
+        //           顧客IDが存在しないときFalse
         ///////////////////////////////
         public bool SonzaiCheckClID(int ClID)
         {
@@ -751,7 +751,7 @@ namespace SalesManagement_SysDev.DataAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                //入力された社員IDに一致するデータが存在するか
+                //入力された顧客IDに一致するデータが存在するか
                 flg = context.M_Clients.Any(x => x.ClID == ClID);
                 context.Dispose();
             }

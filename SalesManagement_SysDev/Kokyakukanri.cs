@@ -254,10 +254,10 @@ namespace SalesManagement_SysDev
             Client = ClientDA.GetClientData();
 
             // DataGridViewに表示するデータを指定
-            SetDataGridView();
+            SetDataGridView(Client);
         }
 
-        private void SetDataGridView()
+        private void SetDataGridView(List<M_ClientDsp> Client)
         {
             KokyakuKanriDgv.DataSource = Client.ToList();
 
@@ -266,7 +266,7 @@ namespace SalesManagement_SysDev
 
 
             //行の高さ設定
-            KokyakuKanriDgv.RowTemplate.Height = 40;
+            //KokyakuKanriDgv.RowTemplate.Height = 40;
 
             //各列の文字位置の指定
             KokyakuKanriDgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -736,6 +736,83 @@ namespace SalesManagement_SysDev
         private void YubinHaiiroLbl_MouseMove(object sender, MouseEventArgs e)
         {
             YubinHaiiroLbl.Cursor = Cursors.IBeam;
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            if (!InputSearchDataCheck())
+            {
+                return;
+            }
+
+            var searchdata = SetClientSearchData();
+
+            SearchClient(searchdata);
+
+        }
+
+        private bool InputSearchDataCheck()
+        {
+            //顧客IDの入力チェック
+            if (KokyakuIDTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchClID(KokyakuIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClID(KokyakuIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //顧客名の入力チェック
+            if (KokyakuNameTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchClname(KokyakuNameTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClname(KokyakuNameTxb.Text).Msg);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private M_ClientDsp SetClientSearchData()
+        {
+            string SoName = "";
+
+            if (EigyoshoNameCmb.Text != "")
+            {
+                SoName = EigyoshoNameCmb.Text;
+            }
+
+            if(KokyakuIDTxb.Text == "")
+            {
+                M_ClientDsp M_Cli = new M_ClientDsp()
+                {
+                    ClName = KokyakuNameTxb.Text,
+                    SoName = SoName,
+                };
+
+                return M_Cli;
+
+            }
+            else
+            {
+                M_ClientDsp M_Cli = new M_ClientDsp()
+                {
+                    ClID = int.Parse(KokyakuIDTxb.Text),
+                    ClName = KokyakuNameTxb.Text,
+                    SoName = SoName,
+                };
+
+                return M_Cli;
+            }
+        }
+
+        private void SearchClient(M_ClientDsp searchcli)
+        {
+            var cli = ClientDA.SearchClient(searchcli);
+
+            SetDataGridView(cli);
         }
 
     }

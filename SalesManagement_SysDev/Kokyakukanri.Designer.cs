@@ -309,6 +309,7 @@
             this.SearchBtn.TabStop = false;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // JushoTxb
             // 
