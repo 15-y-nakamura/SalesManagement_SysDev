@@ -271,7 +271,7 @@ namespace SalesManagement_SysDev
             Orderdsp = OrderDA.GetOrderData();
 
             //受注詳細データの取得
-            OrderDetaildsp = OrderDetailDA.GetOrderDetailData().
+            OrderDetaildsp = OrderDetailDA.GetOrderDetailData();
 
             // DataGridViewに表示するデータを指定
             SetDataGridView();
@@ -287,7 +287,6 @@ namespace SalesManagement_SysDev
         {
             JuchuKanriDgv.DataSource = Orderdsp.ToList();
             JuchuKanriDgv.DataSource = OrderDetaildsp.ToList();
-
 
             //すべての列がコントロールの表示領域の幅いっぱいに表示されるよう列幅を調整
             JuchuKanriDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

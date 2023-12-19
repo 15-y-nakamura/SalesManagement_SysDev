@@ -12,10 +12,8 @@ namespace SalesManagement_SysDev.DataAccess
 {
     internal class OrderDataAccess
     {
-
-
         ///////////////////////////////
-        //メソッド名：GetJuchuData()
+        //メソッド名：GetOrderData()
         //引　数   ：なし
         //戻り値   ：List<T_OrderDsp>
         //機　能   ：全受注データの取得

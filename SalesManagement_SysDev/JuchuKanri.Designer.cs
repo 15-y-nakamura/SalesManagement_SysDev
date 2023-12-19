@@ -33,6 +33,8 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopJuchuPnl = new System.Windows.Forms.Panel();
+            this.JuchuDetailIDTxb = new System.Windows.Forms.TextBox();
+            this.JuchuDetailID = new System.Windows.Forms.Label();
             this.ConfirmBtn = new System.Windows.Forms.Button();
             this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
             this.JuchuDateDtm = new System.Windows.Forms.DateTimePicker();
@@ -74,8 +76,6 @@
             this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
-            this.JuchuDetailIDTxb = new System.Windows.Forms.TextBox();
-            this.JuchuDetailID = new System.Windows.Forms.Label();
             this.TopJuchuPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.JuchuKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -168,6 +168,26 @@
             this.TopJuchuPnl.Name = "TopJuchuPnl";
             this.TopJuchuPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopJuchuPnl.TabIndex = 23;
+            // 
+            // JuchuDetailIDTxb
+            // 
+            this.JuchuDetailIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.JuchuDetailIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.JuchuDetailIDTxb.Location = new System.Drawing.Point(237, 290);
+            this.JuchuDetailIDTxb.Name = "JuchuDetailIDTxb";
+            this.JuchuDetailIDTxb.Size = new System.Drawing.Size(201, 25);
+            this.JuchuDetailIDTxb.TabIndex = 58;
+            // 
+            // JuchuDetailID
+            // 
+            this.JuchuDetailID.AutoSize = true;
+            this.JuchuDetailID.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.JuchuDetailID.Location = new System.Drawing.Point(61, 290);
+            this.JuchuDetailID.Name = "JuchuDetailID";
+            this.JuchuDetailID.Size = new System.Drawing.Size(149, 28);
+            this.JuchuDetailID.TabIndex = 59;
+            this.JuchuDetailID.Text = "受注詳細ID";
             // 
             // ConfirmBtn
             // 
@@ -580,26 +600,6 @@
             this.TopNameHyojiLbl.Size = new System.Drawing.Size(88, 30);
             this.TopNameHyojiLbl.TabIndex = 54;
             this.TopNameHyojiLbl.Text = "名前：";
-            // 
-            // JuchuDetailIDTxb
-            // 
-            this.JuchuDetailIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.JuchuDetailIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.JuchuDetailIDTxb.Location = new System.Drawing.Point(237, 290);
-            this.JuchuDetailIDTxb.Name = "JuchuDetailIDTxb";
-            this.JuchuDetailIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.JuchuDetailIDTxb.TabIndex = 58;
-            // 
-            // JuchuDetailID
-            // 
-            this.JuchuDetailID.AutoSize = true;
-            this.JuchuDetailID.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.JuchuDetailID.Location = new System.Drawing.Point(61, 290);
-            this.JuchuDetailID.Name = "JuchuDetailID";
-            this.JuchuDetailID.Size = new System.Drawing.Size(149, 28);
-            this.JuchuDetailID.TabIndex = 59;
-            this.JuchuDetailID.Text = "受注詳細ID";
             // 
             // JuchuKanri
             // 
