@@ -634,5 +634,26 @@ namespace SalesManagement_SysDev.DataAccess
             return cli;
         }
 
+        public bool DeleteClient(M_Client regClient)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var cli = context.M_Clients.Single(x => x.ClID == regClient.ClID);
+
+                cli.ClFlag = regClient.ClFlag;
+                cli.ClHidden = regClient.ClHidden;
+
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
     }
 }
