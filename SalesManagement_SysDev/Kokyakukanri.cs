@@ -832,9 +832,84 @@ namespace SalesManagement_SysDev
 
         private void SearchClient(M_Client searchcli)
         {
-            var cli= ClientDA.SearchClient(searchcli);
+            var cli = ClientDA.SearchClient(searchcli);
 
             SetDataGridView(cli);
+        }
+
+        //非表示ボタンクリック
+        private void HiddenBtn_Click(object sender, EventArgs e)
+        {
+            //入力チェック
+            if (!InputHiddenDataCheck())
+            {
+                return;
+            }
+
+            //形式化
+            var cli = SetClientHideenData();
+
+            //更新
+            HiddenClient(cli);
+
+        }
+
+        private void GamenKousinBtn_Click(object sender, EventArgs e)
+        {
+            SetCtrlFormat();
+
+            SetFormKokyakukanriGridView();
+        }
+
+        private bool InputHiddenDataCheck()
+        {
+            //顧客IDチェック
+            if (!InputCheck.CheckClID(KokyakuIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClID(KokyakuIDTxb.Text).Msg);
+                return false;
+            }
+
+            //非表示理由チェック
+            if (!InputCheck.CheckHidden(HihyojiTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckHidden(HihyojiTxb.Text).Msg); ;
+                return false;
+            }
+            return true;
+        }
+
+        private M_Client SetClientHideenData()
+        {
+            M_Client M_Cli = new M_Client()
+            {
+                ClID = int.Parse(KokyakuIDTxb.Text),
+                ClFlag = 2,
+                ClHidden = HihyojiTxb.Text
+            };
+
+            return M_Cli;
+        }
+
+        private void HiddenClient(M_Client cli)
+        {
+            if (DialogResult.OK == MessageDsp.DspMsg("M1029"))
+            {
+                if (ClientDA.DeleteClient(cli))
+                {
+                    MessageDsp.DspMsg("M1030");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormKokyakukanriGridView();
+                }
+                else
+                {
+                    MessageDsp.DspMsg("M1031");
+                }
+            }
         }
 
 
