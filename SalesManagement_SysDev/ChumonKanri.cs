@@ -113,8 +113,40 @@ namespace SalesManagement_SysDev
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
             }
+        }
 
+        private void SetCtrlFormat()
+        {
+            //ChumonIDTxb.Text = "";
+            //tx.Text = "";
+            //EigyoushoNameCmb.Items.Clear();
+            //EigyoushoNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            //TelTxb.Text = "";
+            //YakushokuNameCmb.Items.Clear();
+            //YakushokuNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            //ShainKanriFlagCmb.Items.Clear();
+            //ShainKanriFlagCmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            //HihyojiTxb.Text = "";
 
+            ////役職名を取得
+            //var PoName = PositionDA.GetPoName();
+
+            ////役職名をコンボボックスに追加
+            //foreach (string Poname in PoName.Reverse())
+            //{
+            //    YakushokuNameCmb.Items.Add(Poname);
+            //}
+
+            ////営業所名を取得
+            //var SoName = SalesOfficeDA.GetSoName();
+            ////営業所名をコンボボックスに追加
+            //foreach (string Soname in SoName.Reverse())
+            //{
+            //    EigyoushoNameCmb.Items.Add(Soname);
+            //}
+
+            //ShainKanriFlagCmb.Items.Add("表示");
+            //ShainKanriFlagCmb.Items.Add("非表示");
         }
 
         private void TopLogoutBtn_Click(object sender, EventArgs e)
