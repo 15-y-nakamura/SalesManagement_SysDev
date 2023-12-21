@@ -231,6 +231,9 @@ namespace SalesManagement_SysDev
 
             KokyakuKanriFlagCmb.Items.Add("表示");
             KokyakuKanriFlagCmb.Items.Add("非表示");
+
+            PlaceHolderText();
+
         }
 
         private void SetFormKokyakukanriGridView()
@@ -376,13 +379,13 @@ namespace SalesManagement_SysDev
 
         private bool InputRegistDataCheck()
         {
-            //顧客IDの入力チェック
+            /*顧客IDの入力チェック
             if (!InputCheck.CheckRegistClID(KokyakuIDTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistClID(KokyakuIDTxb.Text).Msg);
                 KokyakuIDTxb.Focus();
                 return false;
-            }
+            }*/
 
             //顧客名の入力チェック
             if (!InputCheck.CheckClname(KokyakuNameTxb.Text).flg)
@@ -457,7 +460,7 @@ namespace SalesManagement_SysDev
 
             return new M_Client
             {
-                ClID = int.Parse(KokyakuIDTxb.Text),
+                //ClID = int.Parse(KokyakuIDTxb.Text),
                 ClName = KokyakuNameTxb.Text,
                 SoID = SoID,
                 ClPhone = TelTxb.Text,
