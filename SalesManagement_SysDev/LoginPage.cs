@@ -780,6 +780,7 @@ namespace SalesManagement_SysDev
                 {
                     TopHonshaPage.EmID = int.Parse(logonID);
                     TopHonshaPage.PoID = PoID;
+                    TopHonshaPage.Logindate = DateTime.Now.ToString();
 
                     //現画面を非表示
                     this.Visible = false;

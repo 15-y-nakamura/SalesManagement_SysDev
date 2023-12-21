@@ -19,7 +19,7 @@ namespace SalesManagement_SysDev
 
         internal static int EmID = 0;
         internal static int PoID = 0;
-
+        internal static string Logindate = "";
 
         public TopEigyoPage()
         {
@@ -31,6 +31,7 @@ namespace SalesManagement_SysDev
         {
             JuchuKanri.EmID = EmID;
             JuchuKanri.PoID = PoID;
+            JuchuKanri.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -43,6 +44,7 @@ namespace SalesManagement_SysDev
         {
             TopHonshaPage.EmID = EmID;
             TopHonshaPage.PoID = PoID;
+            TopHonshaPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -54,7 +56,7 @@ namespace SalesManagement_SysDev
 
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
-            
+
             //現画面を非表示
             this.Visible = false;
 
@@ -67,6 +69,7 @@ namespace SalesManagement_SysDev
         {
             TopButsuryuPage.EmID = EmID;
             TopButsuryuPage.PoID = PoID;
+            TopButsuryuPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -80,6 +83,7 @@ namespace SalesManagement_SysDev
         {
             Kokyakukanri.EmID = EmID;
             Kokyakukanri.PoID = PoID;
+            Kokyakukanri.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -93,6 +97,8 @@ namespace SalesManagement_SysDev
         {
             ChumonKanri.EmID = EmID;
             ChumonKanri.PoID = PoID;
+            ChumonKanri.Logindate = Logindate;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -108,12 +114,13 @@ namespace SalesManagement_SysDev
             TopData = empDataAccess.GetTopData(EmID);
 
             string emID = EmID.ToString();
+            string logindate = Logindate;
 
             TopIDLbl.Text = emID;
             TopNameLbl.Text = TopData[0];
             TopYakushokuLbl.Text = TopData[1];
             TopEigyoshoLbl.Text = TopData[2];
-            TopJikanLbl.Text = TopData[3];
+            TopJikanLbl.Text = logindate;
 
             if(PoID == 2)
             {

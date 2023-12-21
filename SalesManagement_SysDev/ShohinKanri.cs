@@ -18,8 +18,8 @@ namespace SalesManagement_SysDev
         InputCheck inputCheck = new InputCheck();
 
         internal static int EmID = 0;
-        internal static int PoID = 0; 
-
+        internal static int PoID = 0;
+        internal static string Logindate = "";
 
         public ShohinKanri()
         {
@@ -31,6 +31,7 @@ namespace SalesManagement_SysDev
         {
             TopHonshaPage.EmID = EmID;
             TopHonshaPage.PoID = PoID;
+            TopHonshaPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -44,6 +45,7 @@ namespace SalesManagement_SysDev
         {
             TopEigyoPage.EmID = EmID;
             TopEigyoPage.PoID = PoID;
+            TopEigyoPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -57,6 +59,7 @@ namespace SalesManagement_SysDev
         {
             TopButsuryuPage.EmID = EmID;
             TopButsuryuPage.PoID = PoID;
+            TopButsuryuPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -72,12 +75,13 @@ namespace SalesManagement_SysDev
             TopData = empDataAccess.GetTopData(EmID);
 
             string emID = EmID.ToString();
+            string logindate = Logindate;
 
             TopIDLbl.Text = emID;
             TopNameLbl.Text = TopData[0];
             TopYakushokuLbl.Text = TopData[1];
             TopEigyoshoLbl.Text = TopData[2];
-            TopJikanLbl.Text = TopData[3];
+            TopJikanLbl.Text = logindate;
 
             if (PoID == 3)
             {
