@@ -174,6 +174,14 @@ namespace SalesManagement_SysDev.DataAccess
             }
         }
 
+        ///////////////////////////////
+        //メソッド名：UpdateEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員情報の更新
+        //           成功したときTrue
+        //           失敗したときFalse
+        ///////////////////////////////
         public bool UpdateEmployee(M_Employee regEmployee)
         {
             try
@@ -192,7 +200,513 @@ namespace SalesManagement_SysDev.DataAccess
                 context.SaveChanges();
                 context.Dispose();
                 return true;
-            }catch (Exception ex)
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        ///////////////////////////////
+        //メソッド名：SearchEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：M_EmployeeDsp
+        //機　能   ：社員情報の検索
+        ///////////////////////////////
+        public List<M_EmployeeDsp> SearchEmployee(M_Employee regEmployee)
+        {
+            List<M_EmployeeDsp> emp = new List<M_EmployeeDsp>();
+
+            DateTime nulldate = DateTime.ParseExact("00010101","yyyymmdd",null);
+
+            //社員ID入力
+            if (regEmployee.EmID != 0)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_Positions
+                             on t1.PoID equals t2.PoID
+                             join t3 in context.M_SalesOffices
+                             on t1.SoID equals t3.SoID
+                             where t1.EmID == regEmployee.EmID
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t2.PoName,
+                                 t3.SoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        emp.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            PoName = p.PoName,
+                            SoName = p.SoName,
+                            EmPhone = p.EmPhone,
+                            EmHiredate = p.EmHiredate,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            //選択なし
+            else if (regEmployee.SoID == 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate == nulldate)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_Positions
+                             on t1.PoID equals t2.PoID
+                             join t3 in context.M_SalesOffices
+                             on t1.SoID equals t3.SoID
+                             where t1.EmName.Contains(regEmployee.EmName) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
+                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t2.PoName,
+                                 t3.SoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        emp.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            PoName = p.PoName,
+                            SoName = p.SoName,
+                            EmPhone = p.EmPhone,
+                            EmHiredate = p.EmHiredate,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            //営業名選択
+            else if(regEmployee.SoID != 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate == nulldate)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_Positions
+                             on t1.PoID equals t2.PoID
+                             join t3 in context.M_SalesOffices
+                             on t1.SoID equals t3.SoID
+                             where t1.EmName.Contains(regEmployee.EmName) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
+                                   t1.EmPhone.Contains(regEmployee.EmPhone) &&
+                                   t1.SoID == (regEmployee.SoID)
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t2.PoName,
+                                 t3.SoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        emp.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            PoName = p.PoName,
+                            SoName = p.SoName,
+                            EmPhone = p.EmPhone,
+                            EmHiredate = p.EmHiredate,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            //社員管理フラグ選択
+            else if(regEmployee.SoID == 0 && regEmployee.EmFlag != -1 && regEmployee.EmHiredate == nulldate)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_Positions
+                             on t1.PoID equals t2.PoID
+                             join t3 in context.M_SalesOffices
+                             on t1.SoID equals t3.SoID
+                             where t1.EmName.Contains(regEmployee.EmName) &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
+                                   t1.EmPhone.Contains(regEmployee.EmPhone)&&
+                                   t1.EmFlag == regEmployee.EmFlag 
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t2.PoName,
+                                 t3.SoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        emp.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            PoName = p.PoName,
+                            SoName = p.SoName,
+                            EmPhone = p.EmPhone,
+                            EmHiredate = p.EmHiredate,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            //入社年月日選択
+            else if(regEmployee.SoID == 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate != nulldate) 
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_Positions
+                             on t1.PoID equals t2.PoID
+                             join t3 in context.M_SalesOffices
+                             on t1.SoID equals t3.SoID
+                             where t1.EmName.Contains(regEmployee.EmName) &&
+                                   t1.EmHiredate == regEmployee.EmHiredate &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) || 
+                                   t1.EmHidden == null) &&
+                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t2.PoName,
+                                 t3.SoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        emp.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            PoName = p.PoName,
+                            SoName = p.SoName,
+                            EmPhone = p.EmPhone,
+                            EmHiredate = p.EmHiredate,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            //営業所名、入社年月日選択
+            else if (regEmployee.SoID != 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate != nulldate)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_Positions
+                             on t1.PoID equals t2.PoID
+                             join t3 in context.M_SalesOffices
+                             on t1.SoID equals t3.SoID
+                             where t1.EmName.Contains(regEmployee.EmName) &&
+                                   t1.SoID == regEmployee.SoID &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) || 
+                                   t1.EmHidden == null) &&
+                                   t1.EmHiredate == regEmployee.EmHiredate &&
+                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t2.PoName,
+                                 t3.SoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        emp.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            PoName = p.PoName,
+                            SoName = p.SoName,
+                            EmPhone = p.EmPhone,
+                            EmHiredate = p.EmHiredate,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            //社員管理フラグ、入社年月日選択
+            else if(regEmployee.SoID == 0 && regEmployee.EmFlag != -1 && regEmployee.EmHiredate != nulldate)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_Positions
+                             on t1.PoID equals t2.PoID
+                             join t3 in context.M_SalesOffices
+                             on t1.SoID equals t3.SoID
+                             where t1.EmName.Contains(regEmployee.EmName) &&
+                                   t1.EmFlag == regEmployee.EmFlag &&
+                                   t1.EmHiredate == regEmployee.EmHiredate &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
+                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t2.PoName,
+                                 t3.SoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        emp.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            PoName = p.PoName,
+                            SoName = p.SoName,
+                            EmPhone = p.EmPhone,
+                            EmHiredate = p.EmHiredate,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            //営業所名、社員管理フラグ選択
+            else if (regEmployee.SoID != 0 && regEmployee.EmFlag != -1 && regEmployee.EmHiredate == nulldate)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_Positions
+                             on t1.PoID equals t2.PoID
+                             join t3 in context.M_SalesOffices
+                             on t1.SoID equals t3.SoID
+                             where t1.EmName.Contains(regEmployee.EmName) &&
+                                   t1.EmFlag == regEmployee.EmFlag &&
+                                   t1.SoID == regEmployee.SoID &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
+                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t2.PoName,
+                                 t3.SoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        emp.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            PoName = p.PoName,
+                            SoName = p.SoName,
+                            EmPhone = p.EmPhone,
+                            EmHiredate = p.EmHiredate,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            //すべて選択
+            else
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Employees
+                             join t2 in context.M_Positions
+                             on t1.PoID equals t2.PoID
+                             join t3 in context.M_SalesOffices
+                             on t1.SoID equals t3.SoID
+                             where t1.EmName.Contains(regEmployee.EmName) &&
+                                   t1.EmFlag == regEmployee.EmFlag &&
+                                   t1.SoID == regEmployee.SoID &&
+                                   t1.EmHiredate == regEmployee.EmHiredate &&
+                                   (t1.EmHidden.Contains(regEmployee.EmHidden) ||
+                                   t1.EmHidden == null) &&
+                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                             select new
+                             {
+                                 t1.EmID,
+                                 t1.EmName,
+                                 t2.PoName,
+                                 t3.SoName,
+                                 t1.EmHiredate,
+                                 t1.EmPhone,
+                                 t1.EmFlag,
+                                 t1.EmHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        emp.Add(new M_EmployeeDsp()
+                        {
+                            EmID = p.EmID,
+                            EmName = p.EmName,
+                            PoName = p.PoName,
+                            SoName = p.SoName,
+                            EmPhone = p.EmPhone,
+                            EmHiredate = p.EmHiredate,
+                            EmFlag = p.EmFlag,
+                            EmHidden = p.EmHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            return emp;
+        }
+
+        ///////////////////////////////
+        //メソッド名：DeleteEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員情報の非表示
+        //           成功したときTrue
+        //           失敗したときFalse
+        ///////////////////////////////
+        public bool DeleteEmployee(M_Employee regEmployee)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var emp = context.M_Employees.Single(x => x.EmID == regEmployee.EmID);
+
+                emp.EmFlag = regEmployee.EmFlag;
+                emp.EmHidden = regEmployee.EmHidden;
+
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+
+            }
+            catch (Exception ex)
             {
                 return false;
             }
@@ -216,6 +730,7 @@ namespace SalesManagement_SysDev.DataAccess
                          on t1.SoID equals t2.SoID
                          join t3 in context.M_Positions
                          on t1.PoID equals t3.PoID
+                         where t1.EmFlag == 0
                          select new
                          {
                              t1.EmID,
@@ -238,7 +753,6 @@ namespace SalesManagement_SysDev.DataAccess
                         PoName = p.PoName,
                         EmHiredate = p.EmHiredate,
                         EmPhone = p.EmPhone,
-
                         EmFlag = p.EmFlag,
                         EmHidden = p.EmHidden
                     });
@@ -253,6 +767,30 @@ namespace SalesManagement_SysDev.DataAccess
             return Emp;
         }
 
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckClID()
+        //引　数   ：数値
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：顧客IDの存在チェック
+        //           顧客IDが存在するときTrue
+        //           顧客IDが存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckClID(int ClID)
+        {
+            bool flg = false;
 
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された顧客IDに一致するデータが存在するか
+                flg = context.M_Clients.Any(x => x.ClID == ClID);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
     }
 }

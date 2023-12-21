@@ -33,8 +33,9 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopShainPnl = new System.Windows.Forms.Panel();
-            this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
+            this.TelHaiiroLbl = new System.Windows.Forms.Label();
             this.JoinDateDtm = new System.Windows.Forms.DateTimePicker();
+            this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.ShainKanriDgv = new System.Windows.Forms.DataGridView();
             this.TelTxb = new System.Windows.Forms.TextBox();
@@ -79,6 +80,7 @@
             this.TopHonshaBtn.Name = "TopHonshaBtn";
             this.TopHonshaBtn.Size = new System.Drawing.Size(210, 130);
             this.TopHonshaBtn.TabIndex = 0;
+            this.TopHonshaBtn.TabStop = false;
             this.TopHonshaBtn.Text = "本社";
             this.TopHonshaBtn.UseVisualStyleBackColor = true;
             this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
@@ -91,6 +93,7 @@
             this.TopEigyoBtn.Name = "TopEigyoBtn";
             this.TopEigyoBtn.Size = new System.Drawing.Size(210, 130);
             this.TopEigyoBtn.TabIndex = 1;
+            this.TopEigyoBtn.TabStop = false;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
             this.TopEigyoBtn.Click += new System.EventHandler(this.TopEigyoBtn_Click);
@@ -103,6 +106,7 @@
             this.TopButsuryuBtn.Name = "TopButsuryuBtn";
             this.TopButsuryuBtn.Size = new System.Drawing.Size(210, 130);
             this.TopButsuryuBtn.TabIndex = 2;
+            this.TopButsuryuBtn.TabStop = false;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
             this.TopButsuryuBtn.Click += new System.EventHandler(this.TopButsuryuBtn_Click);
@@ -119,8 +123,9 @@
             // TopShainPnl
             // 
             this.TopShainPnl.BackColor = System.Drawing.Color.LightGray;
-            this.TopShainPnl.Controls.Add(this.EigyoushoNameCmb);
+            this.TopShainPnl.Controls.Add(this.TelHaiiroLbl);
             this.TopShainPnl.Controls.Add(this.JoinDateDtm);
+            this.TopShainPnl.Controls.Add(this.EigyoushoNameCmb);
             this.TopShainPnl.Controls.Add(this.GamenKousinBtn);
             this.TopShainPnl.Controls.Add(this.ShainKanriDgv);
             this.TopShainPnl.Controls.Add(this.TelTxb);
@@ -146,20 +151,33 @@
             this.TopShainPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopShainPnl.TabIndex = 23;
             // 
+            // TelHaiiroLbl
+            // 
+            this.TelHaiiroLbl.AutoSize = true;
+            this.TelHaiiroLbl.Location = new System.Drawing.Point(1432, 153);
+            this.TelHaiiroLbl.Name = "TelHaiiroLbl";
+            this.TelHaiiroLbl.Size = new System.Drawing.Size(0, 18);
+            this.TelHaiiroLbl.TabIndex = 57;
+            this.TelHaiiroLbl.Click += new System.EventHandler(this.TelHaiiroLbl_Click);
+            this.TelHaiiroLbl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TelHaiiroLbl_MouseMove);
+            // 
+            // JoinDateDtm
+            // 
+            this.JoinDateDtm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.JoinDateDtm.Location = new System.Drawing.Point(642, 219);
+            this.JoinDateDtm.Name = "JoinDateDtm";
+            this.JoinDateDtm.ShowCheckBox = true;
+            this.JoinDateDtm.Size = new System.Drawing.Size(200, 25);
+            this.JoinDateDtm.TabIndex = 5;
+            this.JoinDateDtm.Value = new System.DateTime(2023, 12, 19, 16, 25, 30, 0);
+            // 
             // EigyoushoNameCmb
             // 
             this.EigyoushoNameCmb.FormattingEnabled = true;
             this.EigyoushoNameCmb.Location = new System.Drawing.Point(1050, 149);
             this.EigyoushoNameCmb.Name = "EigyoushoNameCmb";
             this.EigyoushoNameCmb.Size = new System.Drawing.Size(201, 26);
-            this.EigyoushoNameCmb.TabIndex = 56;
-            // 
-            // JoinDateDtm
-            // 
-            this.JoinDateDtm.Location = new System.Drawing.Point(642, 219);
-            this.JoinDateDtm.Name = "JoinDateDtm";
-            this.JoinDateDtm.Size = new System.Drawing.Size(201, 25);
-            this.JoinDateDtm.TabIndex = 55;
+            this.EigyoushoNameCmb.TabIndex = 2;
             // 
             // GamenKousinBtn
             // 
@@ -170,7 +188,9 @@
             this.GamenKousinBtn.Name = "GamenKousinBtn";
             this.GamenKousinBtn.Size = new System.Drawing.Size(100, 90);
             this.GamenKousinBtn.TabIndex = 54;
+            this.GamenKousinBtn.TabStop = false;
             this.GamenKousinBtn.UseVisualStyleBackColor = true;
+            this.GamenKousinBtn.Click += new System.EventHandler(this.GamenKousinBtn_Click);
             // 
             // ShainKanriDgv
             // 
@@ -181,16 +201,19 @@
             this.ShainKanriDgv.RowTemplate.Height = 27;
             this.ShainKanriDgv.Size = new System.Drawing.Size(1633, 256);
             this.ShainKanriDgv.TabIndex = 51;
+            this.ShainKanriDgv.TabStop = false;
             this.ShainKanriDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShainKanriDgv_CellClick);
             // 
             // TelTxb
             // 
             this.TelTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.TelTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.TelTxb.Location = new System.Drawing.Point(1428, 150);
             this.TelTxb.Name = "TelTxb";
             this.TelTxb.Size = new System.Drawing.Size(201, 25);
-            this.TelTxb.TabIndex = 21;
+            this.TelTxb.TabIndex = 3;
+            this.TelTxb.Click += new System.EventHandler(this.TelTxb_Click);
             // 
             // TelLbl
             // 
@@ -220,7 +243,7 @@
             this.ShainKanriFlagCmb.Location = new System.Drawing.Point(237, 290);
             this.ShainKanriFlagCmb.Name = "ShainKanriFlagCmb";
             this.ShainKanriFlagCmb.Size = new System.Drawing.Size(201, 26);
-            this.ShainKanriFlagCmb.TabIndex = 18;
+            this.ShainKanriFlagCmb.TabIndex = 6;
             // 
             // YakushokuNameCmb
             // 
@@ -230,35 +253,38 @@
             this.YakushokuNameCmb.Location = new System.Drawing.Point(237, 218);
             this.YakushokuNameCmb.Name = "YakushokuNameCmb";
             this.YakushokuNameCmb.Size = new System.Drawing.Size(201, 26);
-            this.YakushokuNameCmb.TabIndex = 18;
+            this.YakushokuNameCmb.TabIndex = 4;
             // 
             // ShainNameTxb
             // 
             this.ShainNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShainNameTxb.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.ShainNameTxb.Location = new System.Drawing.Point(642, 150);
             this.ShainNameTxb.Name = "ShainNameTxb";
             this.ShainNameTxb.Size = new System.Drawing.Size(201, 25);
-            this.ShainNameTxb.TabIndex = 13;
+            this.ShainNameTxb.TabIndex = 1;
             // 
             // HihyojiTxb
             // 
             this.HihyojiTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.HihyojiTxb.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.HihyojiTxb.Location = new System.Drawing.Point(642, 290);
             this.HihyojiTxb.Multiline = true;
             this.HihyojiTxb.Name = "HihyojiTxb";
             this.HihyojiTxb.Size = new System.Drawing.Size(609, 90);
-            this.HihyojiTxb.TabIndex = 14;
+            this.HihyojiTxb.TabIndex = 7;
             // 
             // ShainIDTxb
             // 
             this.ShainIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShainIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.ShainIDTxb.Location = new System.Drawing.Point(237, 150);
             this.ShainIDTxb.Name = "ShainIDTxb";
             this.ShainIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.ShainIDTxb.TabIndex = 17;
+            this.ShainIDTxb.TabIndex = 0;
             // 
             // ShainNameLbl
             // 
@@ -327,8 +353,10 @@
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(300, 90);
             this.SearchBtn.TabIndex = 3;
+            this.SearchBtn.TabStop = false;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // HiddenBtn
             // 
@@ -337,8 +365,10 @@
             this.HiddenBtn.Name = "HiddenBtn";
             this.HiddenBtn.Size = new System.Drawing.Size(300, 90);
             this.HiddenBtn.TabIndex = 4;
+            this.HiddenBtn.TabStop = false;
             this.HiddenBtn.Text = "非表示";
             this.HiddenBtn.UseVisualStyleBackColor = true;
+            this.HiddenBtn.Click += new System.EventHandler(this.HiddenBtn_Click);
             // 
             // UpdateBtn
             // 
@@ -347,6 +377,7 @@
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(300, 90);
             this.UpdateBtn.TabIndex = 5;
+            this.UpdateBtn.TabStop = false;
             this.UpdateBtn.Text = "更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
@@ -358,6 +389,7 @@
             this.RegistBtn.Name = "RegistBtn";
             this.RegistBtn.Size = new System.Drawing.Size(300, 90);
             this.RegistBtn.TabIndex = 2;
+            this.RegistBtn.TabStop = false;
             this.RegistBtn.Text = "登録";
             this.RegistBtn.UseVisualStyleBackColor = true;
             this.RegistBtn.Click += new System.EventHandler(this.RegistBtn_Click);
@@ -369,6 +401,7 @@
             this.TopLogoutBtn.Name = "TopLogoutBtn";
             this.TopLogoutBtn.Size = new System.Drawing.Size(210, 146);
             this.TopLogoutBtn.TabIndex = 23;
+            this.TopLogoutBtn.TabStop = false;
             this.TopLogoutBtn.Text = "ログアウト";
             this.TopLogoutBtn.UseVisualStyleBackColor = true;
             this.TopLogoutBtn.Click += new System.EventHandler(this.TopLogoutBtn_Click);
@@ -530,7 +563,6 @@
         private System.Windows.Forms.Label EigyoshoNameLbl;
         private System.Windows.Forms.DataGridView ShainKanriDgv;
         private System.Windows.Forms.Button GamenKousinBtn;
-        private System.Windows.Forms.DateTimePicker JoinDateDtm;
         private System.Windows.Forms.ComboBox EigyoushoNameCmb;
         private System.Windows.Forms.Label TopIDHyojiLbl;
         private System.Windows.Forms.Label TopIDLbl;
@@ -542,5 +574,8 @@
         private System.Windows.Forms.Label TopYakushokuHyojiLbl;
         private System.Windows.Forms.Label TopNameLbl;
         private System.Windows.Forms.Label TopNameHyojiLbl;
+        private System.Windows.Forms.Label TelHaiiroLbl;
+        private System.Windows.Forms.DateTimePicker JoinDateDtm;
+
     }
 }

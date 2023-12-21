@@ -31,8 +31,8 @@ namespace SalesManagement_SysDev
         InputCheck InputCheck = new InputCheck();
 
         internal static int EmID = 0;
-        internal static int PoID = 0; 
-
+        internal static int PoID = 0;
+        internal static string Logindate = "";
 
         public ShohinKanri()
         {
@@ -44,6 +44,7 @@ namespace SalesManagement_SysDev
         {
             TopHonshaPage.EmID = EmID;
             TopHonshaPage.PoID = PoID;
+            TopHonshaPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -57,6 +58,7 @@ namespace SalesManagement_SysDev
         {
             TopEigyoPage.EmID = EmID;
             TopEigyoPage.PoID = PoID;
+            TopEigyoPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -70,6 +72,7 @@ namespace SalesManagement_SysDev
         {
             TopButsuryuPage.EmID = EmID;
             TopButsuryuPage.PoID = PoID;
+            TopButsuryuPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -92,12 +95,13 @@ namespace SalesManagement_SysDev
             TopData = empDataAccess.GetTopData(EmID);
 
             string emID = EmID.ToString();
+            string logindate = Logindate;
 
             TopIDLbl.Text = emID;
             TopNameLbl.Text = TopData[0];
             TopYakushokuLbl.Text = TopData[1];
             TopEigyoshoLbl.Text = TopData[2];
-            TopJikanLbl.Text = TopData[3];
+            TopJikanLbl.Text = logindate;
 
             if (PoID == 3)
             {
@@ -111,7 +115,7 @@ namespace SalesManagement_SysDev
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
                 TopEigyoBtn.FlatAppearance.BorderColor = Color.Black;
 
-                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
@@ -119,15 +123,15 @@ namespace SalesManagement_SysDev
             else if (PoID == 1)
             {
 
-                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-                TopHonshaBtn.FlatAppearance.BorderSize = 1;
+                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopHonshaBtn.FlatAppearance.BorderSize = 2;
                 TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
                 TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 

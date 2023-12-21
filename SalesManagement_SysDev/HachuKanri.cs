@@ -11,35 +11,34 @@ using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
 {
-    public partial class TopHonshaPage : Form
+    public partial class HachuKanri : Form
     {
-        //メッセージ表示用クラスのインスタンス化
+
         MessageDsp messageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
         InputCheck inputCheck = new InputCheck();
 
-        internal static int EmID = 0;
         internal static int PoID = 0;
+        internal static int EmID = 0;
         internal static string Logindate = "";
 
-        public TopHonshaPage()
+        public HachuKanri()
         {
 
             InitializeComponent();
-
         }
 
-        private void ShainKanriBtn_Click(object sender, EventArgs e)
+        private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
-            Shainkanri.EmID = EmID;
-            Shainkanri.PoID = PoID;
-            Shainkanri.Logindate = Logindate;
+            TopHonshaPage.EmID = EmID;
+            TopHonshaPage.PoID = PoID;
+            TopHonshaPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
 
-            //ShainKanriを表示
-            Shainkanri f2 = new Shainkanri();
+            //TopHonshaPageを表示
+            TopHonshaPage f2 = new TopHonshaPage();
             f2.Show();
         }
 
@@ -54,38 +53,25 @@ namespace SalesManagement_SysDev
 
             //TopEigyoPageを表示
             TopEigyoPage f2 = new TopEigyoPage();
-            f2.ShowDialog();
-
+            f2.Show();
         }
 
         private void TopButsuryuBtn_Click(object sender, EventArgs e)
         {
             TopButsuryuPage.EmID = EmID;
             TopButsuryuPage.PoID = PoID;
-            TopButsuryuPage.Logindate = Logindate;
+            TopButsuryuPage.Logindate　= Logindate;
 
             //現画面を非表示
             this.Visible = false;
 
             //TopButsuryuPageを表示
             TopButsuryuPage f2 = new TopButsuryuPage();
-            f2.ShowDialog();
+            f2.Show();
         }
 
-        private void TopHonshaBtn_Click(object sender, EventArgs e)
+        private void JuchuKanri_Load(object sender, EventArgs e)
         {
-
-            //現画面を非表示
-            this.Visible = false;
-
-            //TopHonshaPageを表示
-            TopHonshaPage f2 = new TopHonshaPage();
-            f2.ShowDialog();
-        }
-
-        private void TopHonshaPage_Load(object sender, EventArgs e)
-        {
-
             string[] TopData = new string[4];
             TopData = empDataAccess.GetTopData(EmID);
 
@@ -98,22 +84,44 @@ namespace SalesManagement_SysDev
             TopEigyoshoLbl.Text = TopData[2];
             TopJikanLbl.Text = logindate;
 
+            if (PoID == 2)
+            {
+                TopHonshaBtn.Enabled = false;
+                TopHonshaBtn.BackColor = Color.DarkGray;
+                TopHonshaBtn.FlatAppearance.BorderSize = 2;
+                TopHonshaBtn.FlatAppearance.BorderColor = Color.Black;
 
-            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
-            TopHonshaBtn.FlatAppearance.BorderSize = 1;
-            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+                TopButsuryuBtn.Enabled = false;
+                TopButsuryuBtn.BackColor = Color.DarkGray;
+                TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+                TopButsuryuBtn.FlatAppearance.BorderColor = Color.Black;
 
-            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
-            TopEigyoBtn.FlatAppearance.BorderSize = 2;
-            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopEigyoBtn.FlatAppearance.BorderSize = 2;
+                TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
-            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
-            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+            }
+            else if (PoID == 1)
+            {
+
+                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopHonshaBtn.FlatAppearance.BorderSize = 2;
+                TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopEigyoBtn.FlatAppearance.BorderSize = 2;
+                TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+                TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            }
+
 
         }
 
-        private void TopLogoutBtn_Click(object sender, EventArgs e)
+        private void button15_Click(object sender, EventArgs e)
         {
             DialogResult result = messageDsp.DspMsg("M0004");
 

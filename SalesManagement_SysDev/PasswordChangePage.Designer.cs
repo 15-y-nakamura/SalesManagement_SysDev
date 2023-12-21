@@ -73,14 +73,14 @@
             this.NewPassTxb.Location = new System.Drawing.Point(269, 238);
             this.NewPassTxb.Name = "NewPassTxb";
             this.NewPassTxb.Size = new System.Drawing.Size(461, 25);
-            this.NewPassTxb.TabIndex = 9;
+            this.NewPassTxb.TabIndex = 0;
             // 
             // RepeatPassTxb
             // 
             this.RepeatPassTxb.Location = new System.Drawing.Point(269, 387);
             this.RepeatPassTxb.Name = "RepeatPassTxb";
             this.RepeatPassTxb.Size = new System.Drawing.Size(461, 25);
-            this.RepeatPassTxb.TabIndex = 10;
+            this.RepeatPassTxb.TabIndex = 1;
             // 
             // KeepBtn
             // 
@@ -89,7 +89,7 @@
             this.KeepBtn.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.KeepBtn.Name = "KeepBtn";
             this.KeepBtn.Size = new System.Drawing.Size(290, 102);
-            this.KeepBtn.TabIndex = 11;
+            this.KeepBtn.TabIndex = 2;
             this.KeepBtn.Text = "保存";
             this.KeepBtn.UseVisualStyleBackColor = true;
             this.KeepBtn.Click += new System.EventHandler(this.KeepBtn_Click);
@@ -102,6 +102,7 @@
             this.ReturnBtn.Name = "ReturnBtn";
             this.ReturnBtn.Size = new System.Drawing.Size(104, 55);
             this.ReturnBtn.TabIndex = 25;
+            this.ReturnBtn.TabStop = false;
             this.ReturnBtn.Text = "戻る";
             this.ReturnBtn.UseVisualStyleBackColor = true;
             this.ReturnBtn.Click += new System.EventHandler(this.ReturnBtn_Click);

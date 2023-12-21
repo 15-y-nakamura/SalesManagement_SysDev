@@ -33,6 +33,10 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopKokyakuPnl = new System.Windows.Forms.Panel();
+            this.YubinHaiiroLbl = new System.Windows.Forms.Label();
+            this.YubinTxb = new System.Windows.Forms.TextBox();
+            this.FaxHaiiroLbl = new System.Windows.Forms.Label();
+            this.TelHaiiroLbl = new System.Windows.Forms.Label();
             this.EigyoshoNameCmb = new System.Windows.Forms.ComboBox();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.KokyakuKanriDgv = new System.Windows.Forms.DataGridView();
@@ -47,14 +51,9 @@
             this.KokyakuIDLbl = new System.Windows.Forms.Label();
             this.KokyakuNameTxb = new System.Windows.Forms.TextBox();
             this.KokyakuKanriFlagLbl = new System.Windows.Forms.Label();
-            this.ShohinIDLbl = new System.Windows.Forms.Label();
             this.HihyojiLbl = new System.Windows.Forms.Label();
-            this.SuryoTxb = new System.Windows.Forms.TextBox();
-            this.SuryoLbl = new System.Windows.Forms.Label();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
-            this.ShohinIDTxb = new System.Windows.Forms.TextBox();
             this.YubinLbl = new System.Windows.Forms.Label();
-            this.YubinTxb = new System.Windows.Forms.TextBox();
             this.JushoLbl = new System.Windows.Forms.Label();
             this.KokyakuIDTxb = new System.Windows.Forms.TextBox();
             this.KokyakuNameLbl = new System.Windows.Forms.Label();
@@ -85,6 +84,7 @@
             this.TopHonshaBtn.Name = "TopHonshaBtn";
             this.TopHonshaBtn.Size = new System.Drawing.Size(210, 130);
             this.TopHonshaBtn.TabIndex = 0;
+            this.TopHonshaBtn.TabStop = false;
             this.TopHonshaBtn.Text = "本社";
             this.TopHonshaBtn.UseVisualStyleBackColor = true;
             this.TopHonshaBtn.Click += new System.EventHandler(this.TopHonshaBtn_Click);
@@ -97,6 +97,7 @@
             this.TopEigyoBtn.Name = "TopEigyoBtn";
             this.TopEigyoBtn.Size = new System.Drawing.Size(210, 130);
             this.TopEigyoBtn.TabIndex = 1;
+            this.TopEigyoBtn.TabStop = false;
             this.TopEigyoBtn.Text = "営業";
             this.TopEigyoBtn.UseVisualStyleBackColor = true;
             this.TopEigyoBtn.Click += new System.EventHandler(this.TopEigyoBtn_Click);
@@ -109,6 +110,7 @@
             this.TopButsuryuBtn.Name = "TopButsuryuBtn";
             this.TopButsuryuBtn.Size = new System.Drawing.Size(210, 130);
             this.TopButsuryuBtn.TabIndex = 2;
+            this.TopButsuryuBtn.TabStop = false;
             this.TopButsuryuBtn.Text = "物流";
             this.TopButsuryuBtn.UseVisualStyleBackColor = true;
             this.TopButsuryuBtn.Click += new System.EventHandler(this.TopButsuryuBtn_Click_1);
@@ -126,6 +128,10 @@
             // 
             this.TopKokyakuPnl.AutoSize = true;
             this.TopKokyakuPnl.BackColor = System.Drawing.Color.LightGray;
+            this.TopKokyakuPnl.Controls.Add(this.YubinHaiiroLbl);
+            this.TopKokyakuPnl.Controls.Add(this.YubinTxb);
+            this.TopKokyakuPnl.Controls.Add(this.FaxHaiiroLbl);
+            this.TopKokyakuPnl.Controls.Add(this.TelHaiiroLbl);
             this.TopKokyakuPnl.Controls.Add(this.EigyoshoNameCmb);
             this.TopKokyakuPnl.Controls.Add(this.GamenKousinBtn);
             this.TopKokyakuPnl.Controls.Add(this.KokyakuKanriDgv);
@@ -140,14 +146,9 @@
             this.TopKokyakuPnl.Controls.Add(this.KokyakuIDLbl);
             this.TopKokyakuPnl.Controls.Add(this.KokyakuNameTxb);
             this.TopKokyakuPnl.Controls.Add(this.KokyakuKanriFlagLbl);
-            this.TopKokyakuPnl.Controls.Add(this.ShohinIDLbl);
             this.TopKokyakuPnl.Controls.Add(this.HihyojiLbl);
-            this.TopKokyakuPnl.Controls.Add(this.SuryoTxb);
-            this.TopKokyakuPnl.Controls.Add(this.SuryoLbl);
             this.TopKokyakuPnl.Controls.Add(this.HihyojiTxb);
-            this.TopKokyakuPnl.Controls.Add(this.ShohinIDTxb);
             this.TopKokyakuPnl.Controls.Add(this.YubinLbl);
-            this.TopKokyakuPnl.Controls.Add(this.YubinTxb);
             this.TopKokyakuPnl.Controls.Add(this.JushoLbl);
             this.TopKokyakuPnl.Controls.Add(this.KokyakuIDTxb);
             this.TopKokyakuPnl.Controls.Add(this.KokyakuNameLbl);
@@ -159,13 +160,64 @@
             this.TopKokyakuPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopKokyakuPnl.TabIndex = 23;
             // 
+            // YubinHaiiroLbl
+            // 
+            this.YubinHaiiroLbl.AutoSize = true;
+            this.YubinHaiiroLbl.Location = new System.Drawing.Point(240, 223);
+            this.YubinHaiiroLbl.Name = "YubinHaiiroLbl";
+            this.YubinHaiiroLbl.Size = new System.Drawing.Size(0, 18);
+            this.YubinHaiiroLbl.TabIndex = 58;
+            this.YubinHaiiroLbl.Click += new System.EventHandler(this.YubinHaiiroLbl_Click);
+            this.YubinHaiiroLbl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.YubinHaiiroLbl_MouseMove);
+            // 
+            // YubinTxb
+            // 
+            this.YubinTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.YubinTxb.Location = new System.Drawing.Point(237, 220);
+            this.YubinTxb.Name = "YubinTxb";
+            this.YubinTxb.Size = new System.Drawing.Size(201, 25);
+            this.YubinTxb.TabIndex = 4;
+            // 
+            // FaxHaiiroLbl
+            // 
+            this.FaxHaiiroLbl.AutoSize = true;
+            this.FaxHaiiroLbl.Location = new System.Drawing.Point(1478, 223);
+            this.FaxHaiiroLbl.Name = "FaxHaiiroLbl";
+            this.FaxHaiiroLbl.Size = new System.Drawing.Size(0, 18);
+            this.FaxHaiiroLbl.TabIndex = 57;
+            this.FaxHaiiroLbl.Click += new System.EventHandler(this.FaxHaiiroLbl_Click);
+            this.FaxHaiiroLbl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FaxHaiiroLbl_MouseMove);
+            // 
+            // TelHaiiroLbl
+            // 
+            this.TelHaiiroLbl.AutoSize = true;
+            this.TelHaiiroLbl.Location = new System.Drawing.Point(1478, 151);
+            this.TelHaiiroLbl.Name = "TelHaiiroLbl";
+            this.TelHaiiroLbl.Size = new System.Drawing.Size(0, 18);
+            this.TelHaiiroLbl.TabIndex = 56;
+            this.TelHaiiroLbl.Click += new System.EventHandler(this.TelHaiiroLbl_Click);
+            this.TelHaiiroLbl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TelHaiiroLbl_MouseMove);
+            // 
             // EigyoshoNameCmb
             // 
             this.EigyoshoNameCmb.FormattingEnabled = true;
             this.EigyoshoNameCmb.Location = new System.Drawing.Point(1052, 149);
             this.EigyoshoNameCmb.Name = "EigyoshoNameCmb";
             this.EigyoshoNameCmb.Size = new System.Drawing.Size(206, 26);
-            this.EigyoshoNameCmb.TabIndex = 55;
+            this.EigyoshoNameCmb.TabIndex = 2;
+            // 
+            // GamenKousinBtn
+            // 
+            this.GamenKousinBtn.BackgroundImage = global::SalesManagement_SysDev.Properties.Resources.reload;
+            this.GamenKousinBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.GamenKousinBtn.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.GamenKousinBtn.Location = new System.Drawing.Point(1710, 26);
+            this.GamenKousinBtn.Name = "GamenKousinBtn";
+            this.GamenKousinBtn.Size = new System.Drawing.Size(100, 90);
+            this.GamenKousinBtn.TabIndex = 54;
+            this.GamenKousinBtn.TabStop = false;
+            this.GamenKousinBtn.UseVisualStyleBackColor = true;
+            this.GamenKousinBtn.Click += new System.EventHandler(this.GamenKousinBtn_Click);
             // 
             // GamenKousinBtn
             // 
@@ -187,16 +239,18 @@
             this.KokyakuKanriDgv.RowTemplate.Height = 27;
             this.KokyakuKanriDgv.Size = new System.Drawing.Size(1633, 256);
             this.KokyakuKanriDgv.TabIndex = 50;
+            this.KokyakuKanriDgv.TabStop = false;
+            this.KokyakuKanriDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.KokyakuKanriDgv_CellClick);
             // 
             // KokyakuKanriFlagCmb
             // 
             this.KokyakuKanriFlagCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KokyakuKanriFlagCmb.FormattingEnabled = true;
-            this.KokyakuKanriFlagCmb.Location = new System.Drawing.Point(237, 360);
+            this.KokyakuKanriFlagCmb.Location = new System.Drawing.Point(237, 299);
             this.KokyakuKanriFlagCmb.Name = "KokyakuKanriFlagCmb";
             this.KokyakuKanriFlagCmb.Size = new System.Drawing.Size(201, 26);
-            this.KokyakuKanriFlagCmb.TabIndex = 49;
+            this.KokyakuKanriFlagCmb.TabIndex = 7;
             // 
             // RegistBtn
             // 
@@ -205,6 +259,7 @@
             this.RegistBtn.Name = "RegistBtn";
             this.RegistBtn.Size = new System.Drawing.Size(300, 90);
             this.RegistBtn.TabIndex = 24;
+            this.RegistBtn.TabStop = false;
             this.RegistBtn.Text = "登録";
             this.RegistBtn.UseVisualStyleBackColor = true;
             this.RegistBtn.Click += new System.EventHandler(this.RegistBtn_Click);
@@ -216,6 +271,7 @@
             this.UpdateBtn.Name = "UpdateBtn";
             this.UpdateBtn.Size = new System.Drawing.Size(300, 90);
             this.UpdateBtn.TabIndex = 27;
+            this.UpdateBtn.TabStop = false;
             this.UpdateBtn.Text = "更新";
             this.UpdateBtn.UseVisualStyleBackColor = true;
             this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
@@ -227,26 +283,34 @@
             this.HiddenBtn.Name = "HiddenBtn";
             this.HiddenBtn.Size = new System.Drawing.Size(300, 90);
             this.HiddenBtn.TabIndex = 25;
+            this.HiddenBtn.TabStop = false;
             this.HiddenBtn.Text = "非表示";
             this.HiddenBtn.UseVisualStyleBackColor = true;
+            this.HiddenBtn.Click += new System.EventHandler(this.HiddenBtn_Click);
             // 
             // FaxTxb
             // 
             this.FaxTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FaxTxb.Location = new System.Drawing.Point(1052, 290);
+            this.FaxTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.FaxTxb.Location = new System.Drawing.Point(1474, 220);
             this.FaxTxb.Name = "FaxTxb";
             this.FaxTxb.Size = new System.Drawing.Size(201, 25);
-            this.FaxTxb.TabIndex = 48;
+            this.FaxTxb.TabIndex = 6;
+            this.FaxTxb.Click += new System.EventHandler(this.FaxTxb_Click);
+            this.FaxTxb.Enter += new System.EventHandler(this.FaxTxb_Enter);
+            this.FaxTxb.Leave += new System.EventHandler(this.FaxTxb_Leave);
             // 
             // TelTxb
             // 
             this.TelTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TelTxb.Location = new System.Drawing.Point(1428, 220);
+            this.TelTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.TelTxb.Location = new System.Drawing.Point(1474, 149);
             this.TelTxb.Name = "TelTxb";
             this.TelTxb.Size = new System.Drawing.Size(201, 25);
-            this.TelTxb.TabIndex = 48;
+            this.TelTxb.TabIndex = 3;
+            this.TelTxb.Click += new System.EventHandler(this.TelTxb_Click);
             // 
             // SearchBtn
             // 
@@ -255,17 +319,20 @@
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(300, 90);
             this.SearchBtn.TabIndex = 26;
+            this.SearchBtn.TabStop = false;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // JushoTxb
             // 
             this.JushoTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.JushoTxb.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.JushoTxb.Location = new System.Drawing.Point(642, 220);
             this.JushoTxb.Name = "JushoTxb";
             this.JushoTxb.Size = new System.Drawing.Size(609, 25);
-            this.JushoTxb.TabIndex = 47;
+            this.JushoTxb.TabIndex = 5;
             // 
             // KokyakuIDLbl
             // 
@@ -281,78 +348,43 @@
             // 
             this.KokyakuNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.KokyakuNameTxb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.KokyakuNameTxb.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.KokyakuNameTxb.Location = new System.Drawing.Point(642, 150);
             this.KokyakuNameTxb.Name = "KokyakuNameTxb";
             this.KokyakuNameTxb.Size = new System.Drawing.Size(201, 25);
-            this.KokyakuNameTxb.TabIndex = 46;
+            this.KokyakuNameTxb.TabIndex = 1;
             // 
             // KokyakuKanriFlagLbl
             // 
             this.KokyakuKanriFlagLbl.AutoSize = true;
             this.KokyakuKanriFlagLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.KokyakuKanriFlagLbl.Location = new System.Drawing.Point(27, 360);
+            this.KokyakuKanriFlagLbl.Location = new System.Drawing.Point(27, 299);
             this.KokyakuKanriFlagLbl.Name = "KokyakuKanriFlagLbl";
             this.KokyakuKanriFlagLbl.Size = new System.Drawing.Size(184, 28);
             this.KokyakuKanriFlagLbl.TabIndex = 29;
             this.KokyakuKanriFlagLbl.Text = "顧客管理フラグ";
             // 
-            // ShohinIDLbl
-            // 
-            this.ShohinIDLbl.AutoSize = true;
-            this.ShohinIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ShohinIDLbl.Location = new System.Drawing.Point(123, 290);
-            this.ShohinIDLbl.Name = "ShohinIDLbl";
-            this.ShohinIDLbl.Size = new System.Drawing.Size(93, 28);
-            this.ShohinIDLbl.TabIndex = 29;
-            this.ShohinIDLbl.Text = "商品ID";
-            // 
             // HihyojiLbl
             // 
             this.HihyojiLbl.AutoSize = true;
             this.HihyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.HihyojiLbl.Location = new System.Drawing.Point(465, 360);
+            this.HihyojiLbl.Location = new System.Drawing.Point(465, 305);
             this.HihyojiLbl.Name = "HihyojiLbl";
             this.HihyojiLbl.Size = new System.Drawing.Size(152, 28);
             this.HihyojiLbl.TabIndex = 30;
             this.HihyojiLbl.Text = "非表示理由";
             // 
-            // SuryoTxb
-            // 
-            this.SuryoTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SuryoTxb.Location = new System.Drawing.Point(642, 290);
-            this.SuryoTxb.Name = "SuryoTxb";
-            this.SuryoTxb.Size = new System.Drawing.Size(201, 25);
-            this.SuryoTxb.TabIndex = 44;
-            // 
-            // SuryoLbl
-            // 
-            this.SuryoLbl.AutoSize = true;
-            this.SuryoLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.SuryoLbl.Location = new System.Drawing.Point(557, 290);
-            this.SuryoLbl.Name = "SuryoLbl";
-            this.SuryoLbl.Size = new System.Drawing.Size(68, 28);
-            this.SuryoLbl.TabIndex = 31;
-            this.SuryoLbl.Text = "数量";
-            // 
             // HihyojiTxb
             // 
             this.HihyojiTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.HihyojiTxb.Location = new System.Drawing.Point(642, 360);
+            this.HihyojiTxb.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.HihyojiTxb.Location = new System.Drawing.Point(642, 305);
             this.HihyojiTxb.Multiline = true;
             this.HihyojiTxb.Name = "HihyojiTxb";
             this.HihyojiTxb.Size = new System.Drawing.Size(609, 90);
-            this.HihyojiTxb.TabIndex = 43;
-            // 
-            // ShohinIDTxb
-            // 
-            this.ShohinIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ShohinIDTxb.Location = new System.Drawing.Point(237, 290);
-            this.ShohinIDTxb.Name = "ShohinIDTxb";
-            this.ShohinIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.ShohinIDTxb.TabIndex = 42;
+            this.HihyojiTxb.TabIndex = 8;
             // 
             // YubinLbl
             // 
@@ -363,16 +395,6 @@
             this.YubinLbl.Size = new System.Drawing.Size(124, 28);
             this.YubinLbl.TabIndex = 33;
             this.YubinLbl.Text = "郵便番号";
-            // 
-            // YubinTxb
-            // 
-            this.YubinTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.YubinTxb.Location = new System.Drawing.Point(237, 220);
-            this.YubinTxb.Name = "YubinTxb";
-            this.YubinTxb.Size = new System.Drawing.Size(201, 25);
-            this.YubinTxb.TabIndex = 41;
-            this.YubinTxb.UseWaitCursor = true;
             // 
             // JushoLbl
             // 
@@ -388,10 +410,11 @@
             // 
             this.KokyakuIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.KokyakuIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.KokyakuIDTxb.Location = new System.Drawing.Point(237, 150);
             this.KokyakuIDTxb.Name = "KokyakuIDTxb";
             this.KokyakuIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.KokyakuIDTxb.TabIndex = 40;
+            this.KokyakuIDTxb.TabIndex = 0;
             // 
             // KokyakuNameLbl
             // 
@@ -407,7 +430,7 @@
             // 
             this.TelLbl.AutoSize = true;
             this.TelLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.TelLbl.Location = new System.Drawing.Point(1298, 220);
+            this.TelLbl.Location = new System.Drawing.Point(1327, 149);
             this.TelLbl.Name = "TelLbl";
             this.TelLbl.Size = new System.Drawing.Size(124, 28);
             this.TelLbl.TabIndex = 36;
@@ -427,7 +450,7 @@
             // 
             this.FaxLbl.AutoSize = true;
             this.FaxLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.FaxLbl.Location = new System.Drawing.Point(955, 290);
+            this.FaxLbl.Location = new System.Drawing.Point(1377, 220);
             this.FaxLbl.Name = "FaxLbl";
             this.FaxLbl.Size = new System.Drawing.Size(62, 28);
             this.FaxLbl.TabIndex = 37;
@@ -440,6 +463,7 @@
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(210, 146);
             this.button15.TabIndex = 23;
+            this.button15.TabStop = false;
             this.button15.Text = "ログアウト";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
@@ -588,14 +612,9 @@
         private System.Windows.Forms.TextBox JushoTxb;
         private System.Windows.Forms.Label KokyakuIDLbl;
         private System.Windows.Forms.TextBox KokyakuNameTxb;
-        private System.Windows.Forms.Label ShohinIDLbl;
         private System.Windows.Forms.Label HihyojiLbl;
-        private System.Windows.Forms.TextBox SuryoTxb;
-        private System.Windows.Forms.Label SuryoLbl;
         private System.Windows.Forms.TextBox HihyojiTxb;
-        private System.Windows.Forms.TextBox ShohinIDTxb;
         private System.Windows.Forms.Label YubinLbl;
-        private System.Windows.Forms.TextBox YubinTxb;
         private System.Windows.Forms.Label JushoLbl;
         private System.Windows.Forms.TextBox KokyakuIDTxb;
         private System.Windows.Forms.Label KokyakuNameLbl;
@@ -619,5 +638,9 @@
         private System.Windows.Forms.Label TopYakushokuHyojiLbl;
         private System.Windows.Forms.Label TopNameLbl;
         private System.Windows.Forms.Label TopNameHyojiLbl;
+        private System.Windows.Forms.Label TelHaiiroLbl;
+        private System.Windows.Forms.Label FaxHaiiroLbl;
+        private System.Windows.Forms.Label YubinHaiiroLbl;
+        private System.Windows.Forms.TextBox YubinTxb;
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace SalesManagement_SysDev
@@ -30,10 +31,11 @@ namespace SalesManagement_SysDev
 
         MessageDsp messageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
-        InputCheck inputCheck = new InputCheck();
 
+        //他のフォームからログイン情報をもらうための変数
         internal static int EmID = 0;
         internal static int PoID = 0;
+        internal static string Logindate = "";
 
         public Shainkanri()
         {
@@ -43,7 +45,32 @@ namespace SalesManagement_SysDev
 
         private void Shainkanri_Load(object sender, EventArgs e)
         {
-            //PlaceHolderText();
+            string[] TopData = new string[4];
+            TopData = empDataAccess.GetTopData(EmID);
+
+            string emID = EmID.ToString();
+            string logindate = Logindate;
+
+            TopIDLbl.Text = emID;
+            TopNameLbl.Text = TopData[0];
+            TopYakushokuLbl.Text = TopData[1];
+            TopEigyoshoLbl.Text = TopData[2];
+            TopJikanLbl.Text = logindate;
+
+            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+            TopHonshaBtn.FlatAppearance.BorderSize = 2;
+            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+            TopEigyoBtn.FlatAppearance.BorderSize = 2;
+            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+
+            PlaceHolderText();
 
             //コントロールの初期設定
             SetCtrlFormat();
@@ -70,6 +97,7 @@ namespace SalesManagement_SysDev
             ShainKanriFlagCmb.Items.Clear();
             ShainKanriFlagCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             HihyojiTxb.Text = "";
+            JoinDateDtm.Checked = false;
 
             //役職名を取得
             var PoName = PositionDA.GetPoName();
@@ -82,7 +110,6 @@ namespace SalesManagement_SysDev
 
             //営業所名を取得
             var SoName = SalesOfficeDA.GetSoName();
-
             //営業所名をコンボボックスに追加
             foreach (string Soname in SoName.Reverse())
             {
@@ -93,51 +120,24 @@ namespace SalesManagement_SysDev
             ShainKanriFlagCmb.Items.Add("非表示");
         }
 
-        /*private void PlaceHolderText(){
-            PlaceHolderText();
-
-            string[] TopData = new string[4];
-            TopData = empDataAccess.GetTopData(EmID);
-
-            string emID = EmID.ToString();
-
-            TopIDLbl.Text = emID;
-            TopNameLbl.Text = TopData[0];
-            TopYakushokuLbl.Text = TopData[1];
-            TopEigyoshoLbl.Text = TopData[2];
-            TopJikanLbl.Text = TopData[3];
-
-            TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopHonshaBtn.FlatAppearance.BorderSize = 1;
-            TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
-            TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopEigyoBtn.FlatAppearance.BorderSize = 2;
-            TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
-            TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            TopButsuryuBtn.FlatAppearance.BorderSize = 2;
-            TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
-
-        }
 
         //テキストボックス内に灰色の文字を表示
         private void PlaceHolderText()
         {
-            TelTxb.Text = "ハイフンあり";
-            TelTxb.ForeColor = SystemColors.GrayText;
+            TelHaiiroLbl.Text = "ハイフンあり";
+            TelHaiiroLbl.ForeColor = Color.Gray;
+            TelHaiiroLbl.BackColor = Color.White;
             TelTxb.Enter += TelTxb_Enter;
             TelTxb.Leave += TelTxb_Leave;
         }
 
-        //電話番号のテキストボックスが選択されていない場合
+        //電話番号のテキストボックスが選択されている場合
         private void TelTxb_Enter(object sender, EventArgs e)
         {
-           if (TelTxb.Text == "ハイフンあり")
+            if (TelHaiiroLbl.Text == "ハイフンあり")
             {
-                TelTxb.Text = "";
-                TelTxb.ForeColor = SystemColors.WindowText;
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
             }
         }
 
@@ -146,15 +146,17 @@ namespace SalesManagement_SysDev
         {
             if (string.IsNullOrWhiteSpace(TelTxb.Text))
             {
-               TelTxb.Text = "ハイフンあり";
-                TelTxb.ForeColor = SystemColors.GrayText;
+                TelHaiiroLbl.Text = "ハイフンあり";
+                TelHaiiroLbl.ForeColor = Color.Gray;
             }
-        }*/
+        }
 
+        //本社ボタンクリック
         private void TopHonshaBtn_Click(object sender, EventArgs e)
         {
             TopHonshaPage.EmID = EmID;
             TopHonshaPage.PoID = PoID;
+            TopHonshaPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -164,10 +166,12 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
+        //営業ボタンクリック
         private void TopEigyoBtn_Click(object sender, EventArgs e)
         {
             TopEigyoPage.EmID = EmID;
             TopEigyoPage.PoID = PoID;
+            TopEigyoPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -177,10 +181,12 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
+        //物流ボタンクリック
         private void TopButsuryuBtn_Click(object sender, EventArgs e)
         {
             TopButsuryuPage.EmID = EmID;
             TopButsuryuPage.PoID = PoID;
+            TopButsuryuPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -190,7 +196,7 @@ namespace SalesManagement_SysDev
             f2.Show();
         }
 
-
+        //ログアウトボタンクリック
         private void TopLogoutBtn_Click(object sender, EventArgs e)
         {
             DialogResult result = messageDsp.DspMsg("M0004");
@@ -210,6 +216,7 @@ namespace SalesManagement_SysDev
                 // キャンセルの時の処理
             }
         }
+
         ///////////////////////////////
         //メソッド名：SetFormSyainKanriGridView()
         //引　数   ：なし
@@ -231,7 +238,7 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：GetDataGridView()
+        //メソッド名：ListDisplay()
         //引　数   ：なし
         //戻り値   ：なし
         //機　能   ：データグリッドビューの表示
@@ -242,16 +249,16 @@ namespace SalesManagement_SysDev
             Employee = EmployeeDA.GetEmployeeData();
 
             // DataGridViewに表示するデータを指定
-            SetDataGridView();
+            SetDataGridView(Employee);
         }
 
         ///////////////////////////////
         //メソッド名：SetDataGridView()
-        //引　数   ：なし
+        //引　数   ：M_EmployeeDsp
         //戻り値   ：なし
         //機　能   ：データグリッドビューにデータを反映する
         ///////////////////////////////
-        private void SetDataGridView()
+        private void SetDataGridView(List<M_EmployeeDsp> Employee)
         {
             ShainKanriDgv.DataSource = Employee.ToList();
 
@@ -272,8 +279,6 @@ namespace SalesManagement_SysDev
             ShainKanriDgv.Columns[9].Width = 160; //非表示理由
             */
 
-            //行の高さ設定
-            ShainKanriDgv.RowTemplate.Height = 40;
 
             //各列の文字位置の指定
             ShainKanriDgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -288,6 +293,7 @@ namespace SalesManagement_SysDev
             ShainKanriDgv.Refresh();
         }
 
+        //登録ボタンクリック
         private void RegistBtn_Click(object sender, EventArgs e)
         {
             //入力チェック
@@ -297,7 +303,7 @@ namespace SalesManagement_SysDev
             }
 
             //形式化
-            var empdata = SetEmployeeData();
+            var empdata = SetEmployeeRegistData();
 
             //登録
             RegistEmployee(empdata);
@@ -315,6 +321,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckRegistEmID(ShainIDTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistEmID(ShainIDTxb.Text).Msg);
+                ShainIDTxb.Focus();
                 return false;
             }
 
@@ -322,6 +329,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckEmname(ShainNameTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckEmname(ShainNameTxb.Text).Msg);
+                ShainNameTxb.Focus();
                 return false;
             }
 
@@ -329,6 +337,7 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckEmPhone(TelTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckEmPhone(TelTxb.Text).Msg);
+                TelTxb.Focus();
                 return false;
             }
 
@@ -342,7 +351,7 @@ namespace SalesManagement_SysDev
             //役職名の入力チェック
             if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameCmb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).Msg);
                 return false;
             }
 
@@ -350,12 +359,12 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：InputRegistDataCheck()
+        //メソッド名：SetEmployeeData()
         //引　数   ：なし
         //戻り値   ：M_Employee
         //機　能   ：社員情報を形式化する
         ///////////////////////////////
-        private M_Employee SetEmployeeData()
+        private M_Employee SetEmployeeRegistData()
         {
             int PoID = PositionDA.GetPoID(YakushokuNameCmb.Text);
             int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
@@ -414,6 +423,7 @@ namespace SalesManagement_SysDev
             }
         }
 
+        //データグリットビュー内のセルをクリック
         private void ShainKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             ShainIDTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
@@ -440,9 +450,16 @@ namespace SalesManagement_SysDev
             {
                 HihyojiTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
             }
-        }
 
-      
+            if (TelHaiiroLbl.Text == "ハイフンあり")
+            {
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+
+        }
+        
+        //更新ボタンクリック
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
             if (!InputUpdataDataCheck())
@@ -455,6 +472,12 @@ namespace SalesManagement_SysDev
             UpdateEmployee(updatedata);
         }
 
+        ///////////////////////////////
+        //メソッド名：InputUpdataDataCheck()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：社員更新時の入力チェック項目の妥当性をチェックする
+        ///////////////////////////////
         private bool InputUpdataDataCheck()
         {
             //社員IDの入力チェック
@@ -488,7 +511,7 @@ namespace SalesManagement_SysDev
             //役職名の入力チェック
             if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(YakushokuNameCmb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).Msg);
                 return false;
             }
 
@@ -504,6 +527,12 @@ namespace SalesManagement_SysDev
             return true;
         }
 
+        ///////////////////////////////
+        //メソッド名：SetEmployeeUpdateData()
+        //引　数   ：なし
+        //戻り値   ：M_Employee
+        //機　能   ：社員情報を形式化する
+        ///////////////////////////////
         private M_Employee SetEmployeeUpdateData()
         {
             int PoID = PositionDA.GetPoID(YakushokuNameCmb.Text);
@@ -532,6 +561,12 @@ namespace SalesManagement_SysDev
             };
         }
 
+        ///////////////////////////////
+        //メソッド名：UpdateEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：なし
+        //機　能   ：形式化した社員情報を更新する
+        ///////////////////////////////
         private void UpdateEmployee(M_Employee emp)
         {
             if(DialogResult.OK == MessageDsp.DspMsg("M4024"))
@@ -549,6 +584,260 @@ namespace SalesManagement_SysDev
                 else
                 {
                     MessageDsp.DspMsg("M4026");
+                }
+            }
+        }
+
+        //電話番号テキストボックスクリック
+        private void TelTxb_Click(object sender, EventArgs e)
+        {
+            if (TelHaiiroLbl.Text == "ハイフンあり")
+            {
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TelHaiiroLbl_Click(object sender, EventArgs e)
+        {
+            TelTxb.Focus();
+            if (TelHaiiroLbl.Text == "ハイフンあり")
+            {
+                TelHaiiroLbl.Text = "";
+                TelHaiiroLbl.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+        private void TelHaiiroLbl_MouseMove(object sender, MouseEventArgs e)
+        {
+            TelHaiiroLbl.Cursor = Cursors.IBeam;
+        }
+        
+        //検索ボタンクリック
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            if (!InputSearchDataCheck())
+            {
+                return;
+            }
+
+            var searchdata = SetEmployeeSearchData();
+
+            SearchEmployee(searchdata);
+        }
+
+        ///////////////////////////////
+        //メソッド名：InputSearchDataCheck()
+        //引　数   ：なし
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員検索時の入力チェック項目の妥当性をチェックする
+        ///////////////////////////////
+        private bool InputSearchDataCheck()
+        {
+            //社員IDの入力チェック
+            if (ShainIDTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchEmID(ShainIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckEmID(ShainIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //社員名の入力チェック
+            if (ShainNameTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchEmname(ShainNameTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckEmname(ShainNameTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //電話番号の入力チェック
+            if (TelTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchEmPhone(TelTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckEmPhone(TelTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetEmployeeSearchData()
+        //引　数   ：なし
+        //戻り値   ：M_Employee
+        //機　能   ：社員情報を形式化する
+        ///////////////////////////////
+        private M_Employee SetEmployeeSearchData()
+        {
+            int poid = 0;
+            int emid = 0;
+            int soid = 0;
+            int emflg = -1;
+            DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
+
+            if (ShainIDTxb.Text != "")
+            {
+                emid = int.Parse(ShainIDTxb.Text);
+            }
+            
+            if (YakushokuNameCmb.Text != "")
+            { 
+                poid = PositionDA.GetPoID(YakushokuNameCmb.Text);
+            }
+            
+            
+            if(EigyoushoNameCmb.Text != "")
+            {
+                soid = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
+            }
+            
+
+            if(ShainKanriFlagCmb.Text != "")
+            {
+                if (ShainKanriFlagCmb.Text == "非表示")
+                {
+                    emflg = 2;
+                }
+                else
+                {
+                    emflg = 0;
+                }    
+            }
+            
+            if (JoinDateDtm.Checked)
+            {
+                date = JoinDateDtm.Value.Date;
+            }
+
+            M_Employee M_Emp = new M_Employee()
+            {
+                EmID = emid,
+                EmName = ShainNameTxb.Text,
+                SoID = soid,
+                PoID = poid,
+                EmHiredate = date,
+                EmPhone = TelTxb.Text,
+                EmFlag = emflg,
+                EmHidden = HihyojiTxb.Text
+            };
+
+            return M_Emp;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SearchEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：なし
+        //機　能   ：形式化した社員情報を検索、表示する
+        ///////////////////////////////
+        private void SearchEmployee(M_Employee searchemp)
+        {
+            var emp = EmployeeDA.SearchEmployee(searchemp);
+
+            if(emp.Count == 0)
+            { 
+                MessageDsp.DspMsg("M4018");
+            }
+
+            SetDataGridView(emp);
+        }
+
+        //画面更新ボタンクリック
+        private void GamenKousinBtn_Click(object sender, EventArgs e)
+        {
+            SetCtrlFormat();
+
+            SetFormSyainKanriGridView();
+        }
+
+        //非表示ボタンクリック
+        private void HiddenBtn_Click(object sender, EventArgs e)
+        {
+            //入力チェック
+            if (!InputHiddenDataCheck())
+            {
+                return;
+            }
+
+            //形式化
+            var emp =　SetEmployeeHideenData();
+
+            //更新
+            HiddenEmployee(emp);
+
+        }
+
+        ///////////////////////////////
+        //メソッド名：InputHiddenDataCheck()
+        //引　数   ：なし
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員非表示時の入力チェック項目の妥当性をチェックする
+        ///////////////////////////////
+        private bool InputHiddenDataCheck()
+        {
+            //社員IDチェック
+            if (!InputCheck.CheckEmID(ShainIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckEmID(ShainIDTxb.Text).Msg);
+                return false;
+            }
+
+            //非表示理由チェック
+            if (!InputCheck.CheckHidden(HihyojiTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckHidden(HihyojiTxb.Text).Msg); ;
+                return false;
+            }
+            return true;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetEmployeeHideenData()
+        //引　数   ：なし
+        //戻り値   ：M_Employee
+        //機　能   ：社員情報を形式化する
+        ///////////////////////////////
+        private M_Employee SetEmployeeHideenData()
+        {
+            M_Employee M_Emp = new M_Employee()
+            {
+                EmID = int.Parse(ShainIDTxb.Text),
+                EmFlag = 2,
+                EmHidden = HihyojiTxb.Text
+            };
+
+            return M_Emp;
+        }
+
+        ///////////////////////////////
+        //メソッド名：HiddenEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：なし
+        //機　能   ：形式化した社員情報を非表示設定に更新する
+        ///////////////////////////////
+        private void HiddenEmployee(M_Employee emp)
+        {
+            if (DialogResult.OK == MessageDsp.DspMsg("M4027"))
+            {
+                if (EmployeeDA.DeleteEmployee(emp))
+                {
+                    MessageDsp.DspMsg("M4028");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormSyainKanriGridView();
+                }
+                else
+                {
+                    MessageDsp.DspMsg("M4029");
                 }
             }
         }

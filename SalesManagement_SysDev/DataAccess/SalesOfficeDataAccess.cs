@@ -22,7 +22,6 @@ namespace SalesManagement_SysDev.DataAccess
             try
             {
                 var pSoName = context.M_SalesOffices.Select(x => x.SoName);
-  
                 IEnumerable<string> SoName = pSoName;
                 return SoName;
             }

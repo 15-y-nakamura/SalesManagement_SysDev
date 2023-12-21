@@ -46,6 +46,7 @@
             this.btn_CleateDabase.Name = "btn_CleateDabase";
             this.btn_CleateDabase.Size = new System.Drawing.Size(177, 74);
             this.btn_CleateDabase.TabIndex = 0;
+            this.btn_CleateDabase.TabStop = false;
             this.btn_CleateDabase.Text = "データベース生成";
             this.btn_CleateDabase.UseVisualStyleBackColor = true;
             this.btn_CleateDabase.Click += new System.EventHandler(this.btn_CleateDabase_Click);
@@ -57,6 +58,7 @@
             this.btn_InsertSampleData.Name = "btn_InsertSampleData";
             this.btn_InsertSampleData.Size = new System.Drawing.Size(177, 74);
             this.btn_InsertSampleData.TabIndex = 0;
+            this.btn_InsertSampleData.TabStop = false;
             this.btn_InsertSampleData.Text = "サンプルデータ登録";
             this.btn_InsertSampleData.UseVisualStyleBackColor = true;
             this.btn_InsertSampleData.Click += new System.EventHandler(this.btn_InsertSampleData_Click);
@@ -86,14 +88,14 @@
             this.ShainTxb.Location = new System.Drawing.Point(268, 237);
             this.ShainTxb.Name = "ShainTxb";
             this.ShainTxb.Size = new System.Drawing.Size(461, 25);
-            this.ShainTxb.TabIndex = 3;
+            this.ShainTxb.TabIndex = 0;
             // 
             // PasuwadoTxb
             // 
             this.PasuwadoTxb.Location = new System.Drawing.Point(268, 330);
             this.PasuwadoTxb.Name = "PasuwadoTxb";
             this.PasuwadoTxb.Size = new System.Drawing.Size(461, 25);
-            this.PasuwadoTxb.TabIndex = 4;
+            this.PasuwadoTxb.TabIndex = 1;
             // 
             // RoguinLbl
             // 
@@ -113,7 +115,7 @@
             this.RoguinBtn.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.RoguinBtn.Name = "RoguinBtn";
             this.RoguinBtn.Size = new System.Drawing.Size(290, 102);
-            this.RoguinBtn.TabIndex = 6;
+            this.RoguinBtn.TabIndex = 2;
             this.RoguinBtn.Text = "ログイン";
             this.RoguinBtn.UseVisualStyleBackColor = true;
             this.RoguinBtn.Click += new System.EventHandler(this.RoguinBtn_Click);
@@ -126,6 +128,7 @@
             this.LogoutBtn.Name = "LogoutBtn";
             this.LogoutBtn.Size = new System.Drawing.Size(104, 55);
             this.LogoutBtn.TabIndex = 24;
+            this.LogoutBtn.TabStop = false;
             this.LogoutBtn.Text = "閉じる";
             this.LogoutBtn.UseVisualStyleBackColor = true;
             this.LogoutBtn.Click += new System.EventHandler(this.LogoutBtn_Click);
