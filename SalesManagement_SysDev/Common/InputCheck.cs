@@ -355,24 +355,6 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
-        public (bool flg,string Msg) CheckSearchEmID(string text)
-        {
-            if (!CheckSuuti(text))
-            {
-                return (false, "M4001");
-            }
-
-            if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
-            {
-                return (false, "M4022");
-            }
-
-            if (text.Length > 6)
-            {
-                return (false, "M4002");
-            }
-            return (true, text);
-        }        
         ///////////////////////////////
         //メソッド名：CheckRegistJuchuID()
         //引　数   ：文字列
@@ -401,14 +383,66 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        public (bool flg,string Msg) CheckSearchEmID(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M4001");
+            }
+
+            if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
+            {
+                return (false, "M4022");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M4002");
+            }
+            return (true, text);
+        }        
+        
+
         public (bool flg,string Msg) CheckSearchEmname(string text)
         {
             if (!CheckZenkaku(text))
             {
                 return (false, "M4005");
             }
+
+            if (text.Length > 50)
+            {
+                return (false, "M4006");
+            }
+
+
             return (true, text);
-        }        
+        }
+
+        public (bool flg, string Msg) CheckSearchEmPhone(string text)
+        {
+            if (!CheckSuutiHaihun(text))
+            {
+                return (false, "M4015");
+            }
+
+            if (text.Length < 12)
+            {
+                return (false, "M4030");
+            }
+
+            if (text.Length > 13)
+            {
+                return (false, "M4015");
+            }
+
+            if (text.Length < 12)
+            {
+                return (false, "M4030");
+            }
+            return (true, text);
+        }
+
         ///////////////////////////////
         //メソッド名：CheckJuchuSoNameCmb()
         //引　数   ：文字列
@@ -454,15 +488,7 @@ namespace SalesManagement_SysDev
 
             return (true, text);
         }
-
-        public (bool flg,string Msg) CheckSearchEmPhone(string text)
-        {
-            if (text.Length > 13)
-            {
-                return (false, "M4015");
-            }
-            return (true, text);
-        }        
+                
         ///////////////////////////////
         //メソッド名：CheckRegistClID()
         //引　数   ：文字列
