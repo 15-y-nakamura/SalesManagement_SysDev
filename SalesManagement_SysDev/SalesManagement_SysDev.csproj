@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\ProductDataAccess.cs" />
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
     <Compile Include="DataAccess\PositionDataAccess.cs" />
     <Compile Include="DataAccess\SalesOfficeDataAccess.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Common\InputCheck.cs" />
+    <Compile Include="DataAccess\MajorClassificationDataAccess.cs" />
     <Compile Include="NyukaKanri.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,9 +89,10 @@
     <Compile Include="ShukkoKanri.cs">
       <SubType>Form</SubType>
     </Compile>
-	<Compile Include="ShukkoKanri.Designer.cs">
-	  <DependentUpon>ShukkoKanri.cs</DependentUpon>
-	</Compile>
+    <Compile Include="ShukkoKanri.Designer.cs">
+      <DependentUpon>ShukkoKanri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\SmallClassificationDataAccess.cs" />
     <Compile Include="ZaikoKanri.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,9 +198,9 @@
     <EmbeddedResource Include="ShukkaKanri.resx">
       <DependentUpon>ShukkaKanri.cs</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="ShukkoKanri.resx">
-		<DependentUpon>ShukkoKanri.cs</DependentUpon>
-	</EmbeddedResource>
+    <EmbeddedResource Include="ShukkoKanri.resx">
+      <DependentUpon>ShukkoKanri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ZaikoKanri.resx">
       <DependentUpon>ZaikoKanri.cs</DependentUpon>
     </EmbeddedResource>

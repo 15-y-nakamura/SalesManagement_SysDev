@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -13,6 +14,9 @@ namespace SalesManagement_SysDev
     {
         //社員テーブルアクセスクラスのインスタンス化
         EmployeeDataAccess EmployeeDA = new EmployeeDataAccess();
+
+        //商品テーブルアクセスクラスのインスタンス化
+        ProductDataAccess ProductDA = new ProductDataAccess();
 
         ///////////////////////////////
         //メソッド名：CheckZenkaku()
@@ -293,5 +297,298 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        ///////////////////////////////
+        //メソッド名：CheckPrID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の商品ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistPrID(string text)
+        {
+            if(text == "")
+            {
+                return (false, "M2003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M2001");
+            }
+
+            if (ProductDA.SonzaiCheckPrID(int.Parse(text)))
+            {
+                return (false, "M2036");
+            }
+            
+            if (text.Length > 6)
+            {
+                return (false, "M2002");
+            }
+
+            return (true, text);
+        }
+
+        public (bool flg, string Msg) CheckPrID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M2003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M2001");
+            }
+
+            if (ProductDA.SonzaiCheckPrID(int.Parse(text)))
+            {
+                return (false, "M2028");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M2002");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckPrName()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：商品名入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckPrName(string text)
+        {
+            if(text == "")
+            {
+                return (false, "M2007");
+            }
+
+            if (!CheckZenkaku(text))
+            {
+                return (false, "M2005");
+            }
+
+            if (ProductDA.SonzaiCheckPrName(text))
+            {
+                return (false, "M2029");
+            }
+
+            if (text.Length > 50)
+            {
+                return (false, "M2006");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckPrMaker()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：メーカー名入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckPrMaker(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M2004");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckPrice()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：価格入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckPrice(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M2010");
+            }
+
+            if(text.Length > 9)
+            {
+                return (false, "M2009");
+            }
+
+            if (CheckSuuti(text))
+            {
+                return (false, "M2008");
+            }
+
+            return(true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckCheckPrSafetyStock()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：商品名入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckPrSafetyStock(string text)
+        {
+            if(text == "")
+            {
+                return (false, "M2013");
+            }
+
+            if(text.Length > 4)
+            {
+                return (false,"M2012");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M2011");
+            }
+
+            return(true, text);
+        }
+
+
+        ///////////////////////////////
+        //メソッド名：CheckMcID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：大分類ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckMcID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M2014");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckScID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：小分類ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg)CheckScID (string text)
+        {
+            if(text == "")
+            {
+                return (false, "M2015");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckPrModelNumber()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：型番入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg)CheckPrModelNumber (string text)
+        {
+            if (text == "")
+            {
+                return (false, "M2018");
+            }
+
+            if (text.Length > 20)
+            {
+                return (false, "M2017");
+            }
+
+            if (CheckHankakueisu(text))
+            {
+                return (false, "M2016");
+            }
+
+            return(true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckPrColor()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：色入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg)CheckPrColor (string text)
+        {
+            if(text == "")
+            {
+                return (false, "M2021");
+            }
+
+            if(text.Length > 20)
+            {
+                return (false, "M2020");
+            }
+
+            if (!CheckZenkaku(text))
+            {
+                return (false, "M2019");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckPrReleaseDate()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：発売日入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckPrReleaseDate (string text)
+        {
+            if(text ==  "")
+            {
+                return (false, "M2022");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckPrFlag()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：商品管理フラグ入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckPrFlag (string text)
+        {
+            if(text == "")
+            {
+                return (false, "M2023");
+            }
+
+            return (true, text);
+        }
     }
 }

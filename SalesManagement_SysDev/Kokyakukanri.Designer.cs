@@ -34,6 +34,7 @@
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopKokyakuPnl = new System.Windows.Forms.Panel();
             this.EigyoshoNameCmb = new System.Windows.Forms.ComboBox();
+            this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.KokyakuKanriDgv = new System.Windows.Forms.DataGridView();
             this.KokyakuKanriFlagCmb = new System.Windows.Forms.ComboBox();
             this.RegistBtn = new System.Windows.Forms.Button();
@@ -71,7 +72,6 @@
             this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
-            this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.TopKokyakuPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KokyakuKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -167,6 +167,17 @@
             this.EigyoshoNameCmb.Size = new System.Drawing.Size(206, 26);
             this.EigyoshoNameCmb.TabIndex = 55;
             // 
+            // GamenKousinBtn
+            // 
+            this.GamenKousinBtn.BackgroundImage = global::SalesManagement_SysDev.Properties.Resources.reload;
+            this.GamenKousinBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.GamenKousinBtn.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.GamenKousinBtn.Location = new System.Drawing.Point(1710, 26);
+            this.GamenKousinBtn.Name = "GamenKousinBtn";
+            this.GamenKousinBtn.Size = new System.Drawing.Size(100, 90);
+            this.GamenKousinBtn.TabIndex = 54;
+            this.GamenKousinBtn.UseVisualStyleBackColor = true;
+            // 
             // KokyakuKanriDgv
             // 
             this.KokyakuKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -196,6 +207,7 @@
             this.RegistBtn.TabIndex = 24;
             this.RegistBtn.Text = "登録";
             this.RegistBtn.UseVisualStyleBackColor = true;
+            this.RegistBtn.Click += new System.EventHandler(this.RegistBtn_Click);
             // 
             // UpdateBtn
             // 
@@ -526,17 +538,6 @@
             this.TopNameHyojiLbl.Size = new System.Drawing.Size(88, 30);
             this.TopNameHyojiLbl.TabIndex = 64;
             this.TopNameHyojiLbl.Text = "名前：";
-            // 
-            // GamenKousinBtn
-            // 
-            this.GamenKousinBtn.BackgroundImage = global::SalesManagement_SysDev.Properties.Resources.reload;
-            this.GamenKousinBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.GamenKousinBtn.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.GamenKousinBtn.Location = new System.Drawing.Point(1710, 26);
-            this.GamenKousinBtn.Name = "GamenKousinBtn";
-            this.GamenKousinBtn.Size = new System.Drawing.Size(100, 90);
-            this.GamenKousinBtn.TabIndex = 54;
-            this.GamenKousinBtn.UseVisualStyleBackColor = true;
             // 
             // Kokyakukanri
             // 
