@@ -76,7 +76,14 @@ namespace SalesManagement_SysDev
             SetCtrlFormat();
 
             //データグリッドビューの設定
+
             SetFormGridView();
+
+            SetFormSyainKanriGridView();
+
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
+
         }
 
         ///////////////////////////////
@@ -118,6 +125,11 @@ namespace SalesManagement_SysDev
 
             ShainKanriFlagCmb.Items.Add("表示");
             ShainKanriFlagCmb.Items.Add("非表示");
+
+            ShainIDTxb.Enabled = true;
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
+
         }
 
 
@@ -464,8 +476,12 @@ namespace SalesManagement_SysDev
                 TelHaiiroLbl.ForeColor = SystemColors.WindowText;
             }
 
+            ShainIDTxb.Enabled = false;
+            UpdateBtn.Enabled = true;
+            HiddenBtn.Enabled = true;
+
         }
-        
+
         //更新ボタンクリック
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
@@ -760,7 +776,14 @@ namespace SalesManagement_SysDev
         {
             SetCtrlFormat();
 
+
             SetFormGridView();
+
+            SetFormSyainKanriGridView();
+
+            ShainIDTxb.Enabled = true;
+
+
         }
 
         //非表示ボタンクリック

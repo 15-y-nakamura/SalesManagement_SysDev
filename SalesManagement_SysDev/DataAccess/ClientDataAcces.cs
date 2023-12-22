@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace SalesManagement_SysDev.DataAccess
 {
@@ -112,6 +113,32 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 return false;
             }
+        }
+
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckEmID()
+        //引　数   ：文字列
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：顧客名の存在チェック
+        //           顧客名が存在するときTrue
+        //           顧客名が存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckCIName(string ClName)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された顧客名に一致するデータが存在するか
+                flg = context.M_Clients.Any(x => x.ClName == ClName);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
         }
 
         ///////////////////////////////

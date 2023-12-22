@@ -104,15 +104,16 @@ namespace SalesManagement_SysDev
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
                 //PlaceHolderText();
-
-                //コントロールの初期設定
-                SetCtrlFormat();
-
-                //データグリッドビューの設定
-                SetFormKokyakukanriGridView();
-
             }
 
+            //コントロールの初期設定
+            SetCtrlFormat();
+
+            //データグリッドビューの設定
+            SetFormKokyakukanriGridView();
+
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
 
         }
 
@@ -231,6 +232,13 @@ namespace SalesManagement_SysDev
 
             KokyakuKanriFlagCmb.Items.Add("表示");
             KokyakuKanriFlagCmb.Items.Add("非表示");
+
+            PlaceHolderText();
+
+            KokyakuIDTxb.Enabled = true;
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
+
         }
 
         private void SetFormKokyakukanriGridView()
@@ -376,13 +384,13 @@ namespace SalesManagement_SysDev
 
         private bool InputRegistDataCheck()
         {
-            //顧客IDの入力チェック
+            /*顧客IDの入力チェック
             if (!InputCheck.CheckRegistClID(KokyakuIDTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistClID(KokyakuIDTxb.Text).Msg);
                 KokyakuIDTxb.Focus();
                 return false;
-            }
+            }*/
 
             //顧客名の入力チェック
             if (!InputCheck.CheckClname(KokyakuNameTxb.Text).flg)
@@ -431,6 +439,19 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
+            if(KokyakuIDTxb.Text != "")
+            {
+                if (DialogResult.OK == MessageDsp.DspMsg("M1035"))
+                {
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -457,7 +478,7 @@ namespace SalesManagement_SysDev
 
             return new M_Client
             {
-                ClID = int.Parse(KokyakuIDTxb.Text),
+                //ClID = int.Parse(KokyakuIDTxb.Text),
                 ClName = KokyakuNameTxb.Text,
                 SoID = SoID,
                 ClPhone = TelTxb.Text,
@@ -499,11 +520,13 @@ namespace SalesManagement_SysDev
         private bool InputUpdataDataCheck()
         {
             //顧客IDの入力チェック
-            if (!InputCheck.CheckClID(KokyakuIDTxb.Text).flg)
+            if (KokyakuIDTxb.Text != "")
             {
-                MessageDsp.DspMsg(InputCheck.CheckClID(KokyakuIDTxb.Text).Msg);
-                KokyakuIDTxb.Focus();
-                return false;
+                if (!InputCheck.CheckSearchClID(KokyakuIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClID(KokyakuIDTxb.Text).Msg);
+                    return false;
+                }
             }
 
             //顧客名の入力チェック
@@ -511,6 +534,13 @@ namespace SalesManagement_SysDev
             {
                 MessageDsp.DspMsg(InputCheck.CheckClname(KokyakuNameTxb.Text).Msg);
                 KokyakuNameTxb.Focus();
+                return false;
+            }
+
+            //営業所名の入力チェック
+            if (!InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).Msg);
                 return false;
             }
 
@@ -522,12 +552,6 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            //営業所名の入力チェック
-            if (!InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).Msg);
-                return false;
-            }
 
             //郵便番号の入力チェック
             if (!InputCheck.CheckClYubin(YubinTxb.Text).flg)
@@ -661,6 +685,10 @@ namespace SalesManagement_SysDev
                 YubinHaiiroLbl.ForeColor = SystemColors.WindowText;
             }
 
+            KokyakuIDTxb.Enabled = false;
+            UpdateBtn.Enabled = true;
+            HiddenBtn.Enabled = true;
+
         }
 
         private void TelTxb_Click(object sender, EventArgs e)
@@ -785,6 +813,30 @@ namespace SalesManagement_SysDev
                 }
             }
 
+            //郵便番号の入力チェック
+            if (YubinTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchClYubin(YubinTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClYubin(YubinTxb.Text).Msg);
+                    YubinTxb.Focus();
+                    return false;
+                }
+
+            }
+
+            //FAXの入力チェック
+            if (FaxTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchClFax(FaxTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClFax(FaxTxb.Text).Msg);
+                    FaxTxb.Focus();
+                    return false;
+                }
+
+            }
+
             return true;
         }
 
@@ -864,6 +916,11 @@ namespace SalesManagement_SysDev
             SetCtrlFormat();
 
             SetFormKokyakukanriGridView();
+
+            KokyakuIDTxb.Enabled = true;
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
+
         }
 
         private bool InputHiddenDataCheck()
@@ -916,8 +973,6 @@ namespace SalesManagement_SysDev
                 }
             }
         }
-
-
     }
 
 }
