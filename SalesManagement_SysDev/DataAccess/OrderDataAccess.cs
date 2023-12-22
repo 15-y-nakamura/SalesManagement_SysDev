@@ -12,6 +12,84 @@ namespace SalesManagement_SysDev.DataAccess
 {
     internal class OrderDataAccess
     {
+        public List<T_OrderDsp> SearchOrder(T_Order regOrder)
+        {
+            List<T_OrderDsp> ord = new List<T_OrderDsp>();
+
+            DateTime nulldate = DateTime.ParseExact("00010101", "yyyymmdd", null);
+
+            if (regOrder.OrID != 0)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             where t1.OrID == regOrder.OrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t1.EmID,
+                                 t1.ClID,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        ord.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmID = p.EmID,
+                            ClID = p.ClID,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            return ord;
+        }
+
+
+
+        public bool DeleteEmployee(T_Order regOrder)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var emp = context.T_Orders.Single(x => x.OrID == regOrder.OrID);
+
+                emp.OrFlag = regOrder.OrFlag;
+                emp.OrHidden = regOrder.OrHidden;
+
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         ///////////////////////////////
         //メソッド名：GetOrderData()
         //引　数   ：なし
@@ -28,17 +106,13 @@ namespace SalesManagement_SysDev.DataAccess
                 var tb = from t1 in context.T_Orders
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
-                         join t3 in context.M_Employees
-                         on t1.EmID equals t3.EmID
-                         join t4 in context.M_Clients
-                         on t1.ClID equals t4.ClID
 
                          select new
                          {
                              t1.OrID,
                              t2.SoName,
-                             t3.EmName,
-                             t4.ClName,
+                             t1.EmID,
+                             t1.ClID,
                              t1.ClCharge,
                              t1.OrDate,
                              t1.OrStateFlag,
@@ -52,8 +126,8 @@ namespace SalesManagement_SysDev.DataAccess
                     {
                         OrID = p.OrID,
                         SoName = p.SoName,
-                        EmName = p.EmName,
-                        ClName = p.ClName,
+                        EmID = p.EmID,
+                        ClID = p.ClID,
                         ClCharge = p.ClCharge,
                         OrDate = p.OrDate,
                         OrStateFlag =  p.OrStateFlag,

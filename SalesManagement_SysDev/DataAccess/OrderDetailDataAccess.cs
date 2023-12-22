@@ -13,6 +13,54 @@ namespace SalesManagement_SysDev.DataAccess
 {
     internal class OrderDetailDataAccess
     {
+        public List<T_OrderDetailDsp> SearchOrderDetail(T_OrderDetail regOrderDetail)
+        {
+            List<T_OrderDetailDsp> Jucde = new List<T_OrderDetailDsp>();
+
+            DateTime nulldate = DateTime.ParseExact("00010101", "yyyymmdd", null);
+
+            if (regOrderDetail.OrID != 0)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_OrderDetails
+                             join t2 in context.T_Orders
+                             on t1.OrID equals t2.OrID
+                             join t3 in context.M_Products
+                             on t1.PrID equals t3.PrID
+                             where t1.OrDetailID == regOrderDetail.OrDetailID
+
+                             select new
+                             {
+                                 t1.OrDetailID,
+                                 t2.OrID,
+                                 t3.PrID,
+                                 t1.OrQuantity,
+                                 t1.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrID = p.PrID,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return Jucde;
+        }
+
         ///////////////////////////////
         //メソッド名：GetOrderDetailData()
         //引　数   ：なし
@@ -20,58 +68,58 @@ namespace SalesManagement_SysDev.DataAccess
         //機　能   ：全受注詳細データの取得
         ///////////////////////////////
         public List<T_OrderDetailDsp> GetOrderDetailData()
-        {
-            List<T_OrderDetailDsp> Jucde = new List<T_OrderDetailDsp>();
-
-            try
             {
-                var context = new SalesManagement_DevContext();
-                var tb = from t1 in context.T_OrderDetails
-                         join t2 in context.T_Orders
-                         on t1.OrID equals t2.OrID
-                         join t3 in context.M_Products
-                         on t1.PrID equals t3.PrID
+                List<T_OrderDetailDsp> Jucde = new List<T_OrderDetailDsp>();
 
-                         select new
-                         {
-                             t1.OrDetailID,
-                             t2.OrID,
-                             t3.PrID,
-                             t1.OrQuantity,
-                             t1.OrTotalPrice
-                         };
-
-                foreach (var p in tb)
+                try
                 {
-                    Jucde.Add(new T_OrderDetailDsp()
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_OrderDetails
+                             join t2 in context.T_Orders
+                             on t1.OrID equals t2.OrID
+                             join t3 in context.M_Products
+                             on t1.PrID equals t3.PrID
+
+                             select new
+                             {
+                                 t1.OrDetailID,
+                                 t2.OrID,
+                                 t3.PrID,
+                                 t1.OrQuantity,
+                                 t1.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
                     {
-                        OrDetailID = p.OrDetailID,
-                        OrID = p.OrID,
-                        PrID = p.PrID,
-                        OrQuantity = p.OrQuantity,
-                        OrTotalPrice = p.OrTotalPrice
-                    });
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrID = p.PrID,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
                 }
-                context.Dispose();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return Jucde;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return Jucde;
-        }
 
 
-        ///////////////////////////////
-        //メソッド名：RegistJuchu()
-        //引　数   ：T_Order
-        //戻り値   ：True:異常なし、False:異常あり
-        //機　能   ：受注詳細情報の登録
-        //           登録が成功したときTrue
-        //           登録が失敗したときFalse
-        ///////////////////////////////
-        public bool RegistOrderDetail(T_OrderDetail regJuchuDetail)
+            ///////////////////////////////
+            //メソッド名：RegistJuchu()
+            //引　数   ：T_Order
+            //戻り値   ：True:異常なし、False:異常あり
+            //機　能   ：受注詳細情報の登録
+            //           登録が成功したときTrue
+            //           登録が失敗したときFalse
+            ///////////////////////////////
+            public bool RegistOrderDetail(T_OrderDetail regJuchuDetail)
         {
             try
             {
@@ -87,7 +135,6 @@ namespace SalesManagement_SysDev.DataAccess
                 return false;
             }
         }
-
 
 
         ///////////////////////////////

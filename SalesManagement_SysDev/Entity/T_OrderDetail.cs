@@ -38,9 +38,6 @@ namespace SalesManagement_SysDev
         [DisplayName("数量")]
         public int OrQuantity { get; set; }
 
-        [DisplayName("顧客担当者名")]
-        public string ClCharge { get; set; }
-
         [DisplayName("合計金額")]
         public decimal OrTotalPrice { get; set; }
     }
