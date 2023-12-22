@@ -1,5 +1,6 @@
 ﻿    using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -58,5 +59,42 @@ namespace SalesManagement_SysDev
         public virtual ICollection<T_Stock> T_Stock { get; set; }
         public virtual ICollection<T_SyukkoDetail> T_SyukkoDetail { get; set; }
         public virtual ICollection<T_WarehousingDetail> T_WarehousingDetail { get; set; }
+    }
+
+    //データグリッド表示用
+    class M_ProductDsp
+    {
+        [DisplayName("商品ID")]
+        public int PrID { get; set; }
+
+        [DisplayName("メーカーID")]
+        public int MaID { get; set; }
+
+        [DisplayName("商品名")]
+        public string PrName { get; set; }
+
+        [DisplayName("価格")]
+        public decimal Price { get; set; }
+
+        [DisplayName("安全在庫数")]
+        public int PrSafetyStock { get; set; }
+
+        [DisplayName("小分類ID")]
+        public int ScID { get; set; }
+
+        [DisplayName("型番")]
+        public string PrModelNumber { get; set; }
+
+        [DisplayName("色")]
+        public string PrColor { get; set; }
+
+        [DisplayName("発売日")]
+        public DateTime PrReleaseDate { get; set; }
+
+        [DisplayName("商品管理フラグ")]
+        public int PrFlag { get; set; }
+
+        [DisplayName("非表示理由")]
+        public string PrHidden { get; set; }
     }
 }

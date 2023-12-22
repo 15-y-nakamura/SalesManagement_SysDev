@@ -919,8 +919,6 @@ namespace SalesManagement_SysDev
                 }
             }
         }
-
-
     }
 
 }
