@@ -118,6 +118,8 @@ namespace SalesManagement_SysDev
 
             ShainKanriFlagCmb.Items.Add("表示");
             ShainKanriFlagCmb.Items.Add("非表示");
+
+            ShainIDTxb.Enabled = true;
         }
 
 
@@ -457,8 +459,9 @@ namespace SalesManagement_SysDev
                 TelHaiiroLbl.ForeColor = SystemColors.WindowText;
             }
 
+            ShainIDTxb.Enabled = false;
         }
-        
+
         //更新ボタンクリック
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
@@ -754,6 +757,9 @@ namespace SalesManagement_SysDev
             SetCtrlFormat();
 
             SetFormSyainKanriGridView();
+
+            ShainIDTxb.Enabled = true;
+
         }
 
         //非表示ボタンクリック

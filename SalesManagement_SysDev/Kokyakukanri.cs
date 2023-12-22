@@ -234,6 +234,8 @@ namespace SalesManagement_SysDev
 
             PlaceHolderText();
 
+            KokyakuIDTxb.Enabled = true;
+
         }
 
         private void SetFormKokyakukanriGridView()
@@ -434,6 +436,19 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
+            if(KokyakuIDTxb.Text != "")
+            {
+                if (DialogResult.OK == MessageDsp.DspMsg("M1035"))
+                {
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -502,11 +517,13 @@ namespace SalesManagement_SysDev
         private bool InputUpdataDataCheck()
         {
             //顧客IDの入力チェック
-            if (!InputCheck.CheckClID(KokyakuIDTxb.Text).flg)
+            if (KokyakuIDTxb.Text != "")
             {
-                MessageDsp.DspMsg(InputCheck.CheckClID(KokyakuIDTxb.Text).Msg);
-                KokyakuIDTxb.Focus();
-                return false;
+                if (!InputCheck.CheckSearchClID(KokyakuIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClID(KokyakuIDTxb.Text).Msg);
+                    return false;
+                }
             }
 
             //顧客名の入力チェック
@@ -665,6 +682,7 @@ namespace SalesManagement_SysDev
                 YubinHaiiroLbl.ForeColor = SystemColors.WindowText;
             }
 
+            KokyakuIDTxb.Enabled = false;
         }
 
         private void TelTxb_Click(object sender, EventArgs e)
@@ -789,6 +807,30 @@ namespace SalesManagement_SysDev
                 }
             }
 
+            //郵便番号の入力チェック
+            if (YubinTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchClYubin(YubinTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClYubin(YubinTxb.Text).Msg);
+                    YubinTxb.Focus();
+                    return false;
+                }
+
+            }
+
+            //FAXの入力チェック
+            if (FaxTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchClFax(FaxTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClFax(FaxTxb.Text).Msg);
+                    FaxTxb.Focus();
+                    return false;
+                }
+
+            }
+
             return true;
         }
 
@@ -868,6 +910,8 @@ namespace SalesManagement_SysDev
             SetCtrlFormat();
 
             SetFormKokyakukanriGridView();
+
+            KokyakuIDTxb.Enabled = true;
         }
 
         private bool InputHiddenDataCheck()
