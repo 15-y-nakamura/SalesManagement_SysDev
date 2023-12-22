@@ -19,11 +19,13 @@ namespace SalesManagement_SysDev
         ProductDataAccess ProductDA = new ProductDataAccess();
 
         //受注テーブルアクセスクラスのインスタンス化
-        JuchuDataAccess JuchuDA = new JuchuDataAccess();
+        OrderDataAccess JuchuDA = new OrderDataAccess();
 
         //商品テーブルアクセスクラスのインスタンス化
         ShohinDataAccess ShohinDA = new ShohinDataAccess();
 
+        //顧客テーブルアクセスクラスのインスタンス化
+        ClientDataAccess ClientDA = new ClientDataAccess();
 
         ///////////////////////////////
         //メソッド名：CheckZenkaku()
@@ -459,7 +461,54 @@ namespace SalesManagement_SysDev
             }
             return (true, text);
         }        
+        ///////////////////////////////
+        //メソッド名：CheckRegistOrID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の受注ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistOrID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M6003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M6001");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M6002");
+            }
+
+            return (true, text);
+        }
         
+
+        ///////////////////////////////
+        //メソッド名：CheckRegistOrID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の受注ID存在チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckOrID(string text)
+        {
+            if (JuchuDA.SonzaiCheckOrID(int.Parse(text)))
+            {
+                return (false, text);
+            }
+
+            return (true, text);
+        }
+
+
 
         public (bool flg,string Msg) CheckSearchEmname(string text)
         {
@@ -581,6 +630,38 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
+        //メソッド名：CheckRegistOrDetailID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の受注詳細ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistOrDetailID(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M6013");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M6014");
+            }
+
+            if (text == "")
+            {
+                return (false, "M6015");
+            }
+
+            return (true, text);
+        }
+
+
+        public (bool flg,string Msg) CheckSearchEmPhone(string text)
+        {
+            
+        }
         //メソッド名：CheckPrMaker()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
@@ -597,6 +678,7 @@ namespace SalesManagement_SysDev
 
             return (true, text);
         }
+        
                 
         ///////////////////////////////
         //メソッド名：CheckRegistClID()
@@ -737,7 +819,72 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
-        
+        ///////////////////////////////
+        //メソッド名：CheckEmname()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：社員名入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistOrderEmname(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M4007");
+            }
+
+            if (!CheckZenkaku(text))
+            {
+                return (false, "M4005");
+            }
+
+            if (!EmployeeDA.SonzaiCheckEmName(text))
+            {
+                return (false, "M6005");
+            }
+
+            if (text.Length > 50)
+            {
+                return (false, "M4006");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckRegistClID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の顧客名入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistOrderClName(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M1001");
+            }
+
+            if (!ClientDA.SonzaiCheckCIName(text))
+            {
+                return (false, "M6006");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M1002");
+            }
+
+            return (true, text);
+        }
+
         ///////////////////////////////
         //メソッド名：CheckRegistClTantoName()
         //引　数   ：文字列
@@ -778,17 +925,17 @@ namespace SalesManagement_SysDev
         {
             if (text == "")
             {
-                return (false, "M6018");
+                return (false, "M6019");
             }
 
             if (!CheckSuuti(text))
             {
-                return (false, "M6016");
+                return (false, "M6017");
             }
 
             if (text.Length > 4)
             {
-                return (false, "M6017");
+                return (false, "M6018");
             }
 
             return (true, text);
@@ -946,19 +1093,19 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         public (bool flg, string Msg) CheckRegistGokeiKingaku(string text)
         {
-            if (text == "")
-            {
-                return (false, "M6021");
-            }
-
             if (!CheckSuuti(text))
             {
-                return (false, "M6019");
+                return (false, "M6020");
             }
 
             if (text.Length > 10)
             {
-                return (false, "M6020");
+                return (false, "M6021");
+            }
+
+            if (text == "")
+            {
+                return (false, "M6022");
             }
 
             return (true, text);
@@ -985,25 +1132,25 @@ namespace SalesManagement_SysDev
         //メソッド名：CheckRegistShohinID()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
-        //機　能   ：登録する時の受注ID入力チェック
+        //機　能   ：登録する時の商品ID入力チェック
         //           問題がないときTrue、文字列
         //           問題があるときFalse、メッセージID
         ///////////////////////////////
-        public (bool flg, string Msg) CheckRegistShohinID(string text)
+        public (bool flg, string Msg) CheckRegistOrderShohinID(string text)
         {
-            if (text == "")
-            {
-                return (false, "M2003");
-            }
-
             if (!CheckSuuti(text))
             {
                 return (false, "M2001");
             }
 
-            if (ShohinDA.SonzaiCheckShohinID(int.Parse(text)))
+            if (text.Length > 10)
             {
-                return (false, "M2004");
+                return (false, "M2002");
+            }
+
+            if (text == "")
+            {
+                return (false, "M2003");
             }
 
             return (true, text);

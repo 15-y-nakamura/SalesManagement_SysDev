@@ -62,7 +62,8 @@
     <Compile Include="DataAccess\ProductDataAccess.cs" />
     <Compile Include="DataAccess\ClientDataAcces.cs" />
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
-    <Compile Include="DataAccess\JuchuDataAccess.cs" />
+    <Compile Include="DataAccess\OrderDataAccess.cs" />
+    <Compile Include="DataAccess\OrderDetailDataAccess.cs" />
     <Compile Include="DataAccess\PositionDataAccess.cs" />
     <Compile Include="DataAccess\SalesOfficeDataAccess.cs" />
     <Compile Include="DataAccess\LoginDataAccess.cs" />
