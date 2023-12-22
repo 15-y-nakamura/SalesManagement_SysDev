@@ -79,7 +79,7 @@ namespace SalesManagement_SysDev
 
             SetFormGridView();
 
-            SetFormSyainKanriGridView();
+            //SetFormSyainKanriGridView();
 
             UpdateBtn.Enabled = false;
             HiddenBtn.Enabled = false;
@@ -779,7 +779,7 @@ namespace SalesManagement_SysDev
 
             SetFormGridView();
 
-            SetFormSyainKanriGridView();
+            //SetFormSyainKanriGridView();
 
             ShainIDTxb.Enabled = true;
 
