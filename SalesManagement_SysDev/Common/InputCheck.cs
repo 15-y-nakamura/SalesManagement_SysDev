@@ -1074,15 +1074,16 @@ namespace SalesManagement_SysDev
                 return (false, "M1001");
             }
 
+            if (text.Length > 6)
+            {
+                return (false, "M2002");
+            }
+
             if (!EmployeeDA.SonzaiCheckClID(int.Parse(text)))
             {
                 return (false, "M1024");
             }
 
-            if (text.Length > 6)
-            {
-                return (false, "M2002");
-            }
 
             return (true, text);
         }

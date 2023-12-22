@@ -517,6 +517,13 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
+            //営業所名の入力チェック
+            if (!InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).Msg);
+                return false;
+            }
+
             //電話番号の入力チェック
             if (!InputCheck.CheckClPhone(TelTxb.Text).flg)
             {
@@ -525,12 +532,6 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            //営業所名の入力チェック
-            if (!InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).Msg);
-                return false;
-            }
 
             //郵便番号の入力チェック
             if (!InputCheck.CheckClYubin(YubinTxb.Text).flg)
