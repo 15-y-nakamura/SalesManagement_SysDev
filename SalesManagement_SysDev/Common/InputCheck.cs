@@ -1271,11 +1271,45 @@ namespace SalesManagement_SysDev
 
         public (bool flg, string Msg) CheckSearchClPhone(string text)
         {
+            if (!CheckSuutiHaihun(text))
+            {
+                return (false, "M1010");
+            }
+
             if (text.Length > 13)
             {
                 return (false, "M1011");
             }
             return (true, text);
         }
+
+        public (bool flg, string Msg) CheckSearchClYubin(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M1013");
+            }
+
+            if (text.Length > 7)
+            {
+                return (false, "M1014");
+            }
+            return (true, text);
+        }
+
+        public (bool flg, string Msg) CheckSearchClFax(string text)
+        {
+            if (!CheckSuutiHaihun(text))
+            {
+                return (false, "M1016");
+            }
+
+            if (text.Length > 13)
+            {
+                return (false, "M1017");
+            }
+            return (true, text);
+        }
+
     }
 }
