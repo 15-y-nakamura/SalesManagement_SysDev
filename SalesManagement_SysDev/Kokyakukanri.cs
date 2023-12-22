@@ -104,15 +104,16 @@ namespace SalesManagement_SysDev
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
                 //PlaceHolderText();
-
-                //コントロールの初期設定
-                SetCtrlFormat();
-
-                //データグリッドビューの設定
-                SetFormKokyakukanriGridView();
-
             }
 
+            //コントロールの初期設定
+            SetCtrlFormat();
+
+            //データグリッドビューの設定
+            SetFormKokyakukanriGridView();
+
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
 
         }
 
@@ -235,6 +236,8 @@ namespace SalesManagement_SysDev
             PlaceHolderText();
 
             KokyakuIDTxb.Enabled = true;
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
 
         }
 
@@ -683,6 +686,9 @@ namespace SalesManagement_SysDev
             }
 
             KokyakuIDTxb.Enabled = false;
+            UpdateBtn.Enabled = true;
+            HiddenBtn.Enabled = true;
+
         }
 
         private void TelTxb_Click(object sender, EventArgs e)
@@ -912,6 +918,9 @@ namespace SalesManagement_SysDev
             SetFormKokyakukanriGridView();
 
             KokyakuIDTxb.Enabled = true;
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
+
         }
 
         private bool InputHiddenDataCheck()

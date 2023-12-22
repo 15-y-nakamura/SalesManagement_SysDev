@@ -77,6 +77,10 @@ namespace SalesManagement_SysDev
 
             //データグリッドビューの設定
             SetFormSyainKanriGridView();
+
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
+
         }
 
         ///////////////////////////////
@@ -120,6 +124,9 @@ namespace SalesManagement_SysDev
             ShainKanriFlagCmb.Items.Add("非表示");
 
             ShainIDTxb.Enabled = true;
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
+
         }
 
 
@@ -460,6 +467,9 @@ namespace SalesManagement_SysDev
             }
 
             ShainIDTxb.Enabled = false;
+            UpdateBtn.Enabled = true;
+            HiddenBtn.Enabled = true;
+
         }
 
         //更新ボタンクリック
