@@ -33,6 +33,7 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopChumonPnl = new System.Windows.Forms.Panel();
+            this.ChumonDetailDgv = new System.Windows.Forms.DataGridView();
             this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
             this.ChumonnengappiDtm = new System.Windows.Forms.DateTimePicker();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
@@ -69,7 +70,10 @@
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
             this.TopIDHyojiLbl = new System.Windows.Forms.Label();
+            this.ChumonjyoutaiFlaguCmb = new System.Windows.Forms.ComboBox();
+            this.ChumonjyoutaiFlaguLbl = new System.Windows.Forms.Label();
             this.TopChumonPnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChumonDetailDgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChumonKanriDgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,6 +129,9 @@
             // TopChumonPnl
             // 
             this.TopChumonPnl.BackColor = System.Drawing.Color.LightGray;
+            this.TopChumonPnl.Controls.Add(this.ChumonjyoutaiFlaguCmb);
+            this.TopChumonPnl.Controls.Add(this.ChumonjyoutaiFlaguLbl);
+            this.TopChumonPnl.Controls.Add(this.ChumonDetailDgv);
             this.TopChumonPnl.Controls.Add(this.EigyoushoNameCmb);
             this.TopChumonPnl.Controls.Add(this.ChumonnengappiDtm);
             this.TopChumonPnl.Controls.Add(this.GamenKousinBtn);
@@ -154,6 +161,17 @@
             this.TopChumonPnl.Name = "TopChumonPnl";
             this.TopChumonPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopChumonPnl.TabIndex = 23;
+            // 
+            // ChumonDetailDgv
+            // 
+            this.ChumonDetailDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ChumonDetailDgv.Location = new System.Drawing.Point(1193, 492);
+            this.ChumonDetailDgv.Name = "ChumonDetailDgv";
+            this.ChumonDetailDgv.RowHeadersWidth = 62;
+            this.ChumonDetailDgv.RowTemplate.Height = 27;
+            this.ChumonDetailDgv.Size = new System.Drawing.Size(633, 256);
+            this.ChumonDetailDgv.TabIndex = 54;
+            this.ChumonDetailDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ChumonDetailDgv_CellClick);
             // 
             // EigyoushoNameCmb
             // 
@@ -186,20 +204,21 @@
             // ChumonKanriDgv
             // 
             this.ChumonKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ChumonKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.ChumonKanriDgv.Location = new System.Drawing.Point(14, 492);
             this.ChumonKanriDgv.Name = "ChumonKanriDgv";
             this.ChumonKanriDgv.RowHeadersWidth = 62;
             this.ChumonKanriDgv.RowTemplate.Height = 27;
-            this.ChumonKanriDgv.Size = new System.Drawing.Size(1633, 256);
+            this.ChumonKanriDgv.Size = new System.Drawing.Size(1173, 256);
             this.ChumonKanriDgv.TabIndex = 52;
             this.ChumonKanriDgv.TabStop = false;
+            this.ChumonKanriDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ChumonKanriDgv_CellClick);
             // 
             // ChumonKanriFlagCmb
             // 
             this.ChumonKanriFlagCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ChumonKanriFlagCmb.FormattingEnabled = true;
-            this.ChumonKanriFlagCmb.Location = new System.Drawing.Point(237, 288);
+            this.ChumonKanriFlagCmb.Location = new System.Drawing.Point(653, 288);
             this.ChumonKanriFlagCmb.Name = "ChumonKanriFlagCmb";
             this.ChumonKanriFlagCmb.Size = new System.Drawing.Size(201, 26);
             this.ChumonKanriFlagCmb.TabIndex = 8;
@@ -209,7 +228,7 @@
             this.HihyojiTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HihyojiTxb.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.HihyojiTxb.Location = new System.Drawing.Point(652, 288);
+            this.HihyojiTxb.Location = new System.Drawing.Point(1107, 288);
             this.HihyojiTxb.Multiline = true;
             this.HihyojiTxb.Name = "HihyojiTxb";
             this.HihyojiTxb.Size = new System.Drawing.Size(606, 90);
@@ -279,7 +298,7 @@
             // 
             this.HihyojiLbl.AutoSize = true;
             this.HihyojiLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.HihyojiLbl.Location = new System.Drawing.Point(485, 288);
+            this.HihyojiLbl.Location = new System.Drawing.Point(940, 288);
             this.HihyojiLbl.Name = "HihyojiLbl";
             this.HihyojiLbl.Size = new System.Drawing.Size(152, 28);
             this.HihyojiLbl.TabIndex = 40;
@@ -289,7 +308,7 @@
             // 
             this.ChumonKanriFlagLbl.AutoSize = true;
             this.ChumonKanriFlagLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ChumonKanriFlagLbl.Location = new System.Drawing.Point(37, 288);
+            this.ChumonKanriFlagLbl.Location = new System.Drawing.Point(453, 288);
             this.ChumonKanriFlagLbl.Name = "ChumonKanriFlagLbl";
             this.ChumonKanriFlagLbl.Size = new System.Drawing.Size(184, 28);
             this.ChumonKanriFlagLbl.TabIndex = 38;
@@ -378,7 +397,7 @@
             // ConfirmBtn
             // 
             this.ConfirmBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ConfirmBtn.Location = new System.Drawing.Point(1009, 20);
+            this.ConfirmBtn.Location = new System.Drawing.Point(1009, 26);
             this.ConfirmBtn.Name = "ConfirmBtn";
             this.ConfirmBtn.Size = new System.Drawing.Size(300, 90);
             this.ConfirmBtn.TabIndex = 29;
@@ -515,6 +534,26 @@
             this.TopIDHyojiLbl.TabIndex = 53;
             this.TopIDHyojiLbl.Text = "ID：";
             // 
+            // ChumonjyoutaiFlaguCmb
+            // 
+            this.ChumonjyoutaiFlaguCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChumonjyoutaiFlaguCmb.FormattingEnabled = true;
+            this.ChumonjyoutaiFlaguCmb.Location = new System.Drawing.Point(237, 288);
+            this.ChumonjyoutaiFlaguCmb.Name = "ChumonjyoutaiFlaguCmb";
+            this.ChumonjyoutaiFlaguCmb.Size = new System.Drawing.Size(201, 26);
+            this.ChumonjyoutaiFlaguCmb.TabIndex = 55;
+            // 
+            // ChumonjyoutaiFlaguLbl
+            // 
+            this.ChumonjyoutaiFlaguLbl.AutoSize = true;
+            this.ChumonjyoutaiFlaguLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ChumonjyoutaiFlaguLbl.Location = new System.Drawing.Point(37, 288);
+            this.ChumonjyoutaiFlaguLbl.Name = "ChumonjyoutaiFlaguLbl";
+            this.ChumonjyoutaiFlaguLbl.Size = new System.Drawing.Size(184, 28);
+            this.ChumonjyoutaiFlaguLbl.TabIndex = 56;
+            this.ChumonjyoutaiFlaguLbl.Text = "注文状態フラグ";
+            // 
             // ChumonKanri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -543,6 +582,7 @@
             this.Load += new System.EventHandler(this.ChumonKanri_Load);
             this.TopChumonPnl.ResumeLayout(false);
             this.TopChumonPnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChumonDetailDgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChumonKanriDgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -592,5 +632,8 @@
         private System.Windows.Forms.Label TopNameLbl;
         private System.Windows.Forms.Label TopNameHyojiLbl;
         private System.Windows.Forms.Label TopIDHyojiLbl;
+        private System.Windows.Forms.DataGridView ChumonDetailDgv;
+        private System.Windows.Forms.ComboBox ChumonjyoutaiFlaguCmb;
+        private System.Windows.Forms.Label ChumonjyoutaiFlaguLbl;
     }
 }

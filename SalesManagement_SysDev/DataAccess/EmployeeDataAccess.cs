@@ -282,7 +282,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.EmName.Contains(regEmployee.EmName) &&
                                    (t1.EmHidden.Contains(regEmployee.EmHidden) ||
                                    t1.EmHidden == null) &&
-                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                                   t1.EmPhone.Contains(regEmployee.EmPhone) &&
+                                   t1.EmFlag == 0
                              select new
                              {
                                  t1.EmID,
@@ -333,7 +334,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    (t1.EmHidden.Contains(regEmployee.EmHidden) ||
                                    t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone) &&
-                                   t1.SoID == (regEmployee.SoID)
+                                   t1.SoID == (regEmployee.SoID) &&
+                                   t1.EmFlag == 0
                              select new
                              {
                                  t1.EmID,
@@ -435,7 +437,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.EmHiredate == regEmployee.EmHiredate &&
                                    (t1.EmHidden.Contains(regEmployee.EmHidden) || 
                                    t1.EmHidden == null) &&
-                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                                   t1.EmPhone.Contains(regEmployee.EmPhone) &&
+                                   t1.EmFlag == 0
                              select new
                              {
                                  t1.EmID,
@@ -487,7 +490,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    (t1.EmHidden.Contains(regEmployee.EmHidden) || 
                                    t1.EmHidden == null) &&
                                    t1.EmHiredate == regEmployee.EmHiredate &&
-                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                                   t1.EmPhone.Contains(regEmployee.EmPhone) &&
+                                   t1.EmFlag == 0
                              select new
                              {
                                  t1.EmID,

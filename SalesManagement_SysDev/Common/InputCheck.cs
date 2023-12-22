@@ -276,10 +276,6 @@ namespace SalesManagement_SysDev
                 return (false, "M4015");
             }
 
-            if(text.Length < 12)
-            {
-                return (false, "M4030");
-            }
             return (true, text);
         }
 
@@ -390,10 +386,10 @@ namespace SalesManagement_SysDev
                 return (false, "M4001");
             }
 
-            if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
-            {
-                return (false, "M4022");
-            }
+            //if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
+            //{
+            //    return (false, "M4022");
+            //}
 
             if (text.Length > 6)
             {
