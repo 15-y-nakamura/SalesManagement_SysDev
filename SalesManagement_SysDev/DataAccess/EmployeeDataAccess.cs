@@ -5,6 +5,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace SalesManagement_SysDev.DataAccess
@@ -791,6 +792,65 @@ namespace SalesManagement_SysDev.DataAccess
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return flg;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckEmID()
+        //引　数   ：文字列
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員名の存在チェック
+        //           社員名が存在するときTrue
+        //           社員名が存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckEmName(string EmName)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された社員名に一致するデータが存在するか
+                flg = context.M_Employees.Any(x => x.EmName == EmName);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetGetEmID()
+        //引　数   ：なし
+        //戻り値   ：取得した社員ID
+        //機　能   ：社員ID取得
+        ///////////////////////////////
+        public int GetEmID(string emname)
+        {
+            int emid = 0;
+
+            var context = new SalesManagement_DevContext();
+            try
+            {
+                var tb = from t1 in context.M_Employees
+                         where t1.EmName == emname
+                         select new
+                         {
+                             t1.EmID
+                         };
+
+                foreach (var p in tb)
+                {
+                    emid = p.EmID;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return emid;
         }
     }
 }
