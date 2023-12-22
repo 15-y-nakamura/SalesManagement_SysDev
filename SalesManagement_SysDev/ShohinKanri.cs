@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace SalesManagement_SysDev
 {
@@ -40,57 +41,8 @@ namespace SalesManagement_SysDev
             InitializeComponent();
         }
 
-        private void TopHonshaBtn_Click(object sender, EventArgs e)
-        {
-            TopHonshaPage.EmID = EmID;
-            TopHonshaPage.PoID = PoID;
-            TopHonshaPage.Logindate = Logindate;
-
-            //現画面を非表示
-            this.Visible = false;
-
-            //TopHonshaPageを表示
-            TopHonshaPage f2 = new TopHonshaPage();
-            f2.Show();
-        }
-
-        private void TopEigyoBtn_Click(object sender, EventArgs e)
-        {
-            TopEigyoPage.EmID = EmID;
-            TopEigyoPage.PoID = PoID;
-            TopEigyoPage.Logindate = Logindate;
-
-            //現画面を非表示
-            this.Visible = false;
-
-            //TopEigyoPageを表示
-            TopEigyoPage f2 = new TopEigyoPage();
-            f2.Show();
-        }
-
-        private void TopButsuryuBtn_Click(object sender, EventArgs e)
-        {
-            TopButsuryuPage.EmID = EmID;
-            TopButsuryuPage.PoID = PoID;
-            TopButsuryuPage.Logindate = Logindate;
-
-            //現画面を非表示
-            this.Visible = false;
-
-            //TopButsuryuPageを表示
-            TopButsuryuPage f2 = new TopButsuryuPage();
-            f2.Show();
-        }
-
         private void ShohinKanri_Load(object sender, EventArgs e)
         {
-
-            //コントロールの初期設定
-            SetCtrlFormat();
-
-            //データグリッドビューの設定
-            SetFormShohinKanriGridView();
-
             string[] TopData = new string[4];
             TopData = empDataAccess.GetTopData(EmID);
 
@@ -134,11 +86,16 @@ namespace SalesManagement_SysDev
                 TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
             }
+
+            //コントロールの初期設定
+            SetCtrlFormat();
+
+            //データグリッドビューの設定
+            SetFormShohinKanriGridView();
         }
 
-        ///////////////////////////////
+                ///////////////////////////////
         //メソッド名：SetCtrlFormat()
         //引　数   ：なし
         //戻り値   ：なし
@@ -157,7 +114,7 @@ namespace SalesManagement_SysDev
             ShoubunruiCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             KatabanTxb.Text = "";
             IroTxb.Text = "";
-            SellDtm.Text = "";
+            SellDtm.Checked = false;
             HihyojiTxb.Text = "";
             ShohinKanriCmb.Items.Clear();
             ShohinKanriCmb.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -168,7 +125,7 @@ namespace SalesManagement_SysDev
             //小分類をコンボボックスに追加
             foreach (string Scname in ScName.Reverse())
             {
-                ShoubunruiCmb.Items.Add(ScName);
+               ShoubunruiCmb.Items.Add(ScName);
             }
 
             //大分類名を取得
@@ -184,6 +141,52 @@ namespace SalesManagement_SysDev
             ShohinKanriCmb.Items.Add("非表示");
         }
 
+        //本社ボタンクリック
+        private void TopHonshaBtn_Click(object sender, EventArgs e)
+        {
+            TopHonshaPage.EmID = EmID;
+            TopHonshaPage.PoID = PoID;
+            TopHonshaPage.Logindate = Logindate;
+
+            //現画面を非表示
+            this.Visible = false;
+
+            //TopHonshaPageを表示
+            TopHonshaPage f2 = new TopHonshaPage();
+            f2.Show();
+        }
+
+        //営業ボタンクリック
+        private void TopEigyoBtn_Click(object sender, EventArgs e)
+        {
+            TopEigyoPage.EmID = EmID;
+            TopEigyoPage.PoID = PoID;
+            TopEigyoPage.Logindate = Logindate;
+
+            //現画面を非表示
+            this.Visible = false;
+
+            //TopEigyoPageを表示
+            TopEigyoPage f2 = new TopEigyoPage();
+            f2.Show();
+        }
+
+        //物流ボタンクリック
+        private void TopButsuryuBtn_Click(object sender, EventArgs e)
+        {
+            TopButsuryuPage.EmID = EmID;
+            TopButsuryuPage.PoID = PoID;
+            TopButsuryuPage.Logindate = Logindate;
+
+            //現画面を非表示
+            this.Visible = false;
+
+            //TopButsuryuPageを表示
+            TopButsuryuPage f2 = new TopButsuryuPage();
+            f2.Show();
+        }
+
+        //ログアウトボタンクリック
         private void TopLogoutBtn_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageDsp.DspMsg("M0004");
@@ -236,10 +239,17 @@ namespace SalesManagement_SysDev
             Product = ProductDA.GetProductData();
 
             // DataGridViewに表示するデータを指定
-            SetDataGridView();
+            SetDataGridView(Product);
         }
 
-        private void SetDataGridView()
+
+        ///////////////////////////////
+        //メソッド名：SetDataGridView()
+        //引　数   ：M_ProdactDsp
+        //戻り値   ：なし
+        //機　能   ：データグリッドビューにデータを反映する
+        ///////////////////////////////
+        private void SetDataGridView(List<M_ProductDsp> Product)
         {
             ShohinKanriDgv.DataSource = Product.ToList();
 
@@ -267,6 +277,7 @@ namespace SalesManagement_SysDev
             //ミス
         }
 
+        //登録ボタンクリック
         private void RegistBtn_Click(object sender, EventArgs e)
         {
             //入力チェック
@@ -282,31 +293,19 @@ namespace SalesManagement_SysDev
             RegistProduct(prodata);
         }
 
-        private void UpdateBtn_Click(object sender, EventArgs e)
-        {
-            if (!InputUpdataDataCheck())
-            {
-                return;
-            }
-
-            var updatedata = SetProductUpdateData();
-
-            UpdateProduct(updatedata);
-        }
-
         ///////////////////////////////
         //メソッド名：InputRegistDataCheck()
         //引　数   ：なし
         //戻り値   ：なし
         //機　能   ：商品登録時の入力チェック項目の妥当性をチェックする
         ///////////////////////////////
-        
+
         private bool InputRegistDataCheck()
         {
             //商品IDの入力チェック
             if (!InputCheck.CheckRegistPrID(ShohinIDTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckPrID(ShohinIDTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckRegistPrID(ShohinIDTxb.Text).Msg);
                 return false;
             }
 
@@ -337,7 +336,7 @@ namespace SalesManagement_SysDev
                 MessageDsp.DspMsg(InputCheck.CheckPrSafetyStock(AnzenTxb.Text).Msg);
                 return false;
             }
-            
+
             //小分類IDの入力チェック
             if (!InputCheck.CheckScID(ShoubunruiCmb.Text).flg)
             {
@@ -383,7 +382,8 @@ namespace SalesManagement_SysDev
             if (ShohinKanriCmb.Text == "非表示")
             {
                 PrFlg = 2;
-            } else
+            }
+            else
             {
                 PrFlg = 0;
             }
@@ -423,11 +423,25 @@ namespace SalesManagement_SysDev
 
                     //データグリッドビューの設定
                     SetFormShohinKanriGridView();
-                } else
+                }
+                else
                 {
                     MessageDsp.DspMsg("M2027");
                 }
             }
+        }
+
+
+        private void UpdateBtn_Click(object sender, EventArgs e)
+        {
+            if (!InputUpdataDataCheck())
+            {
+                return;
+            }
+
+            var updatedata = SetProductUpdateData();
+
+            UpdateProduct(updatedata);
         }
 
         private bool InputUpdataDataCheck()
@@ -536,6 +550,7 @@ namespace SalesManagement_SysDev
                 PrHidden = HihyojiTxb.Text
             };
         }
+
         private void UpdateProduct(M_Product pro)
          {
             if (DialogResult.OK == MessageDsp.DspMsg("M2030"))
@@ -554,6 +569,213 @@ namespace SalesManagement_SysDev
                     MessageDsp.DspMsg("M2032");
                 }
             }
+        }
+
+        //非表示ボタンクリック
+        private void HiddenBtn_Click(object sender, EventArgs e)
+        {
+            //入力チェック
+            if (!InputHiddenDataCheck())
+            {
+                return;
+            }
+
+            //形式化
+            var pro = SetProdactHideenData();
+
+            //更新
+            HiddenEmployee(pro);
+        }
+
+        ///////////////////////////////
+        //メソッド名：InputHiddenDataCheck()
+        //引　数   ：なし
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員非表示時の入力チェック項目の妥当性をチェックする
+        ///////////////////////////////
+        private bool InputHiddenDataCheck()
+        {
+            //商品IDの入力チェック
+            if (!InputCheck.CheckPrID(ShohinIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckPrID(ShohinIDTxb.Text).Msg);
+                return false;
+            }
+
+            //非表示理由チェック
+            if (!InputCheck.CheckHidden(HihyojiTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckHidden(HihyojiTxb.Text).Msg); ;
+                return false;
+            }
+            return true;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetProdactHideenData()
+        //引　数   ：なし
+        //戻り値   ：M_Employee
+        //機　能   ：社員情報を形式化する
+        ///////////////////////////////
+        private M_Product SetProdactHideenData()
+        {
+            M_Product M_Pro = new M_Product()
+            {
+                PrID = int.Parse(ShohinIDTxb.Text),
+                PrFlag = 2,
+                PrHidden = HihyojiTxb.Text
+            };
+
+            return M_Pro;
+        }
+
+        ///////////////////////////////
+        //メソッド名：HiddenEmployee()
+        //引　数   ：M_Prodact
+        //戻り値   ：なし
+        //機　能   ：形式化した社員情報を非表示設定に更新する
+        ///////////////////////////////
+        private void HiddenEmployee(M_Product pro)
+        {
+            if (DialogResult.OK == MessageDsp.DspMsg("M2034"))
+            {                
+                if (ProductDA.DeleteProduct(pro))
+                {
+                    MessageDsp.DspMsg("M2035");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormShohinKanriGridView();
+                }
+                else
+                {
+                    MessageDsp.DspMsg("M2036");
+                }
+            }
+        }
+
+        private void GamenKousinBtn_Click(object sender, EventArgs e)
+        {
+            SetCtrlFormat();
+
+            SetFormShohinKanriGridView();
+        }
+
+        //検索ボタンクリック
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            if (!InputSearchDataCheck())
+            {
+                return;
+            }
+
+            var searchdata = SetEmployeeSearchData();
+
+            SearchEmployee(searchdata);
+        }
+
+        ///////////////////////////////
+        //メソッド名：InputSearchDataCheck()
+        //引　数   ：なし
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員検索時の入力チェック項目の妥当性をチェックする
+        ///////////////////////////////
+        private bool InputSearchDataCheck()
+        {
+            //商品IDの入力チェック
+            if (ShohinIDTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchPrID(ShohinIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchPrID(ShohinIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //商品名の入力チェック
+            if (ShohinNameTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchPrName(ShohinNameTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchPrName(ShohinNameTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SetEmployeeSearchData()
+        //引　数   ：なし
+        //戻り値   ：M_Product
+        //機　能   ：社員情報を形式化する
+        ///////////////////////////////
+        private M_Product SetEmployeeSearchData()
+        {
+
+            int soid = 0;
+            int PrFlg = -1;
+            DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
+
+            if (ShoubunruiCmb.Text != "")
+            {
+                soid = ProductDA.GetScID(ShoubunruiCmb.Text);
+            }
+
+
+            if (ShohinKanriCmb.Text != "")
+            {
+                if (ShohinKanriCmb.Text == "非表示")
+                {
+                    PrFlg = 2;
+                }
+                else
+                {
+                    PrFlg = 0;
+                }
+            }
+
+            if (SellDtm.Checked)
+            {
+                date = SellDtm.Value.Date;
+            }
+
+            M_Product M_Pro = new M_Product()
+            {
+                PrID = int.Parse(ShohinIDTxb.Text),
+                MaID = int.Parse(MakerIDTxb.Text),
+                PrName = ShohinNameTxb.Text,
+                Price = int.Parse(MakerIDTxb.Text),
+                PrSafetyStock = int.Parse(AnzenTxb.Text),
+                ScID = soid,
+                PrModelNumber = KatabanTxb.Text,
+                PrColor = IroTxb.Text,
+                PrReleaseDate = date,
+                PrFlag = PrFlg,
+                PrHidden = HihyojiTxb.Text
+            };
+
+            return M_Pro;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SearchEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：なし
+        //機　能   ：形式化した社員情報を検索、表示する
+        ///////////////////////////////
+        private void SearchEmployee(M_Product searchpro)
+        {
+            var pro = ProductDA.SearchProduct(searchpro);
+
+            if (pro.Count == 0)
+            {
+                MessageDsp.DspMsg("M4018");
+            }
+            SetDataGridView(pro);
         }
     }
 }
