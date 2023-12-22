@@ -33,10 +33,9 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopShainPnl = new System.Windows.Forms.Panel();
-            this.JoinDateDtm = new System.Windows.Forms.DateTimePicker();
             this.TelHaiiroLbl = new System.Windows.Forms.Label();
-            this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
             this.JoinDateDtm = new System.Windows.Forms.DateTimePicker();
+            this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.ShainKanriDgv = new System.Windows.Forms.DataGridView();
             this.TelTxb = new System.Windows.Forms.TextBox();
@@ -152,14 +151,6 @@
             this.TopShainPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopShainPnl.TabIndex = 23;
             // 
-            // JoinDateDtm
-            // 
-            this.JoinDateDtm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.JoinDateDtm.Location = new System.Drawing.Point(642, 219);
-            this.JoinDateDtm.Name = "JoinDateDtm";
-            this.JoinDateDtm.ShowCheckBox = true;
-            this.JoinDateDtm.Size = new System.Drawing.Size(200, 25);
-            this.JoinDateDtm.TabIndex = 57;
             // TelHaiiroLbl
             // 
             this.TelHaiiroLbl.AutoSize = true;
@@ -170,14 +161,6 @@
             this.TelHaiiroLbl.Click += new System.EventHandler(this.TelHaiiroLbl_Click);
             this.TelHaiiroLbl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TelHaiiroLbl_MouseMove);
             // 
-            // EigyoushoNameCmb
-            // 
-            this.EigyoushoNameCmb.FormattingEnabled = true;
-            this.EigyoushoNameCmb.Location = new System.Drawing.Point(1050, 149);
-            this.EigyoushoNameCmb.Name = "EigyoushoNameCmb";
-            this.EigyoushoNameCmb.Size = new System.Drawing.Size(201, 26);
-            this.EigyoushoNameCmb.TabIndex = 2;
-            // 
             // JoinDateDtm
             // 
             this.JoinDateDtm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -186,6 +169,15 @@
             this.JoinDateDtm.ShowCheckBox = true;
             this.JoinDateDtm.Size = new System.Drawing.Size(200, 25);
             this.JoinDateDtm.TabIndex = 5;
+            this.JoinDateDtm.Value = new System.DateTime(2023, 12, 19, 16, 25, 30, 0);
+            // 
+            // EigyoushoNameCmb
+            // 
+            this.EigyoushoNameCmb.FormattingEnabled = true;
+            this.EigyoushoNameCmb.Location = new System.Drawing.Point(1050, 149);
+            this.EigyoushoNameCmb.Name = "EigyoushoNameCmb";
+            this.EigyoushoNameCmb.Size = new System.Drawing.Size(201, 26);
+            this.EigyoushoNameCmb.TabIndex = 2;
             // 
             // GamenKousinBtn
             // 

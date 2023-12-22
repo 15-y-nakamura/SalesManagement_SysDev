@@ -20,7 +20,7 @@ namespace SalesManagement_SysDev
 
         internal static int EmID = 0;
         internal static int PoID = 0;
-
+        internal static string Logindate = "";
 
         public TopButsuryuPage()
         {
@@ -34,6 +34,7 @@ namespace SalesManagement_SysDev
         {
             ShohinKanri.EmID = EmID;
             ShohinKanri.PoID = PoID;
+            ShohinKanri.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -47,6 +48,7 @@ namespace SalesManagement_SysDev
         {
             ZaikoKanri.EmID = EmID;
             ZaikoKanri.PoID = PoID;
+            ZaikoKanri.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -60,6 +62,7 @@ namespace SalesManagement_SysDev
         {
             TopEigyoPage.EmID = EmID;
             TopEigyoPage.PoID = PoID;
+            TopEigyoPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -83,6 +86,7 @@ namespace SalesManagement_SysDev
         {
             TopHonshaPage.EmID = EmID;
             TopHonshaPage.PoID = PoID;
+            TopHonshaPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -99,12 +103,13 @@ namespace SalesManagement_SysDev
             TopData = empDataAccess.GetTopData(EmID);
 
             string emID = EmID.ToString();
+            string logindate = Logindate;
 
             TopIDLbl.Text = emID;
             TopNameLbl.Text = TopData[0];
             TopYakushokuLbl.Text = TopData[1];
             TopEigyoshoLbl.Text = TopData[2];
-            TopJikanLbl.Text = TopData[3];
+            TopJikanLbl.Text = logindate;
 
             if (PoID == 3)
             {
@@ -169,6 +174,7 @@ namespace SalesManagement_SysDev
         {
             NyukoKanri.EmID = EmID;
             NyukoKanri.PoID = PoID;
+            NyukoKanri.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -182,6 +188,7 @@ namespace SalesManagement_SysDev
         {
             HachuKanri.EmID = EmID;
             HachuKanri.PoID = PoID;
+            HachuKanri.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -195,6 +202,7 @@ namespace SalesManagement_SysDev
         {
             ShukkoKanri.EmID = EmID;
             ShukkoKanri.PoID = PoID;
+            ShukkaKanri.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;

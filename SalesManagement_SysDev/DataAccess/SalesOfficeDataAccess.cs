@@ -18,6 +18,7 @@ namespace SalesManagement_SysDev.DataAccess
         public IEnumerable<string> GetSoName()
         {
             var context = new SalesManagement_DevContext();
+
             try
             {
                 var pSoName = context.M_SalesOffices.Select(x => x.SoName);

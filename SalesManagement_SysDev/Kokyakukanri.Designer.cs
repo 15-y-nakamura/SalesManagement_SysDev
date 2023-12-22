@@ -217,6 +217,18 @@
             this.GamenKousinBtn.TabIndex = 54;
             this.GamenKousinBtn.TabStop = false;
             this.GamenKousinBtn.UseVisualStyleBackColor = true;
+            this.GamenKousinBtn.Click += new System.EventHandler(this.GamenKousinBtn_Click);
+            // 
+            // GamenKousinBtn
+            // 
+            this.GamenKousinBtn.BackgroundImage = global::SalesManagement_SysDev.Properties.Resources.reload;
+            this.GamenKousinBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.GamenKousinBtn.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.GamenKousinBtn.Location = new System.Drawing.Point(1710, 26);
+            this.GamenKousinBtn.Name = "GamenKousinBtn";
+            this.GamenKousinBtn.Size = new System.Drawing.Size(100, 90);
+            this.GamenKousinBtn.TabIndex = 54;
+            this.GamenKousinBtn.UseVisualStyleBackColor = true;
             // 
             // KokyakuKanriDgv
             // 
@@ -274,6 +286,7 @@
             this.HiddenBtn.TabStop = false;
             this.HiddenBtn.Text = "非表示";
             this.HiddenBtn.UseVisualStyleBackColor = true;
+            this.HiddenBtn.Click += new System.EventHandler(this.HiddenBtn_Click);
             // 
             // FaxTxb
             // 
@@ -309,6 +322,7 @@
             this.SearchBtn.TabStop = false;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // JushoTxb
             // 

@@ -39,9 +39,6 @@ namespace SalesManagement_SysDev
         //データグリッドビュー用の顧客データ
         private static List<M_ClientDsp> Client;
 
-        M_Client client = new M_Client();
-
-
 
         MessageDsp messageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
@@ -49,6 +46,7 @@ namespace SalesManagement_SysDev
 
         internal static int EmID = 0;
         internal static int PoID = 0;
+        internal static string Logindate = "";
 
         public Kokyakukanri()
         {
@@ -65,12 +63,13 @@ namespace SalesManagement_SysDev
             TopData = empDataAccess.GetTopData(EmID);
 
             string emID = EmID.ToString();
+            string logindate = Logindate;
 
             TopIDLbl.Text = emID;
             TopNameLbl.Text = TopData[0];
             TopYakushokuLbl.Text = TopData[1];
             TopEigyoshoLbl.Text = TopData[2];
-            TopJikanLbl.Text = TopData[3];
+            TopJikanLbl.Text = logindate;
 
             if (PoID == 2)
             {
@@ -232,6 +231,9 @@ namespace SalesManagement_SysDev
 
             KokyakuKanriFlagCmb.Items.Add("表示");
             KokyakuKanriFlagCmb.Items.Add("非表示");
+
+            PlaceHolderText();
+
         }
 
         private void SetFormKokyakukanriGridView()
@@ -254,10 +256,10 @@ namespace SalesManagement_SysDev
             Client = ClientDA.GetClientData();
 
             // DataGridViewに表示するデータを指定
-            SetDataGridView();
+            SetDataGridView(Client);
         }
 
-        private void SetDataGridView()
+        private void SetDataGridView(List<M_ClientDsp> Client)
         {
             KokyakuKanriDgv.DataSource = Client.ToList();
 
@@ -266,7 +268,7 @@ namespace SalesManagement_SysDev
 
 
             //行の高さ設定
-            KokyakuKanriDgv.RowTemplate.Height = 40;
+            //KokyakuKanriDgv.RowTemplate.Height = 40;
 
             //各列の文字位置の指定
             KokyakuKanriDgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -288,6 +290,7 @@ namespace SalesManagement_SysDev
         {
             TopHonshaPage.EmID = EmID;
             TopHonshaPage.PoID = PoID;
+            TopHonshaPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -301,6 +304,7 @@ namespace SalesManagement_SysDev
         {
             TopEigyoPage.EmID = EmID;
             TopEigyoPage.PoID = PoID;
+            TopEigyoPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -314,6 +318,7 @@ namespace SalesManagement_SysDev
         {
             TopButsuryuPage.EmID = EmID;
             TopButsuryuPage.PoID = PoID;
+            TopButsuryuPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -374,13 +379,13 @@ namespace SalesManagement_SysDev
 
         private bool InputRegistDataCheck()
         {
-            //顧客IDの入力チェック
+            /*顧客IDの入力チェック
             if (!InputCheck.CheckRegistClID(KokyakuIDTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistClID(KokyakuIDTxb.Text).Msg);
                 KokyakuIDTxb.Focus();
                 return false;
-            }
+            }*/
 
             //顧客名の入力チェック
             if (!InputCheck.CheckClname(KokyakuNameTxb.Text).flg)
@@ -455,7 +460,7 @@ namespace SalesManagement_SysDev
 
             return new M_Client
             {
-                ClID = int.Parse(KokyakuIDTxb.Text),
+                //ClID = int.Parse(KokyakuIDTxb.Text),
                 ClName = KokyakuNameTxb.Text,
                 SoID = SoID,
                 ClPhone = TelTxb.Text,
@@ -512,6 +517,13 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
+            //営業所名の入力チェック
+            if (!InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).Msg);
+                return false;
+            }
+
             //電話番号の入力チェック
             if (!InputCheck.CheckClPhone(TelTxb.Text).flg)
             {
@@ -520,12 +532,6 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            //営業所名の入力チェック
-            if (!InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoshoNameCmb.Text).Msg);
-                return false;
-            }
 
             //郵便番号の入力チェック
             if (!InputCheck.CheckClYubin(YubinTxb.Text).flg)
@@ -738,5 +744,182 @@ namespace SalesManagement_SysDev
             YubinHaiiroLbl.Cursor = Cursors.IBeam;
         }
 
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            if (!InputSearchDataCheck())
+            {
+                return;
+            }
+
+            var searchdata = SetClientSearchData();
+
+            SearchClient(searchdata);
+
+        }
+
+        private bool InputSearchDataCheck()
+        {
+            //顧客IDの入力チェック
+            if (KokyakuIDTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchClID(KokyakuIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClID(KokyakuIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //顧客名の入力チェック
+            if (KokyakuNameTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchClname(KokyakuNameTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClname(KokyakuNameTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //電話番号の入力チェック
+            if (TelTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchClPhone(TelTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClPhone(TelTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private M_Client SetClientSearchData()
+        {
+            int clid = 0;
+            int soid = 0;
+            int clflg = -1;
+
+            if (KokyakuIDTxb.Text != "")
+            {
+                clid = int.Parse(KokyakuIDTxb.Text);
+            }
+
+
+            if (EigyoshoNameCmb.Text != "")
+            {
+                soid = SalesOfficeDA.GetSoID(EigyoshoNameCmb.Text);
+            }
+
+
+            if (KokyakuKanriFlagCmb.Text != "")
+            {
+                if (KokyakuKanriFlagCmb.Text == "非表示")
+                {
+                    clflg = 2;
+                }
+                else
+                {
+                    clflg = 0;
+                }
+            }
+
+
+            M_Client M_Cli = new M_Client()
+            {
+                ClID = clid,
+                ClName = KokyakuNameTxb.Text,
+                SoID = soid,
+                ClPhone = TelTxb.Text,
+                ClPostal = YubinTxb.Text,
+                ClAddress = JushoTxb.Text,
+                ClFAX = FaxTxb.Text,
+                ClFlag = clflg,
+                ClHidden = HihyojiTxb.Text
+            };
+
+            return M_Cli;
+        }
+
+        private void SearchClient(M_Client searchcli)
+        {
+            var cli = ClientDA.SearchClient(searchcli);
+
+            SetDataGridView(cli);
+        }
+
+        //非表示ボタンクリック
+        private void HiddenBtn_Click(object sender, EventArgs e)
+        {
+            //入力チェック
+            if (!InputHiddenDataCheck())
+            {
+                return;
+            }
+
+            //形式化
+            var cli = SetClientHideenData();
+
+            //更新
+            HiddenClient(cli);
+
+        }
+
+        private void GamenKousinBtn_Click(object sender, EventArgs e)
+        {
+            SetCtrlFormat();
+
+            SetFormKokyakukanriGridView();
+        }
+
+        private bool InputHiddenDataCheck()
+        {
+            //顧客IDチェック
+            if (!InputCheck.CheckClID(KokyakuIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckClID(KokyakuIDTxb.Text).Msg);
+                return false;
+            }
+
+            //非表示理由チェック
+            if (!InputCheck.CheckHidden(HihyojiTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckHidden(HihyojiTxb.Text).Msg); ;
+                return false;
+            }
+            return true;
+        }
+
+        private M_Client SetClientHideenData()
+        {
+            M_Client M_Cli = new M_Client()
+            {
+                ClID = int.Parse(KokyakuIDTxb.Text),
+                ClFlag = 2,
+                ClHidden = HihyojiTxb.Text
+            };
+
+            return M_Cli;
+        }
+
+        private void HiddenClient(M_Client cli)
+        {
+            if (DialogResult.OK == MessageDsp.DspMsg("M1029"))
+            {
+                if (ClientDA.DeleteClient(cli))
+                {
+                    MessageDsp.DspMsg("M1030");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormKokyakukanriGridView();
+                }
+                else
+                {
+                    MessageDsp.DspMsg("M1031");
+                }
+            }
+        }
     }
+
 }

@@ -209,12 +209,19 @@ namespace SalesManagement_SysDev.DataAccess
             }
         }
 
+        ///////////////////////////////
+        //メソッド名：SearchEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：M_EmployeeDsp
+        //機　能   ：社員情報の検索
+        ///////////////////////////////
         public List<M_EmployeeDsp> SearchEmployee(M_Employee regEmployee)
         {
             List<M_EmployeeDsp> emp = new List<M_EmployeeDsp>();
 
             DateTime nulldate = DateTime.ParseExact("00010101","yyyymmdd",null);
 
+            //社員ID入力
             if (regEmployee.EmID != 0)
             {
                 try
@@ -261,6 +268,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //選択なし
             else if (regEmployee.SoID == 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate == nulldate)
             {
                 try
@@ -310,6 +318,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //営業名選択
             else if(regEmployee.SoID != 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate == nulldate)
             {
                 try
@@ -360,6 +369,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //社員管理フラグ選択
             else if(regEmployee.SoID == 0 && regEmployee.EmFlag != -1 && regEmployee.EmHiredate == nulldate)
             {
                 try
@@ -410,6 +420,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //入社年月日選択
             else if(regEmployee.SoID == 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate != nulldate) 
             {
                 try
@@ -460,6 +471,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //営業所名、入社年月日選択
             else if (regEmployee.SoID != 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate != nulldate)
             {
                 try
@@ -511,6 +523,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //社員管理フラグ、入社年月日選択
             else if(regEmployee.SoID == 0 && regEmployee.EmFlag != -1 && regEmployee.EmHiredate != nulldate)
             {
                 try
@@ -562,6 +575,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //営業所名、社員管理フラグ選択
             else if (regEmployee.SoID != 0 && regEmployee.EmFlag != -1 && regEmployee.EmHiredate == nulldate)
             {
                 try
@@ -613,6 +627,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //すべて選択
             else
             {
                 try
@@ -668,7 +683,15 @@ namespace SalesManagement_SysDev.DataAccess
 
             return emp;
         }
-        
+
+        ///////////////////////////////
+        //メソッド名：DeleteEmployee()
+        //引　数   ：M_Employee
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：社員情報の非表示
+        //           成功したときTrue
+        //           失敗したときFalse
+        ///////////////////////////////
         public bool DeleteEmployee(M_Employee regEmployee)
         {
             try
@@ -746,12 +769,12 @@ namespace SalesManagement_SysDev.DataAccess
         }
 
         ///////////////////////////////
-        //メソッド名：SonzaiCheckEmID()
+        //メソッド名：SonzaiCheckClID()
         //引　数   ：数値
         //戻り値   ：True:異常なし、False:異常あり
-        //機　能   ：社員IDの存在チェック
-        //           社員IDが存在するときTrue
-        //           社員IDが存在しないときFalse
+        //機　能   ：顧客IDの存在チェック
+        //           顧客IDが存在するときTrue
+        //           顧客IDが存在しないときFalse
         ///////////////////////////////
         public bool SonzaiCheckClID(int ClID)
         {
@@ -760,7 +783,7 @@ namespace SalesManagement_SysDev.DataAccess
             try
             {
                 var context = new SalesManagement_DevContext();
-                //入力された社員IDに一致するデータが存在するか
+                //入力された顧客IDに一致するデータが存在するか
                 flg = context.M_Clients.Any(x => x.ClID == ClID);
                 context.Dispose();
             }

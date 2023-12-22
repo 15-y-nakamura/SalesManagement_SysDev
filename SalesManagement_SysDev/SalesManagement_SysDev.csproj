@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\ProductDataAccess.cs" />
     <Compile Include="DataAccess\ClientDataAcces.cs" />
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
     <Compile Include="DataAccess\OrderDataAccess.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Common\InputCheck.cs" />
+    <Compile Include="DataAccess\MajorClassificationDataAccess.cs" />
     <Compile Include="HachuKanri.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +109,7 @@
     <Compile Include="ShukkoKanri.Designer.cs">
       <DependentUpon>ShukkoKanri.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\SmallClassificationDataAccess.cs" />
     <Compile Include="ZaikoKanri.cs">
       <SubType>Form</SubType>
     </Compile>
