@@ -390,11 +390,6 @@
             this.MakerIDTxb.Name = "MakerIDTxb";
             this.MakerIDTxb.Size = new System.Drawing.Size(201, 25);
             this.MakerIDTxb.TabIndex = 32;
-            this.MakerNameTxb.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.MakerNameTxb.Location = new System.Drawing.Point(1052, 150);
-            this.MakerNameTxb.Name = "MakerNameTxb";
-            this.MakerNameTxb.Size = new System.Drawing.Size(201, 25);
-            this.MakerNameTxb.TabIndex = 2;
             // 
             // MakerIDLbl
             // 
