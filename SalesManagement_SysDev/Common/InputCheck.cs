@@ -394,6 +394,7 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+
         public (bool flg, string Msg) CheckPrID(string text)
         {
             if (text == "")
@@ -416,6 +417,9 @@ namespace SalesManagement_SysDev
                 return (false, "M2002");
             }
 
+            return (true, text);
+        }
+
         //メソッド名：CheckRegistJuchuID()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
@@ -430,7 +434,7 @@ namespace SalesManagement_SysDev
                 return (false, "M6003");
             }
             
-            if(!CheckSuuti(text)
+            if(!CheckSuuti(text))
             {
                 return (false, "M6001");
             }
@@ -657,11 +661,7 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
-
-        public (bool flg,string Msg) CheckSearchEmPhone(string text)
-        {
-            
-        }
+        ///////////////////////////////
         //メソッド名：CheckPrMaker()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
