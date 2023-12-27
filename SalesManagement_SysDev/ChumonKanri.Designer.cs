@@ -33,6 +33,8 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopChumonPnl = new System.Windows.Forms.Panel();
+            this.ChumonjyoutaiFlaguCmb = new System.Windows.Forms.ComboBox();
+            this.ChumonjyoutaiFlaguLbl = new System.Windows.Forms.Label();
             this.ChumonDetailDgv = new System.Windows.Forms.DataGridView();
             this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
             this.ChumonnengappiDtm = new System.Windows.Forms.DateTimePicker();
@@ -70,8 +72,6 @@
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
             this.TopIDHyojiLbl = new System.Windows.Forms.Label();
-            this.ChumonjyoutaiFlaguCmb = new System.Windows.Forms.ComboBox();
-            this.ChumonjyoutaiFlaguLbl = new System.Windows.Forms.Label();
             this.TopChumonPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChumonDetailDgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChumonKanriDgv)).BeginInit();
@@ -157,10 +157,30 @@
             this.TopChumonPnl.Controls.Add(this.ConfirmBtn);
             this.TopChumonPnl.Controls.Add(this.HiddenBtn);
             this.TopChumonPnl.Controls.Add(this.SearchBtn);
-            this.TopChumonPnl.Location = new System.Drawing.Point(253, 158);
+            this.TopChumonPnl.Location = new System.Drawing.Point(12, 6);
             this.TopChumonPnl.Name = "TopChumonPnl";
             this.TopChumonPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopChumonPnl.TabIndex = 23;
+            // 
+            // ChumonjyoutaiFlaguCmb
+            // 
+            this.ChumonjyoutaiFlaguCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChumonjyoutaiFlaguCmb.FormattingEnabled = true;
+            this.ChumonjyoutaiFlaguCmb.Location = new System.Drawing.Point(237, 288);
+            this.ChumonjyoutaiFlaguCmb.Name = "ChumonjyoutaiFlaguCmb";
+            this.ChumonjyoutaiFlaguCmb.Size = new System.Drawing.Size(201, 26);
+            this.ChumonjyoutaiFlaguCmb.TabIndex = 55;
+            // 
+            // ChumonjyoutaiFlaguLbl
+            // 
+            this.ChumonjyoutaiFlaguLbl.AutoSize = true;
+            this.ChumonjyoutaiFlaguLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ChumonjyoutaiFlaguLbl.Location = new System.Drawing.Point(37, 288);
+            this.ChumonjyoutaiFlaguLbl.Name = "ChumonjyoutaiFlaguLbl";
+            this.ChumonjyoutaiFlaguLbl.Size = new System.Drawing.Size(184, 28);
+            this.ChumonjyoutaiFlaguLbl.TabIndex = 56;
+            this.ChumonjyoutaiFlaguLbl.Text = "注文状態フラグ";
             // 
             // ChumonDetailDgv
             // 
@@ -200,6 +220,7 @@
             this.GamenKousinBtn.TabIndex = 53;
             this.GamenKousinBtn.TabStop = false;
             this.GamenKousinBtn.UseVisualStyleBackColor = true;
+            this.GamenKousinBtn.Click += new System.EventHandler(this.GamenKousinBtn_Click);
             // 
             // ChumonKanriDgv
             // 
@@ -533,26 +554,6 @@
             this.TopIDHyojiLbl.Size = new System.Drawing.Size(54, 30);
             this.TopIDHyojiLbl.TabIndex = 53;
             this.TopIDHyojiLbl.Text = "ID：";
-            // 
-            // ChumonjyoutaiFlaguCmb
-            // 
-            this.ChumonjyoutaiFlaguCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChumonjyoutaiFlaguCmb.FormattingEnabled = true;
-            this.ChumonjyoutaiFlaguCmb.Location = new System.Drawing.Point(237, 288);
-            this.ChumonjyoutaiFlaguCmb.Name = "ChumonjyoutaiFlaguCmb";
-            this.ChumonjyoutaiFlaguCmb.Size = new System.Drawing.Size(201, 26);
-            this.ChumonjyoutaiFlaguCmb.TabIndex = 55;
-            // 
-            // ChumonjyoutaiFlaguLbl
-            // 
-            this.ChumonjyoutaiFlaguLbl.AutoSize = true;
-            this.ChumonjyoutaiFlaguLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ChumonjyoutaiFlaguLbl.Location = new System.Drawing.Point(37, 288);
-            this.ChumonjyoutaiFlaguLbl.Name = "ChumonjyoutaiFlaguLbl";
-            this.ChumonjyoutaiFlaguLbl.Size = new System.Drawing.Size(184, 28);
-            this.ChumonjyoutaiFlaguLbl.TabIndex = 56;
-            this.ChumonjyoutaiFlaguLbl.Text = "注文状態フラグ";
             // 
             // ChumonKanri
             // 

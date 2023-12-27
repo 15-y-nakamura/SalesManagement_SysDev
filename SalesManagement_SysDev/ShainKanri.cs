@@ -547,6 +547,13 @@ namespace SalesManagement_SysDev
                     return false;
                 }
             }
+            
+            //入社年月日の入力チェック
+            if (!JoinDateDtm.Checked)
+            {
+                MessageDsp.DspMsg("M4010");
+                return false;
+            }
             return true;
         }
 
