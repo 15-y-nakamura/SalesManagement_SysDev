@@ -338,5 +338,11 @@ namespace SalesManagement_SysDev
 
             SetchDataGridView();
         }
+
+        private void GamenKousinBtn_Click(object sender, EventArgs e)
+        {
+            SetCtrlFormat();
+            SetFormGridView();
+        }
     }
 }
