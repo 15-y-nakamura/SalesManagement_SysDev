@@ -26,6 +26,7 @@ namespace SalesManagement_SysDev.DataAccess
                 var tb = from t1 in context.M_Clients
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
+                         where t1.ClFlag == 0
                          select new
                          {
                              t1.ClID,
@@ -239,7 +240,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.ClPhone.Contains(regClient.ClPhone) &&
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
-                                   t1.ClFAX.Contains(regClient.ClFAX)
+                                   t1.ClFAX.Contains(regClient.ClFAX) &&
+                                   t1.ClFlag == 0
                              select new
                              {
                                  t1.ClID,
@@ -292,7 +294,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
                                    t1.ClFAX.Contains(regClient.ClFAX)  &&
-                                   t1.ClID == (regClient.ClID)
+                                   t1.ClID == (regClient.ClID) &&
+                                   t1.ClFlag == 0
                              select new
                              {
                                  t1.ClID,
@@ -398,7 +401,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
                                    t1.ClFAX.Contains(regClient.ClFAX) &&
-                                   t2.SoID == regClient.SoID
+                                   t2.SoID == regClient.SoID &&
+                                   t1.ClFlag == 0
                              select new
                              {
                                  t1.ClID,
@@ -564,7 +568,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
                                    t1.ClFAX.Contains(regClient.ClFAX) &&
                                    t2.SoID == regClient.SoID &&
-                                   t1.ClID == regClient.ClID
+                                   t1.ClID == regClient.ClID &&
+                                   t1.ClFlag == 0
                              select new
                              {
                                  t1.ClID,

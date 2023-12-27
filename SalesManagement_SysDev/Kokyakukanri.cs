@@ -825,6 +825,18 @@ namespace SalesManagement_SysDev
 
             }
 
+            //住所の入力チェック
+            if(JushoTxb.Text != "")
+            {
+                if (!InputCheck.CheckClJusho(JushoTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckClJusho(JushoTxb.Text).Msg);
+                    JushoTxb.Focus();
+                    return false;
+                }
+
+            }
+
             //FAXの入力チェック
             if (FaxTxb.Text != "")
             {
@@ -890,6 +902,12 @@ namespace SalesManagement_SysDev
         private void SearchClient(M_Client searchcli)
         {
             var cli = ClientDA.SearchClient(searchcli);
+
+            if (cli.Count == 0)
+            {
+                MessageDsp.DspMsg("M1020");
+            }
+
 
             SetDataGridView(cli);
         }
