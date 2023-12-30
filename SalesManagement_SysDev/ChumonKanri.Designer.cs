@@ -157,7 +157,7 @@
             this.TopChumonPnl.Controls.Add(this.ConfirmBtn);
             this.TopChumonPnl.Controls.Add(this.HiddenBtn);
             this.TopChumonPnl.Controls.Add(this.SearchBtn);
-            this.TopChumonPnl.Location = new System.Drawing.Point(12, 6);
+            this.TopChumonPnl.Location = new System.Drawing.Point(253, 158);
             this.TopChumonPnl.Name = "TopChumonPnl";
             this.TopChumonPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopChumonPnl.TabIndex = 23;
@@ -203,8 +203,10 @@
             // 
             // ChumonnengappiDtm
             // 
+            this.ChumonnengappiDtm.Checked = false;
             this.ChumonnengappiDtm.Location = new System.Drawing.Point(652, 220);
             this.ChumonnengappiDtm.Name = "ChumonnengappiDtm";
+            this.ChumonnengappiDtm.ShowCheckBox = true;
             this.ChumonnengappiDtm.Size = new System.Drawing.Size(201, 25);
             this.ChumonnengappiDtm.TabIndex = 5;
             this.ChumonnengappiDtm.Value = new System.DateTime(2023, 11, 24, 0, 0, 0, 0);
@@ -447,6 +449,7 @@
             this.SearchBtn.TabStop = false;
             this.SearchBtn.Text = "検索";
             this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // TopLogoutBtn
             // 

@@ -403,9 +403,9 @@ namespace SalesManagement_SysDev
                 return (false, "M2001");
             }
 
-            if (ProductDA.SonzaiCheckPrID(int.Parse(text)))
+            if (!ProductDA.SonzaiCheckPrID(int.Parse(text)))
             {
-                return (false, "M2028");
+                return (false, "M2029");
             }
 
             if (text.Length > 6)
@@ -416,6 +416,7 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        ///////////////////////////////
         //メソッド名：CheckRegistJuchuID()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
@@ -502,7 +503,7 @@ namespace SalesManagement_SysDev
         {
             if (JuchuDA.SonzaiCheckOrID(int.Parse(text)))
             {
-                return (false, text);
+                return (false, "");
             }
 
             return (true, text);
@@ -1028,7 +1029,8 @@ namespace SalesManagement_SysDev
 
             return (true, text);
         }
-               
+
+        //////////////////////////////////       
         //メソッド名：CheckClYubin()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
@@ -1307,5 +1309,34 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        public (bool flg, string Msg) CheckChID(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M7001");
+            }
+
+            if(text.Length > 7)
+            {
+                return (false, "M7002");
+            }
+
+            return (true, text);
+        }
+
+        public (bool flg, string Msg) CheckChdID(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M7017");
+            }
+
+            if (text.Length > 7)
+            {
+                return (false, "M7018");
+            }
+
+            return (true, text);
+        }
     }
 }
