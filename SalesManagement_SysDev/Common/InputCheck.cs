@@ -218,9 +218,7 @@ namespace SalesManagement_SysDev
             if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
             {
                 return (false, "M4022");
-            }
-
-            
+            }            
 
             return (true, text);
         }
@@ -372,14 +370,15 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M2003");
             }
-          if (!CheckSuuti(text))
+
+            if (!CheckSuuti(text))
             {
                 return (false, "M2001");
             }
 
             if (ProductDA.SonzaiCheckPrID(int.Parse(text)))
             {
-                return (false, "M2036");
+                return (false, "M2004");
             }
             
             if (text.Length > 6)
@@ -390,6 +389,33 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        ///////////////////////////////
+        //メソッド名：CheckPrID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の商品ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckSearchPrID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M2003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M2001");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M2002");
+            }
+
+            return (true, text);
+        }
 
         public (bool flg, string Msg) CheckPrID(string text)
         {
@@ -403,9 +429,9 @@ namespace SalesManagement_SysDev
                 return (false, "M2001");
             }
 
-            if (ProductDA.SonzaiCheckPrID(int.Parse(text)))
+            if (!ProductDA.SonzaiCheckPrID(int.Parse(text)))
             {
-                return (false, "M2028");
+                return (false, "M2029");
             }
 
             if (text.Length > 6)
@@ -575,11 +601,30 @@ namespace SalesManagement_SysDev
                 return (false, "M2029");
             }
           
-            if (text.Length > 50)
+            if (text.Length < 50)
             {
                 return (false, "M2006");
             }
             return(true, text);
+        }
+
+        public (bool flg, string Msg) CheckSearchPrName(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M2007");
+            }
+
+            if (!CheckZenkaku(text))
+            {
+                return (false, "M2005");
+            }
+
+            if (text.Length < 50)
+            {
+                return (false, "M2006");
+            }
+            return (true, text);
         }
 
         ///////////////////////////////
