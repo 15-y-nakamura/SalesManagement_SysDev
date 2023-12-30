@@ -173,6 +173,7 @@ namespace SalesManagement_SysDev
                     ClPostal = "6128046",
                     ClFAX = "077-581-0164",
                     ClFlag = 0,
+                    ClHidden = "",
                     M_SalesOffice = so[3],
                 });
                 cl.Add(new M_Client()
@@ -183,6 +184,7 @@ namespace SalesManagement_SysDev
                     ClPostal = "5500014",
                     ClFAX = "06-8757-6267",
                     ClFlag = 0,
+                    ClHidden = "",
                     M_SalesOffice = so[0],
                 });
                 cl.Add(new M_Client()
@@ -193,6 +195,7 @@ namespace SalesManagement_SysDev
                     ClPostal = "5720806",
                     ClFAX = "06-1374-4358",
                     ClFlag = 0,
+                    ClHidden = "",
                     M_SalesOffice = so[0],
                 });
                 cl.Add(new M_Client()
@@ -203,6 +206,7 @@ namespace SalesManagement_SysDev
                     ClPostal = "5670044",
                     ClFAX = "072-018-0116",
                     ClFlag = 0,
+                    ClHidden = "",
                     M_SalesOffice = so[0],
                 });
                 cl.Add(new M_Client()
@@ -213,6 +217,7 @@ namespace SalesManagement_SysDev
                     ClPostal = "5600024",
                     ClFAX = "06-2434-2434",
                     ClFlag = 0,
+                    ClHidden = "",
                     M_SalesOffice = so[1],
                 });
                 cl.Add(new M_Client()
@@ -223,6 +228,7 @@ namespace SalesManagement_SysDev
                     ClPostal = "5430001",
                     ClFAX = "06-1111-1111",
                     ClFlag = 0,
+                    ClHidden = "",
                     M_SalesOffice = so[0],
                 });
                 cl.Add(new M_Client()
@@ -233,6 +239,7 @@ namespace SalesManagement_SysDev
                     ClPostal = "6392268",
                     ClFAX = "0746-0-1160",
                     ClFlag = 0,
+                    ClHidden = "",
                     M_SalesOffice = so[2],
                 });
                 context.M_Clients.AddRange(cl);

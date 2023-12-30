@@ -59,7 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
+    <Compile Include="DataAccess\ChumonDataAccess.cs" />
+    <Compile Include="DataAccess\ChumonDetailDataAccess.cs" />
+
     <Compile Include="DataAccess\ProductDataAccess.cs" />
+
     <Compile Include="DataAccess\ClientDataAcces.cs" />
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
     <Compile Include="DataAccess\OrderDataAccess.cs" />

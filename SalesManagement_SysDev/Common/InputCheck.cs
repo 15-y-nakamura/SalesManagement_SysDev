@@ -281,10 +281,6 @@ namespace SalesManagement_SysDev
                 return (false, "M4015");
             }
 
-            if(text.Length < 12)
-            {
-                return (false, "M4030");
-            }
             return (true, text);
         }
 
@@ -480,10 +476,10 @@ namespace SalesManagement_SysDev
                 return (false, "M4001");
             }
 
-            if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
-            {
-                return (false, "M4022");
-            }
+            //if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
+            //{
+            //    return (false, "M4022");
+            //}
 
             if (text.Length > 6)
             {
@@ -1287,15 +1283,16 @@ namespace SalesManagement_SysDev
                 return (false, "M1001");
             }
 
+            if (text.Length > 6)
+            {
+                return (false, "M1002");
+            }
+
             if (!EmployeeDA.SonzaiCheckClID(int.Parse(text)))
             {
                 return (false, "M1024");
             }
 
-            if (text.Length > 6)
-            {
-                return (false, "M1002");
-            }
             return (true, text);
         }
 
@@ -1316,11 +1313,45 @@ namespace SalesManagement_SysDev
 
         public (bool flg, string Msg) CheckSearchClPhone(string text)
         {
+            if (!CheckSuutiHaihun(text))
+            {
+                return (false, "M1010");
+            }
+
             if (text.Length > 13)
             {
                 return (false, "M1011");
             }
             return (true, text);
         }
+
+        public (bool flg, string Msg) CheckSearchClYubin(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M1013");
+            }
+
+            if (text.Length > 7)
+            {
+                return (false, "M1014");
+            }
+            return (true, text);
+        }
+
+        public (bool flg, string Msg) CheckSearchClFax(string text)
+        {
+            if (!CheckSuutiHaihun(text))
+            {
+                return (false, "M1016");
+            }
+
+            if (text.Length > 13)
+            {
+                return (false, "M1017");
+            }
+            return (true, text);
+        }
+
     }
 }

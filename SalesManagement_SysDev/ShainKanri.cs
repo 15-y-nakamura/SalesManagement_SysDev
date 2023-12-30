@@ -76,7 +76,14 @@ namespace SalesManagement_SysDev
             SetCtrlFormat();
 
             //データグリッドビューの設定
-            SetFormSyainKanriGridView();
+
+            SetFormGridView();
+
+            //SetFormSyainKanriGridView();
+
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
+
         }
 
         ///////////////////////////////
@@ -118,6 +125,11 @@ namespace SalesManagement_SysDev
 
             ShainKanriFlagCmb.Items.Add("表示");
             ShainKanriFlagCmb.Items.Add("非表示");
+
+            ShainIDTxb.Enabled = true;
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
+
         }
 
 
@@ -223,7 +235,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：データグリッドビューの設定
         ///////////////////////////////
-        private void SetFormSyainKanriGridView()
+        private void SetFormGridView()
         {
             //読み取り専用に指定
             ShainKanriDgv.ReadOnly = true;
@@ -249,7 +261,7 @@ namespace SalesManagement_SysDev
             Employee = EmployeeDA.GetEmployeeData();
 
             // DataGridViewに表示するデータを指定
-            SetDataGridView(Employee);
+            SetDataGridView();
         }
 
         ///////////////////////////////
@@ -258,7 +270,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：データグリッドビューにデータを反映する
         ///////////////////////////////
-        private void SetDataGridView(List<M_EmployeeDsp> Employee)
+        private void SetDataGridView()
         {
             ShainKanriDgv.DataSource = Employee.ToList();
 
@@ -355,6 +367,13 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
+            //入社年月日の入力チェック
+            if (!JoinDateDtm.Checked)
+            {
+                MessageDsp.DspMsg("M4010");
+                return false;
+            }
+
             return true;
         }
 
@@ -414,7 +433,7 @@ namespace SalesManagement_SysDev
                     SetCtrlFormat();
 
                     //データグリッドビューの設定
-                    SetFormSyainKanriGridView();
+                    SetFormGridView();
                 }
                 else
                 {
@@ -457,8 +476,12 @@ namespace SalesManagement_SysDev
                 TelHaiiroLbl.ForeColor = SystemColors.WindowText;
             }
 
+            ShainIDTxb.Enabled = false;
+            UpdateBtn.Enabled = true;
+            HiddenBtn.Enabled = true;
+
         }
-        
+
         //更新ボタンクリック
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
@@ -524,6 +547,13 @@ namespace SalesManagement_SysDev
                     return false;
                 }
             }
+            
+            //入社年月日の入力チェック
+            if (!JoinDateDtm.Checked)
+            {
+                MessageDsp.DspMsg("M4010");
+                return false;
+            }
             return true;
         }
 
@@ -579,7 +609,7 @@ namespace SalesManagement_SysDev
                     SetCtrlFormat();
 
                     //データグリッドビューの設定
-                    SetFormSyainKanriGridView();
+                    SetFormGridView();
                 }
                 else
                 {
@@ -738,14 +768,14 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void SearchEmployee(M_Employee searchemp)
         {
-            var emp = EmployeeDA.SearchEmployee(searchemp);
+            Employee = EmployeeDA.SearchEmployee(searchemp);
 
-            if(emp.Count == 0)
+            if(Employee.Count == 0)
             { 
                 MessageDsp.DspMsg("M4018");
             }
 
-            SetDataGridView(emp);
+            SetDataGridView();
         }
 
         //画面更新ボタンクリック
@@ -753,7 +783,14 @@ namespace SalesManagement_SysDev
         {
             SetCtrlFormat();
 
-            SetFormSyainKanriGridView();
+
+            SetFormGridView();
+
+            //SetFormSyainKanriGridView();
+
+            ShainIDTxb.Enabled = true;
+
+
         }
 
         //非表示ボタンクリック
@@ -833,7 +870,7 @@ namespace SalesManagement_SysDev
                     SetCtrlFormat();
 
                     //データグリッドビューの設定
-                    SetFormSyainKanriGridView();
+                    SetFormGridView();
                 }
                 else
                 {

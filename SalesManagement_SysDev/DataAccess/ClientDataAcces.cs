@@ -26,6 +26,7 @@ namespace SalesManagement_SysDev.DataAccess
                 var tb = from t1 in context.M_Clients
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
+                         where t1.ClFlag == 0
                          select new
                          {
                              t1.ClID,
@@ -178,7 +179,7 @@ namespace SalesManagement_SysDev.DataAccess
         {
             List<M_ClientDsp> cli = new List<M_ClientDsp>();
 
-            if (regClient.ClID != 0)
+            if (regClient.ClID != 0 && regClient.ClFlag == -1)
             {
                 try
                 {
@@ -187,7 +188,55 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.M_Clients
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-                             where t1.ClID == regClient.ClID
+                             where t1.ClID == regClient.ClID &&
+                                   t1.ClFlag == 0
+                             select new
+                             {
+                                 t1.ClID,
+                                 t1.ClName,
+                                 t2.SoName,
+                                 t1.ClPhone,
+                                 t1.ClPostal,
+                                 t1.ClAddress,
+                                 t1.ClFAX,
+                                 t1.ClFlag,
+                                 t1.ClHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        cli.Add(new M_ClientDsp()
+                        {
+                            ClID = p.ClID,
+                            ClName = p.ClName,
+                            SoName = p.SoName,
+                            ClPhone = p.ClPhone,
+                            ClPostal = p.ClPostal,
+                            ClAddress = p.ClAddress,
+                            ClFax = p.ClFAX,
+                            ClFlag = p.ClFlag,
+                            ClHidden = p.ClHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (regClient.ClID != 0 && regClient.ClFlag != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Clients
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             where t1.ClID == regClient.ClID &&
+                                   t1.ClFlag == regClient.ClFlag
                              select new
                              {
                                  t1.ClID,
@@ -239,7 +288,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.ClPhone.Contains(regClient.ClPhone) &&
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
-                                   t1.ClFAX.Contains(regClient.ClFAX)
+                                   t1.ClFAX.Contains(regClient.ClFAX) &&
+                                   t1.ClFlag == 0
                              select new
                              {
                                  t1.ClID,
@@ -292,7 +342,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
                                    t1.ClFAX.Contains(regClient.ClFAX)  &&
-                                   t1.ClID == (regClient.ClID)
+                                   t1.ClID == (regClient.ClID) &&
+                                   t1.ClFlag == 0
                              select new
                              {
                                  t1.ClID,
@@ -398,7 +449,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.ClPostal.Contains(regClient.ClPostal) &&
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
                                    t1.ClFAX.Contains(regClient.ClFAX) &&
-                                   t2.SoID == regClient.SoID
+                                   t2.SoID == regClient.SoID &&
+                                   t1.ClFlag == 0
                              select new
                              {
                                  t1.ClID,
@@ -564,7 +616,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.ClAddress.Contains(regClient.ClAddress) &&
                                    t1.ClFAX.Contains(regClient.ClFAX) &&
                                    t2.SoID == regClient.SoID &&
-                                   t1.ClID == regClient.ClID
+                                   t1.ClID == regClient.ClID &&
+                                   t1.ClFlag == 0
                              select new
                              {
                                  t1.ClID,
