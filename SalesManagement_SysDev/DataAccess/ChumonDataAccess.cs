@@ -2053,5 +2053,44 @@ namespace SalesManagement_SysDev.DataAccess
 
             return Chumon;
         }
+
+        public bool SonzaiCheckChID(int chid)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された注文IDに一致するデータが存在するか
+                flg = context.T_Chumons.Any(x => x.ChID == chid);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
+
+        public bool HiddenChumonDate(T_Chumon T_Ch)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var ch = context.T_Chumons.Single(x => x.ChID == T_Ch.ChID);
+
+                ch.ChFlag = T_Ch.ChFlag;
+                ch.ChHidden = T_Ch.ChHidden;
+
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -527,5 +527,62 @@ namespace SalesManagement_SysDev
             SetchDataGridView();
             SetchdDataGridView();
         }
+
+        private void HiddenBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool HiddenInputCheck()
+        {
+            if(inputCheck.CheckChID(ChumonIDTxb.Text).flg)
+            {
+                messageDsp.DspMsg(inputCheck.CheckChID(ChumonIDTxb.Text).Msg);
+                return false;
+            }
+
+            if (!inputCheck.CheckHidden(HihyojiTxb.Text).flg)
+            {
+                messageDsp.DspMsg(inputCheck.CheckHidden(HihyojiTxb.Text).Msg);
+                return false;
+            }
+
+            return true;
+        }
+
+        private T_Chumon SetHiddenDate()
+        {
+            T_Chumon T_Ch = new T_Chumon()
+            { 
+                ChID = int.Parse(ChumonIDTxb.Text),
+                ChFlag = 2,
+                ChHidden = HihyojiTxb.Text
+            };
+
+            return T_Ch;
+        }
+
+        private void HiddenEmployee(T_Chumon T_Ch)
+        {
+            if (DialogResult.OK == messageDsp.DspMsg("M7028"))
+            {
+                if (chDataAccess.HiddenChumonDate(T_Ch))
+                {
+                    messageDsp.DspMsg("M7029");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormGridView();
+                }
+                else
+                {
+                    messageDsp.DspMsg("M7030");
+                }
+            }
+
+
+        }
     }
 }
