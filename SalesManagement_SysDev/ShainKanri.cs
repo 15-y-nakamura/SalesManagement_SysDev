@@ -781,15 +781,10 @@ namespace SalesManagement_SysDev
         private void GamenKousinBtn_Click(object sender, EventArgs e)
         {
             SetCtrlFormat();
-
-
             SetFormGridView();
 
             //SetFormSyainKanriGridView();
-
             ShainIDTxb.Enabled = true;
-
-
         }
 
         //非表示ボタンクリック

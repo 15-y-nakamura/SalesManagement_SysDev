@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -125,7 +126,7 @@ namespace SalesManagement_SysDev
             }
 
             SetCtrlFormat();
-            
+
             SetFormGridView();
         }
 
@@ -185,8 +186,8 @@ namespace SalesManagement_SysDev
         private void ListDisplay()
         {
             // スタッフデータの取得
-            Chumon = chDataAccess.GetChumonData();
-            ChumonDetail = chdDataAccess.GetChumonDetailData();
+            Chumon = chDataAccess.GetAllChumonData();
+            ChumonDetail = chdDataAccess.GetAllChumonDetailData();
 
             // DataGridViewに表示するデータを指定
             SetchDataGridView();
@@ -286,7 +287,7 @@ namespace SalesManagement_SysDev
             {
                 ChumonKanriFlagCmb.Text = "非表示";
             }
-            if(ChumonKanriDgv.Rows[ChumonKanriDgv.CurrentRow.Index].Cells[8].Value == null)
+            if (ChumonKanriDgv.Rows[ChumonKanriDgv.CurrentRow.Index].Cells[8].Value == null)
             {
                 HihyojiTxb.Text = "";
             }
@@ -295,8 +296,8 @@ namespace SalesManagement_SysDev
                 HihyojiTxb.Text = ChumonKanriDgv.Rows[ChumonKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
             }
 
-            //aa
-            ChumonDetail = chdDataAccess.SearchChumonDetailData(int.Parse(ChumonKanriDgv.Rows[ChumonKanriDgv.CurrentRow.Index].Cells[0].Value.ToString()));
+            //
+            ChumonDetail = chdDataAccess.GetChumonDetailData(int.Parse(ChumonKanriDgv.Rows[ChumonKanriDgv.CurrentRow.Index].Cells[0].Value.ToString()));
 
             SetchdDataGridView();
         }
@@ -328,13 +329,13 @@ namespace SalesManagement_SysDev
             else
             {
                 ChumonKanriFlagCmb.Text = "非表示";
-            }            
-             HihyojiTxb.Text = chDatas[8];
-            
+            }
+            HihyojiTxb.Text = chDatas[8];
+
             ShohinIDTxb.Text = chdDataAccess.GetPrID(int.Parse(ChumonDetailDgv.Rows[ChumonDetailDgv.CurrentRow.Index].Cells[0].Value.ToString()));
             SuryoTxb.Text = ChumonDetailDgv.Rows[ChumonDetailDgv.CurrentRow.Index].Cells[3].Value.ToString();
 
-            Chumon = chDataAccess.SearchChumonData(int.Parse(ChumonDetailDgv.Rows[ChumonDetailDgv.CurrentRow.Index].Cells[1].Value.ToString()));
+            Chumon = chDataAccess.GetChData(int.Parse(ChumonDetailDgv.Rows[ChumonDetailDgv.CurrentRow.Index].Cells[1].Value.ToString()));
 
             SetchDataGridView();
         }
@@ -343,6 +344,188 @@ namespace SalesManagement_SysDev
         {
             SetCtrlFormat();
             SetFormGridView();
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            if(!SearchInputCheck())
+            {
+                return;
+            }
+
+            var chdata = SetChSearchData();
+            var chddata = SetChdSearchData();
+
+            SearchChumon(chdata, chddata);
+        }
+
+        private bool SearchInputCheck()
+        {
+            if (ChumonIDTxb.Text != "")
+            {
+                if (!inputCheck.CheckChID(ChumonIDTxb.Text).flg)
+                {
+                    messageDsp.DspMsg(inputCheck.CheckChID(ChumonIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            if (ShainIDTxb.Text != "")
+            {
+                if (!inputCheck.CheckSearchEmID(ShainIDTxb.Text).flg)
+                {
+                    messageDsp.DspMsg(inputCheck.CheckSearchEmID(ShainIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            if(KokyakuIDTxb.Text != "")
+            {
+                if (!inputCheck.CheckClID(KokyakuIDTxb.Text).flg)
+                {
+                    messageDsp.DspMsg(inputCheck.CheckClID(KokyakuIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            if(JuchuIDTxb.Text != "")
+            {
+                if (!inputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
+                {
+                    messageDsp.DspMsg(inputCheck.CheckRegistOrID(JuchuIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            if(ShohinIDTxb.Text != "")
+            {
+                if (!inputCheck.CheckPrID(ShohinIDTxb.Text).flg)
+                {
+                    messageDsp.DspMsg(inputCheck.CheckPrID(ShohinIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private T_Chumon SetChSearchData()
+        {
+            int chid = 0;
+            int soid = 0;
+            int emid = 0;
+            int clid = 0;
+            int orid = 0;
+            DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
+            int chsflg = -1;
+            int chflg = -1;
+
+            if (ChumonIDTxb.Text != "")
+            {
+                chid = int.Parse(ChumonIDTxb.Text);
+            }
+
+            if(EigyoushoNameCmb.Text != "")
+            {
+                soid = soDataAccess.GetSoID(EigyoushoNameCmb.Text);
+            }
+
+            if (ShainIDTxb.Text != "")
+            {
+                emid = int.Parse(ShainIDTxb.Text);
+            }
+
+            if (KokyakuIDTxb.Text != "")
+            {
+                clid = int.Parse(KokyakuIDTxb.Text);
+            }
+
+            if (JuchuIDTxb.Text != "")
+            {
+                orid = int.Parse(JuchuIDTxb.Text);
+            }
+
+            if(ChumonnengappiDtm.Checked == true)
+            {
+                date = ChumonnengappiDtm.Value.Date;
+            }
+
+            if(ChumonjyoutaiFlaguCmb.Text != "")
+            {
+                if (ChumonjyoutaiFlaguCmb.Text == "処理受付")
+                {
+                    chsflg = 0;
+                }
+                else
+                {
+                    chsflg = 1;
+                }
+            }
+            
+            if(ChumonKanriFlagCmb.Text != "")
+            {
+                if (ChumonKanriFlagCmb.Text == "表示")
+                {
+                    chsflg = 0;
+                }
+                else
+                {
+                    chsflg = 2;
+                }
+            }
+
+            T_Chumon T_Ch = new T_Chumon()
+            {   
+                ChID = chid,
+                EmID = emid,
+                SoID = soid,
+                ClID = clid,
+                OrID = orid,
+                ChDate = date,
+                ChStateFlag = chsflg,
+                ChFlag = chflg,
+                ChHidden = HihyojiTxb.Text,
+            };
+
+            return T_Ch;
+        }
+
+        private T_ChumonDetail SetChdSearchData()
+        {
+            //int chdid = 0;
+            int chid = 0;
+            int prid = 0;
+
+            if(ChumonIDTxb.Text != "")
+            {
+                chid = int.Parse(ChumonIDTxb.Text);
+            }
+
+            if(ShohinIDTxb.Text != "")
+            {
+                prid = int.Parse(ShohinIDTxb.Text);
+            }
+
+            T_ChumonDetail T_Chd = new T_ChumonDetail()
+            {
+                ChID = chid,
+                PrID = prid,
+            };
+
+            return T_Chd;
+        }
+
+        private void SearchChumon(T_Chumon T_Ch, T_ChumonDetail T_ChD)
+        {
+            Chumon = chDataAccess.SearchChumonData(T_Ch);
+            ChumonDetail = chdDataAccess.SearchChdData(T_ChD, T_Ch);
+            
+            if (Chumon.Count == 0 && ChumonDetail.Count == 0)
+            {
+                messageDsp.DspMsg("M7026");
+            }
+
+            SetchDataGridView();
+            SetchdDataGridView();
         }
     }
 }
