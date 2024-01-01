@@ -27,6 +27,9 @@ namespace SalesManagement_SysDev
         //顧客テーブルアクセスクラスのインスタンス化
         ClientDataAccess ClientDA = new ClientDataAccess();
 
+        //注文テーブルアクセスクラスのインスタンス化
+        ChumonDataAccess ChumonDA = new ChumonDataAccess();
+
         ///////////////////////////////
         //メソッド名：CheckZenkaku()
         //引　数   ：文字列
@@ -1380,6 +1383,26 @@ namespace SalesManagement_SysDev
             if (text.Length > 7)
             {
                 return (false, "M7018");
+            }
+
+            return (true, text);
+        }
+
+        public (bool flg, string Msg) CheckHiddenChID(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M7001");
+            }
+
+            if (text.Length > 7)
+            {
+                return (false, "M7002");
+            }
+
+            if (ChumonDA.SonzaiCheckChID(int.Parse(text)))
+            {
+                return (false, "M7027");
             }
 
             return (true, text);
