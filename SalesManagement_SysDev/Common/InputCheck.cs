@@ -592,22 +592,22 @@ namespace SalesManagement_SysDev
         {
             if(text == "")
             {
-                return (false, "M2007");
+                return (false, "M2008");
             }
 
-            if (!CheckZenkaku(text))
-            {
-                return (false, "M2005");
-            }
-
-            if (ProductDA.SonzaiCheckPrName(text))
-            {
-                return (false, "M2029");
-            }
-          
-            if (text.Length < 50)
+            if (CheckZenkaku(text))
             {
                 return (false, "M2006");
+            }
+
+            if (!ProductDA.SonzaiCheckPrName(text))
+            {
+                return (false, "M2030");
+            }
+          
+            if (text.Length > 50)
+            {
+                return (false, "M2007");
             }
             return(true, text);
         }
@@ -718,12 +718,11 @@ namespace SalesManagement_SysDev
         {
             if (text == "")
             {
-                return (false, "M2004");
+                return (false, "M2005");
             }
 
             return (true, text);
-        }
-        
+        }       
                 
         ///////////////////////////////
         //メソッド名：CheckRegistClID()
@@ -769,17 +768,17 @@ namespace SalesManagement_SysDev
         {
             if (text == "")
             {
-                return (false, "M2010");
+                return (false, "M2011");
             }
 
             if(text.Length > 9)
             {
-                return (false, "M2009");
+                return (false, "M2010");
             }
 
             if (CheckSuuti(text))
             {
-                return (false, "M2008");
+                return (false, "M2009");
             }
 
             return(true, text);
@@ -789,7 +788,7 @@ namespace SalesManagement_SysDev
         //メソッド名：CheckCheckPrSafetyStock()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
-        //機　能   ：商品名入力チェック
+        //機　能   ：安全在庫数入力チェック
         //           問題がないときTrue、文字列
         //           問題があるときFalse、メッセージID
         ///////////////////////////////
@@ -797,17 +796,17 @@ namespace SalesManagement_SysDev
         {
             if(text == "")
             {
-                return (false, "M2013");
+                return (false, "M2014");
             }
 
             if(text.Length > 4)
             {
-                return (false,"M2012");
+                return (false,"M2013");
             }
 
             if (!CheckSuuti(text))
             {
-                return (false, "M2011");
+                return (false, "M2012");
             }
 
             return(true, text);
@@ -998,7 +997,7 @@ namespace SalesManagement_SysDev
         {
             if(text == "")
             {
-                return (false, "M2015");
+                return (false, "M2016");
             }
 
             return (true, text);
@@ -1034,17 +1033,17 @@ namespace SalesManagement_SysDev
         {
             if (text == "")
             {
-                return (false, "M2018");
+                return (false, "M2019");
             }
 
             if (text.Length > 20)
             {
-                return (false, "M2017");
+                return (false, "M2018");
             }
 
             if (CheckHankakueisu(text))
             {
-                return (false, "M2016");
+                return (false, "M2017");
             }
 
             return(true, text);
@@ -1062,17 +1061,17 @@ namespace SalesManagement_SysDev
         {
             if(text == "")
             {
-                return (false, "M2021");
+                return (false, "M2022");
             }
 
             if(text.Length > 20)
             {
-                return (false, "M2020");
+                return (false, "M2021");
             }
 
             if (!CheckZenkaku(text))
             {
-                return (false, "M2019");
+                return (false, "M2020");
             }
 
             return (true, text);
@@ -1169,7 +1168,7 @@ namespace SalesManagement_SysDev
         {
             if(text ==  "")
             {
-                return (false, "M2022");
+                return (false, "M2023");
             }
 
             return (true, text);

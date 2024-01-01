@@ -111,7 +111,8 @@ namespace SalesManagement_SysDev.DataAccess
                 context.SaveChanges();
                 context.Dispose();
                 return true;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return false;
             }
@@ -175,9 +176,9 @@ namespace SalesManagement_SysDev.DataAccess
                              select new
                              {
                                  t1.PrID,
-                                 t1.PrName,
-                                 t2.MaID,
-                                 t3.ScID,
+                                 t2.MaName,
+                                 t1.PrName, 
+                                 t3.ScName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -192,11 +193,11 @@ namespace SalesManagement_SysDev.DataAccess
                         pro.Add(new M_ProductDsp()
                         {
                             PrID = p.PrID,
-                            MaID = p.MaID,
+                            MaName = p.MaName,
                             PrName = p.PrName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
-                            ScID = p.ScID,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -230,9 +231,9 @@ namespace SalesManagement_SysDev.DataAccess
                              select new
                              {
                                  t1.PrID,
+                                 t2.MaName,
                                  t1.PrName,
-                                 t2.MaID,
-                                 t3.ScID,
+                                 t3.ScName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -248,11 +249,11 @@ namespace SalesManagement_SysDev.DataAccess
                         pro.Add(new M_ProductDsp()
                         {
                             PrID = p.PrID,
-                            MaID = p.MaID,
+                            MaName = p.MaName,
                             PrName = p.PrName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
-                            ScID = p.ScID,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -291,8 +292,8 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.PrID,
                                  t1.PrName,
-                                 t2.MaID,
-                                 t3.ScID,
+                                 t2.MaName,
+                                 t3.ScName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -308,11 +309,11 @@ namespace SalesManagement_SysDev.DataAccess
                         pro.Add(new M_ProductDsp()
                         {
                             PrID = p.PrID,
-                            MaID = p.MaID,
+                            MaName = p.MaName,
                             PrName = p.PrName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
-                            ScID = p.ScID,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -348,8 +349,8 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.PrID,
                                  t1.PrName,
-                                 t2.MaID,
-                                 t3.ScID,
+                                 t2.MaName,
+                                 t3.ScName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -365,11 +366,11 @@ namespace SalesManagement_SysDev.DataAccess
                         pro.Add(new M_ProductDsp()
                         {
                             PrID = p.PrID,
-                            MaID = p.MaID,
+                            MaName = p.MaName,
                             PrName = p.PrName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
-                            ScID = p.ScID,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -403,9 +404,9 @@ namespace SalesManagement_SysDev.DataAccess
                              select new
                              {
                                  t1.PrID,
+                                 t2.MaName,
                                  t1.PrName,
-                                 t2.MaID,
-                                 t3.ScID,
+                                 t3.ScName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -421,11 +422,11 @@ namespace SalesManagement_SysDev.DataAccess
                         pro.Add(new M_ProductDsp()
                         {
                             PrID = p.PrID,
-                            MaID = p.MaID,
+                            MaName = p.MaName,
                             PrName = p.PrName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
-                            ScID = p.ScID,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -460,9 +461,9 @@ namespace SalesManagement_SysDev.DataAccess
                              select new
                              {
                                  t1.PrID,
+                                 t2.MaName,
                                  t1.PrName,
-                                 t2.MaID,
-                                 t3.ScID,
+                                 t3.ScName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -478,11 +479,11 @@ namespace SalesManagement_SysDev.DataAccess
                         pro.Add(new M_ProductDsp()
                         {
                             PrID = p.PrID,
-                            MaID = p.MaID,
+                            MaName = p.MaName,
                             PrName = p.PrName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
-                            ScID = p.ScID,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -515,13 +516,12 @@ namespace SalesManagement_SysDev.DataAccess
                                     (t1.PrHidden.Contains(regProduct.PrHidden) ||
                                     t1.PrHidden == null)
 
-
                              select new
                              {
                                  t1.PrID,
+                                 t2.MaName,
                                  t1.PrName,
-                                 t2.MaID,
-                                 t3.ScID,
+                                 t3.ScName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -537,11 +537,11 @@ namespace SalesManagement_SysDev.DataAccess
                         pro.Add(new M_ProductDsp()
                         {
                             PrID = p.PrID,
-                            MaID = p.MaID,
+                            MaName = p.MaName,
                             PrName = p.PrName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
-                            ScID = p.ScID,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -577,9 +577,9 @@ namespace SalesManagement_SysDev.DataAccess
                              select new
                              {
                                  t1.PrID,
+                                 t2.MaName,
                                  t1.PrName,
-                                 t2.MaID,
-                                 t3.ScID,
+                                 t3.ScName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -595,11 +595,11 @@ namespace SalesManagement_SysDev.DataAccess
                         pro.Add(new M_ProductDsp()
                         {
                             PrID = p.PrID,
-                            MaID = p.MaID,
+                            MaName = p.MaName,
                             PrName = p.PrName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
-                            ScID = p.ScID,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -636,9 +636,9 @@ namespace SalesManagement_SysDev.DataAccess
                              select new
                              {
                                  t1.PrID,
+                                 t2.MaName,
                                  t1.PrName,
-                                 t2.MaID,
-                                 t3.ScID,
+                                 t3.ScName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -654,11 +654,11 @@ namespace SalesManagement_SysDev.DataAccess
                         pro.Add(new M_ProductDsp()
                         {
                             PrID = p.PrID,
-                            MaID = p.MaID,
+                            MaName = p.MaName,
                             PrName = p.PrName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
-                            ScID = p.ScID,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -699,9 +699,9 @@ namespace SalesManagement_SysDev.DataAccess
                          select new
                          {
                              t1.PrID,
+                             t2.MaName,
                              t1.PrName,
-                             t2.MaID,
-                             t3.ScID,
+                             t3.ScName,
                              t1.Price,
                              t1.PrSafetyStock,
                              t1.PrModelNumber,
@@ -716,11 +716,11 @@ namespace SalesManagement_SysDev.DataAccess
                     Pro.Add(new M_ProductDsp()
                     {
                         PrID = p.PrID,
-                        MaID = p.MaID,
+                        MaName = p.MaName,
                         PrName = p.PrName,
                         Price = p.Price,
                         PrSafetyStock = p.PrSafetyStock,
-                        ScID = p.ScID,
+                        ScName = p.ScName,
                         PrModelNumber = p.PrModelNumber,
                         PrColor = p.PrColor,
                         PrReleaseDate = p.PrReleaseDate,
@@ -769,6 +769,39 @@ namespace SalesManagement_SysDev.DataAccess
             }
 
             return Scid;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetGetMaID()
+        //引　数   ：なし
+        //戻り値   ：取得したMaID
+        //機　能   ：メーカーID取得
+        ///////////////////////////////
+        public int GetMaID(string maname)
+        {
+            int maid = 0;
+
+            var context = new SalesManagement_DevContext();
+            try
+            {
+                var tb = from t1 in context.M_Makers
+                         where t1.MaName == maname
+                         select new
+                         {
+                             t1.MaID
+                         };
+
+                foreach (var p in tb)
+                {
+                    maid = p.MaID;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return maid;
         }
     }
 }
