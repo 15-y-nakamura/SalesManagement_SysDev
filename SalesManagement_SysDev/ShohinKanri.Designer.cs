@@ -55,7 +55,7 @@
             this.AnzenLbl = new System.Windows.Forms.Label();
             this.KakakuTxb = new System.Windows.Forms.TextBox();
             this.KakakuLbl = new System.Windows.Forms.Label();
-            this.MakerIDTxb = new System.Windows.Forms.TextBox();
+            this.MakerNameTxb = new System.Windows.Forms.TextBox();
             this.MakerIDLbl = new System.Windows.Forms.Label();
             this.ShohinNameTxb = new System.Windows.Forms.TextBox();
             this.ShohinNameLbl = new System.Windows.Forms.Label();
@@ -163,7 +163,7 @@
             this.TopShohinPnl.Controls.Add(this.AnzenLbl);
             this.TopShohinPnl.Controls.Add(this.KakakuTxb);
             this.TopShohinPnl.Controls.Add(this.KakakuLbl);
-            this.TopShohinPnl.Controls.Add(this.MakerIDTxb);
+            this.TopShohinPnl.Controls.Add(this.MakerNameTxb);
             this.TopShohinPnl.Controls.Add(this.MakerIDLbl);
             this.TopShohinPnl.Controls.Add(this.ShohinNameTxb);
             this.TopShohinPnl.Controls.Add(this.ShohinNameLbl);
@@ -202,6 +202,7 @@
             this.ShohinKanriDgv.TabIndex = 52;
             this.ShohinKanriDgv.TabStop = false;
             this.ShohinKanriDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShohinKanriDgv_CellClick);
+            this.ShohinKanriDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShohinKanriDgv_CellContentClick);
             // 
             // HihyojiTxb
             // 
@@ -384,14 +385,14 @@
             this.KakakuLbl.TabIndex = 33;
             this.KakakuLbl.Text = "価格";
             // 
-            // MakerIDTxb
+            // MakerNameTxb
             // 
-            this.MakerIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MakerNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MakerIDTxb.Location = new System.Drawing.Point(1052, 150);
-            this.MakerIDTxb.Name = "MakerIDTxb";
-            this.MakerIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.MakerIDTxb.TabIndex = 32;
+            this.MakerNameTxb.Location = new System.Drawing.Point(1052, 150);
+            this.MakerNameTxb.Name = "MakerNameTxb";
+            this.MakerNameTxb.Size = new System.Drawing.Size(201, 25);
+            this.MakerNameTxb.TabIndex = 2;
             // 
             // MakerIDLbl
             // 
@@ -399,9 +400,9 @@
             this.MakerIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.MakerIDLbl.Location = new System.Drawing.Point(913, 150);
             this.MakerIDLbl.Name = "MakerIDLbl";
-            this.MakerIDLbl.Size = new System.Drawing.Size(122, 28);
+            this.MakerIDLbl.Size = new System.Drawing.Size(125, 28);
             this.MakerIDLbl.TabIndex = 31;
-            this.MakerIDLbl.Text = "メーカーID";
+            this.MakerIDLbl.Text = "メーカー名";
             // 
             // ShohinNameTxb
             // 
@@ -657,7 +658,7 @@
         private System.Windows.Forms.Label ShohinKanriLbl;
         private System.Windows.Forms.DataGridView ShohinKanriDgv;
         private System.Windows.Forms.Button GamenKousinBtn;
-        private System.Windows.Forms.TextBox MakerIDTxb;
+        private System.Windows.Forms.TextBox MakerNameTxb;
         private System.Windows.Forms.Label TopIDHyojiLbl;
         private System.Windows.Forms.Label TopIDLbl;
         private System.Windows.Forms.Label TopEigyoshoLbl;

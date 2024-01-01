@@ -719,8 +719,7 @@ namespace SalesManagement_SysDev
             if (YakushokuNameCmb.Text != "")
             { 
                 poid = PositionDA.GetPoID(YakushokuNameCmb.Text);
-            }
-            
+            }           
             
             if(EigyoushoNameCmb.Text != "")
             {

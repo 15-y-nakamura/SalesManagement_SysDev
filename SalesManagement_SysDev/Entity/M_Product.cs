@@ -67,11 +67,11 @@ namespace SalesManagement_SysDev
         [DisplayName("商品ID")]
         public int PrID { get; set; }
 
-        [DisplayName("メーカーID")]
-        public int MaID { get; set; }
-
         [DisplayName("商品名")]
         public string PrName { get; set; }
+
+        [DisplayName("メーカー名")]
+        public string MaName { get; set; }
 
         [DisplayName("価格")]
         public decimal Price { get; set; }
@@ -79,8 +79,8 @@ namespace SalesManagement_SysDev
         [DisplayName("安全在庫数")]
         public int PrSafetyStock { get; set; }
 
-        [DisplayName("小分類ID")]
-        public int ScID { get; set; }
+        [DisplayName("小分類名")]
+        public string ScName { get; set; }
 
         [DisplayName("型番")]
         public string PrModelNumber { get; set; }
