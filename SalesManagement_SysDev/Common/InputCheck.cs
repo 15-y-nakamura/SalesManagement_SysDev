@@ -1357,7 +1357,7 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
-        public (bool flg, string Msg) CheckChID(string text)
+        public (bool flg, string Msg) CheckSearchChID(string text)
         {
             if (!CheckSuuti(text))
             {
@@ -1387,7 +1387,7 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
-        public (bool flg, string Msg) CheckHiddenChID(string text)
+        public (bool flg, string Msg) CheckChID(string text)
         {
             if (!CheckSuuti(text))
             {
