@@ -59,12 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="DataAccess\ChumonDataAccess.cs" />
     <Compile Include="DataAccess\ChumonDetailDataAccess.cs" />
-
     <Compile Include="DataAccess\ProductDataAccess.cs" />
-
     <Compile Include="DataAccess\ClientDataAcces.cs" />
     <Compile Include="DataAccess\EmployeeDataAccess.cs" />
     <Compile Include="DataAccess\OrderDataAccess.cs" />
@@ -73,6 +70,9 @@
     <Compile Include="DataAccess\SalesOfficeDataAccess.cs" />
     <Compile Include="DataAccess\LoginDataAccess.cs" />
     <Compile Include="DataAccess\ShohinDataAccess.cs" />
+    <Compile Include="DataAccess\StockDataAccess.cs" />
+    <Compile Include="DataAccess\SyukkoDataAccess.cs" />
+    <Compile Include="DataAccess\SyukkoDetailDataAccess.cs" />
     <Compile Include="Entity\M_MajorClassification.cs" />
     <Compile Include="Entity\M_Product.cs" />
     <Compile Include="Common\InputCheck.cs" />

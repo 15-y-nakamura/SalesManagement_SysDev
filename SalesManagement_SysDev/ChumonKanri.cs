@@ -1,5 +1,6 @@
 ﻿using SalesManagement_SysDev.DataAccess;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,9 @@ namespace SalesManagement_SysDev
         SalesOfficeDataAccess soDataAccess = new SalesOfficeDataAccess();
         ChumonDataAccess chDataAccess = new ChumonDataAccess();
         ChumonDetailDataAccess chdDataAccess = new ChumonDetailDataAccess();
+        StockDataAccess stDataAccess = new StockDataAccess();
+        SyukkoDataAccess syuDataAccess = new SyukkoDataAccess();
+        SyukkoDetailDataAccess syudDataAccess = new SyukkoDetailDataAccess();
 
         private static List<T_ChumonDsp> Chumon;
         private static List<T_ChumonDetailDsp> ChumonDetail;
@@ -363,7 +367,7 @@ namespace SalesManagement_SysDev
         {
             if (ChumonIDTxb.Text != "")
             {
-                if (!inputCheck.CheckChID(ChumonIDTxb.Text).flg)
+                if (!inputCheck.CheckSearchChID(ChumonIDTxb.Text).flg)
                 {
                     messageDsp.DspMsg(inputCheck.CheckChID(ChumonIDTxb.Text).Msg);
                     return false;
@@ -530,12 +534,19 @@ namespace SalesManagement_SysDev
 
         private void HiddenBtn_Click(object sender, EventArgs e)
         {
+            if (!HiddenInputCheck())
+            {
+                return;
+            }
 
+            var HiddenData = SetHiddenDate();
+
+            HiddenChumon(HiddenData);
         }
 
         private bool HiddenInputCheck()
         {
-            if(inputCheck.CheckChID(ChumonIDTxb.Text).flg)
+            if(!inputCheck.CheckChID(ChumonIDTxb.Text).flg)
             {
                 messageDsp.DspMsg(inputCheck.CheckChID(ChumonIDTxb.Text).Msg);
                 return false;
@@ -562,7 +573,7 @@ namespace SalesManagement_SysDev
             return T_Ch;
         }
 
-        private void HiddenEmployee(T_Chumon T_Ch)
+        private void HiddenChumon(T_Chumon T_Ch)
         {
             if (DialogResult.OK == messageDsp.DspMsg("M7028"))
             {
@@ -583,6 +594,141 @@ namespace SalesManagement_SysDev
             }
 
 
+        }
+
+        private void ConfirmBtn_Click(object sender, EventArgs e)
+        {
+            if (!ConfirmInputCheck())
+            {
+                return;
+            }
+
+            var ConfirmData = SetConfirmData();
+
+
+        }
+
+        private bool ConfirmInputCheck()
+        {
+            if (!inputCheck.CheckChID(ChumonIDTxb.Text).flg)
+            {
+                messageDsp.DspMsg(inputCheck.CheckChID(ChumonIDTxb.Text).Msg);
+                return false;
+            }
+
+            return true;
+        }
+
+        private T_Chumon SetConfirmData()
+        {
+            T_Chumon T_Ch = new T_Chumon()
+            {
+                ChID = int.Parse(ChumonIDTxb.Text),
+                EmID = EmID,
+                ChStateFlag = 1,
+            };
+
+            return T_Ch;
+        }
+
+        private bool UpdateStockData()
+        {
+            var NeedData = chdDataAccess.GetNeedData(int.Parse(ChumonIDTxb.Text));
+            int stock = 0;
+
+            foreach (var nd in NeedData)
+            {
+                stock = stDataAccess.GetStQuantity(nd.PrID);
+                stock = stock - nd.ChQuantity;
+
+                T_Stock t_Stock = new T_Stock()
+                {
+                    PrID = nd.PrID,
+                    StQuantity = stock,
+                };
+
+                if (!stDataAccess.UpdateStock(t_Stock))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool RegistSyukko()
+        {
+            var NeedData = chDataAccess.GetSyukkoNeedData(int.Parse(ChumonIDTxb.Text));
+
+            foreach (var nd in NeedData)
+            { 
+                T_Syukko t_Syukko = new T_Syukko
+                {
+                    EmID = null,
+                    ClID = nd.ClID,
+                    SoID = nd.SoID,
+                    OrID = nd.OrID,
+                    SyDate = null,
+                    SyStateFlag = 0,
+                    SyFlag = 0,
+                    SyHidden = null
+                };
+
+                if (!syuDataAccess.RegistSyukkoData(t_Syukko))
+                {
+                    return false;
+                }
+            }
+            
+
+            return true;
+        }
+
+        private bool RegistSyukkoDetail()
+        {
+            var NeedData = chdDataAccess.GetNeedData(int.Parse(ChumonIDTxb.Text));
+            int OrID = chDataAccess.GetOrID(int.Parse(ChumonIDTxb.Text));
+            int SyID = syuDataAccess.GetSyID(OrID);
+
+            foreach (var nd in NeedData)
+            {
+                T_SyukkoDetail t_Syukkodtl = new T_SyukkoDetail
+                {
+                    SyID = SyID,
+                    PrID = nd.PrID,
+                    SyQuantity = nd.ChQuantity
+                };
+
+                if (!syudDataAccess.RegistSyudData(t_Syukkodtl))
+                {
+                    return false;
+                }
+            }
+
+
+            return true;
+        }
+
+        private void ConfirmChumon(T_Chumon T_Ch)
+        {
+            if (DialogResult.OK == messageDsp.DspMsg("7031"))
+            {
+                if (chDataAccess.ConfirmChumonDate(T_Ch) && UpdateStockData() && 
+                RegistSyukko() && RegistSyukkoDetail())
+                {
+                    messageDsp.DspMsg("M7032");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormGridView();
+                }
+                else
+                {
+                    messageDsp.DspMsg("M7033");
+                }
+            }
         }
     }
 }

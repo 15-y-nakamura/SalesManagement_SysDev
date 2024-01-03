@@ -427,6 +427,7 @@
             this.ConfirmBtn.TabStop = false;
             this.ConfirmBtn.Text = "確定";
             this.ConfirmBtn.UseVisualStyleBackColor = true;
+            this.ConfirmBtn.Click += new System.EventHandler(this.ConfirmBtn_Click);
             // 
             // HiddenBtn
             // 
