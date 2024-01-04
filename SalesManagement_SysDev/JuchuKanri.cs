@@ -109,8 +109,10 @@ namespace SalesManagement_SysDev
             //コントロールの初期設定
             SetCtrlFormat();
 
-            //データグリッドビューの設定
+            //受注データグリッドビューの設定
             SetFormJuchuKanriGridView();
+
+            //詳細受注データグリッドビューの設定
             SetFormJuchuKanriDetailGridView();
         }
 
@@ -218,7 +220,7 @@ namespace SalesManagement_SysDev
         {
             TopButsuryuPage.EmID = EmID;
             TopButsuryuPage.PoID = PoID;
-            TopButsuryuPage.Logindate= Logindate;
+            TopButsuryuPage.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -330,7 +332,7 @@ namespace SalesManagement_SysDev
 
             //すべての列がコントロールの表示領域の幅いっぱいに表示されるよう列幅を調整
             JuchuKanriDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
- 
+
             /*            
             //各列幅の指定
             ShainKanriDgv.Columns[0].Width = 80; //社員ID
@@ -406,11 +408,7 @@ namespace SalesManagement_SysDev
         //登録ボタンクラック
         private void RegistBtn_Click(object sender, EventArgs e)
         {
-            //入力チェック
-            if (!InputRegistDataCheck())
-            {
-                return;
-            }
+
 
             //受注IDの入力チェック
             if (!InputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
@@ -418,7 +416,7 @@ namespace SalesManagement_SysDev
                 MessageDsp.DspMsg(InputCheck.CheckRegistOrID(JuchuIDTxb.Text).Msg);
             }
 
-            // テキストボックスから数値を取得（エラーチェックを追加してください）
+            // テキストボックスから数値を取得
             int textBoxValue = int.Parse(JuchuIDTxb.Text);
 
             // データベースから、テキストボックスの数値と一致するデータがあるか確認
@@ -430,7 +428,14 @@ namespace SalesManagement_SysDev
                 if (matchingData != null)
                 {
                     // 一致するデータが見つかった場合の処理
-                    Console.WriteLine("データベース内で一致するデータが見つかりました");
+                    MessageBox.Show("受注詳細に飛びます");
+
+                    //入力チェック
+                    if (!InputRegistOrderDetailDataCheck())
+                    {
+                        return;
+                    }
+
                     var orderdetail = SetOrderDetailData();
 
                     //登録
@@ -439,7 +444,14 @@ namespace SalesManagement_SysDev
                 else
                 {
                     // 一致するデータが見つからなかった場合の処理
-                    Console.WriteLine("データベース内で一致するデータは見つかりませんでした");
+                    MessageBox.Show("受注登録に飛びます");
+
+                    //入力チェック
+                    if (!InputRegistOrderDataCheck())
+                    {
+                        return;
+                    }
+
                     //形式化
                     var order = SetOrderData();
 
@@ -450,45 +462,63 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：InputRegistDataCheck()
+        //メソッド名：InputRegistOrderDataCheck()
         //引　数   ：なし
         //戻り値   ：なし
-        //機　能   ：社員登録時の入力チェック項目の妥当性をチェックする
+        //機　能   ：受注登録時の入力チェック項目の妥当性をチェックする
         ///////////////////////////////
-        private bool InputRegistDataCheck()
+        private bool InputRegistOrderDataCheck()
+        {
+                //受注IDの入力チェック
+                if (!InputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckRegistOrID(JuchuIDTxb.Text).Msg);
+                    return false;
+                }
+
+                //社員IDの入力チェック
+                if (!InputCheck.CheckRegistOrderEmID(ShainIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckRegistOrderEmID(ShainIDTxb.Text).Msg);
+                    return false;
+                }
+
+                //顧客IDの入力チェック
+                if (!InputCheck.CheckRegistOrderClID(KokyakuIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckRegistOrderClID(KokyakuIDTxb.Text).Msg);
+                    return false;
+                }
+
+                //顧客担当者名の入力チェック
+                if (!InputCheck.CheckRegistClTantoName(KokyakuTantoNameTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckRegistClTantoName(KokyakuTantoNameTxb.Text).Msg);
+                    return false;
+                }
+
+                //営業所名の入力チェック
+                if (!InputCheck.CheckJuchuSoNameCmb(EigyoushoNameCmb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckJuchuSoNameCmb(EigyoushoNameCmb.Text).Msg);
+                    return false;
+                }
+
+            return true;
+        }
+
+        ///////////////////////////////
+        //メソッド名：InputRegistOrderDetailDataCheck()
+        //引　数   ：なし
+        //戻り値   ：なし
+        //機　能   ：受注詳細登録時の入力チェック項目の妥当性をチェックする
+        ///////////////////////////////
+        private bool InputRegistOrderDetailDataCheck()
         {
             //受注IDの入力チェック
             if (!InputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistOrID(JuchuIDTxb.Text).Msg);
-                return false;
-            }
-
-            //社員名の入力チェック
-            if (!InputCheck.CheckRegistOrderEmname(ShainIDTxb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckRegistOrderEmname(ShainIDTxb.Text).Msg);
-                return false;
-            }
-
-            //顧客名の入力チェック
-            if (!InputCheck.CheckRegistOrderClName(KokyakuIDTxb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckRegistOrderClName(KokyakuIDTxb.Text).Msg);
-                return false;
-            }
-
-            //顧客担当者名の入力チェック
-            if (!InputCheck.CheckRegistClTantoName(KokyakuTantoNameTxb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckRegistClTantoName(KokyakuTantoNameTxb.Text).Msg);
-                return false;
-            }
-
-            //営業所名の入力チェック
-            if (!InputCheck.CheckJuchuSoNameCmb(EigyoushoNameCmb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckJuchuSoNameCmb(EigyoushoNameCmb.Text).Msg);
                 return false;
             }
 
@@ -519,7 +549,6 @@ namespace SalesManagement_SysDev
                 MessageDsp.DspMsg(InputCheck.CheckRegistGokeiKingaku(GokeiKingakuTxb.Text).Msg);
                 return false;
             }
-
             return true;
         }
 
@@ -532,8 +561,8 @@ namespace SalesManagement_SysDev
         private T_Order SetOrderData()
         {
             int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
-            int EmID = EmployeeDA.GetEmID(ShainIDTxb.Text);
-            int CIID = ClientDA.GetCIID(KokyakuIDTxb.Text);
+            //int EmID = EmployeeDA.GetEmID(ShainIDTxb.Text);
+            //int CIID = ClientDA.GetCIID(KokyakuIDTxb.Text);
 
             int OrFlg;
             int OrStateFlg;
@@ -560,8 +589,8 @@ namespace SalesManagement_SysDev
             {
                 OrID = int.Parse(JuchuIDTxb.Text),
                 SoID = SoID,
-                EmID = EmID,
-                ClID = CIID,
+                EmID = int.Parse(ShainIDTxb.Text),
+                ClID = int.Parse(KokyakuIDTxb.Text),
                 ClCharge = KokyakuTantoNameTxb.Text,
                 OrDate = JuchuDateDtm.Value,
                 OrStateFlag = OrStateFlg,
@@ -670,22 +699,22 @@ namespace SalesManagement_SysDev
                 }
             }
 
-            //社員名の入力チェック
+            //社員IDの入力チェック
             if (ShainIDTxb.Text != "")
             {
-                if (!InputCheck.CheckRegistOrderEmname(ShainIDTxb.Text).flg)
+                if (!InputCheck.CheckSearchOrderEmID(ShainIDTxb.Text).flg)
                 {
-                    MessageDsp.DspMsg(InputCheck.CheckRegistOrderEmname(ShainIDTxb.Text).Msg);
+                    MessageDsp.DspMsg(InputCheck.CheckSearchOrderEmID(ShainIDTxb.Text).Msg);
                     return false;
                 }
             }
 
-            //顧客名の入力チェック
+            //顧客IDの入力チェック
             if (KokyakuIDTxb.Text != "")
             {
-                if (!InputCheck.CheckRegistOrderClName(KokyakuIDTxb.Text).flg)
+                if (!InputCheck.CheckSearchOrderClID(KokyakuIDTxb.Text).flg)
                 {
-                    MessageDsp.DspMsg(InputCheck.CheckRegistOrderClName(KokyakuIDTxb.Text).Msg);
+                    MessageDsp.DspMsg(InputCheck.CheckSearchOrderClID(KokyakuIDTxb.Text).Msg);
                     return false;
                 }
             }
@@ -754,7 +783,7 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：InputRegistDataCheck()
+        //メソッド名：SetOrderSearchData()
         //引　数   ：なし
         //戻り値   ：T_Order
         //機　能   ：受注情報を形式化する
@@ -762,8 +791,6 @@ namespace SalesManagement_SysDev
         private T_Order SetOrderSearchData()
         {
             int soid = 0;
-            int emid = 0;
-            int ciid = 0;
             int OrFlg = -1;
             int OrStateFlg = -1;
             DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
@@ -771,16 +798,6 @@ namespace SalesManagement_SysDev
             if (EigyoushoNameCmb.Text != "")
             {
                 soid = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
-            }
-
-            if (ShainIDTxb.Text != "")
-            {
-                emid = EmployeeDA.GetEmID(ShainIDTxb.Text);
-            }
-
-            if (KokyakuIDTxb.Text != "")
-            {
-                ciid = ClientDA.GetCIID(KokyakuIDTxb.Text);
             }
 
             if (JuchuDateDtm.Checked)
@@ -816,8 +833,8 @@ namespace SalesManagement_SysDev
             {
                 OrID = int.Parse(JuchuIDTxb.Text),
                 SoID = soid,
-                EmID = emid,
-                ClID = ciid,
+                EmID = int.Parse(ShainIDTxb.Text),
+                ClID = int.Parse(KokyakuIDTxb.Text),
                 ClCharge = KokyakuTantoNameTxb.Text,
                 OrDate = date,
                 OrStateFlag = OrStateFlg,
@@ -838,7 +855,7 @@ namespace SalesManagement_SysDev
         private T_OrderDetail SetOrderDetaiSearchlData()
         {
 
-            T_OrderDetail T_Orddetail = new T_OrderDetail()
+            T_OrderDetail T_Ordertail = new T_OrderDetail()
             {
                 OrDetailID = int.Parse(JuchuDetailIDTxb.Text),
                 OrID = int.Parse(JuchuIDTxb.Text),
@@ -847,7 +864,7 @@ namespace SalesManagement_SysDev
                 OrTotalPrice = Convert.ToDecimal(GokeiKingakuTxb.Text),
             };
 
-            return T_Orddetail;
+            return T_Ordertail;
         }
 
         private void SearchOrder(T_Order ordseadata, T_OrderDetail orddetailseadata)
@@ -934,46 +951,6 @@ namespace SalesManagement_SysDev
             }
         }
 
-        private void ShainDgv_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            /*JuchuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
-            JuchuDateDtm.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
-            ShainIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
-            KokyakuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
-            KokyakuTantoNameTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
-            EigyoushoNameCmb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
-            ShohinIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
-            SuryoTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
-            GokeiKingakuTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
-            //受注状態フラグを日本語に変換
-            if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[9].Value == 0)
-            {
-                JuchuJotaiFlagCmb.Text = "未確定";
-            }
-            else if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[9].Value == 1)
-            {
-                JuchuJotaiFlagCmb.Text = "確定";
-            }
-            //受注管理フラグを日本語に変換
-            if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[10].Value == 0)
-            {
-                JuchuKanriFlagCmb.Text = "表示";
-            }
-            else if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[10].Value == 2)
-            {
-                JuchuKanriFlagCmb.Text = "非表示";
-            }
-
-            if (JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[11].Value == null)
-            {
-                HihyojiTxb.Text = "";
-            }
-            else
-            {
-                HihyojiTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[11].Value.ToString();
-            }*/
-        }
-
         private void ConfirmBtn_Click(object sender, EventArgs e)
         {
             /*using (var dbContext = new SalesManagement_DevContext())
@@ -1003,6 +980,52 @@ namespace SalesManagement_SysDev
                 dbContext.T_Chumon.Add(newChumon); // 新しい注文レコードを追加
                 dbContext.SaveChanges(); // 変更をデータベースに保存
             }*/
+        }
+
+        private void JuchuKanriDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            JuchuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
+            EigyoushoNameCmb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
+            ShainIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
+            KokyakuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
+            KokyakuTantoNameTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
+            JuchuDateDtm.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
+            //受注状態フラグを日本語に変換
+            if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[6].Value == 0)
+            {
+                JuchuJotaiFlagCmb.Text = "未確定";
+            }
+            else if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[6].Value == 1)
+            {
+                JuchuJotaiFlagCmb.Text = "確定";
+            }
+            //受注管理フラグを日本語に変換
+            if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[7].Value == 0)
+            {
+                JuchuKanriFlagCmb.Text = "表示";
+            }
+            else if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[7].Value == 2)
+            {
+                JuchuKanriFlagCmb.Text = "非表示";
+            }
+
+            if (JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[8].Value == null)
+            {
+                HihyojiTxb.Text = "";
+            }
+            else
+            {
+                HihyojiTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+            }
+        }
+
+        private void JuchuKanriDetailDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            JuchuDetailIDTxb.Text = JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[0].Value.ToString();
+            JuchuIDTxb.Text = JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[1].Value.ToString();
+            ShohinIDTxb.Text = JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[2].Value.ToString();
+            SuryoTxb.Text = JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[3].Value.ToString();
+            GokeiKingakuTxb.Text =  JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[4].Value.ToString();
         }
     }
 }
