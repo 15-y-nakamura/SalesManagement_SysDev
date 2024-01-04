@@ -2092,5 +2092,89 @@ namespace SalesManagement_SysDev.DataAccess
                 return false;
             }
         }
+
+        public bool ConfirmChumonDate(T_Chumon T_Ch)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var ch = context.T_Chumons.Single(x => x.ChID == T_Ch.ChID);
+
+                ch.ChStateFlag = T_Ch.ChStateFlag;
+                ch.EmID = T_Ch.EmID;
+
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<T_Chumon> GetSyukkoNeedData(int chid)
+        {
+            List<T_Chumon> Chumon = new List<T_Chumon>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.T_Chumons
+                         where t1.ChID == chid
+                         select new
+                         {
+                             t1.ClID,
+                             t1.SoID,
+                             t1.OrID,
+                         };
+
+                foreach (var p in tb)
+                {
+                    Chumon.Add(new T_Chumon()
+                    {
+                        ClID = p.ClID,
+                        SoID = p.SoID,
+                        OrID = p.OrID
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return Chumon;
+        }
+
+        public int GetOrID(int chid)
+        {
+            int OrID = 0;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.T_Chumons
+                         where t1.ChID == chid
+                         select new
+                         {
+                             OrID = t1.OrID,
+                         };
+
+                foreach (var p in tb)
+                {
+                    OrID = p.OrID;
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return OrID;
+        }
     }
 }

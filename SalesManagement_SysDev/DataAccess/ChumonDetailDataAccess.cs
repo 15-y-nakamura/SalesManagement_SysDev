@@ -2980,5 +2980,42 @@ namespace SalesManagement_SysDev.DataAccess
 
             return Prid;
         }
+
+        public List<T_ChumonDetail> GetNeedData(int chid)
+        {
+            List<T_ChumonDetail> Chumon = new List<T_ChumonDetail>();
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.T_ChumonDetails
+                         join t2 in context.T_Chumons
+                         on t1.ChID equals t2.ChID
+                         join t3 in context.M_Products
+                         on t1.PrID equals t3.PrID
+                         where t1.ChDetailID == chid
+                         select new
+                         {
+                             t1.PrID,
+                             t1.ChQuantity
+                         };
+
+                foreach (var p in tb)
+                {
+                    Chumon.Add(new T_ChumonDetail()
+                    {
+                        PrID = p.PrID,
+                        ChQuantity = p.ChQuantity
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return Chumon;
+        }
+
     }
 }
