@@ -864,47 +864,75 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：CheckEmname()
+        //メソッド名：CheckRegistOrderEmid()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
-        //機　能   ：社員名入力チェック
+        //機　能   ：社員ID入力チェック
         //           問題がないときTrue、文字列
         //           問題があるときFalse、メッセージID
         ///////////////////////////////
-        public (bool flg, string Msg) CheckRegistOrderEmname(string text)
+        public (bool flg, string Msg) CheckRegistOrderEmID(string text)
         {
             if (text == "")
             {
-                return (false, "M4007");
+                return (false, "M4003");
             }
 
-            if (!CheckZenkaku(text))
+            if (!CheckSuuti(text))
             {
-                return (false, "M4005");
+                return (false, "M4001");
             }
 
-            if (!EmployeeDA.SonzaiCheckEmName(text))
+            if (!EmployeeDA.SonzaiCheckEmID(int.Parse(text)))
             {
                 return (false, "M6005");
             }
 
-            if (text.Length > 50)
+            if (text.Length > 6)
             {
-                return (false, "M4006");
+                return (false, "M4002");
             }
 
             return (true, text);
         }
 
         ///////////////////////////////
-        //メソッド名：CheckRegistClID()
+        //メソッド名：CheckSearchOrderEmid()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
-        //機　能   ：登録する時の顧客名入力チェック
+        //機　能   ：社員ID入力チェック
         //           問題がないときTrue、文字列
         //           問題があるときFalse、メッセージID
         ///////////////////////////////
-        public (bool flg, string Msg) CheckRegistOrderClName(string text)
+        public (bool flg, string Msg) CheckSearchOrderEmID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M4003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M4001");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M4002");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckRegistOrderClID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の顧客ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckRegistOrderClID(string text)
         {
             if (text == "")
             {
@@ -916,7 +944,7 @@ namespace SalesManagement_SysDev
                 return (false, "M1001");
             }
 
-            if (!ClientDA.SonzaiCheckCIName(text))
+            if (!ClientDA.SonzaiCheckCIID(int.Parse(text)))
             {
                 return (false, "M6006");
             }
@@ -928,6 +956,35 @@ namespace SalesManagement_SysDev
 
             return (true, text);
         }
+
+        ///////////////////////////////
+        //メソッド名：CheckSearchClID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の顧客ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckSearchOrderClID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M1003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M1001");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M1002");
+            }
+
+            return (true, text);
+        }
+
 
         ///////////////////////////////
         //メソッド名：CheckRegistClTantoName()
@@ -1138,7 +1195,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         public (bool flg, string Msg) CheckRegistGokeiKingaku(string text)
         {
-            if (!CheckSuuti(text))
+            if (CheckSuuti(text))
             {
                 return (false, "M6020");
             }

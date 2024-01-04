@@ -186,6 +186,7 @@
             this.JuchuKanriDgv.Size = new System.Drawing.Size(1173, 256);
             this.JuchuKanriDgv.TabIndex = 62;
             this.JuchuKanriDgv.TabStop = false;
+            this.JuchuKanriDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.JuchuKanriDgv_CellContentClick);
             // 
             // KokyakuNameLbl
             // 
@@ -277,6 +278,7 @@
             this.JuchuKanriDetailDgv.Size = new System.Drawing.Size(633, 256);
             this.JuchuKanriDetailDgv.TabIndex = 51;
             this.JuchuKanriDetailDgv.TabStop = false;
+            this.JuchuKanriDetailDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.JuchuKanriDetailDgv_CellContentClick);
             // 
             // JuchuKanriFlagCmb
             // 
@@ -443,7 +445,7 @@
             // 
             this.KokyakuTantoNameLbl.AutoSize = true;
             this.KokyakuTantoNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.KokyakuTantoNameLbl.Location = new System.Drawing.Point(23, 220);
+            this.KokyakuTantoNameLbl.Location = new System.Drawing.Point(30, 220);
             this.KokyakuTantoNameLbl.Name = "KokyakuTantoNameLbl";
             this.KokyakuTantoNameLbl.Size = new System.Drawing.Size(180, 28);
             this.KokyakuTantoNameLbl.TabIndex = 2;
