@@ -26,5 +26,71 @@ namespace SalesManagement_SysDev
                 return null;
             }
         }
+
+        ///////////////////////////////
+        //メソッド名：GetGetEmID()
+        //引　数   ：なし
+        //戻り値   ：取得した社員ID
+        //機　能   ：社員ID取得
+        ///////////////////////////////
+        public int GetEmID(string emname)
+        {
+            int emid = 0;
+
+            var context = new SalesManagement_DevContext();
+            try
+            {
+                var tb = from t1 in context.M_Employees
+                         where t1.EmName == emname
+                         select new
+                         {
+                             t1.EmID
+                         };
+
+                foreach (var p in tb)
+                {
+                    emid = p.EmID;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return emid;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetMcID()
+        //引　数   ：なし
+        //戻り値   ：取得した大分類ID
+        //機　能   ：大分類ID取得
+        ///////////////////////////////
+        public int GetMcID(string mcname)
+        {
+            int mcid = 0;
+
+            var context = new SalesManagement_DevContext();
+            try
+            {
+                var tb = from t1 in context.M_MajorCassifications
+                         where t1.McName == mcname
+                         select new
+                         {
+                             t1.McID
+                         };
+
+                foreach (var p in tb)
+                {
+                    mcid = p.McID;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return mcid;
+        }
     }
 }

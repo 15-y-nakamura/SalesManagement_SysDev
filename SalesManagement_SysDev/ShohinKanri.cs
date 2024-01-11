@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SalesManagement_SysDev
 {
@@ -839,7 +840,21 @@ namespace SalesManagement_SysDev
 
         private void DaibunruiCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int ScID = ProductDA.GetScID(ShoubunruiCmb.Text);
+            int mcID = SmallClassificationDA.GetMcID(DaibunruiCmb.Text);
+
+            // データベースから、テキストボックスの数値と一致するデータがあるか確認
+            using (var dbContext = new SalesManagement_DevContext())
+            {
+
+                var ShobunruiList = dbContext.M_SmallClassifications
+                    .Where(sc => sc.McID == mcID)
+                    .Select(sc => sc.ScName)
+                    .ToList();
+
+                ShoubunruiCmb.Items.Clear();
+                ShoubunruiCmb.Items.AddRange(ShobunruiList.ToArray());
+
+            }
         }
     }
 }
