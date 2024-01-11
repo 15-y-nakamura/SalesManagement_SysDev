@@ -333,20 +333,6 @@ namespace SalesManagement_SysDev
             //すべての列がコントロールの表示領域の幅いっぱいに表示されるよう列幅を調整
             JuchuKanriDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            /*            
-            //各列幅の指定
-            ShainKanriDgv.Columns[0].Width = 80; //社員ID
-            ShainKanriDgv.Columns[1].Width = 100; //社員名
-            ShainKanriDgv.Columns[2].Width = 80; //営業ID
-            ShainKanriDgv.Columns[3].Width = 100; //営業名
-            ShainKanriDgv.Columns[4].Width = 80; //役職ID
-            ShainKanriDgv.Columns[5].Width = 70; //役職名
-            ShainKanriDgv.Columns[6].Width = 100; //入社年月日
-            ShainKanriDgv.Columns[7].Width = 100; //電話番号
-            ShainKanriDgv.Columns[8].Width = 110; //社員管理フラグ
-            ShainKanriDgv.Columns[9].Width = 160; //非表示理由
-            */
-
             //行の高さ設定
             JuchuKanriDetailDgv.RowTemplate.Height = 40;
 
@@ -679,11 +665,11 @@ namespace SalesManagement_SysDev
                 return;
             }
 
-            var ordersearchdata = SetOrderData();
+            var ordseadate = SetOrderSearchData();
 
-            var orderdetailsearchdata = SetOrderDetailData();
+            var ordseadetdate = SetOrderDetaiSearchlData();
 
-            SearchOrder(ordersearchdata, orderdetailsearchdata);
+            SearchOrder(ordseadate, ordseadetdate);
 
         }
 
@@ -791,6 +777,9 @@ namespace SalesManagement_SysDev
         private T_Order SetOrderSearchData()
         {
             int soid = 0;
+            int orid = 0;
+            int emid = 0;
+            int ciid = 0;
             int OrFlg = -1;
             int OrStateFlg = -1;
             DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
@@ -829,12 +818,28 @@ namespace SalesManagement_SysDev
                 }
             }
 
+            if(JuchuIDTxb.Text == "")
+            {
+                orid = int.Parse(JuchuIDTxb.Text);
+            }
+
+            if(ShainIDTxb.Text == "")
+            {
+                emid = int.Parse(ShainIDTxb.Text);
+            }
+
+            if(KokyakuIDTxb.Text == "")
+            {
+                ciid = int.Parse(KokyakuIDTxb.Text);
+            }
+
+
             T_Order T_Ord = new T_Order()
             {
-                OrID = int.Parse(JuchuIDTxb.Text),
+                OrID = orid,
                 SoID = soid,
-                EmID = int.Parse(ShainIDTxb.Text),
-                ClID = int.Parse(KokyakuIDTxb.Text),
+                EmID = emid,
+                ClID = ciid,
                 ClCharge = KokyakuTantoNameTxb.Text,
                 OrDate = date,
                 OrStateFlag = OrStateFlg,
@@ -854,23 +859,58 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private T_OrderDetail SetOrderDetaiSearchlData()
         {
+            int ordetailid = 0;
+            int orid = 0;
+            int prid = 0;
+            int orquantity = 0;
+            decimal ortotalprice = 0;
+
+            if(JuchuIDTxb.Text == "")
+            {
+                ordetailid = int.Parse(JuchuIDTxb.Text);
+            }
+
+            if(JuchuDetailIDTxb.Text == "")
+            {
+                orid = int.Parse(JuchuDetailID.Text);
+            }
+
+            if(ShohinIDTxb.Text == "")
+            {
+                prid = int.Parse(ShohinIDTxb.Text);
+            }
+
+            if(SuryoTxb.Text == "")
+            {
+                orquantity = int.Parse(SuryoTxb.Text);
+            }
+
+            if(GokeiKingakuTxb.Text == "")
+            {
+                ortotalprice = Convert.ToDecimal(GokeiKingakuTxb.Text);
+            }
 
             T_OrderDetail T_Ordertail = new T_OrderDetail()
             {
-                OrDetailID = int.Parse(JuchuDetailIDTxb.Text),
-                OrID = int.Parse(JuchuIDTxb.Text),
-                PrID = int.Parse(ShohinIDTxb.Text),
-                OrQuantity = int.Parse(SuryoTxb.Text),
-                OrTotalPrice = Convert.ToDecimal(GokeiKingakuTxb.Text),
+                OrDetailID = ordetailid,
+                OrID = orid,
+                PrID = prid,
+                OrQuantity = orquantity,
+                OrTotalPrice = ortotalprice,
             };
 
             return T_Ordertail;
         }
 
-        private void SearchOrder(T_Order ordseadata, T_OrderDetail orddetailseadata)
+        private void SearchOrder(T_Order ordseadata, T_OrderDetail ordseadetdata)
         {
             var orddata = OrderDA.SearchOrder(ordseadata);
-            var orddetaildata = OrderDetailDA.SearchOrderDetail(orddetailseadata);
+            var orddetaildata = OrderDetailDA.SearchOrderDetail(ordseadetdata);
+
+            if (orddata.Count == 0 && orddetaildata.Count == 0)
+            {
+                MessageDsp.DspMsg("M6023");
+            }
 
             //データグリッドビューの設定
             //SetDataGridView(orddata, orddetaildata);
@@ -883,6 +923,7 @@ namespace SalesManagement_SysDev
             SetCtrlFormat();
 
             SetFormJuchuKanriGridView();
+
         }
 
         //非表示ボタンクリック
