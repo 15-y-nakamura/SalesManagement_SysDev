@@ -106,6 +106,7 @@ namespace SalesManagement_SysDev.DataAccess
                 var tb = from t1 in context.T_Orders
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
+                         where t1.OrFlag == 0
 
                          select new
                          {

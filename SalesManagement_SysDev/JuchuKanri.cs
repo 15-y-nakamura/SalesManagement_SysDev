@@ -394,8 +394,6 @@ namespace SalesManagement_SysDev
         //登録ボタンクラック
         private void RegistBtn_Click(object sender, EventArgs e)
         {
-
-
             //受注IDの入力チェック
             if (!InputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
             {
