@@ -872,7 +872,9 @@ namespace SalesManagement_SysDev
             var orddata = OrderDA.SearchOrder(ordseadata);
             var orddetaildata = OrderDetailDA.SearchOrderDetail(orddetailseadata);
 
+            //データグリッドビューの設定
             //SetDataGridView(orddata, orddetaildata);
+
         }
 
         //画面更新ボタンクリック
