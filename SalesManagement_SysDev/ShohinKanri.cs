@@ -303,12 +303,6 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private bool InputRegistDataCheck()
         {
-            //商品IDの入力チェック
-            if(ShohinIDTxb.Text != "")
-            {
-                MessageDsp.DspMsg("M2038");
-            }
-
             //商品名の入力チェック
             if (!InputCheck.CheckPrName(ShohinNameTxb.Text).flg)
             {
@@ -324,7 +318,7 @@ namespace SalesManagement_SysDev
             }
 
             //価格の入力チェック
-            if (!InputCheck.CheckPrice(KakakuLbl.Text).flg)
+            if (!InputCheck.CheckPrice(KakakuTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckPrice(KakakuLbl.Text).Msg);
                 return false;
@@ -414,6 +408,12 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void RegistProduct(M_Product pro)
         {
+            //商品IDの入力チェック
+            if (ShohinIDTxb.Text != "")
+            {
+                MessageDsp.DspMsg("M2038");
+            }
+
             if (DialogResult.OK == MessageDsp.DspMsg("M2026"))
             {
                 if (ProductDA.RegistProduct(pro))
@@ -817,8 +817,6 @@ namespace SalesManagement_SysDev
             IroTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
             SellDtm.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
 
-
-
             //商品管理フラグを日本語に変換
             if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[9].Value == 0)
             {
@@ -837,6 +835,11 @@ namespace SalesManagement_SysDev
             {
                 HihyojiTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value.ToString();
             }
+        }
+
+        private void DaibunruiCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int ScID = ProductDA.GetScID(ShoubunruiCmb.Text);
         }
     }
 }

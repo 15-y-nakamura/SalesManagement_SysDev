@@ -334,6 +334,7 @@
             this.DaibunruiCmb.Name = "DaibunruiCmb";
             this.DaibunruiCmb.Size = new System.Drawing.Size(201, 26);
             this.DaibunruiCmb.TabIndex = 5;
+            this.DaibunruiCmb.SelectedIndexChanged += new System.EventHandler(this.DaibunruiCmb_SelectedIndexChanged);
             // 
             // DaibunruiLbl
             // 
