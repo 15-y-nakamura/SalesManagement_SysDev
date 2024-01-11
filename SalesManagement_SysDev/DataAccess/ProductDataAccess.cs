@@ -773,14 +773,14 @@ namespace SalesManagement_SysDev.DataAccess
         }
 
         ///////////////////////////////
-        //メソッド名：GetGetMaID()
+        //メソッド名：GetMaID()
         //引　数   ：なし
-        //戻り値   ：取得したMaID
+        //戻り値   ：取得したメーカーID
         //機　能   ：メーカーID取得
         ///////////////////////////////
         public int GetMaID(string maname)
         {
-            int maid = 0;
+            int Maid = 0;
 
             var context = new SalesManagement_DevContext();
             try
@@ -794,7 +794,7 @@ namespace SalesManagement_SysDev.DataAccess
 
                 foreach (var p in tb)
                 {
-                    maid = p.MaID;
+                    Maid = p.MaID;
                 }
             }
             catch (Exception ex)
@@ -802,7 +802,7 @@ namespace SalesManagement_SysDev.DataAccess
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            return maid;
+            return Maid;
         }
     }
 }
