@@ -605,7 +605,6 @@ namespace SalesManagement_SysDev
 
             var ConfirmData = SetConfirmData();
 
-
         }
 
         private bool ConfirmInputCheck()
