@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SalesManagement_SysDev
 {
@@ -303,10 +304,9 @@ namespace SalesManagement_SysDev
         private bool InputRegistDataCheck()
         {
             //商品IDの入力チェック
-            if (!InputCheck.CheckRegistPrID(ShohinIDTxb.Text).flg)
+            if(ShohinIDTxb.Text != "")
             {
-                MessageDsp.DspMsg(InputCheck.CheckRegistPrID(ShohinIDTxb.Text).Msg);
-                return false;
+                MessageDsp.DspMsg("M2038");
             }
 
             //商品名の入力チェック

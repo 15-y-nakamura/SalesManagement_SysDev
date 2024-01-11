@@ -696,6 +696,7 @@ namespace SalesManagement_SysDev.DataAccess
                          on t1.MaID equals t2.MaID
                          join t3 in context.M_SmallClassifications
                          on t1.ScID equals t3.ScID
+                         where t1.PrFlag == 0
                          select new
                          {
                              t1.PrID,

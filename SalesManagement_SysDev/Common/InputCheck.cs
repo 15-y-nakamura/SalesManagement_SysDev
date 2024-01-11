@@ -367,39 +367,6 @@ namespace SalesManagement_SysDev
         //           問題がないときTrue、文字列
         //           問題があるときFalse、メッセージID
         ///////////////////////////////
-        public (bool flg, string Msg) CheckRegistPrID(string text)
-        {
-            if(text == "")
-            {
-                return (false, "M2003");
-            }
-
-            if (!CheckSuuti(text))
-            {
-                return (false, "M2001");
-            }
-
-            if (ProductDA.SonzaiCheckPrID(int.Parse(text)))
-            {
-                return (false, "M2004");
-            }
-            
-            if (text.Length > 6)
-            {
-                return (false, "M2002");
-            }
-
-            return (true, text);
-        }
-
-        ///////////////////////////////
-        //メソッド名：CheckPrID()
-        //引　数   ：文字列
-        //戻り値   ：(True:異常なし、False:異常あり,文字列)
-        //機　能   ：登録する時の商品ID入力チェック
-        //           問題がないときTrue、文字列
-        //           問題があるときFalse、メッセージID
-        ///////////////////////////////
         public (bool flg, string Msg) CheckSearchPrID(string text)
         {
             if (text == "")
@@ -588,16 +555,11 @@ namespace SalesManagement_SysDev
         //           問題がないときTrue、文字列
         //           問題があるときFalse、メッセージID
         ///////////////////////////////
-        public (bool flg, string Msg) CheckPrName(string text)
+        public (bool flg, string Msg) CheckSearchPrName(string text)
         {
             if(text == "")
             {
                 return (false, "M2008");
-            }
-
-            if (CheckZenkaku(text))
-            {
-                return (false, "M2006");
             }
 
             if (!ProductDA.SonzaiCheckPrName(text))
@@ -612,21 +574,16 @@ namespace SalesManagement_SysDev
             return(true, text);
         }
 
-        public (bool flg, string Msg) CheckSearchPrName(string text)
+        public (bool flg, string Msg) CheckPrName(string text)
         {
             if (text == "")
             {
+                return (false, "M2008");
+            }
+
+            if (text.Length > 50)
+            {
                 return (false, "M2007");
-            }
-
-            if (!CheckZenkaku(text))
-            {
-                return (false, "M2005");
-            }
-
-            if (text.Length < 50)
-            {
-                return (false, "M2006");
             }
             return (true, text);
         }
