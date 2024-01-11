@@ -912,7 +912,9 @@ namespace SalesManagement_SysDev
                 MessageDsp.DspMsg("M6023");
             }
 
-            SetFormJuchuKanriGridView();
+            //データグリッドビューの設定
+            //SetDataGridView(orddata, orddetaildata);
+
         }
 
         //画面更新ボタンクリック
