@@ -1170,23 +1170,6 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
-        ///////////////////////////////
-        //メソッド名：CheckPrReleaseDate()
-        //引　数   ：文字列
-        //戻り値   ：(True:異常なし、False:異常あり,文字列)
-        //機　能   ：発売日入力チェック
-        //           問題がないときTrue、文字列
-        //           問題があるときFalse、メッセージID
-        ///////////////////////////////
-        public (bool flg, string Msg) CheckPrReleaseDate (string text)
-        {
-            if(text ==  "")
-            {
-                return (false, "M2023");
-            }
-
-            return (true, text);
-        }
                
         //メソッド名：CheckRegistShohinID()
         //引　数   ：文字列

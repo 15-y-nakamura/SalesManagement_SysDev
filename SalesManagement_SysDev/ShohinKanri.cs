@@ -354,9 +354,9 @@ namespace SalesManagement_SysDev
             }
 
             //発売日の入力チェック
-            if (!InputCheck.CheckPrReleaseDate(SellDtm.Text).flg)
+            if (!SellDtm.Checked)
             {
-                MessageDsp.DspMsg(InputCheck.CheckPrReleaseDate(SellDtm.Text).Msg);
+                MessageDsp.DspMsg("M2023");
                 return false;
             }
 
@@ -505,9 +505,9 @@ namespace SalesManagement_SysDev
             }
 
             //発売日の入力チェック
-            if (!InputCheck.CheckPrReleaseDate(SellDtm.Text).flg)
+            if (!SellDtm.Checked)
             {
-                MessageDsp.DspMsg(InputCheck.CheckPrReleaseDate(SellDtm.Text).Msg);
+                MessageDsp.DspMsg("M2023");
                 return false;
             }
 
