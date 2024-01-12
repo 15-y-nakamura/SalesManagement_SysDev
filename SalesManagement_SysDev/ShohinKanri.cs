@@ -472,9 +472,9 @@ namespace SalesManagement_SysDev
             }
 
             //価格の入力チェック
-            if (!InputCheck.CheckPrice(KakakuLbl.Text).flg)
+            if (!InputCheck.CheckPrice(KakakuTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckPrice(KakakuLbl.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckPrice(KakakuTxb.Text).Msg);
                 return false;
             }
 
