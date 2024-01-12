@@ -314,6 +314,7 @@
             this.ShoubunruiCmb.Name = "ShoubunruiCmb";
             this.ShoubunruiCmb.Size = new System.Drawing.Size(201, 26);
             this.ShoubunruiCmb.TabIndex = 6;
+            this.ShoubunruiCmb.SelectedIndexChanged += new System.EventHandler(this.ShoubunruiCmb_SelectedIndexChanged);
             // 
             // ShoubunruiLbl
             // 

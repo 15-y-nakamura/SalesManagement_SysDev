@@ -140,6 +140,10 @@ namespace SalesManagement_SysDev
                 DaibunruiCmb.Items.Add(Mcname);
             }
 
+            ShohinIDTxb.Enabled = true;
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
+
             ShohinKanriCmb.Items.Add("表示");
             ShohinKanriCmb.Items.Add("非表示");
         }
@@ -312,16 +316,15 @@ namespace SalesManagement_SysDev
             }
 
             //メーカー名の入力チェック
-            if (!InputCheck.CheckPrMaker(MakerNameTxb.Text).flg)
+            if (MakerNameTxb.Text == "")
             {
-                MessageDsp.DspMsg(InputCheck.CheckPrMaker(MakerNameTxb.Text).Msg);
-                return false;
+                MessageDsp.DspMsg("M2005");
             }
 
             //価格の入力チェック
             if (!InputCheck.CheckPrice(KakakuTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckPrice(KakakuLbl.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckPrice(KakakuTxb.Text).Msg);
                 return false;
             }
 
@@ -463,10 +466,9 @@ namespace SalesManagement_SysDev
             }
 
             //メーカー名の入力チェック
-            if (!InputCheck.CheckPrMaker(MakerNameTxb.Text).flg)
+            if (MakerNameTxb.Text == "")
             {
-                MessageDsp.DspMsg(InputCheck.CheckPrMaker(MakerNameTxb.Text).Msg);
-                return false;
+                MessageDsp.DspMsg("M2005");
             }
 
             //価格の入力チェック
@@ -667,6 +669,10 @@ namespace SalesManagement_SysDev
             SetCtrlFormat();
 
             SetFormShohinKanriGridView();
+
+            ShohinIDTxb.Enabled = true;
+            UpdateBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
         }
 
         //検索ボタンクリック
@@ -836,6 +842,31 @@ namespace SalesManagement_SysDev
             {
                 HihyojiTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value.ToString();
             }
+
+            ShoubunruiCmb.Items.Clear();
+            DaibunruiCmb.Items.Clear();
+
+            ///小分類を取得
+            var ScName = SmallClassificationDA.GetScName();
+
+            //小分類をコンボボックスに追加
+            foreach (string Scname in ScName.Reverse())
+            {
+                ShoubunruiCmb.Items.Add(Scname);
+            }
+
+            //大分類名を取得
+            var McName = MajorClassificationDA.GetMcName();
+
+            //大分類名をコンボボックスに追加
+            foreach (string Mcname in McName.Reverse())
+            {
+                DaibunruiCmb.Items.Add(Mcname);
+            }
+
+            ShohinIDTxb.Enabled = false;
+            UpdateBtn.Enabled = true;
+            HiddenBtn.Enabled = true;
         }
 
         private void DaibunruiCmb_SelectedIndexChanged(object sender, EventArgs e)
@@ -845,7 +876,6 @@ namespace SalesManagement_SysDev
             // データベースから、テキストボックスの数値と一致するデータがあるか確認
             using (var dbContext = new SalesManagement_DevContext())
             {
-
                 var ShobunruiList = dbContext.M_SmallClassifications
                     .Where(sc => sc.McID == mcID)
                     .Select(sc => sc.ScName)
@@ -853,8 +883,24 @@ namespace SalesManagement_SysDev
 
                 ShoubunruiCmb.Items.Clear();
                 ShoubunruiCmb.Items.AddRange(ShobunruiList.ToArray());
-
             }
+        }
+
+        private void ShoubunruiCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*int scID = MajorClassificationDA.GetMcID(ShoubunruiCmb.Text);
+
+            // データベースから、テキストボックスの数値と一致するデータがあるか確認
+            using (var dbContext = new SalesManagement_DevContext())
+            {
+                var DaibunruiList = dbContext.M_SmallClassifications
+                    .Where(sc => sc.ScID == scID)
+                    .Select(sc => sc.M_MajorCassifications.McName) // 大分類テーブルへの参照を経由してMcNameを取得
+                    .FirstOrDefault();
+
+                DaibunruiCmb.Items.Clear();
+                DaibunruiCmb.Items.AddRange(DaibunruiList.ToArray());
+            }*/
         }
     }
 }
