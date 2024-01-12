@@ -761,5 +761,34 @@ namespace SalesManagement_SysDev.DataAccess
             }
         }
 
+        public string GetClName(int ClID)
+        {
+            string ClName = "該当なし";
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.M_Clients
+                         where t1.ClID == ClID
+                         select new
+                         {
+                             t1.ClName
+                         };
+
+                foreach (var p in tb)
+                {
+                    ClName = p.ClName;
+                }
+
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                return ClName;
+            }
+
+            return ClName;
+        }
+
     }
 }

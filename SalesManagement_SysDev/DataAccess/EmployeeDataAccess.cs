@@ -904,5 +904,32 @@ namespace SalesManagement_SysDev.DataAccess
 
             return emid;
         }
+
+        public string GetEmName(int EmID)
+        {
+            string EmName = "該当なし";
+
+            var context = new SalesManagement_DevContext();
+            try
+            {
+                var tb = from t1 in context.M_Employees
+                         where t1.EmID == EmID
+                         select new
+                         {
+                             t1.EmName
+                         };
+
+                foreach (var p in tb)
+                {
+                    EmName = p.EmName;
+                }
+            }
+            catch (Exception ex)
+            {
+                return EmName;
+            }
+
+            return EmName;
+        }
     }
 }

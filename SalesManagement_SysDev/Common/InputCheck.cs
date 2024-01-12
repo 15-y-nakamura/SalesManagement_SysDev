@@ -1265,7 +1265,7 @@ namespace SalesManagement_SysDev
 
             if (text.Length > 6)
             {
-                return (false, "M2002");
+                return (false, "M1002");
             }
 
             if (!EmployeeDA.SonzaiCheckClID(int.Parse(text)))
@@ -1361,7 +1361,7 @@ namespace SalesManagement_SysDev
                 return (false, "M7001");
             }
 
-            if(text.Length > 7)
+            if(text.Length > 6)
             {
                 return (false, "M7002");
             }

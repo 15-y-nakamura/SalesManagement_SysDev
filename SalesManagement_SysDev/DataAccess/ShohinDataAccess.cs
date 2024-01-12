@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace SalesManagement_SysDev.DataAccess
 {
@@ -33,6 +34,35 @@ namespace SalesManagement_SysDev.DataAccess
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return flg;
+        }
+
+        public string GetPrName (int PrID)
+        {
+            string PrName = "該当なし";
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.M_Products
+                         where t1.PrID == PrID
+                         select new
+                         {
+                             t1.PrName
+                         };
+
+                foreach (var p in tb)
+                {
+                    PrName = p.PrName;
+                }
+
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                return PrName;
+            }
+            
+            return PrName;
         }
     }
 }
