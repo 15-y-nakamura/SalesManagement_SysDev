@@ -159,6 +159,8 @@ namespace SalesManagement_SysDev
             ChumonKanriFlagCmb.Items.Add("表示");
             ChumonKanriFlagCmb.Items.Add("非表示");
             HihyojiTxb.Text = "";
+            ConfirmBtn.Enabled = false;
+            HiddenBtn.Enabled = false;
 
             //営業所名を取得
             var SoName = soDataAccess.GetSoName();
@@ -305,8 +307,11 @@ namespace SalesManagement_SysDev
                 HihyojiTxb.Text = ChumonKanriDgv.Rows[ChumonKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
             }
 
-            //
             ChumonDetail = chdDataAccess.GetChumonDetailData(int.Parse(ChumonKanriDgv.Rows[ChumonKanriDgv.CurrentRow.Index].Cells[0].Value.ToString()));
+
+            ChumonIDTxb.Enabled = false;
+            ConfirmBtn.Enabled = true;
+            HiddenBtn.Enabled = true;
 
             SetchdDataGridView();
         }
@@ -610,6 +615,7 @@ namespace SalesManagement_SysDev
 
             var ConfirmData = SetConfirmData();
 
+            ConfirmChumon(ConfirmData);
         }
 
         private bool ConfirmInputCheck()
