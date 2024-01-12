@@ -34,56 +34,23 @@ namespace SalesManagement_SysDev
         //戻り値   ：取得した大分類ID
         //機　能   ：大分類ID取得
         ///////////////////////////////
-        public int GetMcID(string mcname)
+        public int GetMcID(string scname)
         {
-            int mcid = 0;
-
-            var context = new SalesManagement_DevContext();
-            try
-            {
-                var tb = from t1 in context.M_MajorCassifications
-                         where t1.McName == mcname
-                         select new
-                         {
-                             t1.McID
-                         };
-
-                foreach (var p in tb)
-                {
-                    mcid = p.McID;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            return mcid;
-        }
-
-        ///////////////////////////////
-        //メソッド名：GetScName()
-        //引　数   ：なし
-        //戻り値   ：取得した小分類名
-        //機　能   ：小分類名取得
-        ///////////////////////////////
-        public string GetScName(int scid)
-        {
-            string scname = "";
+            int scid = 0;
 
             var context = new SalesManagement_DevContext();
             try
             {
                 var tb = from t1 in context.M_SmallClassifications
-                         where t1.ScID == scid
+                         where t1.ScName == scname
                          select new
                          {
-                             t1.ScName
+                             t1.ScID
                          };
 
                 foreach (var p in tb)
                 {
-                    scname = p.ScName;
+                    scid = p.ScID;
                 }
             }
             catch (Exception ex)
@@ -91,9 +58,7 @@ namespace SalesManagement_SysDev
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            return scname;
+            return scid;
         }
-
-
     }
 }

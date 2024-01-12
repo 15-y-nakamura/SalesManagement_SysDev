@@ -661,25 +661,7 @@ namespace SalesManagement_SysDev
             }
 
             return (true, text);
-        }
-
-        ///////////////////////////////
-        //メソッド名：CheckPrMaker()
-        //引　数   ：文字列
-        //戻り値   ：(True:異常なし、False:異常あり,文字列)
-        //機　能   ：メーカー名入力チェック
-        //           問題がないときTrue、文字列
-        //           問題があるときFalse、メッセージID
-        ///////////////////////////////
-        public (bool flg, string Msg) CheckPrMaker(string text)
-        {
-            if (text == "")
-            {
-                return (false, "M2005");
-            }
-
-            return (true, text);
-        }       
+        } 
                 
         ///////////////////////////////
         //メソッド名：CheckRegistClID()
@@ -733,7 +715,7 @@ namespace SalesManagement_SysDev
                 return (false, "M2010");
             }
 
-            if (CheckSuuti(text))
+            if (!CheckSuuti(text))
             {
                 return (false, "M2009");
             }
