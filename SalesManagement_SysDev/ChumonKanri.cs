@@ -25,6 +25,8 @@ namespace SalesManagement_SysDev
         StockDataAccess stDataAccess = new StockDataAccess();
         SyukkoDataAccess syuDataAccess = new SyukkoDataAccess();
         SyukkoDetailDataAccess syudDataAccess = new SyukkoDetailDataAccess();
+        ShohinDataAccess shoDataAccess = new ShohinDataAccess();
+        ClientDataAccess clDataAccess = new ClientDataAccess();
 
         private static List<T_ChumonDsp> Chumon;
         private static List<T_ChumonDetailDsp> ChumonDetail;
@@ -34,7 +36,6 @@ namespace SalesManagement_SysDev
         internal static string Logindate = "";
         public ChumonKanri()
         {
-
             InitializeComponent();
         }
 
@@ -141,10 +142,14 @@ namespace SalesManagement_SysDev
             EigyoushoNameCmb.Items.Clear();
             EigyoushoNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             ShainIDTxb.Text = "";
+            ShainName.Text = "--";
             KokyakuIDTxb.Text = "";
+            KokyakuName.Text = "--";
             JuchuIDTxb.Text = "";
             ShohinIDTxb.Text = "";
+            ShohinName.Text = "--";
             SuryoTxb.Text = "";
+            ChumonnengappiDtm.Checked = false;
             ChumonjyoutaiFlaguCmb.Items.Clear();
             ChumonjyoutaiFlaguCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             ChumonjyoutaiFlaguCmb.Items.Add("処理受付");
@@ -360,7 +365,7 @@ namespace SalesManagement_SysDev
             var chdata = SetChSearchData();
             var chddata = SetChdSearchData();
 
-            SearchChumon(chdata, chddata);
+            SearchChumon(chdata,chddata);
         }
 
         private bool SearchInputCheck()
@@ -369,7 +374,7 @@ namespace SalesManagement_SysDev
             {
                 if (!inputCheck.CheckSearchChID(ChumonIDTxb.Text).flg)
                 {
-                    messageDsp.DspMsg(inputCheck.CheckChID(ChumonIDTxb.Text).Msg);
+                    messageDsp.DspMsg(inputCheck.CheckSearchChID(ChumonIDTxb.Text).Msg);
                     return false;
                 }
             }
@@ -469,11 +474,11 @@ namespace SalesManagement_SysDev
             {
                 if (ChumonKanriFlagCmb.Text == "表示")
                 {
-                    chsflg = 0;
+                    chflg = 0;
                 }
                 else
                 {
-                    chsflg = 2;
+                    chflg = 2;
                 }
             }
 
@@ -520,7 +525,7 @@ namespace SalesManagement_SysDev
 
         private void SearchChumon(T_Chumon T_Ch, T_ChumonDetail T_ChD)
         {
-            Chumon = chDataAccess.SearchChumonData(T_Ch);
+            Chumon = chDataAccess.SearchChumonData(T_Ch,T_ChD);
             ChumonDetail = chdDataAccess.SearchChdData(T_ChD, T_Ch);
             
             if (Chumon.Count == 0 && ChumonDetail.Count == 0)
@@ -729,6 +734,36 @@ namespace SalesManagement_SysDev
                     messageDsp.DspMsg("M7033");
                 }
             }
+        }
+
+        private void ShohinIDTxb_TextChanged(object sender, EventArgs e)
+        {
+            if(!inputCheck.CheckSuuti(ShohinIDTxb.Text))
+            {
+                return;
+            }
+
+            ShohinName.Text = shoDataAccess.GetPrName(int.Parse(ShohinIDTxb.Text));
+        }
+
+        private void ShainIDTxb_TextChanged(object sender, EventArgs e)
+        {
+            if (!inputCheck.CheckSuuti(ShainIDTxb.Text))
+            {
+                return;
+            }
+
+            ShainName.Text = empDataAccess.GetEmName(int.Parse(ShainIDTxb.Text));
+        }
+
+        private void KokyakuIDTxb_TextChanged(object sender, EventArgs e)
+        {
+            if (!inputCheck.CheckSuuti(KokyakuIDTxb.Text))
+            {
+                return;
+            }
+
+            KokyakuName.Text = clDataAccess.GetClName(int.Parse(KokyakuIDTxb.Text));
         }
     }
 }
