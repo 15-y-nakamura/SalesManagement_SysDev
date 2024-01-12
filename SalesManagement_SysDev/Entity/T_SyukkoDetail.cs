@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -19,5 +20,20 @@ namespace SalesManagement_SysDev
 
         public virtual M_Product M_Product { get; set; }
         public virtual T_Syukko T_Syukko { get; set; }
+    }
+
+    class T_SyukkoDetailDsp
+    {
+        [DisplayName("出庫詳細ID")]
+        public int SyDetailID { get; set; }
+
+        [DisplayName("出庫ID")]
+        public int SyID { get; set; }
+
+        [DisplayName("商品名")]
+        public string PrName { get; set; }
+
+        [DisplayName("数量")]
+        public int SyQuantity { get; set; }
     }
 }

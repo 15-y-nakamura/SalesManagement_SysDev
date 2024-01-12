@@ -413,9 +413,9 @@ namespace SalesManagement_SysDev
 
             if(ShohinIDTxb.Text != "")
             {
-                if (!inputCheck.CheckPrID(ShohinIDTxb.Text).flg)
+                if (!inputCheck.CheckSearchPrID(ShohinIDTxb.Text).flg)
                 {
-                    messageDsp.DspMsg(inputCheck.CheckPrID(ShohinIDTxb.Text).Msg);
+                    messageDsp.DspMsg(inputCheck.CheckSearchPrID(ShohinIDTxb.Text).Msg);
                     return false;
                 }
             }
