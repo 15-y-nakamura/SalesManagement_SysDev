@@ -1396,7 +1396,7 @@ namespace SalesManagement_SysDev
                 return (false, "M7002");
             }
 
-            if (ChumonDA.SonzaiCheckChID(int.Parse(text)))
+            if (!ChumonDA.SonzaiCheckChID(int.Parse(text)))
             {
                 return (false, "M7027");
             }

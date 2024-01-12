@@ -33,6 +33,8 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopShukkoPnl = new System.Windows.Forms.Panel();
+            this.EigyoushoNameCmb = new System.Windows.Forms.ComboBox();
+            this.ShukkoDetailDgv = new System.Windows.Forms.DataGridView();
             this.KokyakuIDTxb = new System.Windows.Forms.TextBox();
             this.ShukkoDateDtm = new System.Windows.Forms.DateTimePicker();
             this.ShukkoJotaiFlagCmb = new System.Windows.Forms.ComboBox();
@@ -53,7 +55,6 @@
             this.SuryoLbl = new System.Windows.Forms.Label();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
             this.EigyoshoIDLbl = new System.Windows.Forms.Label();
-            this.EigyoshoIDTxb = new System.Windows.Forms.TextBox();
             this.JuchuIDLbl = new System.Windows.Forms.Label();
             this.ShukkoIDTxb = new System.Windows.Forms.TextBox();
             this.ShainIDLbl = new System.Windows.Forms.Label();
@@ -72,6 +73,7 @@
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
             this.TopShukkoPnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ShukkoDetailDgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShukkoKanriDgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,6 +130,8 @@
             // 
             this.TopShukkoPnl.AutoSize = true;
             this.TopShukkoPnl.BackColor = System.Drawing.Color.LightGray;
+            this.TopShukkoPnl.Controls.Add(this.EigyoushoNameCmb);
+            this.TopShukkoPnl.Controls.Add(this.ShukkoDetailDgv);
             this.TopShukkoPnl.Controls.Add(this.KokyakuIDTxb);
             this.TopShukkoPnl.Controls.Add(this.ShukkoDateDtm);
             this.TopShukkoPnl.Controls.Add(this.ShukkoJotaiFlagCmb);
@@ -148,7 +152,6 @@
             this.TopShukkoPnl.Controls.Add(this.SuryoLbl);
             this.TopShukkoPnl.Controls.Add(this.HihyojiTxb);
             this.TopShukkoPnl.Controls.Add(this.EigyoshoIDLbl);
-            this.TopShukkoPnl.Controls.Add(this.EigyoshoIDTxb);
             this.TopShukkoPnl.Controls.Add(this.JuchuIDLbl);
             this.TopShukkoPnl.Controls.Add(this.ShukkoIDTxb);
             this.TopShukkoPnl.Controls.Add(this.ShainIDLbl);
@@ -157,22 +160,40 @@
             this.TopShukkoPnl.Controls.Add(this.ShukkoDateLbl);
             this.TopShukkoPnl.Location = new System.Drawing.Point(253, 158);
             this.TopShukkoPnl.Name = "TopShukkoPnl";
-            this.TopShukkoPnl.Size = new System.Drawing.Size(1856, 783);
+            this.TopShukkoPnl.Size = new System.Drawing.Size(1875, 783);
             this.TopShukkoPnl.TabIndex = 23;
+            // 
+            // EigyoushoNameCmb
+            // 
+            this.EigyoushoNameCmb.FormattingEnabled = true;
+            this.EigyoushoNameCmb.Location = new System.Drawing.Point(237, 220);
+            this.EigyoushoNameCmb.Name = "EigyoushoNameCmb";
+            this.EigyoushoNameCmb.Size = new System.Drawing.Size(220, 26);
+            this.EigyoushoNameCmb.TabIndex = 58;
+            // 
+            // ShukkoDetailDgv
+            // 
+            this.ShukkoDetailDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ShukkoDetailDgv.Location = new System.Drawing.Point(1193, 492);
+            this.ShukkoDetailDgv.Name = "ShukkoDetailDgv";
+            this.ShukkoDetailDgv.RowHeadersWidth = 62;
+            this.ShukkoDetailDgv.RowTemplate.Height = 27;
+            this.ShukkoDetailDgv.Size = new System.Drawing.Size(633, 256);
+            this.ShukkoDetailDgv.TabIndex = 57;
             // 
             // KokyakuIDTxb
             // 
             this.KokyakuIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.KokyakuIDTxb.Location = new System.Drawing.Point(1053, 156);
+            this.KokyakuIDTxb.Location = new System.Drawing.Point(1103, 150);
             this.KokyakuIDTxb.Name = "KokyakuIDTxb";
-            this.KokyakuIDTxb.Size = new System.Drawing.Size(200, 25);
+            this.KokyakuIDTxb.Size = new System.Drawing.Size(220, 25);
             this.KokyakuIDTxb.TabIndex = 2;
             // 
             // ShukkoDateDtm
             // 
-            this.ShukkoDateDtm.Location = new System.Drawing.Point(1053, 294);
+            this.ShukkoDateDtm.Location = new System.Drawing.Point(1103, 289);
             this.ShukkoDateDtm.Name = "ShukkoDateDtm";
-            this.ShukkoDateDtm.Size = new System.Drawing.Size(200, 25);
+            this.ShukkoDateDtm.Size = new System.Drawing.Size(220, 25);
             this.ShukkoDateDtm.TabIndex = 9;
             // 
             // ShukkoJotaiFlagCmb
@@ -182,7 +203,7 @@
             this.ShukkoJotaiFlagCmb.FormattingEnabled = true;
             this.ShukkoJotaiFlagCmb.Location = new System.Drawing.Point(237, 289);
             this.ShukkoJotaiFlagCmb.Name = "ShukkoJotaiFlagCmb";
-            this.ShukkoJotaiFlagCmb.Size = new System.Drawing.Size(201, 26);
+            this.ShukkoJotaiFlagCmb.Size = new System.Drawing.Size(220, 26);
             this.ShukkoJotaiFlagCmb.TabIndex = 7;
             // 
             // ComfirmBtn
@@ -211,11 +232,11 @@
             // ShukkoKanriDgv
             // 
             this.ShukkoKanriDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ShukkoKanriDgv.Location = new System.Drawing.Point(97, 492);
+            this.ShukkoKanriDgv.Location = new System.Drawing.Point(14, 492);
             this.ShukkoKanriDgv.Name = "ShukkoKanriDgv";
             this.ShukkoKanriDgv.RowHeadersWidth = 62;
             this.ShukkoKanriDgv.RowTemplate.Height = 27;
-            this.ShukkoKanriDgv.Size = new System.Drawing.Size(1633, 256);
+            this.ShukkoKanriDgv.Size = new System.Drawing.Size(1173, 256);
             this.ShukkoKanriDgv.TabIndex = 50;
             this.ShukkoKanriDgv.TabStop = false;
             // 
@@ -224,9 +245,9 @@
             this.KokyakuKanriFlagCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KokyakuKanriFlagCmb.FormattingEnabled = true;
-            this.KokyakuKanriFlagCmb.Location = new System.Drawing.Point(642, 289);
+            this.KokyakuKanriFlagCmb.Location = new System.Drawing.Point(692, 289);
             this.KokyakuKanriFlagCmb.Name = "KokyakuKanriFlagCmb";
-            this.KokyakuKanriFlagCmb.Size = new System.Drawing.Size(201, 26);
+            this.KokyakuKanriFlagCmb.Size = new System.Drawing.Size(220, 26);
             this.KokyakuKanriFlagCmb.TabIndex = 8;
             // 
             // HiddenBtn
@@ -239,15 +260,16 @@
             this.HiddenBtn.TabStop = false;
             this.HiddenBtn.Text = "非表示";
             this.HiddenBtn.UseVisualStyleBackColor = true;
+            this.HiddenBtn.Click += new System.EventHandler(this.HiddenBtn_Click);
             // 
             // ShohinIDTxb
             // 
             this.ShohinIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ShohinIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.ShohinIDTxb.Location = new System.Drawing.Point(1052, 220);
+            this.ShohinIDTxb.Location = new System.Drawing.Point(1103, 220);
             this.ShohinIDTxb.Name = "ShohinIDTxb";
-            this.ShohinIDTxb.Size = new System.Drawing.Size(201, 25);
+            this.ShohinIDTxb.Size = new System.Drawing.Size(220, 25);
             this.ShohinIDTxb.TabIndex = 5;
             // 
             // SearchBtn
@@ -266,9 +288,9 @@
             this.JuchuIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.JuchuIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.JuchuIDTxb.Location = new System.Drawing.Point(642, 220);
+            this.JuchuIDTxb.Location = new System.Drawing.Point(692, 220);
             this.JuchuIDTxb.Name = "JuchuIDTxb";
-            this.JuchuIDTxb.Size = new System.Drawing.Size(201, 25);
+            this.JuchuIDTxb.Size = new System.Drawing.Size(220, 25);
             this.JuchuIDTxb.TabIndex = 4;
             // 
             // ShukkoIDLbl
@@ -286,20 +308,21 @@
             this.ShainIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ShainIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.ShainIDTxb.Location = new System.Drawing.Point(642, 150);
+            this.ShainIDTxb.Location = new System.Drawing.Point(692, 150);
             this.ShainIDTxb.Name = "ShainIDTxb";
-            this.ShainIDTxb.Size = new System.Drawing.Size(201, 25);
+            this.ShainIDTxb.Size = new System.Drawing.Size(220, 25);
             this.ShainIDTxb.TabIndex = 1;
             // 
             // KokyakuKanriFlagLbl
             // 
             this.KokyakuKanriFlagLbl.AutoSize = true;
             this.KokyakuKanriFlagLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.KokyakuKanriFlagLbl.Location = new System.Drawing.Point(444, 290);
+            this.KokyakuKanriFlagLbl.Location = new System.Drawing.Point(480, 289);
             this.KokyakuKanriFlagLbl.Name = "KokyakuKanriFlagLbl";
             this.KokyakuKanriFlagLbl.Size = new System.Drawing.Size(184, 28);
             this.KokyakuKanriFlagLbl.TabIndex = 29;
-            this.KokyakuKanriFlagLbl.Text = "顧客管理フラグ";
+            this.KokyakuKanriFlagLbl.Text = "出庫管理フラグ";
+            this.KokyakuKanriFlagLbl.Click += new System.EventHandler(this.KokyakuKanriFlagLbl_Click);
             // 
             // ShukkoJotaiFlagLbl
             // 
@@ -326,16 +349,16 @@
             this.SuryoTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SuryoTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.SuryoTxb.Location = new System.Drawing.Point(1428, 220);
+            this.SuryoTxb.Location = new System.Drawing.Point(1478, 220);
             this.SuryoTxb.Name = "SuryoTxb";
-            this.SuryoTxb.Size = new System.Drawing.Size(201, 25);
+            this.SuryoTxb.Size = new System.Drawing.Size(220, 25);
             this.SuryoTxb.TabIndex = 6;
             // 
             // SuryoLbl
             // 
             this.SuryoLbl.AutoSize = true;
             this.SuryoLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.SuryoLbl.Location = new System.Drawing.Point(1336, 220);
+            this.SuryoLbl.Location = new System.Drawing.Point(1386, 220);
             this.SuryoLbl.Name = "SuryoLbl";
             this.SuryoLbl.Size = new System.Drawing.Size(68, 28);
             this.SuryoLbl.TabIndex = 31;
@@ -349,7 +372,7 @@
             this.HihyojiTxb.Location = new System.Drawing.Point(237, 360);
             this.HihyojiTxb.Multiline = true;
             this.HihyojiTxb.Name = "HihyojiTxb";
-            this.HihyojiTxb.Size = new System.Drawing.Size(609, 90);
+            this.HihyojiTxb.Size = new System.Drawing.Size(628, 90);
             this.HihyojiTxb.TabIndex = 10;
             // 
             // EigyoshoIDLbl
@@ -358,26 +381,15 @@
             this.EigyoshoIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.EigyoshoIDLbl.Location = new System.Drawing.Point(92, 220);
             this.EigyoshoIDLbl.Name = "EigyoshoIDLbl";
-            this.EigyoshoIDLbl.Size = new System.Drawing.Size(121, 28);
+            this.EigyoshoIDLbl.Size = new System.Drawing.Size(124, 28);
             this.EigyoshoIDLbl.TabIndex = 33;
-            this.EigyoshoIDLbl.Text = "営業所ID";
-            // 
-            // EigyoshoIDTxb
-            // 
-            this.EigyoshoIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EigyoshoIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.EigyoshoIDTxb.Location = new System.Drawing.Point(237, 220);
-            this.EigyoshoIDTxb.Name = "EigyoshoIDTxb";
-            this.EigyoshoIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.EigyoshoIDTxb.TabIndex = 3;
-            this.EigyoshoIDTxb.UseWaitCursor = true;
+            this.EigyoshoIDLbl.Text = "営業所名";
             // 
             // JuchuIDLbl
             // 
             this.JuchuIDLbl.AutoSize = true;
             this.JuchuIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.JuchuIDLbl.Location = new System.Drawing.Point(532, 220);
+            this.JuchuIDLbl.Location = new System.Drawing.Point(582, 220);
             this.JuchuIDLbl.Name = "JuchuIDLbl";
             this.JuchuIDLbl.Size = new System.Drawing.Size(93, 28);
             this.JuchuIDLbl.TabIndex = 34;
@@ -390,14 +402,14 @@
             this.ShukkoIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.ShukkoIDTxb.Location = new System.Drawing.Point(237, 150);
             this.ShukkoIDTxb.Name = "ShukkoIDTxb";
-            this.ShukkoIDTxb.Size = new System.Drawing.Size(201, 25);
+            this.ShukkoIDTxb.Size = new System.Drawing.Size(220, 25);
             this.ShukkoIDTxb.TabIndex = 0;
             // 
             // ShainIDLbl
             // 
             this.ShainIDLbl.AutoSize = true;
             this.ShainIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ShainIDLbl.Location = new System.Drawing.Point(528, 150);
+            this.ShainIDLbl.Location = new System.Drawing.Point(578, 150);
             this.ShainIDLbl.Name = "ShainIDLbl";
             this.ShainIDLbl.Size = new System.Drawing.Size(93, 28);
             this.ShainIDLbl.TabIndex = 35;
@@ -407,7 +419,7 @@
             // 
             this.ShohinIDLbl.AutoSize = true;
             this.ShohinIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ShohinIDLbl.Location = new System.Drawing.Point(903, 220);
+            this.ShohinIDLbl.Location = new System.Drawing.Point(988, 220);
             this.ShohinIDLbl.Name = "ShohinIDLbl";
             this.ShohinIDLbl.Size = new System.Drawing.Size(93, 28);
             this.ShohinIDLbl.TabIndex = 36;
@@ -417,7 +429,7 @@
             // 
             this.KokyakuIDLbl.AutoSize = true;
             this.KokyakuIDLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.KokyakuIDLbl.Location = new System.Drawing.Point(903, 150);
+            this.KokyakuIDLbl.Location = new System.Drawing.Point(988, 150);
             this.KokyakuIDLbl.Name = "KokyakuIDLbl";
             this.KokyakuIDLbl.Size = new System.Drawing.Size(93, 28);
             this.KokyakuIDLbl.TabIndex = 38;
@@ -427,7 +439,7 @@
             // 
             this.ShukkoDateLbl.AutoSize = true;
             this.ShukkoDateLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ShukkoDateLbl.Location = new System.Drawing.Point(879, 291);
+            this.ShukkoDateLbl.Location = new System.Drawing.Point(929, 289);
             this.ShukkoDateLbl.Name = "ShukkoDateLbl";
             this.ShukkoDateLbl.Size = new System.Drawing.Size(152, 28);
             this.ShukkoDateLbl.TabIndex = 37;
@@ -564,8 +576,10 @@
             this.Name = "ShukkoKanri";
             this.Text = "販売在庫管理システム - 物流管理画面 - 出庫管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ShukkoKanri_Load);
             this.TopShukkoPnl.ResumeLayout(false);
             this.TopShukkoPnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ShukkoDetailDgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShukkoKanriDgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -591,7 +605,6 @@
         private System.Windows.Forms.Label SuryoLbl;
         private System.Windows.Forms.TextBox HihyojiTxb;
         private System.Windows.Forms.Label EigyoshoIDLbl;
-        private System.Windows.Forms.TextBox EigyoshoIDTxb;
         private System.Windows.Forms.Label JuchuIDLbl;
         private System.Windows.Forms.TextBox ShukkoIDTxb;
         private System.Windows.Forms.Label ShainIDLbl;
@@ -617,5 +630,7 @@
         private System.Windows.Forms.ComboBox ShukkoJotaiFlagCmb;
         private System.Windows.Forms.DateTimePicker ShukkoDateDtm;
         private System.Windows.Forms.TextBox KokyakuIDTxb;
+        private System.Windows.Forms.DataGridView ShukkoDetailDgv;
+        private System.Windows.Forms.ComboBox EigyoushoNameCmb;
     }
 }

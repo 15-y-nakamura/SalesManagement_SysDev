@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -36,4 +37,35 @@ namespace SalesManagement_SysDev
         public virtual T_Order T_Order { get; set; }
         public virtual ICollection<T_SyukkoDetail> T_SyukkoDetail { get; set; }
     }
+
+    class T_SyukkoDsp
+    {
+        [DisplayName("出庫ID")]
+        public int SyID { get; set; }
+
+        [DisplayName("社員名")]
+        public string EmName { get; set; }
+
+        [DisplayName("顧客名")]
+        public string ClName { get; set; }
+
+        [DisplayName("営業所名")]
+        public string SoName { get; set; }
+
+        [DisplayName("受注ID")]
+        public int OrID { get; set; }
+
+        [DisplayName("出庫年月日")]
+        public DateTime? SyDate { get; set; }
+
+        [DisplayName("出庫状態フラグ")]
+        public int SyStateFlag { get; set; }
+
+        [DisplayName("出庫管理フラグ")]
+        public int SyFlag { get; set; }
+
+        [DisplayName("非表示理由")]
+        public string SyHidden { get; set; }
+    }
+
 }

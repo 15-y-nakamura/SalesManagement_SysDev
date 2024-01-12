@@ -190,9 +190,9 @@
             this.KokyakuNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.KokyakuNameLbl.Location = new System.Drawing.Point(1330, 218);
             this.KokyakuNameLbl.Name = "KokyakuNameLbl";
-            this.KokyakuNameLbl.Size = new System.Drawing.Size(93, 28);
+            this.KokyakuNameLbl.Size = new System.Drawing.Size(96, 28);
             this.KokyakuNameLbl.TabIndex = 61;
-            this.KokyakuNameLbl.Text = "顧客ID";
+            this.KokyakuNameLbl.Text = "顧客名";
             // 
             // ShainName
             // 
