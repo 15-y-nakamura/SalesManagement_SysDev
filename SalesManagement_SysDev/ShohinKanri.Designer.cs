@@ -55,7 +55,6 @@
             this.AnzenLbl = new System.Windows.Forms.Label();
             this.KakakuTxb = new System.Windows.Forms.TextBox();
             this.KakakuLbl = new System.Windows.Forms.Label();
-            this.MakerNameTxb = new System.Windows.Forms.TextBox();
             this.MakerIDLbl = new System.Windows.Forms.Label();
             this.ShohinNameTxb = new System.Windows.Forms.TextBox();
             this.ShohinNameLbl = new System.Windows.Forms.Label();
@@ -75,6 +74,7 @@
             this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
+            this.MakerNameCmb = new System.Windows.Forms.ComboBox();
             this.TopShohinPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShohinKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -143,6 +143,7 @@
             // TopShohinPnl
             // 
             this.TopShohinPnl.BackColor = System.Drawing.Color.LightGray;
+            this.TopShohinPnl.Controls.Add(this.MakerNameCmb);
             this.TopShohinPnl.Controls.Add(this.GamenKousinBtn);
             this.TopShohinPnl.Controls.Add(this.ShohinKanriDgv);
             this.TopShohinPnl.Controls.Add(this.HihyojiTxb);
@@ -163,7 +164,6 @@
             this.TopShohinPnl.Controls.Add(this.AnzenLbl);
             this.TopShohinPnl.Controls.Add(this.KakakuTxb);
             this.TopShohinPnl.Controls.Add(this.KakakuLbl);
-            this.TopShohinPnl.Controls.Add(this.MakerNameTxb);
             this.TopShohinPnl.Controls.Add(this.MakerIDLbl);
             this.TopShohinPnl.Controls.Add(this.ShohinNameTxb);
             this.TopShohinPnl.Controls.Add(this.ShohinNameLbl);
@@ -387,15 +387,6 @@
             this.KakakuLbl.TabIndex = 33;
             this.KakakuLbl.Text = "価格";
             // 
-            // MakerNameTxb
-            // 
-            this.MakerNameTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MakerNameTxb.Location = new System.Drawing.Point(1052, 150);
-            this.MakerNameTxb.Name = "MakerNameTxb";
-            this.MakerNameTxb.Size = new System.Drawing.Size(201, 25);
-            this.MakerNameTxb.TabIndex = 2;
-            // 
             // MakerIDLbl
             // 
             this.MakerIDLbl.AutoSize = true;
@@ -589,6 +580,14 @@
             this.TopNameHyojiLbl.TabIndex = 84;
             this.TopNameHyojiLbl.Text = "名前：";
             // 
+            // MakerNameCmb
+            // 
+            this.MakerNameCmb.FormattingEnabled = true;
+            this.MakerNameCmb.Location = new System.Drawing.Point(1050, 150);
+            this.MakerNameCmb.Name = "MakerNameCmb";
+            this.MakerNameCmb.Size = new System.Drawing.Size(201, 26);
+            this.MakerNameCmb.TabIndex = 55;
+            // 
             // ShohinKanri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -660,7 +659,6 @@
         private System.Windows.Forms.Label ShohinKanriLbl;
         private System.Windows.Forms.DataGridView ShohinKanriDgv;
         private System.Windows.Forms.Button GamenKousinBtn;
-        private System.Windows.Forms.TextBox MakerNameTxb;
         private System.Windows.Forms.Label TopIDHyojiLbl;
         private System.Windows.Forms.Label TopIDLbl;
         private System.Windows.Forms.Label TopEigyoshoLbl;
@@ -671,5 +669,6 @@
         private System.Windows.Forms.Label TopYakushokuHyojiLbl;
         private System.Windows.Forms.Label TopNameLbl;
         private System.Windows.Forms.Label TopNameHyojiLbl;
+        private System.Windows.Forms.ComboBox MakerNameCmb;
     }
 }
