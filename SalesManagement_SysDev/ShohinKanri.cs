@@ -315,9 +315,10 @@ namespace SalesManagement_SysDev
             }
 
             //メーカー名の入力チェック
-            if (MakerNameTxb.Text == "")
+            if(!InputCheck.CheckMakerName(MakerNameTxb.Text).flg)
             {
-                MessageDsp.DspMsg("M2005");
+                MessageDsp.DspMsg(InputCheck.CheckMakerName(MakerNameTxb.Text).Msg);
+                return false;
             }
 
             //価格の入力チェック

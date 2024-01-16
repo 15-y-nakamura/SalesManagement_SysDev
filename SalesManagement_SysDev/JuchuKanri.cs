@@ -1000,34 +1000,64 @@ namespace SalesManagement_SysDev
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
         {
-            /*using (var dbContext = new SalesManagement_DevContext())
+            /*if (!ConfirmInputCheck())
             {
-                // 受注情報フラグを0から1に更新するコード
-                var orderToUpdate = dbContext.T_Order.FirstOrDefault(o => o.OrID == orderId); // orderIdは更新したい受注のIDなど
-                if (orderToUpdate != null)
-                {
-                    orderToUpdate.OrFlag = 1; // 受注情報フラグを1に更新
-                    dbContext.SaveChanges(); // 変更をデータベースに保存
-                }
+                return;
+            }
 
-                // 新しい注文レコードを作成するコード
-                var newChumon = new T_Chumon
-                {
-                    SoID = newSalesOfficeId, // 新しい注文の営業所IDなど
-                    EmID = newEmployeeId, // 新しい注文の社員IDなど
-                    ClID = newClientId, // 新しい注文の顧客IDなど
-                    ClCharge = newClientCharge, // 新しい注文の顧客担当者名など
-                    OrDate = DateTime.Now, // 新しい注文の受注年月日（例：現在の日付）
-                    OrStateFlag = 0, // 新しい注文の受注状態フラグ（適切な値を設定）
-                    OrFlag = 0, // 新しい注文の受注管理フラグ（適切な値を設定）
-                    OrHidden = null // 新しい注文の非表示理由（初期値はnullなど）
-                                    // 他のプロパティも適切に設定
-                };
+            var ConfirmData = SetConfirmData();
 
-                dbContext.T_Chumon.Add(newChumon); // 新しい注文レコードを追加
-                dbContext.SaveChanges(); // 変更をデータベースに保存
-            }*/
+            ConfirmChumon(ConfirmData);*/
         }
+
+        private bool ConfirmInputCheck()
+        {
+            //受注IDの入力チェック
+            if (JuchuIDTxb.Text != "")
+            {
+                if (!InputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckRegistOrID(JuchuIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /*private T_Order SetConfirmData()
+        {
+            /*T_Order T_Or = new T_Order()
+            {
+                OrID = int.Parse(ChumonIDTxb.Text),
+                EmID = EmID,
+                ChStateFlag = 1,
+            };
+
+            return T_Ch;
+        }
+
+        private void ConfirmChumon(T_Chumon T_Ch)
+        {
+            if (DialogResult.OK == messageDsp.DspMsg("7031"))
+            {
+                if (chDataAccess.ConfirmChumonDate(T_Ch) && UpdateStockData() &&
+                RegistSyukko() && RegistSyukkoDetail())
+                {
+                    MessageDsp.DspMsg("M7032");
+
+                    //コントロールの初期設定
+                    SetCtrlFormat();
+
+                    //データグリッドビューの設定
+                    SetFormJuchuKanriGridView();
+                }
+                else
+                {
+                    MessageDsp.DspMsg("M7033");
+                }
+            }
+        }*/
 
         private void JuchuKanriDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
