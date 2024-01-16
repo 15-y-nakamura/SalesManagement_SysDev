@@ -41,6 +41,9 @@
             // 
             // btn_CleateDabase
             // 
+            this.btn_CleateDabase.BackColor = System.Drawing.Color.Transparent;
+            this.btn_CleateDabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CleateDabase.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_CleateDabase.Location = new System.Drawing.Point(798, 397);
             this.btn_CleateDabase.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_CleateDabase.Name = "btn_CleateDabase";
@@ -48,11 +51,14 @@
             this.btn_CleateDabase.TabIndex = 0;
             this.btn_CleateDabase.TabStop = false;
             this.btn_CleateDabase.Text = "データベース生成";
-            this.btn_CleateDabase.UseVisualStyleBackColor = true;
+            this.btn_CleateDabase.UseVisualStyleBackColor = false;
             this.btn_CleateDabase.Click += new System.EventHandler(this.btn_CleateDabase_Click);
             // 
             // btn_InsertSampleData
             // 
+            this.btn_InsertSampleData.BackColor = System.Drawing.Color.Transparent;
+            this.btn_InsertSampleData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_InsertSampleData.ForeColor = System.Drawing.SystemColors.Control;
             this.btn_InsertSampleData.Location = new System.Drawing.Point(798, 479);
             this.btn_InsertSampleData.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btn_InsertSampleData.Name = "btn_InsertSampleData";
@@ -60,7 +66,7 @@
             this.btn_InsertSampleData.TabIndex = 0;
             this.btn_InsertSampleData.TabStop = false;
             this.btn_InsertSampleData.Text = "サンプルデータ登録";
-            this.btn_InsertSampleData.UseVisualStyleBackColor = true;
+            this.btn_InsertSampleData.UseVisualStyleBackColor = false;
             this.btn_InsertSampleData.Click += new System.EventHandler(this.btn_InsertSampleData_Click);
             // 
             // ShainLbl
