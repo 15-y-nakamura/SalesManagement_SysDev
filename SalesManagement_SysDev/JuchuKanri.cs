@@ -1007,7 +1007,7 @@ namespace SalesManagement_SysDev
 
             var ConfirmData = SetConfirmData();
 
-            //ConfirmChumon(ConfirmData);
+            ConfirmOrder(ConfirmData);
         }
 
         private bool ConfirmInputCheck()
@@ -1037,7 +1037,7 @@ namespace SalesManagement_SysDev
             return T_Or;
         }
 
-        private void ConfirmChumon(T_Chumon T_Ch)
+        private void ConfirmOrder(T_Order T_Or)
         {
             /*if (DialogResult.OK == messageDsp.DspMsg("7031"))
             {
