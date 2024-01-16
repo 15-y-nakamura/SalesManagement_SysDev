@@ -184,7 +184,7 @@ namespace SalesManagement_SysDev.DataAccess
             List<T_ChumonDsp> Chumon = new List<T_ChumonDsp>();
             DateTime nulldate = DateTime.ParseExact("00010101", "yyyymmdd", null);
 
-            if (T_Ch.ChID != 0 && T_Ch.ChFlag == -1)
+            if (T_Ch.ChID != -1 && T_Ch.ChFlag == -1)
             {
                 try
                 {
@@ -235,7 +235,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if(T_Ch.ChID != 0 && T_Ch.ChFlag != -1)
+            else if(T_Ch.ChID != -1 && T_Ch.ChFlag != -1)
             {
                 try
                 {
@@ -286,7 +286,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if(T_Ch.OrID != 0 && T_Ch.ChFlag == -1)
+            else if(T_Ch.OrID != -1 && T_Ch.ChFlag == -1)
             {
                 try
                 {
@@ -337,7 +337,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Ch.OrID != 0 && T_Ch.ChFlag != -1)
+            else if (T_Ch.OrID != -1 && T_Ch.ChFlag != -1)
             {
                 try
                 {
@@ -4085,8 +4085,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t1.ClID equals t4.ClID
                              join t5 in context.T_Orders
                              on t1.OrID equals t5.OrID
-                             join t6 in context.T_ChumonDetails
-                             on t1.ChID equals t6.ChID
+                             //join t6 in context.T_ChumonDetails
+                             //on t1.ChID equals t6.ChID
                              where t1.ChFlag == 0 &&
                                    (t1.ChHidden.Contains(T_Ch.ChHidden) ||
                                    t1.ChHidden == null)

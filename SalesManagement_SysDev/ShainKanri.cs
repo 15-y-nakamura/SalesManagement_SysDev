@@ -345,20 +345,20 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            //電話番号の入力チェック
-            if (!InputCheck.CheckEmPhone(TelTxb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckEmPhone(TelTxb.Text).Msg);
-                TelTxb.Focus();
-                return false;
-            }
-
             //営業所名の入力チェック
             if (!InputCheck.CheckSoNameCmb(EigyoushoNameCmb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoushoNameCmb.Text).Msg);
                 return false;
             }
+
+            //電話番号の入力チェック
+            if (!InputCheck.CheckEmPhone(TelTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckEmPhone(TelTxb.Text).Msg);
+                TelTxb.Focus();
+                return false;
+            } 
 
             //役職名の入力チェック
             if (!InputCheck.CheckPoNameCmb(YakushokuNameCmb.Text).flg)
@@ -706,7 +706,7 @@ namespace SalesManagement_SysDev
         private M_Employee SetEmployeeSearchData()
         {
             int poid = 0;
-            int emid = 0;
+            int emid = -1;
             int soid = 0;
             int emflg = -1;
             DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);

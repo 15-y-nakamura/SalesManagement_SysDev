@@ -222,7 +222,7 @@ namespace SalesManagement_SysDev.DataAccess
             DateTime nulldate = DateTime.ParseExact("00010101","yyyymmdd",null);
 
             //社員ID入力
-            if (regEmployee.EmID != 0 && regEmployee.EmFlag == -1)
+            if (regEmployee.EmID != -1 && regEmployee.EmFlag == -1)
             {
                 try
                 {
@@ -270,7 +270,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //社員ID入力、社員管理フラグ選択
-            else if (regEmployee.EmID != 0 && regEmployee.EmFlag != -1)
+            else if (regEmployee.EmID != -1 && regEmployee.EmFlag != -1)
             {
                 try
                 {

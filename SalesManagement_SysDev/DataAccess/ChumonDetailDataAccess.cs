@@ -96,7 +96,7 @@ namespace SalesManagement_SysDev.DataAccess
             List<T_ChumonDetailDsp> Chumon = new List<T_ChumonDetailDsp>();
             DateTime nulldate = DateTime.ParseExact("00010101", "yyyymmdd", null);
 
-            if (T_Ch.ChID != 0 && T_Ch.ChFlag == -1 && T_Chd.PrID == 0)
+            if (T_Ch.ChID != -1 && T_Ch.ChFlag == -1 && T_Chd.PrID == 0)
             {
                 try
                 {
@@ -133,7 +133,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Ch.ChID != 0 && T_Ch.ChFlag != -1 && T_Chd.PrID == 0)
+            else if (T_Ch.ChID != -1 && T_Ch.ChFlag != -1 && T_Chd.PrID == 0)
             {
                 try
                 {
@@ -170,7 +170,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Ch.ChID != 0 && T_Ch.ChFlag != -1 && T_Chd.PrID != 0)
+            else if (T_Ch.ChID != -1 && T_Ch.ChFlag != -1 && T_Chd.PrID != 0)
             {
                 try
                 {
@@ -208,7 +208,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Ch.ChID != 0 && T_Ch.ChFlag == -1 && T_Chd.PrID != 0)
+            else if (T_Ch.ChID != -1 && T_Ch.ChFlag == -1 && T_Chd.PrID != 0)
             {
                 try
                 {
@@ -246,7 +246,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Ch.OrID != 0 && T_Ch.ChFlag == -1 && T_Chd.PrID == 0)
+            else if (T_Ch.OrID != -1 && T_Ch.ChFlag == -1 && T_Chd.PrID == 0)
             {
                 try
                 {
@@ -283,7 +283,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Ch.OrID != 0 && T_Ch.ChFlag != -1 && T_Chd.PrID == 0)
+            else if (T_Ch.OrID != -1 && T_Ch.ChFlag != -1 && T_Chd.PrID == 0)
             {
                 try
                 {
@@ -320,7 +320,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Ch.OrID != 0 && T_Ch.ChFlag != -1 && T_Chd.PrID != 0)
+            else if (T_Ch.OrID != -1 && T_Ch.ChFlag != -1 && T_Chd.PrID != 0)
             {
                 try
                 {
@@ -358,7 +358,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Ch.OrID != 0 && T_Ch.ChFlag == -1 && T_Chd.PrID != 0)
+            else if (T_Ch.OrID != -1 && T_Ch.ChFlag == -1 && T_Chd.PrID != 0)
             {
                 try
                 {
@@ -396,7 +396,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Ch.SoID != 0 && T_Ch.ClID != 0 && T_Ch.ChDate != nulldate &&
+            else if (T_Ch.SoID != -1 && T_Ch.ClID != 0 && T_Ch.ChDate != nulldate &&
                         T_Ch.ChFlag != -1 && T_Ch.ChStateFlag != -1 && T_Chd.PrID != 0)
             {
                 try
