@@ -610,6 +610,16 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
+        public (bool flg, string Msg) CheckMakerName(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M2005");
+            }
+
+            return (true, text);
+        }
+
         ///////////////////////////////
         //メソッド名：CheckSearchMakerName()
         //引　数   ：文字列
@@ -1143,11 +1153,6 @@ namespace SalesManagement_SysDev
                 return (false, "M2017");
             }
 
-            if (!ProductDA.SonzaiCheckPrModelNumber(text))
-            {
-                return (false, "M2025");
-            }
-
             return (true, text);
         }
 
@@ -1169,6 +1174,11 @@ namespace SalesManagement_SysDev
             if (text.Length > 20)
             {
                 return (false, "M2018");
+            }
+
+            if (!ProductDA.SonzaiCheckPrModelNumber(text))
+            {
+                return (false, "M2025");
             }
 
             return (true, text);
