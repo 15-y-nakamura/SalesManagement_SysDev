@@ -159,6 +159,7 @@ namespace SalesManagement_SysDev
             ChumonKanriFlagCmb.Items.Add("表示");
             ChumonKanriFlagCmb.Items.Add("非表示");
             HihyojiTxb.Text = "";
+            ChumonIDTxb.Enabled = true;
             ConfirmBtn.Enabled = false;
             HiddenBtn.Enabled = false;
 
@@ -351,6 +352,10 @@ namespace SalesManagement_SysDev
 
             Chumon = chDataAccess.GetChData(int.Parse(ChumonDetailDgv.Rows[ChumonDetailDgv.CurrentRow.Index].Cells[1].Value.ToString()));
 
+            ChumonIDTxb.Enabled = false;
+            ConfirmBtn.Enabled = true;
+            HiddenBtn.Enabled = true;
+
             SetchDataGridView();
         }
 
@@ -393,20 +398,20 @@ namespace SalesManagement_SysDev
                 }
             }
 
-            if(KokyakuIDTxb.Text != "")
-            {
-                if (!inputCheck.CheckClID(KokyakuIDTxb.Text).flg)
-                {
-                    messageDsp.DspMsg(inputCheck.CheckClID(KokyakuIDTxb.Text).Msg);
-                    return false;
-                }
-            }
-
-            if(JuchuIDTxb.Text != "")
+            if (JuchuIDTxb.Text != "")
             {
                 if (!inputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
                 {
                     messageDsp.DspMsg(inputCheck.CheckRegistOrID(JuchuIDTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            if (KokyakuIDTxb.Text != "")
+            {
+                if (!inputCheck.CheckClID(KokyakuIDTxb.Text).flg)
+                {
+                    messageDsp.DspMsg(inputCheck.CheckClID(KokyakuIDTxb.Text).Msg);
                     return false;
                 }
             }
@@ -424,11 +429,11 @@ namespace SalesManagement_SysDev
 
         private T_Chumon SetChSearchData()
         {
-            int chid = 0;
+            int chid = -1;
             int soid = 0;
             int emid = 0;
             int clid = 0;
-            int orid = 0;
+            int orid = -1;
             DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
             int chsflg = -1;
             int chflg = -1;
@@ -506,7 +511,7 @@ namespace SalesManagement_SysDev
         private T_ChumonDetail SetChdSearchData()
         {
             //int chdid = 0;
-            int chid = 0;
+            int chid = -1;
             int prid = 0;
 
             if(ChumonIDTxb.Text != "")
@@ -745,6 +750,7 @@ namespace SalesManagement_SysDev
         {
             if(!inputCheck.CheckSuuti(ShohinIDTxb.Text))
             {
+                ShohinName.Text = "--";
                 return;
             }
 
@@ -755,6 +761,7 @@ namespace SalesManagement_SysDev
         {
             if (!inputCheck.CheckSuuti(ShainIDTxb.Text))
             {
+                ShainName.Text = "--";
                 return;
             }
 
@@ -765,6 +772,7 @@ namespace SalesManagement_SysDev
         {
             if (!inputCheck.CheckSuuti(KokyakuIDTxb.Text))
             {
+                KokyakuName.Text = "--";
                 return;
             }
 

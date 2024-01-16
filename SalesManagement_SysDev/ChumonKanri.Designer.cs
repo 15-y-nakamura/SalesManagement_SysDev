@@ -242,7 +242,7 @@
             this.ChumonjyoutaiFlaguCmb.Location = new System.Drawing.Point(237, 376);
             this.ChumonjyoutaiFlaguCmb.Name = "ChumonjyoutaiFlaguCmb";
             this.ChumonjyoutaiFlaguCmb.Size = new System.Drawing.Size(201, 26);
-            this.ChumonjyoutaiFlaguCmb.TabIndex = 55;
+            this.ChumonjyoutaiFlaguCmb.TabIndex = 8;
             // 
             // ChumonjyoutaiFlaguLbl
             // 
@@ -262,7 +262,7 @@
             this.ChumonDetailDgv.RowHeadersWidth = 62;
             this.ChumonDetailDgv.RowTemplate.Height = 27;
             this.ChumonDetailDgv.Size = new System.Drawing.Size(633, 256);
-            this.ChumonDetailDgv.TabIndex = 54;
+            this.ChumonDetailDgv.TabIndex = 52;
             this.ChumonDetailDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ChumonDetailDgv_CellClick);
             // 
             // EigyoushoNameCmb
@@ -280,7 +280,7 @@
             this.ChumonnengappiDtm.Name = "ChumonnengappiDtm";
             this.ChumonnengappiDtm.ShowCheckBox = true;
             this.ChumonnengappiDtm.Size = new System.Drawing.Size(201, 25);
-            this.ChumonnengappiDtm.TabIndex = 5;
+            this.ChumonnengappiDtm.TabIndex = 4;
             this.ChumonnengappiDtm.Value = new System.DateTime(2023, 11, 24, 0, 0, 0, 0);
             // 
             // GamenKousinBtn
@@ -316,7 +316,7 @@
             this.ChumonKanriFlagCmb.Location = new System.Drawing.Point(653, 376);
             this.ChumonKanriFlagCmb.Name = "ChumonKanriFlagCmb";
             this.ChumonKanriFlagCmb.Size = new System.Drawing.Size(201, 26);
-            this.ChumonKanriFlagCmb.TabIndex = 8;
+            this.ChumonKanriFlagCmb.TabIndex = 9;
             // 
             // HihyojiTxb
             // 
@@ -327,7 +327,7 @@
             this.HihyojiTxb.Multiline = true;
             this.HihyojiTxb.Name = "HihyojiTxb";
             this.HihyojiTxb.Size = new System.Drawing.Size(606, 90);
-            this.HihyojiTxb.TabIndex = 9;
+            this.HihyojiTxb.TabIndex = 10;
             // 
             // ShainIDTxb
             // 
@@ -348,7 +348,7 @@
             this.JuchuIDTxb.Location = new System.Drawing.Point(237, 220);
             this.JuchuIDTxb.Name = "JuchuIDTxb";
             this.JuchuIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.JuchuIDTxb.TabIndex = 4;
+            this.JuchuIDTxb.TabIndex = 3;
             // 
             // ShohinIDTxb
             // 
@@ -369,7 +369,7 @@
             this.KokyakuIDTxb.Location = new System.Drawing.Point(1055, 218);
             this.KokyakuIDTxb.Name = "KokyakuIDTxb";
             this.KokyakuIDTxb.Size = new System.Drawing.Size(201, 25);
-            this.KokyakuIDTxb.TabIndex = 3;
+            this.KokyakuIDTxb.TabIndex = 5;
             this.KokyakuIDTxb.TextChanged += new System.EventHandler(this.KokyakuIDTxb_TextChanged);
             // 
             // SuryoTxb
