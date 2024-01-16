@@ -571,7 +571,6 @@ namespace SalesManagement_SysDev
 
             return new T_Order
             {
-                OrID = int.Parse(JuchuIDTxb.Text),
                 SoID = SoID,
                 EmID = int.Parse(ShainIDTxb.Text),
                 ClID = int.Parse(KokyakuIDTxb.Text),
