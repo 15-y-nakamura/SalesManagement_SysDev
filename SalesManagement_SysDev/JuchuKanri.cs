@@ -406,13 +406,13 @@ namespace SalesManagement_SysDev
             // データベースから、テキストボックスの数値と一致するデータがあるか確認
             using (var dbContext = new SalesManagement_DevContext())
             {
-                // データベース内のテーブルから、条件に一致するレコードを検索
+                // データベース内のテーブルから、受注IDで一致するレコードを検索
                 var matchingData = dbContext.T_Orders.FirstOrDefault(x => x.OrID == textBoxValue);
 
                 if (matchingData != null)
                 {
                     // 一致するデータが見つかった場合の処理
-                    MessageBox.Show("受注詳細に飛びます");
+                    //MessageBox.Show("受注詳細に飛びます");
 
                     //入力チェック
                     if (!InputRegistOrderDetailDataCheck())
@@ -428,7 +428,7 @@ namespace SalesManagement_SysDev
                 else
                 {
                     // 一致するデータが見つからなかった場合の処理
-                    MessageBox.Show("受注登録に飛びます");
+                    //MessageBox.Show("受注登録に飛びます");
 
                     //入力チェック
                     if (!InputRegistOrderDataCheck())
@@ -609,6 +609,12 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void RegistOrder(T_Order order)
         {
+            //受注IDの入力チェック
+            if (JuchuIDTxb.Text != "")
+            {
+                MessageDsp.DspMsg("M6034");
+            }
+
             if (DialogResult.OK == MessageDsp.DspMsg("M6024"))
             {
                 if (OrderDA.RegistOrder(order))
@@ -632,15 +638,15 @@ namespace SalesManagement_SysDev
         //メソッド名：RegistOrderDetail()
         //引　数   ：M_Employee
         //戻り値   ：なし
-        //機　能   ：形式化した受注情報を登録する
+        //機　能   ：形式化した受注詳細情報を登録する
         ///////////////////////////////
         private void RegistOrderDetail(T_OrderDetail orderdetail)
         {
-            if (DialogResult.OK == MessageDsp.DspMsg("M6024"))
+            if (DialogResult.OK == MessageDsp.DspMsg("M6035"))
             {
                 if (OrderDetailDA.RegistOrderDetail(orderdetail))
                 {
-                    MessageDsp.DspMsg("M6025");
+                    MessageDsp.DspMsg("M6036");
 
                     //コントロールの初期設定
                     SetCtrlFormat();
@@ -650,7 +656,7 @@ namespace SalesManagement_SysDev
                 }
                 else
                 {
-                    MessageDsp.DspMsg("M6026");
+                    MessageDsp.DspMsg("M6037");
                 }
             }
         }
@@ -1067,6 +1073,26 @@ namespace SalesManagement_SysDev
             ShohinIDTxb.Text = JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[2].Value.ToString();
             SuryoTxb.Text = JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[3].Value.ToString();
             GokeiKingakuTxb.Text =  JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[4].Value.ToString();
+        }
+
+        private void ShainIDTxb_TextChanged(object sender, EventArgs e)
+        {
+            if (!InputCheck.CheckSuuti(ShainIDTxb.Text))
+            {
+                return;
+            }
+
+            ShainNameLbl.Text = EmployeeDA.GetEmName(int.Parse(ShainIDTxb.Text));
+        }
+
+        private void KokyakuIDTxb_TextChanged(object sender, EventArgs e)
+        {
+            if (!InputCheck.CheckSuuti(KokyakuIDTxb.Text))
+            {
+                return;
+            }
+
+            KokyakuNameLbl.Text = ClientDA.GetClName(int.Parse(KokyakuIDTxb.Text));
         }
     }
 }
