@@ -376,7 +376,6 @@ namespace SalesManagement_SysDev
         {
             int ScID = ProductDA.GetScID(ShoubunruiCmb.Text);
             int MaID = ProductDA.GetMaID(MakerNameTxb.Text);
-
             int PrFlg;
 
             if (ShohinKanriCmb.Text == "非表示")
@@ -390,7 +389,7 @@ namespace SalesManagement_SysDev
 
             return new M_Product
             {
-                PrID = int.Parse(ShohinIDTxb.Text),
+                //PrID = int.Parse(ShohinIDTxb.Text),
                 MaID = MaID,
                 PrName = ShohinNameTxb.Text,
                 Price = decimal.Parse(KakakuTxb.Text),
