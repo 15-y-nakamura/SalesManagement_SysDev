@@ -140,7 +140,6 @@ namespace SalesManagement_SysDev
                 DaibunruiCmb.Items.Add(Mcname);
             }
 
-            ShohinIDTxb.Enabled = true;
             UpdateBtn.Enabled = false;
             HiddenBtn.Enabled = false;
 
@@ -670,7 +669,6 @@ namespace SalesManagement_SysDev
 
             SetFormShohinKanriGridView();
 
-            ShohinIDTxb.Enabled = true;
             UpdateBtn.Enabled = false;
             HiddenBtn.Enabled = false;
         }
@@ -683,7 +681,7 @@ namespace SalesManagement_SysDev
                 return;
             }
 
-            var searchdata = SetEmployeeSearchData();
+            var searchdata = SetProductSearchData();
 
             SearchProduct(searchdata);
         }
@@ -716,6 +714,86 @@ namespace SalesManagement_SysDev
                 }
             }
 
+            //メーカー名の入力チェック
+            if (MakerNameTxb.Text != "")
+            {
+                int maid = ProductDA.GetMaID(MakerNameTxb.Text);
+
+                if (!ProductDA.SonzaiCheckMaID(maid))
+                {
+                    MessageDsp.DspMsg("M2025");
+                    return false;
+                }
+            }
+
+            //価格の入力チェック
+            if (KakakuTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchPrice(KakakuTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchPrice(KakakuTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //安全在庫数の入力チェック
+            if(AnzenTxb.Text != "")
+            {
+                if (!InputCheck.CheckSearchPrSafetyStock(AnzenTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckSearchPrSafetyStock(AnzenTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //小分類IDの入力チェック
+            if(ShoubunruiCmb.Text != "")
+            {
+                int scid = ProductDA.GetScID(ShoubunruiCmb.Text);
+
+                if (!ProductDA.SonzaiCheckScID(scid))
+                {
+                    MessageDsp.DspMsg("M2025");
+                    return false;
+                }
+
+            }
+
+            //型番の入力チェック
+            if(KatabanTxb.Text != "")
+            {
+                if (!InputCheck.CheckPrModelNumber(KatabanTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckPrModelNumber(KatabanTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //色の入力チェック
+            if(IroTxb.Text != "")
+            {
+                if (!InputCheck.CheckPrColor(IroTxb.Text).flg)
+                {
+                    MessageDsp.DspMsg(InputCheck.CheckPrColor(IroTxb.Text).Msg);
+                    return false;
+                }
+            }
+
+            //発売日の入力チェック
+            if(SellDtm.Checked == true)
+            {
+                DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
+
+                date = SellDtm.Value.Date;
+
+                if (!ProductDA.SonzaiCheckPrReleaseDate(date))
+                {
+                    MessageBox.Show("M2025");
+                    return false;
+                }
+            }
+
+
             return true;
         }
 
@@ -725,7 +803,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：M_Product
         //機　能   ：商品情報を形式化する
         ///////////////////////////////
-        private M_Product SetEmployeeSearchData()
+        private M_Product SetProductSearchData()
         {
             int prid = 0;
             int scid = 0;
@@ -864,11 +942,11 @@ namespace SalesManagement_SysDev
                 DaibunruiCmb.Items.Add(Mcname);
             }
 
-            ShohinIDTxb.Enabled = false;
             UpdateBtn.Enabled = true;
             HiddenBtn.Enabled = true;
         }
 
+        //選択した大分類名から小分類IDを選択する
         private void DaibunruiCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
             int mcID = SmallClassificationDA.GetMcID(DaibunruiCmb.Text);

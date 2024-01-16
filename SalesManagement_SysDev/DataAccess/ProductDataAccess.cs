@@ -39,6 +39,111 @@ namespace SalesManagement_SysDev.DataAccess
         }
 
         ///////////////////////////////
+        //メソッド名：SonzaiCheckPrice()
+        //引　数   ：数値
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：価格の存在チェック
+        //           価格が存在するときTrue
+        //           価格が存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckPrice(decimal Price)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された価格に一致するデータが存在するか
+                flg = context.M_Products.Any(x => x.Price == Price);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckPrSafetyStock()
+        //引　数   ：数値
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：安全在庫数の存在チェック
+        //           安全在庫数が存在するときTrue
+        //           安全在庫数が存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckPrSafetyStock(int PrSafetyStock)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された安全在庫数に一致するデータが存在するか
+                flg = context.M_Products.Any(x => x.PrSafetyStock == PrSafetyStock);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
+
+
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckScID()
+        //引　数   ：数値
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：小分類名の存在チェック
+        //           小分類名が存在するときTrue
+        //           小分類名が存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckScID(int ScID)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された小分類名に一致するデータが存在するか
+                flg = context.M_Products.Any(x => x.ScID == ScID);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckMaID()
+        //引　数   ：数値
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：小分類名の存在チェック
+        //           小分類名が存在するときTrue
+        //           小分類名が存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckMaID(int MaID)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された小分類名に一致するデータが存在するか
+                flg = context.M_Products.Any(x => x.MaID == MaID);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
         //メソッド名：SonzaiCheckPrName()
         //引　数   ：文字
         //戻り値   ：True:異常なし、False:異常あり
@@ -55,6 +160,84 @@ namespace SalesManagement_SysDev.DataAccess
                 var context = new SalesManagement_DevContext();
                 //入力された商品名に一致するデータが存在するか
                 flg = context.M_Products.Any(x => x.PrName == PrName);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckPrModelNumber()
+        //引　数   ：文字
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：型番の存在チェック
+        //           型番が存在するときTrue
+        //           型番が存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckPrModelNumber(string PrModelNumber)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された型番に一致するデータが存在するか
+                flg = context.M_Products.Any(x => x.PrModelNumber == PrModelNumber);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckColor()
+        //引　数   ：文字
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：型番の存在チェック
+        //           型番が存在するときTrue
+        //           型番が存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckPrColor(string PrColor)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された型番に一致するデータが存在するか
+                flg = context.M_Products.Any(x => x.PrColor == PrColor);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
+        }
+
+        ///////////////////////////////
+        //メソッド名：SonzaiCheckPrReleaseDate()
+        //引　数   ：文字
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：商品名の存在チェック
+        //           商品名が存在するときTrue
+        //           商品名が存在しないときFalse
+        ///////////////////////////////
+        public bool SonzaiCheckPrReleaseDate(DateTime PrReleaseDate)
+        {
+            bool flg = false;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                //入力された商品名に一致するデータが存在するか
+                flg = context.M_Products.Any(x => x.PrReleaseDate == PrReleaseDate);
                 context.Dispose();
             }
             catch (Exception ex)
@@ -171,7 +354,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t1.MaID equals t2.MaID
                              join t3 in context.M_SmallClassifications
                              on t1.ScID equals t3.ScID
-                             where t1.PrID == regProduct.PrID
+                             where t1.PrID == regProduct.PrID &&
+                                   t1.PrFlag == 0
 
                              select new
                              {
@@ -213,7 +397,6 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //選択なし
             else if (regProduct.ScID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate)
             {
                 try
@@ -283,10 +466,7 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) ||
                                    t1.PrHidden == null) &&
-                                   t1.ScID == (regProduct.ScID)
-                             where t1.PrName.Contains(regProduct.PrName) &&
-                                   (t1.PrHidden.Contains(regProduct.PrHidden) ||
-                                   t1.PrHidden == null)
+                                   t1.PrFlag == 0
 
                              select new
                              {
@@ -400,7 +580,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) ||
-                                   t1.PrHidden == null)
+                                   t1.PrHidden == null)&&
+                                   t1.PrFlag == 0
                              select new
                              {
                                  t1.PrID,
@@ -457,7 +638,8 @@ namespace SalesManagement_SysDev.DataAccess
                                     t1.ScID == regProduct.ScID &&
                                     (t1.PrHidden.Contains(regProduct.PrHidden) ||
                                     t1.PrHidden == null) &&
-                                    t1.PrReleaseDate == regProduct.PrReleaseDate
+                                    t1.PrReleaseDate == regProduct.PrReleaseDate &&
+                                    t1.PrFlag == 0
                              select new
                              {
                                  t1.PrID,

@@ -194,9 +194,9 @@
             this.KokyakuNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.KokyakuNameLbl.Location = new System.Drawing.Point(1370, 221);
             this.KokyakuNameLbl.Name = "KokyakuNameLbl";
-            this.KokyakuNameLbl.Size = new System.Drawing.Size(35, 28);
+            this.KokyakuNameLbl.Size = new System.Drawing.Size(40, 28);
             this.KokyakuNameLbl.TabIndex = 61;
-            this.KokyakuNameLbl.Text = "あ";
+            this.KokyakuNameLbl.Text = "--";
             // 
             // ShainNameLbl
             // 
@@ -204,9 +204,9 @@
             this.ShainNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ShainNameLbl.Location = new System.Drawing.Point(1370, 150);
             this.ShainNameLbl.Name = "ShainNameLbl";
-            this.ShainNameLbl.Size = new System.Drawing.Size(35, 28);
+            this.ShainNameLbl.Size = new System.Drawing.Size(40, 28);
             this.ShainNameLbl.TabIndex = 60;
-            this.ShainNameLbl.Text = "あ";
+            this.ShainNameLbl.Text = "--";
             // 
             // JuchuDetailIDTxb
             // 
@@ -309,6 +309,7 @@
             this.KokyakuIDTxb.Name = "KokyakuIDTxb";
             this.KokyakuIDTxb.Size = new System.Drawing.Size(201, 25);
             this.KokyakuIDTxb.TabIndex = 3;
+            this.KokyakuIDTxb.TextChanged += new System.EventHandler(this.KokyakuIDTxb_TextChanged);
             // 
             // ShainIDTxb
             // 
@@ -319,6 +320,7 @@
             this.ShainIDTxb.Name = "ShainIDTxb";
             this.ShainIDTxb.Size = new System.Drawing.Size(201, 25);
             this.ShainIDTxb.TabIndex = 2;
+            this.ShainIDTxb.TextChanged += new System.EventHandler(this.ShainIDTxb_TextChanged);
             // 
             // GokeiKingakuTxb
             // 

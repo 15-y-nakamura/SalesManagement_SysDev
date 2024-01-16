@@ -75,6 +75,27 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
+        //メソッド名：CheckSuutiComma()
+        //引　数   ：文字列
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：半角数字とコンマのチェック
+        //           半角数字とコンマのときTrue
+        //           半角数字とコンマ以外のときFalse
+        ///////////////////////////////
+        public bool CheckSuutiComma(string text)
+        {
+            Regex regex = new Regex("^[0-9.]+$");
+            if (regex.IsMatch(text))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        ///////////////////////////////
         //メソッド名：CheckSuutiHaihun()
         //引　数   ：文字列
         //戻り値   ：True:異常なし、False:異常あり
@@ -106,7 +127,7 @@ namespace SalesManagement_SysDev
         public bool CheckHankakueisu (string text)
         {
             Regex regex = new Regex("[a-zA-Z0-9]+$");
-            if (!regex.IsMatch(text))
+            if (regex.IsMatch(text))
             {
                 return true;
             }
@@ -562,15 +583,16 @@ namespace SalesManagement_SysDev
                 return (false, "M2008");
             }
 
-            if (!ProductDA.SonzaiCheckPrName(text))
-            {
-                return (false, "M2030");
-            }
-          
             if (text.Length > 50)
             {
                 return (false, "M2007");
             }
+
+            if (!ProductDA.SonzaiCheckPrName(text))
+            {
+                return (false, "M2025");
+            }
+          
             return(true, text);
         }
 
@@ -585,6 +607,29 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M2007");
             }
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckSearchMakerName()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：メーカー名入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckSearchMakerName(string text)
+        {
+            if (text.Length > 50)
+            {
+                return (false, "M2007");
+            }
+
+            if (!ProductDA.SonzaiCheckPrName(text))
+            {
+                return (false, "M2025");
+            }
+
             return (true, text);
         }
 
@@ -715,7 +760,7 @@ namespace SalesManagement_SysDev
                 return (false, "M2010");
             }
 
-            if (!CheckSuuti(text))
+            if (!CheckSuutiComma(text))
             {
                 return (false, "M2009");
             }
@@ -724,7 +769,35 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
-        //メソッド名：CheckCheckPrSafetyStock()
+        //メソッド名：CheckSearchPrice()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：価格入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckSearchPrice(string text)
+        {
+            if (!CheckSuutiComma(text))
+            {
+                return (false, "M2009");
+            }
+
+            if (text.Length > 9)
+            {
+                return (false, "M2010");
+            }
+
+            if (!ProductDA.SonzaiCheckPrice(decimal.Parse(text)))
+            {
+                return (false, "M2025");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckPrSafetyStock()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
         //機　能   ：安全在庫数入力チェック
@@ -749,6 +822,34 @@ namespace SalesManagement_SysDev
             }
 
             return(true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckSearchPrSafetyStock()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：安全在庫数入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckSearchPrSafetyStock(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M2012");
+            }
+
+            if (text.Length > 4)
+            {
+                return (false, "M2013");
+            }
+
+            if (!ProductDA.SonzaiCheckPrSafetyStock(int.Parse(text)))
+            {
+                return (false, "M2025");
+            }
+
+            return (true, text);
         }
 
 
@@ -1037,12 +1138,40 @@ namespace SalesManagement_SysDev
                 return (false, "M2018");
             }
 
-            if (CheckHankakueisu(text))
+            if (!CheckHankakueisu(text))
             {
                 return (false, "M2017");
             }
 
-            return(true, text);
+            if (!ProductDA.SonzaiCheckPrModelNumber(text))
+            {
+                return (false, "M2025");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckSearchPrModelNumber()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：型番入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckSearchPrModelNumber(string text)
+        {
+            if (!CheckHankakueisu(text))
+            {
+                return (false, "M2017");
+            }
+
+            if (text.Length > 20)
+            {
+                return (false, "M2018");
+            }
+
+            return (true, text);
         }
 
         ///////////////////////////////
@@ -1061,6 +1190,34 @@ namespace SalesManagement_SysDev
             }
 
             if(text.Length > 20)
+            {
+                return (false, "M2021");
+            }
+
+            if (!CheckZenkaku(text))
+            {
+                return (false, "M2020");
+            }
+
+            if (!ProductDA.SonzaiCheckPrColor(text))
+            {
+                return (false, "M2025");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckSearchPrColor()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：色入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckSearchPrColor(string text)
+        {
+            if (text.Length > 20)
             {
                 return (false, "M2021");
             }
