@@ -18,6 +18,8 @@ namespace SalesManagement_SysDev
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
         InputCheck inputCheck = new InputCheck();
 
+        internal static int EmID = 0;
+
         public PasswordChangePage()
         {
             InitializeComponent();
@@ -27,7 +29,13 @@ namespace SalesManagement_SysDev
         {
             //妥当なパスワードデータ取得
             if (!TextMatchCheck())
+            {
                 return;
+            }
+  
+            var updCategory = GenerateDataAtUpdate();
+
+            UpdatePassward(updCategory);
 
         }
 
@@ -42,50 +50,44 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private bool TextMatchCheck()
         {
-            // 新しいパスワードの適否
-            if (!String.IsNullOrEmpty(NewPassTxb.Text.Trim()))
+            //新しいパスワードの空欄チェック
+            if (NewPassTxb.Text == null || NewPassTxb.Text.Trim() == "")
             {
-                //新しいパスワードの半角英数字チェック
-                if (!inputCheck.CheckHankakueisu(NewPassTxb.Text.Trim()))
-                {
-                    MessageBox.Show("パスワードは半角英数字です。");
-                    NewPassTxb.Focus();
-                    return false;
-                }
-
-                // 新しいパスワードの文字数チェック
-                if (NewPassTxb.TextLength >= 11)
-                {
-                    MessageBox.Show("パスワードは10文字以下です。");
-                    NewPassTxb.Focus();
-                    return false;
-                }
-
-                //新しいパスワードの空欄チェック
-                if (NewPassTxb.Text == null || NewPassTxb.Text.Trim() == "")
-                {
-                    MessageBox.Show("新しいパスワードが空欄です。");
-                    RepeatPassTxb.Focus();
-                    return false;
-                }
+                messageDsp.DspMsg("M4013");
+                RepeatPassTxb.Focus();
+                return false;
             }
 
-            // 新しいパスワード（確認用）の適否
-            if (!String.IsNullOrEmpty(RepeatPassTxb.Text.Trim()))
+            //新しいパスワードの半角英数字チェック
+            if (!inputCheck.CheckHankakueisu(NewPassTxb.Text.Trim()))
             {
-                //新しいパスワード（確認用）の空欄チェック
-                if (RepeatPassTxb.Text == null || RepeatPassTxb.Text.Trim() == "")
-                {
-                    MessageBox.Show("新しいパスワード(確認用)が空欄です。");
-                    RepeatPassTxb.Focus();
-                    return false;
-                }
+                messageDsp.DspMsg("M4011");
+                NewPassTxb.Focus();
+                return false;
             }
+
+            // 新しいパスワードの文字数チェック
+            if (5 > NewPassTxb.TextLength || NewPassTxb.TextLength > 10)
+            {
+                messageDsp.DspMsg("M4012");
+                NewPassTxb.Focus();
+                return false;
+            }
+
+            
+            //新しいパスワード（確認用）の空欄チェック
+            if (RepeatPassTxb.Text == null || RepeatPassTxb.Text.Trim() == "")
+            {
+                messageDsp.DspMsg("M1101");
+                RepeatPassTxb.Focus();
+                return false;
+            }
+            
 
             //パスワード一致確認
             if (NewPassTxb.Text != RepeatPassTxb.Text)
             {
-                MessageBox.Show("新しいパスワードと新しいパスワード(確認用)に入力された値が一致しません。");
+                messageDsp.DspMsg("M1102");
                 NewPassTxb.Focus();
                 return false;
             }
@@ -94,14 +96,47 @@ namespace SalesManagement_SysDev
 
         }
 
+        
+        private M_Employee GenerateDataAtUpdate()
+        {
+            return new M_Employee
+            {
+                EmID = EmID,
+                EmPassword = NewPassTxb.Text
+            };
+        }
+        
+        private void UpdatePassward(M_Employee updCategory)
+        {
+            if (DialogResult.OK == messageDsp.DspMsg("M1103"))
+            {
+                if (empDataAccess.UpdatePassword(updCategory))
+                {
+                    messageDsp.DspMsg("M1104");
+                }
+                else
+                {
+                    messageDsp.DspMsg("M1105");
+                    return;
+                }
+                
+            }
+
+            //入力エリアのクリア
+            NewPassTxb.Text = "";
+            RepeatPassTxb.Text = "";
+        }
+
         private void ReturnBtn_Click(object sender, EventArgs e)
         {
-            //現画面を非表示
-            this.Visible = false;
+            //フォームを閉じる確認メッセージの表示
+            DialogResult result = messageDsp.DspMsg("M0001");
 
-            //TopButsuryuPageを表示
-            LoginPage f2 = new LoginPage();
-            f2.Show();
+            if (result == DialogResult.OK)
+            {
+                // OKの時の処理
+                this.Close();
+            }
         }
     }
 }
