@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -179,7 +180,7 @@ namespace SalesManagement_SysDev.DataAccess
             return Chumon;
         }
 
-        public List<T_ChumonDsp> SearchChumonData(T_Chumon T_Ch,T_ChumonDetail T_Chd)
+        public List<T_ChumonDsp> SearchChumonData(T_Chumon T_Ch, T_ChumonDetail T_Chd)
         {
             List<T_ChumonDsp> Chumon = new List<T_ChumonDsp>();
             DateTime nulldate = DateTime.ParseExact("00010101", "yyyymmdd", null);
@@ -235,7 +236,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if(T_Ch.ChID != -1 && T_Ch.ChFlag != -1)
+            else if (T_Ch.ChID != -1 && T_Ch.ChFlag != -1)
             {
                 try
                 {
@@ -286,7 +287,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if(T_Ch.OrID != -1 && T_Ch.ChFlag == -1)
+            else if (T_Ch.OrID != -1 && T_Ch.ChFlag == -1)
             {
                 try
                 {
@@ -2466,7 +2467,7 @@ namespace SalesManagement_SysDev.DataAccess
                             ChHidden = p.ChHidden
                         });
                     }
-                
+
                     context.Dispose();
                 }
                 catch (Exception ex)

@@ -398,8 +398,8 @@ namespace SalesManagement_SysDev
                 EmFlg = 0;
             }
 
-            var rmd = new Random();
-            var firstpass = rmd.Next(1000, 9999);
+            //var rmd = new Random();
+            //var firstpass = rmd.Next(1000, 9999);
 
             return new M_Employee
             {
@@ -408,10 +408,11 @@ namespace SalesManagement_SysDev
                 PoID = PoID,
                 SoID = SoID,
                 EmHiredate = JoinDateDtm.Value,
-                EmPassword = firstpass.ToString(),
+                EmPassword = ShainIDTxb.Text.ToString(),
                 EmPhone = TelTxb.Text,
                 EmFlag = EmFlg,
-                EmHidden = HihyojiTxb.Text
+                EmHidden = HihyojiTxb.Text,
+                FirstPass = ShainIDTxb.Text.ToString()
             };
         }
 
