@@ -18,6 +18,8 @@ namespace SalesManagement_SysDev
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
         InputCheck inputCheck = new InputCheck();
 
+        internal static int EmID = 0;
+
         public PasswordChangePage()
         {
             InitializeComponent();
@@ -27,14 +29,13 @@ namespace SalesManagement_SysDev
         {
             //妥当なパスワードデータ取得
             if (!TextMatchCheck())
+            {
                 return;
-
-            /*5.2.2.2 商品カテゴリ情報作成
+            }
+  
             var updCategory = GenerateDataAtUpdate();
 
-            // 5.2.2.3 商品カテゴリ情報更新
-            UpdateCategory(updCategory);*/
-
+            UpdatePassward(updCategory);
         }
 
         ///////////////////////////////
@@ -48,50 +49,44 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private bool TextMatchCheck()
         {
-            // 新しいパスワードの適否
-            if (!String.IsNullOrEmpty(NewPassTxb.Text.Trim()))
+            //新しいパスワードの空欄チェック
+            if (NewPassTxb.Text == null || NewPassTxb.Text.Trim() == "")
             {
-                //新しいパスワードの半角英数字チェック
-                if (!inputCheck.CheckHankakueisu(NewPassTxb.Text.Trim()))
-                {
-                    MessageBox.Show("パスワードは半角英数字です。");
-                    NewPassTxb.Focus();
-                    return false;
-                }
-
-                // 新しいパスワードの文字数チェック
-                if (NewPassTxb.TextLength >= 11)
-                {
-                    MessageBox.Show("パスワードは10文字以下です。");
-                    NewPassTxb.Focus();
-                    return false;
-                }
-
-                //新しいパスワードの空欄チェック
-                if (NewPassTxb.Text == null || NewPassTxb.Text.Trim() == "")
-                {
-                    MessageBox.Show("新しいパスワードが空欄です。");
-                    RepeatPassTxb.Focus();
-                    return false;
-                }
+                messageDsp.DspMsg("M4013");
+                RepeatPassTxb.Focus();
+                return false;
             }
 
-            // 新しいパスワード（確認用）の適否
-            if (!String.IsNullOrEmpty(RepeatPassTxb.Text.Trim()))
+            //新しいパスワードの半角英数字チェック
+            if (!inputCheck.CheckHankakueisu(NewPassTxb.Text.Trim()))
             {
-                //新しいパスワード（確認用）の空欄チェック
-                if (RepeatPassTxb.Text == null || RepeatPassTxb.Text.Trim() == "")
-                {
-                    MessageBox.Show("新しいパスワード(確認用)が空欄です。");
-                    RepeatPassTxb.Focus();
-                    return false;
-                }
+                messageDsp.DspMsg("M4011");
+                NewPassTxb.Focus();
+                return false;
             }
+
+            // 新しいパスワードの文字数チェック
+            if (5 > NewPassTxb.TextLength || NewPassTxb.TextLength > 10)
+            {
+                messageDsp.DspMsg("M4012");
+                NewPassTxb.Focus();
+                return false;
+            }
+
+            
+            //新しいパスワード（確認用）の空欄チェック
+            if (RepeatPassTxb.Text == null || RepeatPassTxb.Text.Trim() == "")
+            {
+                messageDsp.DspMsg("M1101");
+                RepeatPassTxb.Focus();
+                return false;
+            }
+            
 
             //パスワード一致確認
             if (NewPassTxb.Text != RepeatPassTxb.Text)
             {
-                MessageBox.Show("新しいパスワードと新しいパスワード(確認用)に入力された値が一致しません。");
+                messageDsp.DspMsg("M1102");
                 NewPassTxb.Focus();
                 return false;
             }
@@ -100,71 +95,47 @@ namespace SalesManagement_SysDev
 
         }
 
-        /*//////////////////////////////
-        //　5.2.2.2 商品カテゴリ情報作成
-        //メソッド名：GenerateDataAtUpdate()
-        //引　数   ：なし
-        //戻り値   ：商品カテゴリ更新情報
-        //機　能   ：更新データのセット
-        ///////////////////////////////
+        
         private M_Employee GenerateDataAtUpdate()
         {
-            string cParentCategory = "";
-
-            // 商品カテゴリ情報の作成
             return new M_Employee
             {
-                ParentCategory = cParentCategory,
-                CategoryCD = textBoxCategoryCD.Text.Trim(),
-                CategoryName = textBoxCategoryName.Text.Trim(),
-                CategoryKana = textBoxCategoryKana.Text.Trim(),
-                DeleteFlg = checkBoxDeleteFlg.Checked,
-                Comments = textBoxComments.Text.Trim(),
+                EmID = EmID,
+                EmPassword = NewPassTxb.Text
             };
         }
-
-        ///////////////////////////////
-        //　5.2.2.3 商品カテゴリ情報更新
-        //メソッド名：UpdateCategory()
-        //引　数   ：商品カテゴリ情報
-        //戻り値   ：なし
-        //機　能   ：商品カテゴリ情報の更新
-        ///////////////////////////////
-        private void UpdateCategory(M_Employee updCategory)
+        
+        private void UpdatePassward(M_Employee updCategory)
         {
-            //更新確認メッセージ
-            DialogResult result = messageDsp.DspMsg("M4014");
-
-            if (result == DialogResult.Cancel)
-                return;
-
-            //商品カテゴリ情報の登録
-            bool flg = empDataAccess.UpdateCategoryData(updCategory);
-            if (flg == true)
-                //MessageBox.Show("データを更新しました。");
-                messageDsp.DspMsg("M4015");
-            else
-                //MessageBox.Shoe("データの更新に失敗しました。");
-                messageDsp.DspMsg("M4016");
-
-            textBoxCategoryCD.Focus();
+            if (DialogResult.OK == messageDsp.DspMsg("M1103"))
+            {
+                if (empDataAccess.UpdatePassword(updCategory))
+                {
+                    messageDsp.DspMsg("M1104");
+                }
+                else
+                {
+                    messageDsp.DspMsg("M1105");
+                    return;
+                }
+                
+            }
 
             //入力エリアのクリア
-            ClearInput();
-
-            //データグリッドビューの表示
-            GetDataGridView();
-
-        }*/
+            NewPassTxb.Text = "";
+            RepeatPassTxb.Text = "";
+        }
 
         private void ReturnBtn_Click(object sender, EventArgs e)
         {
-            //現画面を非表示
-            this.Visible = false;
+            //フォームを閉じる確認メッセージの表示
+            DialogResult result = messageDsp.DspMsg("M0001");
 
-            //TopButsuryuPageを表示
-            LoginPage f2 = new LoginPage();
-            f2.Show();
+            if (result == DialogResult.OK)
+            {
+                // OKの時の処理
+                this.Close();
+            }
         }
     }
 }

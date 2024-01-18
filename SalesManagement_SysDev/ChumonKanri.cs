@@ -573,6 +573,14 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
+            if (!chDataAccess.GetStateflg(int.Parse(ChumonIDTxb.Text)))
+            {
+                if (DialogResult.No == messageDsp.DspMsg("M7035"))
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -628,6 +636,12 @@ namespace SalesManagement_SysDev
             if (!inputCheck.CheckChID(ChumonIDTxb.Text).flg)
             {
                 messageDsp.DspMsg(inputCheck.CheckChID(ChumonIDTxb.Text).Msg);
+                return false;
+            }
+
+            if (chDataAccess.GetStateflg(int.Parse(ChumonIDTxb.Text)))
+            {
+                messageDsp.DspMsg("M7036");
                 return false;
             }
 

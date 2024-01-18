@@ -931,5 +931,25 @@ namespace SalesManagement_SysDev.DataAccess
 
             return EmName;
         }
+
+        public bool UpdatePassword(M_Employee employee)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var emp = context.M_Employees.Single(x => x.EmID == employee.EmID);
+
+                emp.EmPassword = employee.EmPassword;
+
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -767,7 +767,7 @@ namespace SalesManagement_SysDev
                 messageDsp.DspMsg("M0003");
                 return;
             }
-            else if(!inputCheck.CheckSuuti(logonPass))
+            else if(!inputCheck.CheckHankakueisu(logonPass))
             {
                 messageDsp.DspMsg("M0003");
                 return;
@@ -775,10 +775,10 @@ namespace SalesManagement_SysDev
 
 
             if (!empDataAccess.PasswordCheck(int.Parse(ShainTxb.Text), PasuwadoTxb.Text))
-           {
+            {
                 messageDsp.DspMsg("M0003");
                 return;
-           }
+            }
            else
            {
                 int PoID = empDataAccess.GetPositiomID(int.Parse(logonID));
@@ -798,13 +798,19 @@ namespace SalesManagement_SysDev
 
                     if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
                     {
-                        MessageBox.Show("初期パスワードが使用されています。パスワードを変更してください。");
+                        if (DialogResult.Yes == messageDsp.DspMsg("M0005"))
+                        {
+                            PasswordChangePage.EmID = int.Parse(logonID);
+                            PasswordChangePage f3 = new PasswordChangePage();
+                            f3.Show();
+                        }
                     }
                 }
                 else if (PoID == 2)
                 {
                     TopEigyoPage.EmID = int.Parse(logonID);
                     TopEigyoPage.PoID = PoID;
+                    TopEigyoPage.Logindate = DateTime.Now.ToString();
 
                     //現画面を非表示
                     this.Visible = false;
@@ -815,14 +821,20 @@ namespace SalesManagement_SysDev
 
                     if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
                     {
-                        MessageBox.Show("初期パスワードが使用されています。パスワードを変更してください。");
+                        if (DialogResult.Yes == messageDsp.DspMsg("M0005"))
+                        {
+                            PasswordChangePage.EmID = int.Parse(logonID);
+                            PasswordChangePage f3 = new PasswordChangePage();
+                            f3.Show();
+                        }
                     }
 
                 }
-                else if(PoID == 3)
+                else if (PoID == 3)
                 {
                     TopButsuryuPage.EmID = int.Parse(logonID);
                     TopButsuryuPage.PoID = PoID;
+                    TopButsuryuPage.Logindate = DateTime.Now.ToString();
 
                     //現画面を非表示
                     this.Visible = false;
@@ -833,7 +845,12 @@ namespace SalesManagement_SysDev
 
                     if (loginDataAccess.CheckFirstPassExistence(PasuwadoTxb.Text.Trim()))
                     {
-                        MessageBox.Show("初期パスワードが使用されています。パスワードを変更してください。");
+                        if (DialogResult.Yes == messageDsp.DspMsg("M0005"))
+                        {
+                            PasswordChangePage.EmID = int.Parse(logonID);
+                            PasswordChangePage f3 = new PasswordChangePage();
+                            f3.Show();
+                        }
                     }
                 }
             }
@@ -842,7 +859,7 @@ namespace SalesManagement_SysDev
         private void LogoutBtn_Click(object sender, EventArgs e)
         {
              //フォームを閉じる確認メッセージの表示
-            DialogResult result = messageDsp.DspMsg("M0001");
+            DialogResult result = messageDsp.DspMsg("M1106");
 
             if (result == DialogResult.OK)
             {

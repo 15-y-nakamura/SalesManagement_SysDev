@@ -40,11 +40,11 @@
             // PassChnLbl
             // 
             this.PassChnLbl.AutoSize = true;
-            this.PassChnLbl.Font = new System.Drawing.Font("MS UI Gothic", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.PassChnLbl.Location = new System.Drawing.Point(169, 58);
+            this.PassChnLbl.Font = new System.Drawing.Font("MS UI Gothic", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.PassChnLbl.Location = new System.Drawing.Point(152, 85);
             this.PassChnLbl.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.PassChnLbl.Name = "PassChnLbl";
-            this.PassChnLbl.Size = new System.Drawing.Size(674, 80);
+            this.PassChnLbl.Size = new System.Drawing.Size(665, 80);
             this.PassChnLbl.TabIndex = 6;
             this.PassChnLbl.Text = "パスワード変更画面";
             // 
@@ -52,7 +52,7 @@
             // 
             this.NewPassLbl.AutoSize = true;
             this.NewPassLbl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.NewPassLbl.Location = new System.Drawing.Point(177, 183);
+            this.NewPassLbl.Location = new System.Drawing.Point(170, 220);
             this.NewPassLbl.Name = "NewPassLbl";
             this.NewPassLbl.Size = new System.Drawing.Size(246, 36);
             this.NewPassLbl.TabIndex = 7;
@@ -62,7 +62,7 @@
             // 
             this.RepeatPassLbl.AutoSize = true;
             this.RepeatPassLbl.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.RepeatPassLbl.Location = new System.Drawing.Point(177, 330);
+            this.RepeatPassLbl.Location = new System.Drawing.Point(170, 367);
             this.RepeatPassLbl.Name = "RepeatPassLbl";
             this.RepeatPassLbl.Size = new System.Drawing.Size(390, 36);
             this.RepeatPassLbl.TabIndex = 8;
@@ -70,14 +70,14 @@
             // 
             // NewPassTxb
             // 
-            this.NewPassTxb.Location = new System.Drawing.Point(269, 238);
+            this.NewPassTxb.Location = new System.Drawing.Point(262, 275);
             this.NewPassTxb.Name = "NewPassTxb";
             this.NewPassTxb.Size = new System.Drawing.Size(461, 25);
             this.NewPassTxb.TabIndex = 0;
             // 
             // RepeatPassTxb
             // 
-            this.RepeatPassTxb.Location = new System.Drawing.Point(269, 387);
+            this.RepeatPassTxb.Location = new System.Drawing.Point(262, 424);
             this.RepeatPassTxb.Name = "RepeatPassTxb";
             this.RepeatPassTxb.Size = new System.Drawing.Size(461, 25);
             this.RepeatPassTxb.TabIndex = 1;
@@ -98,7 +98,7 @@
             // 
             this.ReturnBtn.AutoSize = true;
             this.ReturnBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ReturnBtn.Location = new System.Drawing.Point(840, 32);
+            this.ReturnBtn.Location = new System.Drawing.Point(853, 27);
             this.ReturnBtn.Name = "ReturnBtn";
             this.ReturnBtn.Size = new System.Drawing.Size(104, 55);
             this.ReturnBtn.TabIndex = 25;
