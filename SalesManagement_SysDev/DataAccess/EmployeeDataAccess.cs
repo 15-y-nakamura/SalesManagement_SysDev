@@ -873,7 +873,7 @@ namespace SalesManagement_SysDev.DataAccess
         }
 
         ///////////////////////////////
-        //メソッド名：GetGetEmID()
+        //メソッド名：GetEmID()
         //引　数   ：なし
         //戻り値   ：取得した社員ID
         //機　能   ：社員ID取得
@@ -905,6 +905,12 @@ namespace SalesManagement_SysDev.DataAccess
             return emid;
         }
 
+        ///////////////////////////////
+        //メソッド名：GetEmName()
+        //引　数   ：数値　社員ID
+        //戻り値   ：文字列 社員名
+        //機　能   ：社員IDから社員名を取得する
+        ///////////////////////////////
         public string GetEmName(int EmID)
         {
             string EmName = "該当なし";
@@ -932,6 +938,14 @@ namespace SalesManagement_SysDev.DataAccess
             return EmName;
         }
 
+        ///////////////////////////////
+        //メソッド名：UpdatePassword()
+        //引　数   ：M_Employee
+        //戻り値   ：True:異常なし、False:異常あり
+        //機　能   ：パスワードの更新
+        //           成功したときTrue
+        //           失敗したときFalse
+        ///////////////////////////////
         public bool UpdatePassword(M_Employee employee)
         {
             try

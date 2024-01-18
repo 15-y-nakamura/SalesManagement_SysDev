@@ -551,20 +551,16 @@ namespace SalesManagement_SysDev
                 return (false, "M4015");
             }
 
-            if (text.Length < 12)
-            {
-                return (false, "M4030");
-            }
+            //if (text.Length < 12)
+            //{
+            //    return (false, "M4030");
+            //}
 
             if (text.Length > 13)
             {
                 return (false, "M4015");
             }
 
-            if (text.Length < 12)
-            {
-                return (false, "M4030");
-            }
             return (true, text);
         }
 
