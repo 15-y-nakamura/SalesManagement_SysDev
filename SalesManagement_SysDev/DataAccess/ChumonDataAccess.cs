@@ -4298,5 +4298,26 @@ namespace SalesManagement_SysDev.DataAccess
 
             return ChID;
         }
+        public bool GetStateflg(int chid) 
+        {
+            bool flg = false;
+            try 
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = context.T_Chumons.Single(x => x.ChID == chid);
+                var StateFlag = tb.ChStateFlag;
+                if (StateFlag == 0)
+                {
+                    flg = true; 
+                } 
+                
+                context.Dispose(); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
+            return flg; 
+        }
     }
 }
