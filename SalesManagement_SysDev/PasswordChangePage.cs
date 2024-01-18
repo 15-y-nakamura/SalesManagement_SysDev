@@ -130,7 +130,7 @@ namespace SalesManagement_SysDev
         private void ReturnBtn_Click(object sender, EventArgs e)
         {
             //フォームを閉じる確認メッセージの表示
-            DialogResult result = messageDsp.DspMsg("M0001");
+            DialogResult result = messageDsp.DspMsg("M1106");
 
             if (result == DialogResult.OK)
             {
