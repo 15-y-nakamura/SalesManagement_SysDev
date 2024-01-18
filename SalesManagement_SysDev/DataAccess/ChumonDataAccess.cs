@@ -4253,5 +4253,49 @@ namespace SalesManagement_SysDev.DataAccess
 
             return OrID;
         }
+
+        public bool RegistChumonData(T_Chumon t_Chumon)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                context.T_Chumons.Add(t_Chumon);
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public int GetChID(int OrID)
+        {
+            int ChID = 0;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.T_Chumons
+                         where t1.OrID == OrID
+                         select new
+                         {
+                             t1.ChID
+                         };
+
+                foreach (var p in tb)
+                {
+                    ChID = p.ChID;
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return ChID;
+        }
     }
 }

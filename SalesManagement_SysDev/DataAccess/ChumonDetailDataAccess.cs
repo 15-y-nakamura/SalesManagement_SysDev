@@ -9,6 +9,23 @@ namespace SalesManagement_SysDev.DataAccess
 {
     internal class ChumonDetailDataAccess
     {
+        public bool RegistChumonDetailData(T_ChumonDetail t_Chumon)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                context.T_ChumonDetails.Add(t_Chumon);
+                context.SaveChanges();
+                context.Dispose();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public List<T_ChumonDetailDsp> GetAllChumonDetailData()
         {
             List<T_ChumonDetailDsp> Chumon = new List<T_ChumonDetailDsp>();

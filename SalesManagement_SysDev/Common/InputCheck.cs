@@ -506,7 +506,59 @@ namespace SalesManagement_SysDev
 
             return (true, text);
         }
-        
+
+        ///////////////////////////////
+        //メソッド名：CheckRegistOrID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の受注ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckSuutiRegistOrID(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M6001");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M6002");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckRegistOrID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の受注ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckConfirmOrID(string text)
+        {
+            if (!CheckSuuti(text))
+            {
+                return (false, "M6001");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M6002");
+            }
+
+            if (!JuchuDA.SonzaiCheckOrID(int.Parse(text)))
+            {
+                return (false, "M6027");
+            }
+
+            return (true, text);
+        }
+
+
 
         ///////////////////////////////
         //メソッド名：CheckRegistOrID()
@@ -607,6 +659,13 @@ namespace SalesManagement_SysDev
             {
                 return (false, "M2007");
             }
+
+            if (ProductDA.SonzaiCheckPrName(text))
+            {
+                return (false, "M2030");
+            }
+
+
             return (true, text);
         }
 
@@ -630,12 +689,12 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         public (bool flg, string Msg) CheckSearchMakerName(string text)
         {
-            if (text.Length > 50)
+            if (text == "")
             {
-                return (false, "M2007");
+                return (false, "M2005");
             }
 
-            if (!ProductDA.SonzaiCheckPrName(text))
+            if (!ProductDA.SonzaiCheckMaName(text))
             {
                 return (false, "M2025");
             }
@@ -700,6 +759,11 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         public (bool flg, string Msg) CheckRegistOrDetailID(string text)
         {
+            if (text == "")
+            {
+                return (false, "M6015");
+            }
+
             if (!CheckSuuti(text))
             {
                 return (false, "M6013");
@@ -708,11 +772,6 @@ namespace SalesManagement_SysDev
             if (text.Length > 6)
             {
                 return (false, "M6014");
-            }
-
-            if (text == "")
-            {
-                return (false, "M6015");
             }
 
             return (true, text);
@@ -1301,7 +1360,12 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         public (bool flg, string Msg) CheckRegistGokeiKingaku(string text)
         {
-            if (CheckSuuti(text))
+            if (text == "")
+            {
+                return (false, "M6022");
+            }
+
+            if (!CheckSuutiComma(text))
             {
                 return (false, "M6020");
             }
@@ -1311,15 +1375,10 @@ namespace SalesManagement_SysDev
                 return (false, "M6021");
             }
 
-            if (text == "")
-            {
-                return (false, "M6022");
-            }
-
             return (true, text);
         }
 
-               
+        ///////////////////////////////       
         //メソッド名：CheckRegistShohinID()
         //引　数   ：文字列
         //戻り値   ：(True:異常なし、False:異常あり,文字列)
@@ -1327,21 +1386,12 @@ namespace SalesManagement_SysDev
         //           問題がないときTrue、文字列
         //           問題があるときFalse、メッセージID
         ///////////////////////////////
-        public (bool flg, string Msg) CheckRegistOrderShohinID(string text)
+        public (bool flg, string Msg) CheckRegistOrderShohinName(string text)
         {
-            if (!CheckSuuti(text))
-            {
-                return (false, "M2001");
-            }
-
-            if (text.Length > 10)
-            {
-                return (false, "M2002");
-            }
 
             if (text == "")
             {
-                return (false, "M2003");
+                return (false, "M6039");
             }
 
             return (true, text);

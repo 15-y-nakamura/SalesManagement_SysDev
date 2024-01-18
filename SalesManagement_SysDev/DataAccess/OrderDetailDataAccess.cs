@@ -29,7 +29,7 @@ namespace SalesManagement_SysDev.DataAccess
                              on t1.OrID equals t2.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             where t1.OrDetailID == regOrderDetail.OrDetailID
+                             where t2.OrFlag == 0
 
                              select new
                              {
