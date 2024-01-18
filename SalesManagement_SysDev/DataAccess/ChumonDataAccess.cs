@@ -4255,21 +4255,40 @@ namespace SalesManagement_SysDev.DataAccess
             return OrID;
         }
 
-        public bool GetStateflg(int chid)
+        public bool RegistChumonData(T_Chumon t_Chumon)
         {
-            bool flg = false; 
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                context.T_Chumons.Add(t_Chumon);
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public int GetChID(int OrID)
+        {
+            int ChID = 0;
 
             try
             {
                 var context = new SalesManagement_DevContext();
-                var tb = context.T_Chumons.Single(x => x.ChID == chid);
-                var StateFlag = tb.ChStateFlag;
+                var tb = from t1 in context.T_Chumons
+                         where t1.OrID == OrID
+                         select new
+                         {
+                             t1.ChID
+                         };
 
-                if (StateFlag == 0)
+                foreach (var p in tb)
                 {
-                    flg = true;
+                    ChID = p.ChID;
                 }
-
                 context.Dispose();
             }
             catch (Exception ex)
@@ -4277,7 +4296,7 @@ namespace SalesManagement_SysDev.DataAccess
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return flg;
+            return ChID;
         }
     }
 }

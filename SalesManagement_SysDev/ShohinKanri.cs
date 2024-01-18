@@ -709,10 +709,10 @@ namespace SalesManagement_SysDev
         //検索ボタンクリック
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            if (!InputSearchDataCheck())
+            /*if (!InputSearchDataCheck())
             {
                 return;
-            }
+            }*/
 
             var searchdata = SetProductSearchData();
 
@@ -748,22 +748,13 @@ namespace SalesManagement_SysDev
             }
 
             //メーカー名の入力チェック
-            if (MakerNameCmb.Text != "")
+            if(MakerNameCmb.Text != "")
             {
-                int maid = ProductDA.GetMaID(MakerNameCmb.Text);
-
-                if (!ProductDA.SonzaiCheckMaID(maid))
+                if (!InputCheck.CheckSearchMakerName(MakerNameCmb.Text).flg)
                 {
-                    MessageDsp.DspMsg("M2025");
+                    MessageDsp.DspMsg(InputCheck.CheckSearchMakerName(MakerNameCmb.Text).Msg);
                     return false;
                 }
-            }
-
-            //メーカー名の入力チェック
-            if (!InputCheck.CheckMakerName(MakerNameCmb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckMakerName(MakerNameCmb.Text).Msg);
-                return false;
             }
 
             //価格の入力チェック
@@ -786,7 +777,7 @@ namespace SalesManagement_SysDev
                 }
             }
 
-            //小分類IDの入力チェック
+            /*小分類IDの入力チェック
             if(ShoubunruiCmb.Text != "")
             {
                 int scid = ProductDA.GetScID(ShoubunruiCmb.Text);
@@ -797,7 +788,7 @@ namespace SalesManagement_SysDev
                     return false;
                 }
 
-            }
+            }*/
 
             //型番の入力チェック
             if(KatabanTxb.Text != "")
@@ -833,7 +824,6 @@ namespace SalesManagement_SysDev
                 }
             }
 
-
             return true;
         }
 
@@ -845,7 +835,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_Product SetProductSearchData()
         {
-            int prid = 0;
+            int prid = -1;
             int scid = 0;
             int maid = 0;
             decimal price = 0;
@@ -986,12 +976,11 @@ namespace SalesManagement_SysDev
             HiddenBtn.Enabled = true;
         }
 
-        //選択した大分類名から小分類IDを選択する
+
         private void DaibunruiCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
             int mcID = SmallClassificationDA.GetMcID(DaibunruiCmb.Text);
 
-            // データベースから、テキストボックスの数値と一致するデータがあるか確認
             using (var dbContext = new SalesManagement_DevContext())
             {
                 var ShobunruiList = dbContext.M_SmallClassifications
@@ -1006,19 +995,18 @@ namespace SalesManagement_SysDev
 
         private void ShoubunruiCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*int scID = MajorClassificationDA.GetMcID(ShoubunruiCmb.Text);
+            int scID = MajorClassificationDA.GetMcID(ShoubunruiCmb.Text);
 
-            // データベースから、テキストボックスの数値と一致するデータがあるか確認
             using (var dbContext = new SalesManagement_DevContext())
             {
                 var DaibunruiList = dbContext.M_SmallClassifications
                     .Where(sc => sc.ScID == scID)
-                    .Select(sc => sc.M_MajorCassifications.McName) // 大分類テーブルへの参照を経由してMcNameを取得
-                    .FirstOrDefault();
+                    .Select(sc => sc.M_MajorClassification.McName)
+                    .ToList();
 
                 DaibunruiCmb.Items.Clear();
                 DaibunruiCmb.Items.AddRange(DaibunruiList.ToArray());
-            }*/
+            }
         }
     }
 }

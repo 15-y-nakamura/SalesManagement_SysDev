@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
@@ -196,6 +197,121 @@ namespace SalesManagement_SysDev.DataAccess
             }
             return flg;
         }
+
+        //確定
+        public bool ConfirmOrderDate(T_Order T_Or)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var or = context.T_Orders.Single(x => x.OrID == T_Or.OrID);
+
+                or.OrStateFlag = T_Or.OrStateFlag;
+
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<T_OrderDetail> GetNeedData(int orid)
+        {
+            List<T_OrderDetail> Order = new List<T_OrderDetail>();
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.T_OrderDetails
+                         join t2 in context.T_Orders
+                         on t1.OrID equals t2.OrID
+                         join t3 in context.M_Products
+                         on t1.PrID equals t3.PrID
+                         where t1.OrDetailID == orid
+                         select new
+                         {
+                             t1.PrID,
+                             t1.OrQuantity
+                         };
+
+                foreach (var p in tb)
+                {
+                    Order.Add(new T_OrderDetail()
+                    {
+                        PrID = p.PrID,
+                        OrQuantity = p.OrQuantity
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return Order;
+        }
+
+
+
+        public bool UpdateStock(T_Chumon chumon)
+        {
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var or = context.T_Chumons.Single(x => x.ChID == chumon.ChID);
+
+                context.SaveChanges();
+                context.Dispose();
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<T_Order> GetChumonNeedData(int orid)
+        {
+            List<T_Order> Order = new List<T_Order>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.T_Orders
+                         where t1.OrID == orid
+                         select new
+                         {
+                             t1.ClID,
+                             t1.SoID,
+                             t1.OrID,
+                             t1.OrHidden
+                         };
+
+                foreach (var p in tb)
+                {
+                    Order.Add(new T_Order()
+                    {
+                        ClID = p.ClID,
+                        SoID = p.SoID,
+                        OrID = p.OrID,
+                        OrHidden = p.OrHidden
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return Order;
+        }
+
 
         public List<T_OrderDsp> SearchOrderData(T_Order T_Or)
         {
