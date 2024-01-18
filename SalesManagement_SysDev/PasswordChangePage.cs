@@ -36,6 +36,7 @@ namespace SalesManagement_SysDev
             var updCategory = GenerateDataAtUpdate();
 
             UpdatePassward(updCategory);
+
         }
 
         ///////////////////////////////

@@ -26,6 +26,14 @@ namespace SalesManagement_SysDev
         public LoginPage()
         {
             InitializeComponent();
+
+            //btn_CleateDabase.ForeColor = Color.White;
+            //btn_CleateDabase.BackColor = Color.Gray;
+            PasuwadoTxb.PasswordChar = '*';
+            //PWhyouzihihyouzi.Text = "表示";
+            btn_CleateDabase.FlatAppearance.BorderSize = 0;
+            btn_InsertSampleData.FlatAppearance.BorderSize = 0;
+
         }
 
         private void btn_CleateDabase_Click(object sender, EventArgs e)
@@ -872,5 +880,19 @@ namespace SalesManagement_SysDev
             }
 
         }
+
+        /*private void PWhyouzihihyouzi_Click(object sender, EventArgs e)
+        {
+            if(PWhyouzihihyouzi.Text == "表示")
+            {
+                PasuwadoTxb.PasswordChar = (char)0;
+                PWhyouzihihyouzi.Text = "非表示";
+            }
+            else if(PWhyouzihihyouzi.Text == "非表示")
+            {
+                PasuwadoTxb.PasswordChar = '*';
+                PWhyouzihihyouzi.Text = "表示";
+            }
+        }*/
     }
 }

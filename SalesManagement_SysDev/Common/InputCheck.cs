@@ -1209,11 +1209,6 @@ namespace SalesManagement_SysDev
                 return (false, "M2020");
             }
 
-            if (!ProductDA.SonzaiCheckPrColor(text))
-            {
-                return (false, "M2025");
-            }
-
             return (true, text);
         }
 
@@ -1235,6 +1230,11 @@ namespace SalesManagement_SysDev
             if (!CheckZenkaku(text))
             {
                 return (false, "M2020");
+            }
+
+            if (!ProductDA.SonzaiCheckPrColor(text))
+            {
+                return (false, "M2025");
             }
 
             return (true, text);

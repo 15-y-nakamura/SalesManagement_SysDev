@@ -27,6 +27,9 @@ namespace SalesManagement_SysDev
         //小分類テーブルのインスタンス化
         SmallClassificationDataAccess SmallClassificationDA = new SmallClassificationDataAccess();
 
+        //メーカテーブルのインスタンス化
+        MakerDataAccess MakerDA = new MakerDataAccess();
+
         //データグリッドビュー用のスタッフデータ
         private static List<M_ProductDsp> Product;
 
@@ -98,7 +101,7 @@ namespace SalesManagement_SysDev
             SetFormShohinKanriGridView();
         }
 
-                ///////////////////////////////
+        ///////////////////////////////
         //メソッド名：SetCtrlFormat()
         //引　数   ：なし
         //戻り値   ：なし
@@ -108,7 +111,8 @@ namespace SalesManagement_SysDev
         {
             ShohinIDTxb.Text = "";
             ShohinNameTxb.Text = "";
-            MakerNameTxb.Text = "";
+            MakerNameCmb.Items.Clear();
+            MakerNameCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             KakakuTxb.Text = "";
             AnzenTxb.Text = "";
             DaibunruiCmb.Items.Clear();
@@ -138,6 +142,13 @@ namespace SalesManagement_SysDev
             foreach (string Mcname in McName.Reverse())
             {
                 DaibunruiCmb.Items.Add(Mcname);
+            }
+
+            var MaName = MakerDA.GetMaName();
+
+            foreach (string Maname in MaName.Reverse())
+            {
+                MakerNameCmb.Items.Add(Maname);
             }
 
             UpdateBtn.Enabled = false;
@@ -315,9 +326,9 @@ namespace SalesManagement_SysDev
             }
 
             //メーカー名の入力チェック
-            if(!InputCheck.CheckMakerName(MakerNameTxb.Text).flg)
+            if(!InputCheck.CheckMakerName(MakerNameCmb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckMakerName(MakerNameTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckMakerName(MakerNameCmb.Text).Msg);
                 return false;
             }
 
@@ -375,8 +386,7 @@ namespace SalesManagement_SysDev
         private M_Product SetProductData()
         {
             int ScID = ProductDA.GetScID(ShoubunruiCmb.Text);
-            int MaID = ProductDA.GetMaID(MakerNameTxb.Text);
-
+            int MaID = ProductDA.GetMaID(MakerNameCmb.Text);
             int PrFlg;
 
             if (ShohinKanriCmb.Text == "非表示")
@@ -390,7 +400,7 @@ namespace SalesManagement_SysDev
 
             return new M_Product
             {
-                PrID = int.Parse(ShohinIDTxb.Text),
+                //PrID = int.Parse(ShohinIDTxb.Text),
                 MaID = MaID,
                 PrName = ShohinNameTxb.Text,
                 Price = decimal.Parse(KakakuTxb.Text),
@@ -415,24 +425,45 @@ namespace SalesManagement_SysDev
             //商品IDの入力チェック
             if (ShohinIDTxb.Text != "")
             {
-                MessageDsp.DspMsg("M2038");
-            }
-
-            if (DialogResult.OK == MessageDsp.DspMsg("M2026"))
-            {
-                if (ProductDA.RegistProduct(pro))
+                if (DialogResult.OK == MessageDsp.DspMsg("M2038"))
                 {
-                    MessageDsp.DspMsg("M2027");
+                    if (DialogResult.OK == MessageDsp.DspMsg("M2026"))
+                    {
+                        if (ProductDA.RegistProduct(pro))
+                        {
+                            MessageDsp.DspMsg("M2027");
 
-                    //コントロールの初期設定
-                    SetCtrlFormat();
+                            //コントロールの初期設定
+                            SetCtrlFormat();
 
-                    //データグリッドビューの設定
-                    SetFormShohinKanriGridView();
+                            //データグリッドビューの設定
+                            SetFormShohinKanriGridView();
+                        }
+                        else
+                        {
+                            MessageDsp.DspMsg("M2028");
+                        }
+                    }
                 }
-                else
+            }
+            else
+            {
+                if (DialogResult.OK == MessageDsp.DspMsg("M2026"))
                 {
-                    MessageDsp.DspMsg("M2028");
+                    if (ProductDA.RegistProduct(pro))
+                    {
+                        MessageDsp.DspMsg("M2027");
+
+                        //コントロールの初期設定
+                        SetCtrlFormat();
+
+                        //データグリッドビューの設定
+                        SetFormShohinKanriGridView();
+                    }
+                    else
+                    {
+                        MessageDsp.DspMsg("M2028");
+                    }
                 }
             }
         }
@@ -466,9 +497,10 @@ namespace SalesManagement_SysDev
             }
 
             //メーカー名の入力チェック
-            if (MakerNameTxb.Text == "")
+            if (!InputCheck.CheckMakerName(MakerNameCmb.Text).flg)
             {
-                MessageDsp.DspMsg("M2005");
+                MessageDsp.DspMsg(InputCheck.CheckMakerName(MakerNameCmb.Text).Msg);
+                return false;
             }
 
             //価格の入力チェック
@@ -529,7 +561,7 @@ namespace SalesManagement_SysDev
         private M_Product SetProductUpdateData()
         {
             int ScID = ProductDA.GetScID(ShoubunruiCmb.Text);
-            int MaID = ProductDA.GetMaID(MakerNameTxb.Text);
+            int MaID = ProductDA.GetMaID(MakerNameCmb.Text);
 
             int PrFlg;
 
@@ -716,15 +748,22 @@ namespace SalesManagement_SysDev
             }
 
             //メーカー名の入力チェック
-            if (MakerNameTxb.Text != "")
+            if (MakerNameCmb.Text != "")
             {
-                int maid = ProductDA.GetMaID(MakerNameTxb.Text);
+                int maid = ProductDA.GetMaID(MakerNameCmb.Text);
 
                 if (!ProductDA.SonzaiCheckMaID(maid))
                 {
                     MessageDsp.DspMsg("M2025");
                     return false;
                 }
+            }
+
+            //メーカー名の入力チェック
+            if (!InputCheck.CheckMakerName(MakerNameCmb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckMakerName(MakerNameCmb.Text).Msg);
+                return false;
             }
 
             //価格の入力チェック
@@ -824,9 +863,9 @@ namespace SalesManagement_SysDev
                 scid = ProductDA.GetScID(ShoubunruiCmb.Text);
             }
 
-            if(MakerNameTxb.Text != "")
+            if(MakerNameCmb.Text != "")
             {
-                maid = ProductDA.GetMaID(MakerNameTxb.Text);
+                maid = ProductDA.GetMaID(MakerNameCmb.Text);
             }
 
             if(KakakuTxb.Text != "")
@@ -895,7 +934,7 @@ namespace SalesManagement_SysDev
         {
             ShohinIDTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
             ShohinNameTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
-            MakerNameTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
+            MakerNameCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
             KakakuTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
             AnzenTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
             ShoubunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();

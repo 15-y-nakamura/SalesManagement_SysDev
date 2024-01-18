@@ -571,7 +571,6 @@ namespace SalesManagement_SysDev
 
             return new T_Order
             {
-                OrID = int.Parse(JuchuIDTxb.Text),
                 SoID = SoID,
                 EmID = int.Parse(ShainIDTxb.Text),
                 ClID = int.Parse(KokyakuIDTxb.Text),
@@ -1000,14 +999,14 @@ namespace SalesManagement_SysDev
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
         {
-            /*if (!ConfirmInputCheck())
+            if (!ConfirmInputCheck())
             {
                 return;
             }
 
             var ConfirmData = SetConfirmData();
 
-            ConfirmChumon(ConfirmData);*/
+            ConfirmOrder(ConfirmData);
         }
 
         private bool ConfirmInputCheck()
@@ -1025,21 +1024,21 @@ namespace SalesManagement_SysDev
             return true;
         }
 
-        /*private T_Order SetConfirmData()
+        private T_Order SetConfirmData()
         {
-            /*T_Order T_Or = new T_Order()
+            T_Order T_Or = new T_Order()
             {
-                OrID = int.Parse(ChumonIDTxb.Text),
+                OrID = int.Parse(JuchuIDTxb.Text),
                 EmID = EmID,
-                ChStateFlag = 1,
+                OrStateFlag = 1,
             };
 
-            return T_Ch;
+            return T_Or;
         }
 
-        private void ConfirmChumon(T_Chumon T_Ch)
+        private void ConfirmOrder(T_Order T_Or)
         {
-            if (DialogResult.OK == messageDsp.DspMsg("7031"))
+            /*if (DialogResult.OK == messageDsp.DspMsg("7031"))
             {
                 if (chDataAccess.ConfirmChumonDate(T_Ch) && UpdateStockData() &&
                 RegistSyukko() && RegistSyukkoDetail())
@@ -1056,8 +1055,8 @@ namespace SalesManagement_SysDev
                 {
                     MessageDsp.DspMsg("M7033");
                 }
-            }
-        }*/
+            }*/
+        }
 
         private void JuchuKanriDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
