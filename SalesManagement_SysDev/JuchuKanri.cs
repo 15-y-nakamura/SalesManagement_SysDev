@@ -547,13 +547,6 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            /*受注詳細IDの入力チェック
-            if (!InputCheck.CheckRegistOrDetailID(JuchuDetailIDTxb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckRegistOrDetailID(JuchuDetailIDTxb.Text).Msg);
-                return false;
-            }*/
-
             //商品名の入力チェック
             if (!InputCheck.CheckRegistOrderShohinName(ShohinNameCmb.Text).flg)
             {
@@ -653,24 +646,45 @@ namespace SalesManagement_SysDev
             //受注IDの入力チェック
             if (JuchuIDTxb.Text != "")
             {
-                MessageDsp.DspMsg("M6034");
-            }
-
-            if (DialogResult.OK == MessageDsp.DspMsg("M6024"))
-            {
-                if (OrderDA.RegistOrder(order))
+                if (DialogResult.OK == MessageDsp.DspMsg("M6034"))
                 {
-                    MessageDsp.DspMsg("M6025");
+                    if (DialogResult.OK == MessageDsp.DspMsg("M6024"))
+                    {
+                        if (OrderDA.RegistOrder(order))
+                        {
+                            MessageDsp.DspMsg("M6025");
 
-                    //コントロールの初期設定
-                    SetCtrlFormat();
+                            //コントロールの初期設定
+                            SetCtrlFormat();
 
-                    //データグリッドビューの設定
-                    SetFormJuchuKanriGridView();
+                            //データグリッドビューの設定
+                            SetFormJuchuKanriGridView();
+                        }
+                        else
+                        {
+                            MessageDsp.DspMsg("M6026");
+                        }
+                    }
                 }
-                else
+            }
+            else
+            {
+                if (DialogResult.OK == MessageDsp.DspMsg("M6024"))
                 {
-                    MessageDsp.DspMsg("M6026");
+                    if (OrderDA.RegistOrder(order))
+                    {
+                        MessageDsp.DspMsg("M6025");
+
+                        //コントロールの初期設定
+                        SetCtrlFormat();
+
+                        //データグリッドビューの設定
+                        SetFormJuchuKanriGridView();
+                    }
+                    else
+                    {
+                        MessageDsp.DspMsg("M6026");
+                    }
                 }
             }
         }
@@ -683,27 +697,48 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private void RegistOrderDetail(T_OrderDetail orderdetail)
         {
-            //受注IDの入力チェック
+            //受注詳細IDの入力チェック
             if (JuchuDetailIDTxb.Text != "")
             {
-                MessageDsp.DspMsg("M6038");
-            }
-
-            if (DialogResult.OK == MessageDsp.DspMsg("M6035"))
-            {
-                if (OrderDetailDA.RegistOrderDetail(orderdetail))
+                if (DialogResult.OK == MessageDsp.DspMsg("M6038"))
                 {
-                    MessageDsp.DspMsg("M6036");
+                    if (DialogResult.OK == MessageDsp.DspMsg("M6035"))
+                    {
+                        if (OrderDetailDA.RegistOrderDetail(orderdetail))
+                        {
+                            MessageDsp.DspMsg("M6036");
 
-                    //コントロールの初期設定
-                    SetCtrlFormat();
+                            //コントロールの初期設定
+                            SetCtrlFormat();
 
-                    //データグリッドビューの設定
-                    SetFormJuchuKanriDetailGridView();
+                            //データグリッドビューの設定
+                            SetFormJuchuKanriDetailGridView();
+                        }
+                        else
+                        {
+                            MessageDsp.DspMsg("M6037");
+                        }
+                    }
                 }
-                else
+            }
+            else
+            {
+                if (DialogResult.OK == MessageDsp.DspMsg("M6035"))
                 {
-                    MessageDsp.DspMsg("M6037");
+                    if (OrderDetailDA.RegistOrderDetail(orderdetail))
+                    {
+                        MessageDsp.DspMsg("M6036");
+
+                        //コントロールの初期設定
+                        SetCtrlFormat();
+
+                        //データグリッドビューの設定
+                        SetFormJuchuKanriDetailGridView();
+                    }
+                    else
+                    {
+                        MessageDsp.DspMsg("M6037");
+                    }
                 }
             }
         }
@@ -990,7 +1025,7 @@ namespace SalesManagement_SysDev
             //受注IDの入力チェック
             if (!InputCheck.CheckHiddenOrID(JuchuIDTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckRegistOrID(JuchuIDTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckHiddenOrID(JuchuIDTxb.Text).Msg);
                 return false;
             }
 
