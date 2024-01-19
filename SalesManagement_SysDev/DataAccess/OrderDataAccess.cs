@@ -13,63 +13,6 @@ namespace SalesManagement_SysDev.DataAccess
 {
     internal class OrderDataAccess
     {
-        public List<T_OrderDsp> SearchOrder(T_Order regOrder)
-        {
-            List<T_OrderDsp> ord = new List<T_OrderDsp>();
-
-            DateTime nulldate = DateTime.ParseExact("00010101", "yyyymmdd", null);
-
-            if (regOrder.OrID != 0)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             where t1.OrID == regOrder.OrID
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-                    // IEnumerable型のデータをList型へ
-                    foreach (var p in tb)
-                    {
-                        ord.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-            return ord;
-        }
-
-
-
         public bool DeleteEmployee(T_Order regOrder)
         {
             try
@@ -107,7 +50,8 @@ namespace SalesManagement_SysDev.DataAccess
                 var tb = from t1 in context.T_Orders
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
-                         where t1.OrFlag == 0
+                         where t1.OrFlag == 0 &&
+                               t1.OrStateFlag == 0
 
                          select new
                          {
@@ -318,7 +262,8 @@ namespace SalesManagement_SysDev.DataAccess
             List<T_OrderDsp> Order = new List<T_OrderDsp>();
             DateTime nulldate = DateTime.ParseExact("00010101", "yyyymmdd", null);
 
-            if (T_Or.OrID != 0 && T_Or.OrFlag == -1)
+            //受注ID入力
+            if (T_Or.OrID != -1 && T_Or.OrFlag == -1)
             {
                 try
                 {
@@ -327,7 +272,7 @@ namespace SalesManagement_SysDev.DataAccess
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
                              where t1.OrID == T_Or.OrID &&
-                             t1.OrFlag == 0
+                                   t1.OrFlag == 0
 
                              select new
                              {
@@ -364,6 +309,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //受注ID入力、受注管理フラグ選択
             else if (T_Or.OrID != 0 && T_Or.OrFlag != -1)
             {
                 try
@@ -1147,6 +1093,28 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             return Order;
+        }
+
+        public bool GetStateflg(int orid)
+        {
+            bool flg = false;
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = context.T_Orders.Single(x => x.OrID == orid);
+                var StateFlag = tb.OrStateFlag;
+                if (StateFlag == 0)
+                {
+                    flg = true;
+                }
+
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return flg;
         }
     }
 }

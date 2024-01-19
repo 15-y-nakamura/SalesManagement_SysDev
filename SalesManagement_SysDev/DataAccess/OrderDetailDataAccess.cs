@@ -35,7 +35,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -46,7 +46,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -84,7 +84,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -95,7 +95,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -185,7 +185,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -196,7 +196,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -225,7 +225,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -236,7 +236,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -266,7 +266,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -277,7 +277,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -307,7 +307,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -318,7 +318,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -354,7 +354,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -365,7 +365,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -400,7 +400,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -411,7 +411,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -446,7 +446,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -457,7 +457,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -492,7 +492,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -503,7 +503,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -539,7 +539,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -550,7 +550,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -585,7 +585,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -596,7 +596,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -631,7 +631,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -642,7 +642,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -676,7 +676,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -687,7 +687,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -721,7 +721,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -732,7 +732,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -767,7 +767,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -778,7 +778,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -813,7 +813,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -824,7 +824,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -857,7 +857,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -868,7 +868,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -902,7 +902,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -913,7 +913,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -948,7 +948,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -959,7 +959,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -993,7 +993,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1004,7 +1004,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1039,7 +1039,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1050,7 +1050,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1085,7 +1085,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1096,7 +1096,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1130,7 +1130,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1141,7 +1141,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1175,7 +1175,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1186,7 +1186,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1221,7 +1221,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1232,7 +1232,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1267,7 +1267,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1278,7 +1278,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1312,7 +1312,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1323,7 +1323,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1356,7 +1356,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1367,7 +1367,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1400,7 +1400,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1411,7 +1411,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1443,7 +1443,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1454,7 +1454,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1487,7 +1487,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1498,7 +1498,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1531,7 +1531,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1542,7 +1542,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1575,7 +1575,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1586,7 +1586,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1618,7 +1618,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1629,7 +1629,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1662,7 +1662,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1673,7 +1673,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1706,7 +1706,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1717,7 +1717,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1752,7 +1752,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1763,7 +1763,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1795,7 +1795,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1806,7 +1806,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1839,7 +1839,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1850,7 +1850,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1883,7 +1883,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1894,7 +1894,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1926,7 +1926,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1937,7 +1937,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -1969,7 +1969,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -1980,7 +1980,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2013,7 +2013,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2024,7 +2024,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2057,7 +2057,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2068,7 +2068,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2102,7 +2102,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2113,7 +2113,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2146,7 +2146,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2157,7 +2157,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2190,7 +2190,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2201,7 +2201,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2235,7 +2235,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2246,7 +2246,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2279,7 +2279,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2290,7 +2290,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2323,7 +2323,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2334,7 +2334,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2368,7 +2368,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2379,7 +2379,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2412,7 +2412,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2423,7 +2423,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2456,7 +2456,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2467,7 +2467,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2501,7 +2501,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2512,7 +2512,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2545,7 +2545,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2556,7 +2556,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2589,7 +2589,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2600,7 +2600,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2634,7 +2634,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2645,7 +2645,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2679,7 +2679,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2690,7 +2690,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2723,7 +2723,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2734,7 +2734,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2768,7 +2768,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2779,7 +2779,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2813,7 +2813,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2824,7 +2824,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2857,7 +2857,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2868,7 +2868,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2902,7 +2902,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2913,7 +2913,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2945,7 +2945,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2956,7 +2956,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -2987,7 +2987,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -2998,7 +2998,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -3030,7 +3030,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -3042,7 +3042,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -3074,7 +3074,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -3085,7 +3085,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -3117,7 +3117,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -3128,7 +3128,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -3160,7 +3160,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -3171,7 +3171,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });
@@ -3201,7 +3201,7 @@ namespace SalesManagement_SysDev.DataAccess
                              {
                                  t1.OrDetailID,
                                  t2.OrID,
-                                 t3.PrID,
+                                 t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
                              };
@@ -3212,7 +3212,7 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrDetailID = p.OrDetailID,
                             OrID = p.OrID,
-                            PrID = p.PrID,
+                            PrName = p.PrName,
                             OrQuantity = p.OrQuantity,
                             OrTotalPrice = p.OrTotalPrice
                         });

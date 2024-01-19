@@ -938,6 +938,7 @@ namespace SalesManagement_SysDev.DataAccess
             return EmName;
         }
 
+
         ///////////////////////////////
         //メソッド名：UpdatePassword()
         //引　数   ：M_Employee

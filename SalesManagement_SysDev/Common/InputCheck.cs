@@ -21,6 +21,9 @@ namespace SalesManagement_SysDev
         //受注テーブルアクセスクラスのインスタンス化
         OrderDataAccess JuchuDA = new OrderDataAccess();
 
+        //受注詳細テーブルアクセスのインスタンス化
+        OrderDetailDataAccess JuchuDetailDA = new OrderDetailDataAccess();
+
         //商品テーブルアクセスクラスのインスタンス化
         ShohinDataAccess ShohinDA = new ShohinDataAccess();
 
@@ -515,6 +518,40 @@ namespace SalesManagement_SysDev
         //           問題がないときTrue、文字列
         //           問題があるときFalse、メッセージID
         ///////////////////////////////
+        public (bool flg, string Msg) CheckHiddenOrID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M6003");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M6001");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M6002");
+            }
+
+
+            if (!JuchuDA.SonzaiCheckOrID(int.Parse(text)))
+            {
+                return (false, "M6027");
+            }
+
+            return (true, text);
+        }
+
+        ///////////////////////////////
+        //メソッド名：CheckRegistOrID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の受注ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
         public (bool flg, string Msg) CheckSuutiRegistOrID(string text)
         {
             if (!CheckSuuti(text))
@@ -771,8 +808,42 @@ namespace SalesManagement_SysDev
             }
 
             return (true, text);
-        } 
-                
+        }
+
+
+        ///////////////////////////////
+        //メソッド名：CheckHiddentOrDetailID()
+        //引　数   ：文字列
+        //戻り値   ：(True:異常なし、False:異常あり,文字列)
+        //機　能   ：登録する時の受注詳細ID入力チェック
+        //           問題がないときTrue、文字列
+        //           問題があるときFalse、メッセージID
+        ///////////////////////////////
+        public (bool flg, string Msg) CheckHiddenOrDetailID(string text)
+        {
+            if (text == "")
+            {
+                return (false, "M6015");
+            }
+
+            if (!CheckSuuti(text))
+            {
+                return (false, "M6013");
+            }
+
+            if (text.Length > 6)
+            {
+                return (false, "M6014");
+            }
+
+            if (!JuchuDetailDA.SonzaiCheckJuchuDetailID(int.Parse(text)))
+            {
+                return (false, "M6040");
+            }
+
+            return (true, text);
+        }
+
         ///////////////////////////////
         //メソッド名：CheckRegistClID()
         //引　数   ：文字列

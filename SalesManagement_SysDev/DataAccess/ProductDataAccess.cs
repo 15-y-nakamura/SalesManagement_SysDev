@@ -470,60 +470,6 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //選択なし
-            else if (regProduct.PrID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    // tbはIEnumerable型
-                    var tb = from t1 in context.M_Products
-                             join t2 in context.M_Makers
-                             on t1.MaID equals t2.MaID
-                             join t3 in context.M_SmallClassifications
-                             on t1.ScID equals t3.ScID
-                             where t1.PrFlag == 0
-
-                             select new
-                             {
-                                 t1.PrID,
-                                 t1.PrName,
-                                 t2.MaName,
-                                 t3.ScName,
-                                 t1.Price,
-                                 t1.PrSafetyStock,
-                                 t1.PrModelNumber,
-                                 t1.PrColor,
-                                 t1.PrReleaseDate,
-                                 t1.PrFlag,
-                                 t1.PrHidden
-                             };
-
-                    // IEnumerable型のデータをList型へ
-                    foreach (var p in tb)
-                    {
-                        pro.Add(new M_ProductDsp()
-                        {
-                            PrID = p.PrID,
-                            MaName = p.MaName,
-                            PrName = p.PrName,
-                            Price = p.Price,
-                            PrSafetyStock = p.PrSafetyStock,
-                            ScName = p.ScName,
-                            PrModelNumber = p.PrModelNumber,
-                            PrColor = p.PrColor,
-                            PrReleaseDate = p.PrReleaseDate,
-                            PrFlag = p.PrFlag,
-                            PrHidden = p.PrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
             //メーカ名選択
             else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate)
             {
@@ -536,11 +482,18 @@ namespace SalesManagement_SysDev.DataAccess
                              on t1.MaID equals t2.MaID
                              join t3 in context.M_SmallClassifications
                              on t1.ScID equals t3.ScID
-                             where t1.PrName.Contains(regProduct.PrName) &&
+                             where t1.MaID == regProduct.MaID &&
+                       (t1.PrHidden.Contains(regProduct.PrHidden) ||
+                       t1.PrHidden == null) &&
+                       t1.PrFlag == 0
+
+
+
+                             /*t1.PrName.Contains(regProduct.PrName) &&
                                   (t1.PrHidden.Contains(regProduct.PrHidden) ||
                                   t1.PrHidden == null) &&
                                   t1.MaID == (regProduct.MaID) &&
-                                  t1.PrFlag == 0
+                                  t1.PrFlag == 0*/
 
                              select new
                              {
@@ -697,6 +650,275 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            // 価格のみが選択された場合
+            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.Price != 0)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                             where t1.PrName.Contains(regProduct.PrName) &&
+                                   t1.Price == regProduct.Price &&
+                                   (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
+                                   t1.PrFlag == 0
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t3.ScName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        pro.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            // 安全在庫数のみが選択された場合
+            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrSafetyStock != 0)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                             where t1.PrName.Contains(regProduct.PrName) &&
+                                   t1.PrSafetyStock == regProduct.PrSafetyStock &&
+                                   (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
+                                   t1.PrFlag == 0
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t3.ScName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        pro.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            // 型番のみが選択された場合
+            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && !string.IsNullOrEmpty(regProduct.PrModelNumber))
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                             where t1.PrModelNumber == regProduct.PrModelNumber &&
+                                   (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
+                                   t1.PrFlag == 0
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t3.ScName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        pro.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            ScName = p.ScName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            // 色のみが選択された場合
+            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && !string.IsNullOrEmpty(regProduct.PrColor))
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                             where t1.PrColor == regProduct.PrColor &&
+                                   (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
+                                   t1.PrFlag == 0
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t3.ScName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        pro.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            ScName = p.ScName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            // 小分類名が選択された場合
+            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.ScID != 0)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                             where t1.PrName.Contains(regProduct.PrName) &&
+                                   t3.ScID == regProduct.ScID &&
+                                   (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
+                                   t1.PrFlag == 0
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t3.ScName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        pro.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            ScName = p.ScName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             //メーカ名、発売日選択
             else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate != nulldate)
             {
@@ -757,7 +979,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //発売日、商品管理フラグ選択
-            else if (regProduct.ScID == 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate != nulldate)
+            else if (regProduct.MaID == 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate != nulldate)
             {
                 try
                 {
@@ -814,7 +1036,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //営業所名、社員管理フラグ選択
+            //メーカ名、商品管理フラグ選択
             else if (regProduct.MaID != 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate == nulldate)
             {
                 try
@@ -837,6 +1059,64 @@ namespace SalesManagement_SysDev.DataAccess
                                  t1.PrID,
                                  t2.MaName,
                                  t1.PrName,
+                                 t3.ScName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        pro.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            //選択なし
+            else if (regProduct.PrID == -1 && regProduct.PrFlag == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers
+                             on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications
+                             on t1.ScID equals t3.ScID
+                             where t1.PrName.Contains(regProduct.PrName) &&
+                                   (t1.PrName.Contains(regProduct.PrName) ||
+                                   t1.MaID == regProduct.MaID &&
+                                   t1.PrHidden == null) &&
+                                   t1.PrFlag == 0
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t1.PrName,
+                                 t2.MaName,
                                  t3.ScName,
                                  t1.Price,
                                  t1.PrSafetyStock,

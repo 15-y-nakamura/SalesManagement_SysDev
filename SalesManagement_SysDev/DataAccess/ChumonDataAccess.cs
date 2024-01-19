@@ -10,6 +10,8 @@ namespace SalesManagement_SysDev.DataAccess
 {
     internal class ChumonDataAccess
     {
+        EmployeeDataAccess EmpDA = new EmployeeDataAccess();
+
         public List<T_ChumonDsp> GetAllChumonData()
         {
             List<T_ChumonDsp> Chumon = new List<T_ChumonDsp>();
@@ -20,18 +22,19 @@ namespace SalesManagement_SysDev.DataAccess
                 var tb = from t1 in context.T_Chumons
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
-                         join t3 in context.M_Employees
-                         on t1.EmID equals t3.EmID
+                         //join t3 in context.M_Employees
+                         //on t1.EmID equals t3.EmID
                          join t4 in context.M_Clients
                          on t1.ClID equals t4.ClID
                          join t5 in context.T_Orders
                          on t1.OrID equals t5.OrID
                          where t1.ChFlag == 0
+
                          select new
                          {
                              t1.ChID,
                              t2.SoName,
-                             t3.EmName,
+                             t1.EmID,
                              t4.ClName,
                              t1.OrID,
                              t1.ChDate,
@@ -42,18 +45,47 @@ namespace SalesManagement_SysDev.DataAccess
 
                 foreach (var p in tb)
                 {
-                    Chumon.Add(new T_ChumonDsp()
+                    //string EmName = EmpDA.GetEmName((int)p.EmID);
+
+                    if (p.EmID == null)
                     {
-                        ChID = p.ChID,
-                        EmName = p.EmName,
-                        SoName = p.SoName,
-                        ClName = p.ClName,
-                        OrID = p.OrID,
-                        ChDate = p.ChDate,
-                        ChFlag = p.ChFlag,
-                        ChStateFlag = p.ChStateFlag,
-                        ChHidden = p.ChHidden
-                    });
+                        Chumon.Add(new T_ChumonDsp()
+                        {
+                            ChID = p.ChID,
+                            SoName = p.SoName,
+                            EmName = "未確定",
+                            ClName = p.ClName,
+                            OrID = p.OrID,
+                            ChDate = p.ChDate,
+                            ChFlag = p.ChFlag,
+                            ChStateFlag = p.ChStateFlag,
+                            ChHidden = p.ChHidden
+                        });
+                    }
+                    else
+                    {
+                        Chumon.Add(new T_ChumonDsp()
+                        {
+                            //ChID = p.ChID,
+                            //SoName = p.SoName,
+                            //EmName = EmName,
+                            //ClName = p.ClName,
+                            //OrID = p.OrID,
+                            //ChDate = p.ChDate,
+                            //ChFlag = p.ChFlag,
+                            //ChStateFlag = p.ChStateFlag,
+                            //ChHidden = p.ChHidden
+                            ChID = p.ChID,
+                            SoName = p.SoName,
+                            EmName = EmpDA.GetEmName((int)p.EmID),
+                            ClName = p.ClName,
+                            OrID = p.OrID,
+                            ChDate = p.ChDate,
+                            ChFlag = p.ChFlag,
+                            ChStateFlag = p.ChStateFlag,
+                            ChHidden = p.ChHidden
+                        });
+                    }
                 }
                 context.Dispose();
             }
