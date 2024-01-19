@@ -869,17 +869,17 @@ namespace SalesManagement_SysDev
                 }
             }
 
-            if(JuchuIDTxb.Text == "")
+            if(JuchuIDTxb.Text != "")
             {
                 orid = int.Parse(JuchuIDTxb.Text);
             }
 
-            if(ShainIDTxb.Text == "")
+            if(ShainIDTxb.Text != "")
             {
                 emid = int.Parse(ShainIDTxb.Text);
             }
 
-            if(KokyakuIDTxb.Text == "")
+            if(KokyakuIDTxb.Text != "")
             {
                 ciid = int.Parse(KokyakuIDTxb.Text);
             }
@@ -955,7 +955,7 @@ namespace SalesManagement_SysDev
 
         private void SearchOrder(T_Order ordseadata, T_OrderDetail ordseadetdata)
         {
-            var orddata = OrderDA.SearchOrder(ordseadata);
+            var orddata = OrderDA.SearchOrderData(ordseadata);
             var orddetaildata = OrderDetailDA.SearchOrderDetail(ordseadetdata);
 
             if (orddata.Count == 0 && orddetaildata.Count == 0)
@@ -964,7 +964,8 @@ namespace SalesManagement_SysDev
             }
 
             //データグリッドビューの設定
-            //SetDataGridView(orddata, orddetaildata);
+            SetDataOrderGridView(orddata);
+            SetDataOrderDetailGridView(orddetaildata);
 
         }
 
@@ -972,7 +973,7 @@ namespace SalesManagement_SysDev
         private void HiddenBtn_Click(object sender, EventArgs e)
         {
             //入力チェック
-            if (!InputHiddenDataCheck())
+            if (!InputHiddenOrderDataCheck())
             {
                 return;
             }
@@ -984,14 +985,22 @@ namespace SalesManagement_SysDev
             HiddenJuchu(ord);
         }
 
-        private bool InputHiddenDataCheck()
+        private bool InputHiddenOrderDataCheck()
         {
             //受注IDの入力チェック
-            if (!InputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
+            if (!InputCheck.CheckHiddenOrID(JuchuIDTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistOrID(JuchuIDTxb.Text).Msg);
                 return false;
             }
+
+
+            /*受注詳細IDの入力チェック
+            if (!InputCheck.CheckHiddenOrDetailID(JuchuDetailIDTxb.Text).flg)
+            {
+                MessageDsp.DspMsg(InputCheck.CheckRegistOrDetailID(ShohinNameCmb.Text).Msg);
+                return false;
+            }*/
 
             //非表示理由チェック
             if (!InputCheck.CheckHidden(HihyojiTxb.Text).flg)
@@ -1055,6 +1064,12 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
+            if (OrderDA.GetStateflg(int.Parse(JuchuIDTxb.Text)))
+            {
+                MessageDsp.DspMsg("M6041");
+                return false;
+            }
+
             return true;
         }
 
@@ -1069,7 +1084,6 @@ namespace SalesManagement_SysDev
             return T_Or;
         }
 
- 
         private bool RegistChumon()
         {
             var NeedData = OrderDA.GetChumonNeedData(int.Parse(JuchuIDTxb.Text));
