@@ -741,7 +741,7 @@ namespace SalesManagement_SysDev
 
         private void ConfirmChumon(T_Chumon T_Ch)
         {
-            if (DialogResult.OK == messageDsp.DspMsg("7031"))
+            if (DialogResult.OK == messageDsp.DspMsg("M7031"))
             {
                 if (chDataAccess.ConfirmChumonDate(T_Ch) && UpdateStockData() && 
                 RegistSyukko() && RegistSyukkoDetail())
