@@ -867,7 +867,7 @@ namespace SalesManagement_SysDev
         private void LogoutBtn_Click(object sender, EventArgs e)
         {
              //フォームを閉じる確認メッセージの表示
-            DialogResult result = messageDsp.DspMsg("M1106");
+            DialogResult result = messageDsp.DspMsg("M0001");
 
             if (result == DialogResult.OK)
             {

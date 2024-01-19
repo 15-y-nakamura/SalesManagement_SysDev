@@ -92,5 +92,58 @@ namespace SalesManagement_SysDev
 
             return mcid;
         }
+
+        public bool Check(int mcid ,string scname)
+        {
+            var context = new SalesManagement_DevContext();
+            bool flg = false;
+
+            try
+            {
+                flg = context.M_SmallClassifications.Any(x => x.ScName == scname && x.McID == mcid);
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return flg;
+        }
+
+        ///////////////////////////////
+        //メソッド名：GetMcID()
+        //引　数   ：なし
+        //戻り値   ：取得した大分類ID
+        //機　能   ：大分類ID取得
+        ///////////////////////////////
+        public string GetMcName(string scname)
+        {
+            string mcname = "";
+
+            var context = new SalesManagement_DevContext();
+            try
+            {
+                var tb = from t1 in context.M_SmallClassifications
+                         join t2 in context.M_MajorCassifications
+                         on t1.McID equals t2.McID
+                         where t1.ScName == scname
+                         select new
+                         {
+                             t2.McName
+                         };
+
+                foreach (var p in tb)
+                {
+                    mcname = p.McName;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return mcname;
+        }
     }
 }
