@@ -146,7 +146,7 @@ namespace SalesManagement_SysDev
             JuchuJotaiFlagCmb.Items.Clear();
             JuchuJotaiFlagCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             JuchuKanriFlagCmb.Items.Clear();
-            JuchuKanriFlagCmb.Items.Clear();
+            JuchuKanriFlagCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             JuchuDetailIDTxb.Text = "";
             ShohinNameCmb.Text = "";
             SuryoTxb.Text = "";
@@ -501,9 +501,9 @@ namespace SalesManagement_SysDev
             }
 
             //社員IDの入力チェック
-            if (!InputCheck.CheckRegistEmID(ShainIDTxb.Text).flg)
+            if (!InputCheck.CheckRegistOrderEmID(ShainIDTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckRegistEmID(ShainIDTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckRegistOrderEmID(ShainIDTxb.Text).Msg);
                 return false;
             }
 
@@ -522,9 +522,9 @@ namespace SalesManagement_SysDev
             }
 
             //顧客IDの入力チェック
-            if (!InputCheck.CheckRegistClID(KokyakuIDTxb.Text).flg)
+            if (!InputCheck.CheckRegistOrderClID(KokyakuIDTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckRegistClID(KokyakuIDTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckRegistOrderClID(KokyakuIDTxb.Text).Msg);
                 return false;
             }
 
@@ -1227,7 +1227,7 @@ namespace SalesManagement_SysDev
                 HihyojiTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
             }
 
-
+            JuchuDateDtm.Checked = true;
         }
 
         private void JuchuKanriDetailDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
