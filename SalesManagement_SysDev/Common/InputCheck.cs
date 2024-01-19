@@ -577,6 +577,11 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         public (bool flg, string Msg) CheckConfirmOrID(string text)
         {
+            if (text == "")
+            {
+                return (false, "M6003");
+            }
+
             if (!CheckSuuti(text))
             {
                 return (false, "M6001");
