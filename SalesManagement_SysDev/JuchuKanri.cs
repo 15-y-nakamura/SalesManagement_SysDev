@@ -1064,7 +1064,7 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
-            if (OrderDA.GetStateflg(int.Parse(JuchuIDTxb.Text)))
+            if (!OrderDA.GetStateflg(int.Parse(JuchuIDTxb.Text)))
             {
                 MessageDsp.DspMsg("M6041");
                 return false;
@@ -1191,6 +1191,8 @@ namespace SalesManagement_SysDev
             {
                 HihyojiTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
             }
+
+
         }
 
         private void JuchuKanriDetailDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
