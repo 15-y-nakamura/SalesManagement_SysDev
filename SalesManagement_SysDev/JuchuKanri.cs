@@ -501,9 +501,9 @@ namespace SalesManagement_SysDev
             }
 
             //社員IDの入力チェック
-            if (!InputCheck.CheckRegistOrderEmID(ShainIDTxb.Text).flg)
+            if (!InputCheck.CheckRegistEmID(ShainIDTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckRegistOrderEmID(ShainIDTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckRegistEmID(ShainIDTxb.Text).Msg);
                 return false;
             }
 
@@ -522,9 +522,9 @@ namespace SalesManagement_SysDev
             }
 
             //顧客IDの入力チェック
-            if (!InputCheck.CheckRegistOrderClID(KokyakuIDTxb.Text).flg)
+            if (!InputCheck.CheckRegistClID(KokyakuIDTxb.Text).flg)
             {
-                MessageDsp.DspMsg(InputCheck.CheckRegistOrderClID(KokyakuIDTxb.Text).Msg);
+                MessageDsp.DspMsg(InputCheck.CheckRegistClID(KokyakuIDTxb.Text).Msg);
                 return false;
             }
 
@@ -749,9 +749,9 @@ namespace SalesManagement_SysDev
             //顧客IDの入力チェック
             if (KokyakuIDTxb.Text != "")
             {
-                if (!InputCheck.CheckSearchOrderClID(KokyakuIDTxb.Text).flg)
+                if (!InputCheck.CheckSearchClID(KokyakuIDTxb.Text).flg)
                 {
-                    MessageDsp.DspMsg(InputCheck.CheckSearchOrderClID(KokyakuIDTxb.Text).Msg);
+                    MessageDsp.DspMsg(InputCheck.CheckSearchClID(KokyakuIDTxb.Text).Msg);
                     return false;
                 }
             }

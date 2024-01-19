@@ -35,6 +35,7 @@
             this.TopLbl = new System.Windows.Forms.Label();
             this.RegistBtn = new System.Windows.Forms.Button();
             this.TopShohinPnl = new System.Windows.Forms.Panel();
+            this.MakerNameCmb = new System.Windows.Forms.ComboBox();
             this.GamenKousinBtn = new System.Windows.Forms.Button();
             this.ShohinKanriDgv = new System.Windows.Forms.DataGridView();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
@@ -74,7 +75,6 @@
             this.TopYakushokuHyojiLbl = new System.Windows.Forms.Label();
             this.TopNameLbl = new System.Windows.Forms.Label();
             this.TopNameHyojiLbl = new System.Windows.Forms.Label();
-            this.MakerNameCmb = new System.Windows.Forms.ComboBox();
             this.TopShohinPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShohinKanriDgv)).BeginInit();
             this.SuspendLayout();
@@ -177,6 +177,14 @@
             this.TopShohinPnl.Name = "TopShohinPnl";
             this.TopShohinPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopShohinPnl.TabIndex = 23;
+            // 
+            // MakerNameCmb
+            // 
+            this.MakerNameCmb.FormattingEnabled = true;
+            this.MakerNameCmb.Location = new System.Drawing.Point(1050, 150);
+            this.MakerNameCmb.Name = "MakerNameCmb";
+            this.MakerNameCmb.Size = new System.Drawing.Size(201, 26);
+            this.MakerNameCmb.TabIndex = 55;
             // 
             // GamenKousinBtn
             // 
@@ -315,6 +323,7 @@
             this.ShoubunruiCmb.Size = new System.Drawing.Size(201, 26);
             this.ShoubunruiCmb.TabIndex = 6;
             this.ShoubunruiCmb.SelectedIndexChanged += new System.EventHandler(this.ShoubunruiCmb_SelectedIndexChanged);
+            this.ShoubunruiCmb.TextChanged += new System.EventHandler(this.ShoubunruiCmb_TextChanged);
             // 
             // ShoubunruiLbl
             // 
@@ -579,14 +588,6 @@
             this.TopNameHyojiLbl.Size = new System.Drawing.Size(88, 30);
             this.TopNameHyojiLbl.TabIndex = 84;
             this.TopNameHyojiLbl.Text = "名前：";
-            // 
-            // MakerNameCmb
-            // 
-            this.MakerNameCmb.FormattingEnabled = true;
-            this.MakerNameCmb.Location = new System.Drawing.Point(1050, 150);
-            this.MakerNameCmb.Name = "MakerNameCmb";
-            this.MakerNameCmb.Size = new System.Drawing.Size(201, 26);
-            this.MakerNameCmb.TabIndex = 55;
             // 
             // ShohinKanri
             // 

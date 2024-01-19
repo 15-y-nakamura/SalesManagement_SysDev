@@ -979,34 +979,78 @@ namespace SalesManagement_SysDev
 
         private void DaibunruiCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int mcID = SmallClassificationDA.GetMcID(DaibunruiCmb.Text);
-
-            using (var dbContext = new SalesManagement_DevContext())
+            if(ShoubunruiCmb.Text == "")
             {
-                var ShobunruiList = dbContext.M_SmallClassifications
-                    .Where(sc => sc.McID == mcID)
-                    .Select(sc => sc.ScName)
-                    .ToList();
+                int mcID = SmallClassificationDA.GetMcID(DaibunruiCmb.Text);
 
-                ShoubunruiCmb.Items.Clear();
-                ShoubunruiCmb.Items.AddRange(ShobunruiList.ToArray());
+                using (var dbContext = new SalesManagement_DevContext())
+                {
+                    var ShobunruiList = dbContext.M_SmallClassifications
+                        .Where(sc => sc.McID == mcID)
+                        .Select(sc => sc.ScName)
+                        .ToList();
+
+                    ShoubunruiCmb.Items.Clear();
+                    ShoubunruiCmb.Items.AddRange(ShobunruiList.ToArray());
+                }
+            }
+            else if (!SmallClassificationDA.Check(MajorClassificationDA.GetMcID(DaibunruiCmb.Text),ShoubunruiCmb.Text))
+            {
+                int mcID = SmallClassificationDA.GetMcID(DaibunruiCmb.Text);
+
+                using (var dbContext = new SalesManagement_DevContext())
+                {
+                    var ShobunruiList = dbContext.M_SmallClassifications
+                        .Where(sc => sc.McID == mcID)
+                        .Select(sc => sc.ScName)
+                        .ToList();
+
+                    ShoubunruiCmb.Items.Clear();
+                    ShoubunruiCmb.Items.AddRange(ShobunruiList.ToArray());
+                }
             }
         }
 
         private void ShoubunruiCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int scID = MajorClassificationDA.GetMcID(ShoubunruiCmb.Text);
+            //int scID = MajorClassificationDA.GetMcID(ShoubunruiCmb.Text);
 
-            using (var dbContext = new SalesManagement_DevContext())
+            //using (var dbContext = new SalesManagement_DevContext())
+            //{
+            //    var DaibunruiList = dbContext.M_SmallClassifications
+            //        .Where(sc => sc.ScID == scID)
+            //        .Select(sc => sc.M_MajorClassification.McName);
+            //    //    .ToList();
+
+            //    //DaibunruiCmb.Items.Clear();
+            //    //DaibunruiCmb.Items.AddRange(DaibunruiList.ToArray());
+            //    DaibunruiCmb.Text = DaibunruiList.ToString();
+            //}
+        }
+
+        private void ShoubunruiCmb_TextChanged(object sender, EventArgs e)
+        {
+            if(DaibunruiCmb.Text == "")
             {
-                var DaibunruiList = dbContext.M_SmallClassifications
-                    .Where(sc => sc.ScID == scID)
-                    .Select(sc => sc.M_MajorClassification.McName)
-                    .ToList();
-
-                DaibunruiCmb.Items.Clear();
-                DaibunruiCmb.Items.AddRange(DaibunruiList.ToArray());
+                string McName = SmallClassificationDA.GetMcName(ShoubunruiCmb.Text);
+                DaibunruiCmb.Text = McName;
             }
+            else if(!SmallClassificationDA.Check(MajorClassificationDA.GetMcID(DaibunruiCmb.Text), ShoubunruiCmb.Text))
+            {
+                string McName = SmallClassificationDA.GetMcName(ShoubunruiCmb.Text);
+                DaibunruiCmb.Text = McName;
+            }
+            //using (var dbContext = new SalesManagement_DevContext())
+            //{
+            //    var DaibunruiList = dbContext.M_SmallClassifications
+            //        .Where(sc => sc.ScID == scID)
+            //        .Select(sc => sc.M_MajorClassification.McName);
+            //    //    .ToList();
+
+            //    //DaibunruiCmb.Items.Clear();
+            //    //DaibunruiCmb.Items.AddRange(DaibunruiList.ToArray());
+            //    DaibunruiCmb.Text = DaibunruiList.ToString();
+            //}
         }
     }
 }
