@@ -810,7 +810,7 @@ namespace SalesManagement_SysDev
             return (true, text);
         }
 
-
+ 
         ///////////////////////////////
         //メソッド名：CheckHiddentOrDetailID()
         //引　数   ：文字列
