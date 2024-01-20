@@ -275,6 +275,11 @@ namespace SalesManagement_SysDev
         //データグリットビュー内のセルをクリック(注文テーブル)
         private void ChumonKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (ChumonKanriDgv.Rows.Count == 0)
+            {
+                return;
+            }
+
             string[] chDatas = chDataAccess.GetchtxtData(int.Parse(ChumonKanriDgv.Rows[ChumonKanriDgv.CurrentRow.Index].Cells[0].Value.ToString()));
 
             //入力欄にセルの内容を反映
@@ -314,6 +319,7 @@ namespace SalesManagement_SysDev
             ChumonIDTxb.Enabled = false;
             ConfirmBtn.Enabled = true;
             HiddenBtn.Enabled = true;
+            ChumonnengappiDtm.Checked = true;
 
             SetchdDataGridView();
         }
@@ -321,6 +327,11 @@ namespace SalesManagement_SysDev
         //データグリットビュー内のセルをクリック(注文詳細テーブル)
         private void ChumonDetailDgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (ChumonDetailDgv.Rows.Count == 0)
+            {
+                return;
+            }
+
             string[] chDatas = chDataAccess.GetchtxtData(int.Parse(ChumonDetailDgv.Rows[ChumonDetailDgv.CurrentRow.Index].Cells[1].Value.ToString()));
 
             //入力欄にセルの内容を反映
