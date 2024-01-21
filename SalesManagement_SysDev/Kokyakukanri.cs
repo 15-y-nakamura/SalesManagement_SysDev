@@ -640,6 +640,11 @@ namespace SalesManagement_SysDev
 
         private void KokyakuKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (KokyakuKanriDgv.Rows.Count == 0)
+            {
+                return;
+            }
+
             //クリックされた行データをテキストボックスへ
             KokyakuIDTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
             KokyakuNameTxb.Text = KokyakuKanriDgv.Rows[KokyakuKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();

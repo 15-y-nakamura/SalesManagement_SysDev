@@ -13,13 +13,13 @@ namespace SalesManagement_SysDev.DataAccess
 {
     internal class OrderDetailDataAccess
     {
-        public List<T_OrderDetailDsp> SearchOrderDetail(T_OrderDetail regOrderDetail)
+        public List<T_OrderDetailDsp> SearchOrderDetail(T_OrderDetail T_OrD, T_Order T_Or)
         {
             List<T_OrderDetailDsp> Jucde = new List<T_OrderDetailDsp>();
 
             DateTime nulldate = DateTime.ParseExact("00010101", "yyyymmdd", null);
 
-            if (regOrderDetail.OrID != 0)
+            if (T_OrD.OrID != -1)
             {
                 try
                 {
@@ -29,8 +29,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t1.OrID equals t2.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
-                             where t2.OrFlag == 0
-
+                             where t1.OrID == T_OrD.OrID &&
+                                   t2.OrFlag == T_Or.OrFlag
                              select new
                              {
                                  t1.OrDetailID,
@@ -38,6 +38,1380 @@ namespace SalesManagement_SysDev.DataAccess
                                  t3.PrName,
                                  t1.OrQuantity,
                                  t1.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_OrD.OrDetailID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_OrderDetails
+                             join t2 in context.T_Orders
+                             on t1.OrID equals t2.OrID
+                             join t3 in context.M_Products
+                             on t1.PrID equals t3.PrID
+                             where t1.OrDetailID == T_OrD.OrDetailID &&
+                                   t2.OrFlag == T_Or.OrFlag
+                             select new
+                             {
+                                 t1.OrDetailID,
+                                 t2.OrID,
+                                 t3.PrName,
+                                 t1.OrQuantity,
+                                 t1.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.OrDate == T_Or.OrDate &&
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t5.PrID == T_OrD.PrID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Jucde.Add(new T_OrderDetailDsp()
+                        {
+                            OrDetailID = p.OrDetailID,
+                            OrID = p.OrID,
+                            PrName = p.PrName,
+                            OrQuantity = p.OrQuantity,
+                            OrTotalPrice = p.OrTotalPrice
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t5.OrDetailID,
+                                 t1.OrID,
+                                 t6.PrName,
+                                 t5.OrQuantity,
+                                 t5.OrTotalPrice
                              };
 
                     foreach (var p in tb)
@@ -3228,7 +4602,49 @@ namespace SalesManagement_SysDev.DataAccess
             }
 
             return OrderDetail;
+        }
 
+        public List<T_OrderDetailDsp> GetOrdDspData(int OrID)
+        {
+            List<T_OrderDetailDsp> OrderDetail = new List<T_OrderDetailDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.T_OrderDetails
+                         join t2 in context.T_Orders
+                         on t1.OrID equals t2.OrID
+                         join t3 in context.M_Products
+                         on t1.PrID equals t3.PrID
+                         where t1.OrID == OrID
+                         select new
+                         {
+                             t1.OrDetailID,
+                             t2.OrID,
+                             t3.PrName,
+                             t1.OrQuantity,
+                             t1.OrTotalPrice
+                         };
+
+                foreach (var p in tb)
+                {
+                    OrderDetail.Add(new T_OrderDetailDsp()
+                    {
+                        OrDetailID = p.OrDetailID,
+                        OrID = p.OrID,
+                        PrName = p.PrName,
+                        OrQuantity = p.OrQuantity,
+                        OrTotalPrice = p.OrTotalPrice
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+     
+            return OrderDetail;
         }
     }
 }

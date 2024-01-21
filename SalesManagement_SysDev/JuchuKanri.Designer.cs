@@ -194,6 +194,7 @@
             this.JuchuKanriDgv.Size = new System.Drawing.Size(1173, 256);
             this.JuchuKanriDgv.TabIndex = 62;
             this.JuchuKanriDgv.TabStop = false;
+            this.JuchuKanriDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.JuchuKanriDgv_CellClick);
             this.JuchuKanriDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.JuchuKanriDgv_CellContentClick);
             // 
             // KokyakuNameLbl
@@ -239,7 +240,7 @@
             // ConfirmBtn
             // 
             this.ConfirmBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ConfirmBtn.Location = new System.Drawing.Point(1375, 26);
+            this.ConfirmBtn.Location = new System.Drawing.Point(960, 26);
             this.ConfirmBtn.Name = "ConfirmBtn";
             this.ConfirmBtn.Size = new System.Drawing.Size(300, 90);
             this.ConfirmBtn.TabIndex = 57;
@@ -258,6 +259,7 @@
             // 
             // JuchuDateDtm
             // 
+            this.JuchuDateDtm.Checked = false;
             this.JuchuDateDtm.Location = new System.Drawing.Point(642, 150);
             this.JuchuDateDtm.Name = "JuchuDateDtm";
             this.JuchuDateDtm.ShowCheckBox = true;
@@ -287,6 +289,7 @@
             this.JuchuKanriDetailDgv.Size = new System.Drawing.Size(633, 256);
             this.JuchuKanriDetailDgv.TabIndex = 51;
             this.JuchuKanriDetailDgv.TabStop = false;
+            this.JuchuKanriDetailDgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.JuchuKanriDetailDgv_CellClick);
             this.JuchuKanriDetailDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.JuchuKanriDetailDgv_CellContentClick);
             // 
             // JuchuKanriFlagCmb
@@ -336,7 +339,7 @@
             this.GokeiKingakuTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GokeiKingakuTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.GokeiKingakuTxb.Location = new System.Drawing.Point(1458, 290);
+            this.GokeiKingakuTxb.Location = new System.Drawing.Point(1485, 286);
             this.GokeiKingakuTxb.Name = "GokeiKingakuTxb";
             this.GokeiKingakuTxb.Size = new System.Drawing.Size(201, 25);
             this.GokeiKingakuTxb.TabIndex = 10;
@@ -456,7 +459,7 @@
             // 
             this.GokeiKingakuLbl.AutoSize = true;
             this.GokeiKingakuLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.GokeiKingakuLbl.Location = new System.Drawing.Point(1310, 288);
+            this.GokeiKingakuLbl.Location = new System.Drawing.Point(1337, 284);
             this.GokeiKingakuLbl.Name = "GokeiKingakuLbl";
             this.GokeiKingakuLbl.Size = new System.Drawing.Size(124, 28);
             this.GokeiKingakuLbl.TabIndex = 2;
@@ -505,7 +508,7 @@
             // SearchBtn
             // 
             this.SearchBtn.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.SearchBtn.Location = new System.Drawing.Point(960, 26);
+            this.SearchBtn.Location = new System.Drawing.Point(1375, 26);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(300, 90);
             this.SearchBtn.TabIndex = 1;
