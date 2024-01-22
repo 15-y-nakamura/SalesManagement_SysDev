@@ -56,11 +56,17 @@ namespace SalesManagement_SysDev
         [DisplayName("営業所名")]
         public string SoName { get; set; }
 
-        [DisplayName("社員ID")]
-        public int EmID { get; set; }
+        //[DisplayName("社員ID")]
+        //public int EmID { get; set; }
 
-        [DisplayName("顧客ID")]
-        public int ClID { get; set; }
+        [DisplayName("社員名")]
+        public string EmName { get; set; }
+
+        //[DisplayName("顧客ID")]
+        //public int ClID { get; set; }
+
+        [DisplayName("顧客名")]
+        public string ClName { get; set; }
 
         [DisplayName("顧客担当者名")]
         public string ClCharge { get; set; }

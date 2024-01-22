@@ -1410,7 +1410,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            // 価格とメーカ名のみが選択された場合
+            // 価格とメーカ名が選択された場合
             else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.Price != 0)
             {
                 try

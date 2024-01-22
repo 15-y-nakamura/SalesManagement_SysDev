@@ -446,6 +446,11 @@ namespace SalesManagement_SysDev
         //データグリットビュー内のセルをクリック
         private void ShainKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (ShainKanriDgv.Rows.Count == 0)
+            {
+                return;
+            }
+
             ShainIDTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
             ShainNameTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
             EigyoushoNameCmb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();

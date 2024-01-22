@@ -42,7 +42,7 @@ namespace SalesManagement_SysDev.DataAccess
         ///////////////////////////////
         public List<T_OrderDsp> GetOrderData()
         {
-            List<T_OrderDsp> Juc = new List<T_OrderDsp>();
+            List<T_OrderDsp> Order = new List<T_OrderDsp>();
 
             try
             {
@@ -50,15 +50,18 @@ namespace SalesManagement_SysDev.DataAccess
                 var tb = from t1 in context.T_Orders
                          join t2 in context.M_SalesOffices
                          on t1.SoID equals t2.SoID
+                         join t3 in context.M_Employees
+                         on t1.EmID equals t3.EmID
+                         join t4 in context.M_Clients
+                         on t1.ClID equals t4.ClID
                          where t1.OrFlag == 0 &&
                                t1.OrStateFlag == 0
-
                          select new
                          {
                              t1.OrID,
                              t2.SoName,
-                             t1.EmID,
-                             t1.ClID,
+                             t3.EmName,
+                             t4.ClName,
                              t1.ClCharge,
                              t1.OrDate,
                              t1.OrStateFlag,
@@ -68,12 +71,12 @@ namespace SalesManagement_SysDev.DataAccess
 
                 foreach (var p in tb)
                 {
-                    Juc.Add(new T_OrderDsp()
+                    Order.Add(new T_OrderDsp()
                     {
                         OrID = p.OrID,
                         SoName = p.SoName,
-                        EmID = p.EmID,
-                        ClID = p.ClID,
+                        EmName = p.EmName,
+                        ClName = p.ClName,
                         ClCharge = p.ClCharge,
                         OrDate = p.OrDate,
                         OrStateFlag = p.OrStateFlag,
@@ -88,7 +91,7 @@ namespace SalesManagement_SysDev.DataAccess
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return Juc;
+            return Order;
         }
 
         ///////////////////////////////
@@ -257,13 +260,13 @@ namespace SalesManagement_SysDev.DataAccess
         }
 
 
-        public List<T_OrderDsp> SearchOrderData(T_Order T_Or)
+        public List<T_OrderDsp> SearchOrderData(T_Order T_Or,T_OrderDetail T_OrD )
         {
             List<T_OrderDsp> Order = new List<T_OrderDsp>();
             DateTime nulldate = DateTime.ParseExact("00010101", "yyyymmdd", null);
 
             //受注ID入力
-            if (T_Or.OrID != -1 && T_Or.OrFlag == -1)
+            if (T_Or.OrID != -1)
             {
                 try
                 {
@@ -271,15 +274,18 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
                              where t1.OrID == T_Or.OrID &&
                                    t1.OrFlag == 0
-
                              select new
                              {
                                  t1.OrID,
                                  t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
+                                 t3.EmName,
+                                 t4.ClName,
                                  t1.ClCharge,
                                  t1.OrDate,
                                  t1.OrStateFlag,
@@ -293,8 +299,8 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrID = p.OrID,
                             SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
                             ClCharge = p.ClCharge,
                             OrDate = p.OrDate,
                             OrStateFlag = p.OrStateFlag,
@@ -309,8 +315,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //受注ID入力、受注管理フラグ選択
-            else if (T_Or.OrID != 0 && T_Or.OrFlag != -1)
+            else if (T_OrD.OrDetailID != -1)
             {
                 try
                 {
@@ -318,15 +323,20 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-                             where t1.OrID == T_Or.OrID &&
-                                   t1.OrFlag == T_Or.OrFlag
-
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             where t5.OrDetailID == T_OrD.OrDetailID &&
+                                   t1.OrFlag == 0
                              select new
                              {
                                  t1.OrID,
                                  t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
+                                 t3.EmName,
+                                 t4.ClName,
                                  t1.ClCharge,
                                  t1.OrDate,
                                  t1.OrStateFlag,
@@ -340,8 +350,8 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrID = p.OrID,
                             SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
                             ClCharge = p.ClCharge,
                             OrDate = p.OrDate,
                             OrStateFlag = p.OrStateFlag,
@@ -356,8 +366,8 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Or.SoID != 0 && T_Or.OrDate != nulldate &&
-                        T_Or.OrFlag != -1 && T_Or.OrStateFlag != -1)
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID != -1 && 
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
             {
                 try
                 {
@@ -365,19 +375,89 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
                              where t1.SoID == T_Or.SoID &&
-                                  t1.OrDate == T_Or.OrDate &&
-                                  t1.OrFlag == T_Or.OrFlag &&
-                                  t1.OrStateFlag == T_Or.OrStateFlag &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
-
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
                              select new
                              {
                                  t1.OrID,
                                  t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
+                                 t3.EmName,
+                                 t4.ClName,
                                  t1.ClCharge,
                                  t1.OrDate,
                                  t1.OrStateFlag,
@@ -391,8 +471,8 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrID = p.OrID,
                             SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
                             ClCharge = p.ClCharge,
                             OrDate = p.OrDate,
                             OrStateFlag = p.OrStateFlag,
@@ -407,8 +487,8 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Or.SoID == 0 && T_Or.OrDate != nulldate &&
-                        T_Or.OrFlag != -1 && T_Or.OrStateFlag != -1)
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
             {
                 try
                 {
@@ -416,18 +496,1226 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.SoID == T_Or.SoID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null) &&
+                                   t5.PrID == T_OrD.PrID
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.OrDate == T_Or.OrDate &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t1.SoID == T_Or.SoID &&
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID != -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
                              where t1.OrDate == T_Or.OrDate &&
-                                  t1.OrFlag == T_Or.OrFlag &&
-                                  t1.OrStateFlag == T_Or.OrStateFlag &&
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
-
+                                   t1.OrHidden == null)
                              select new
                              {
                                  t1.OrID,
                                  t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
+                                 t3.EmName,
+                                 t4.ClName,
                                  t1.ClCharge,
                                  t1.OrDate,
                                  t1.OrStateFlag,
@@ -435,15 +1723,14 @@ namespace SalesManagement_SysDev.DataAccess
                                  t1.OrHidden,
                              };
 
-
                     foreach (var p in tb)
                     {
                         Order.Add(new T_OrderDsp()
                         {
                             OrID = p.OrID,
                             SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
                             ClCharge = p.ClCharge,
                             OrDate = p.OrDate,
                             OrStateFlag = p.OrStateFlag,
@@ -458,8 +1745,8 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Or.SoID != 0 && T_Or.OrDate != nulldate &&
-                       T_Or.OrFlag != -1 && T_Or.OrStateFlag == -1)
+            else if (T_Or.EmID != -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
             {
                 try
                 {
@@ -467,13 +1754,21 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
-
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.EmID == T_Or.EmID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
                              select new
                              {
                                  t1.OrID,
                                  t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
+                                 t3.EmName,
+                                 t4.ClName,
                                  t1.ClCharge,
                                  t1.OrDate,
                                  t1.OrStateFlag,
@@ -481,15 +1776,14 @@ namespace SalesManagement_SysDev.DataAccess
                                  t1.OrHidden,
                              };
 
-
                     foreach (var p in tb)
                     {
                         Order.Add(new T_OrderDsp()
                         {
                             OrID = p.OrID,
                             SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
                             ClCharge = p.ClCharge,
                             OrDate = p.OrDate,
                             OrStateFlag = p.OrStateFlag,
@@ -504,8 +1798,8 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Or.SoID == 0 && T_Or.OrDate != nulldate &&
-                       T_Or.OrFlag != -1 && T_Or.OrStateFlag != -1)
+            else if (T_Or.EmID == -1 && T_Or.SoID != -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
             {
                 try
                 {
@@ -513,18 +1807,127 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.SoID == T_Or.SoID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID == -1 && T_Or.ClID != -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             where t1.ClID == T_Or.ClID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (T_Or.EmID == -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate != nulldate && T_OrD.PrID == -1)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
                              where t1.OrDate == T_Or.OrDate &&
-                                  t1.OrFlag == T_Or.OrFlag &&
-                                  t1.OrStateFlag == T_Or.OrStateFlag &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
-
+                                   t1.OrHidden == null)
                              select new
                              {
                                  t1.OrID,
                                  t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
+                                 t3.EmName,
+                                 t4.ClName,
                                  t1.ClCharge,
                                  t1.OrDate,
                                  t1.OrStateFlag,
@@ -538,8 +1941,8 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrID = p.OrID,
                             SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
                             ClCharge = p.ClCharge,
                             OrDate = p.OrDate,
                             OrStateFlag = p.OrStateFlag,
@@ -554,8 +1957,8 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Or.SoID == 0 && T_Or.OrDate == nulldate &&
-                       T_Or.OrFlag != -1 && T_Or.OrStateFlag != -1)
+            else if (T_Or.EmID == -1 && T_Or.SoID == -1 && T_Or.ClID == -1 &&
+                        T_Or.OrDate == nulldate && T_OrD.PrID != -1)
             {
                 try
                 {
@@ -563,17 +1966,76 @@ namespace SalesManagement_SysDev.DataAccess
                     var tb = from t1 in context.T_Orders
                              join t2 in context.M_SalesOffices
                              on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
+                             join t5 in context.T_OrderDetails
+                             on t1.OrID equals t5.OrID
+                             join t6 in context.M_Products
+                             on t5.PrID equals t6.PrID
+                             where t5.PrID == T_OrD.PrID &&
+                                   t1.OrFlag == T_Or.OrFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
+                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
+                                   t1.OrHidden == null)
+                             select new
+                             {
+                                 t1.OrID,
+                                 t2.SoName,
+                                 t3.EmName,
+                                 t4.ClName,
+                                 t1.ClCharge,
+                                 t1.OrDate,
+                                 t1.OrStateFlag,
+                                 t1.OrFlag,
+                                 t1.OrHidden,
+                             };
+
+                    foreach (var p in tb)
+                    {
+                        Order.Add(new T_OrderDsp()
+                        {
+                            OrID = p.OrID,
+                            SoName = p.SoName,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
+                            ClCharge = p.ClCharge,
+                            OrDate = p.OrDate,
+                            OrStateFlag = p.OrStateFlag,
+                            OrFlag = p.OrFlag,
+                            OrHidden = p.OrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else 
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    var tb = from t1 in context.T_Orders
+                             join t2 in context.M_SalesOffices
+                             on t1.SoID equals t2.SoID
+                             join t3 in context.M_Employees
+                             on t1.EmID equals t3.EmID
+                             join t4 in context.M_Clients
+                             on t1.ClID equals t4.ClID
                              where t1.OrFlag == T_Or.OrFlag &&
-                                  t1.OrStateFlag == T_Or.OrStateFlag &&
+                                   t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
-
+                                   t1.OrHidden == null)
                              select new
                              {
                                  t1.OrID,
                                  t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
+                                 t3.EmName,
+                                 t4.ClName,
                                  t1.ClCharge,
                                  t1.OrDate,
                                  t1.OrStateFlag,
@@ -587,8 +2049,8 @@ namespace SalesManagement_SysDev.DataAccess
                         {
                             OrID = p.OrID,
                             SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
+                            EmName = p.EmName,
+                            ClName = p.ClName,
                             ClCharge = p.ClCharge,
                             OrDate = p.OrDate,
                             OrStateFlag = p.OrStateFlag,
@@ -603,495 +2065,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (T_Or.SoID == 0 && T_Or.OrDate != nulldate &&
-                       T_Or.OrFlag == -1 && T_Or.OrStateFlag != -1)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             where t1.OrDate == T_Or.OrDate &&
-                                  t1.OrFlag == 0 &&
-                                  t1.OrStateFlag == T_Or.OrStateFlag &&
-                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
 
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-
-                    foreach (var p in tb)
-                    {
-                        Order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (T_Or.SoID == 0 && T_Or.OrDate != nulldate &&
-                       T_Or.OrFlag != -1 && T_Or.OrStateFlag == -1)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             where t1.OrDate == T_Or.OrDate &&
-                                  t1.OrFlag == T_Or.OrFlag &&
-                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-                    foreach (var p in tb)
-                    {
-                        Order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (T_Or.SoID != 0 && T_Or.OrDate == nulldate &&
-                       T_Or.OrFlag != -1 && T_Or.OrStateFlag != -1)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             where t1.SoID == T_Or.SoID &&
-                                  t1.OrFlag == T_Or.OrFlag &&
-                                  t1.OrStateFlag == T_Or.OrStateFlag &&
-                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-                    foreach (var p in tb)
-                    {
-                        Order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (T_Or.SoID != 0 && T_Or.OrDate != nulldate &&
-                       T_Or.OrFlag != -1 && T_Or.OrStateFlag == -1)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             where t1.SoID == T_Or.SoID &&
-                                  t1.OrDate == T_Or.OrDate &&
-                                  t1.OrFlag == T_Or.OrFlag &&
-                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-                    foreach (var p in tb)
-                    {
-                        Order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (T_Or.SoID != 0 && T_Or.OrDate != nulldate &&
-                       T_Or.OrFlag == -1 && T_Or.OrStateFlag == -1)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             where t1.SoID == T_Or.SoID &&
-                                      t1.OrDate == T_Or.OrDate &&
-                                      t1.OrFlag == 0 &&
-                                      (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                      t1.OrHidden == null)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-                    foreach (var p in tb)
-                    {
-                        Order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (T_Or.SoID == 0 && T_Or.OrDate == nulldate &&
-                       T_Or.OrFlag != -1 && T_Or.OrStateFlag == -1)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             where t1.OrFlag == 0 &&
-                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-                    foreach (var p in tb)
-                    {
-                        Order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (T_Or.SoID == 0 && T_Or.OrDate == nulldate &&
-                       T_Or.OrFlag == -1 && T_Or.OrStateFlag != -1)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             where t1.OrFlag == 0 &&
-                                  t1.OrStateFlag == T_Or.OrStateFlag &&
-                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-                    foreach (var p in tb)
-                    {
-                        Order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (T_Or.SoID == 0 && T_Or.OrDate != nulldate &&
-                       T_Or.OrFlag == -1 && T_Or.OrStateFlag == -1)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             where t1.OrDate == T_Or.OrDate &&
-                                      t1.OrFlag == 0 &&
-                                      (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                      t1.OrHidden == null)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-                    foreach (var p in tb)
-                    {
-                        Order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (T_Or.SoID != 0 && T_Or.OrDate == nulldate &&
-                       T_Or.OrFlag == -1 && T_Or.OrStateFlag == -1)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-                             where t1.SoID == T_Or.SoID &&
-                                  t1.OrFlag == 0 &&
-                                  (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                  t1.OrHidden == null)
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-                    foreach (var p in tb)
-                    {
-                        Order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_Orders
-                             join t2 in context.M_SalesOffices
-                             on t1.SoID equals t2.SoID
-
-                             select new
-                             {
-                                 t1.OrID,
-                                 t2.SoName,
-                                 t1.EmID,
-                                 t1.ClID,
-                                 t1.ClCharge,
-                                 t1.OrDate,
-                                 t1.OrStateFlag,
-                                 t1.OrFlag,
-                                 t1.OrHidden,
-                             };
-
-                    foreach (var p in tb)
-                    {
-                        Order.Add(new T_OrderDsp()
-                        {
-                            OrID = p.OrID,
-                            SoName = p.SoName,
-                            EmID = p.EmID,
-                            ClID = p.ClID,
-                            ClCharge = p.ClCharge,
-                            OrDate = p.OrDate,
-                            OrStateFlag = p.OrStateFlag,
-                            OrFlag = p.OrFlag,
-                            OrHidden = p.OrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
             return Order;
         }
 
@@ -1115,6 +2089,103 @@ namespace SalesManagement_SysDev.DataAccess
                 MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return flg;
+        }
+
+        public string[] GetTxtData(int OrID)
+        {
+            string[] TxtData = new string[8];
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.T_Orders
+                         join t2 in context.M_SalesOffices
+                         on t1.SoID equals t2.SoID
+                         where t1.OrID == OrID
+                         select new
+                         {
+                             t2.SoName,
+                             t1.EmID,
+                             t1.ClID,
+                             t1.ClCharge,
+                             t1.OrDate,
+                             t1.OrFlag,
+                             t1.OrStateFlag,
+                             t1.OrHidden
+                         };
+
+                foreach (var p in tb)
+                {
+                    TxtData[0] = p.SoName;
+                    TxtData[1] = p.EmID.ToString();
+                    TxtData[2] = p.ClID.ToString();
+                    TxtData[3] = p.ClCharge;
+                    TxtData[4] = p.OrDate.ToString();
+                    TxtData[5] = p.OrFlag.ToString();
+                    TxtData[6] = p.OrStateFlag.ToString();
+                    TxtData[7] = p.OrHidden;
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return TxtData;
+        }
+
+        public List<T_OrderDsp> GetOrDspData(int OrID)
+        {
+            List<T_OrderDsp> Order = new List<T_OrderDsp>();
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                var tb = from t1 in context.T_Orders
+                         join t2 in context.M_SalesOffices
+                         on t1.SoID equals t2.SoID
+                         join t3 in context.M_Employees
+                         on t1.EmID equals t3.EmID
+                         join t4 in context.M_Clients
+                         on t1.ClID equals t4.ClID
+                         where t1.OrID == OrID
+                         select new
+                         {
+                             t1.OrID,
+                             t2.SoName,
+                             t3.EmName,
+                             t4.ClName,
+                             t1.ClCharge,
+                             t1.OrDate,
+                             t1.OrStateFlag,
+                             t1.OrFlag,
+                             t1.OrHidden,
+                         };
+
+                foreach (var p in tb)
+                {
+                    Order.Add(new T_OrderDsp()
+                    {
+                        OrID = p.OrID,
+                        SoName = p.SoName,
+                        EmName = p.EmName,
+                        ClName = p.ClName,
+                        ClCharge = p.ClCharge,
+                        OrDate = p.OrDate,
+                        OrStateFlag = p.OrStateFlag,
+                        OrFlag = p.OrFlag,
+                        OrHidden = p.OrHidden
+                    });
+                }
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return Order;
         }
     }
 }
