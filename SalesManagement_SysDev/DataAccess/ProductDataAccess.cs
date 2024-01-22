@@ -3166,5 +3166,32 @@ namespace SalesManagement_SysDev.DataAccess
 
             return prid;
         }
+
+        public decimal GetPrice(string prname)
+        {
+            decimal price = 0;
+
+            var context = new SalesManagement_DevContext();
+            try
+            {
+                var tb = from t1 in context.M_Products
+                         where t1.PrName == prname
+                         select new
+                         {
+                             t1.Price
+                         };
+
+                foreach (var p in tb)
+                {
+                    price = p.Price;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            return price;
+        }
     }
 }

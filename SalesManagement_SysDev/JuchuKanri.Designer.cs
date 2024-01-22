@@ -33,6 +33,8 @@
             this.TopButsuryuBtn = new System.Windows.Forms.Button();
             this.TopLbl = new System.Windows.Forms.Label();
             this.TopJuchuPnl = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.ShohinNameCmb = new System.Windows.Forms.ComboBox();
             this.JuchuKanriDgv = new System.Windows.Forms.DataGridView();
             this.KokyakuNameLbl = new System.Windows.Forms.Label();
@@ -136,6 +138,8 @@
             // TopJuchuPnl
             // 
             this.TopJuchuPnl.BackColor = System.Drawing.Color.LightGray;
+            this.TopJuchuPnl.Controls.Add(this.label2);
+            this.TopJuchuPnl.Controls.Add(this.label1);
             this.TopJuchuPnl.Controls.Add(this.ShohinNameCmb);
             this.TopJuchuPnl.Controls.Add(this.JuchuKanriDgv);
             this.TopJuchuPnl.Controls.Add(this.KokyakuNameLbl);
@@ -176,6 +180,28 @@
             this.TopJuchuPnl.Size = new System.Drawing.Size(1835, 783);
             this.TopJuchuPnl.TabIndex = 23;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.LightGray;
+            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(1365, 219);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 28);
+            this.label2.TabIndex = 65;
+            this.label2.Text = "顧客名";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.LightGray;
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(1369, 150);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 28);
+            this.label1.TabIndex = 64;
+            this.label1.Text = "社員名";
+            // 
             // ShohinNameCmb
             // 
             this.ShohinNameCmb.FormattingEnabled = true;
@@ -183,6 +209,7 @@
             this.ShohinNameCmb.Name = "ShohinNameCmb";
             this.ShohinNameCmb.Size = new System.Drawing.Size(202, 26);
             this.ShohinNameCmb.TabIndex = 63;
+            this.ShohinNameCmb.SelectedIndexChanged += new System.EventHandler(this.ShohinNameCmb_SelectedIndexChanged);
             // 
             // JuchuKanriDgv
             // 
@@ -201,21 +228,21 @@
             // 
             this.KokyakuNameLbl.AutoSize = true;
             this.KokyakuNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.KokyakuNameLbl.Location = new System.Drawing.Point(1370, 220);
+            this.KokyakuNameLbl.Location = new System.Drawing.Point(1489, 220);
             this.KokyakuNameLbl.Name = "KokyakuNameLbl";
-            this.KokyakuNameLbl.Size = new System.Drawing.Size(159, 28);
+            this.KokyakuNameLbl.Size = new System.Drawing.Size(40, 28);
             this.KokyakuNameLbl.TabIndex = 61;
-            this.KokyakuNameLbl.Text = "顧客ID　　--";
+            this.KokyakuNameLbl.Text = "--";
             // 
             // ShainNameLbl
             // 
             this.ShainNameLbl.AutoSize = true;
             this.ShainNameLbl.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ShainNameLbl.Location = new System.Drawing.Point(1370, 150);
+            this.ShainNameLbl.Location = new System.Drawing.Point(1489, 150);
             this.ShainNameLbl.Name = "ShainNameLbl";
-            this.ShainNameLbl.Size = new System.Drawing.Size(159, 28);
+            this.ShainNameLbl.Size = new System.Drawing.Size(40, 28);
             this.ShainNameLbl.TabIndex = 60;
-            this.ShainNameLbl.Text = "社員ID　　--";
+            this.ShainNameLbl.Text = "--";
             // 
             // JuchuDetailIDTxb
             // 
@@ -353,6 +380,7 @@
             this.SuryoTxb.Name = "SuryoTxb";
             this.SuryoTxb.Size = new System.Drawing.Size(201, 25);
             this.SuryoTxb.TabIndex = 9;
+            this.SuryoTxb.TextChanged += new System.EventHandler(this.SuryoTxb_TextChanged);
             // 
             // HihyojiTxb
             // 
@@ -736,5 +764,7 @@
         private System.Windows.Forms.Label ShainNameLbl;
         private System.Windows.Forms.DataGridView JuchuKanriDgv;
         private System.Windows.Forms.ComboBox ShohinNameCmb;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

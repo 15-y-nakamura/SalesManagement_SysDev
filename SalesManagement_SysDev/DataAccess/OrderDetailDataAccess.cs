@@ -30,7 +30,7 @@ namespace SalesManagement_SysDev.DataAccess
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t1.OrID == T_OrD.OrID &&
-                                   t2.OrFlag == T_Or.OrFlag
+                                   t2.OrFlag == T_Or.OrFlag 
                              select new
                              {
                                  t1.OrDetailID,
@@ -69,7 +69,7 @@ namespace SalesManagement_SysDev.DataAccess
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t1.OrDetailID == T_OrD.OrDetailID &&
-                                   t2.OrFlag == T_Or.OrFlag
+                                   t2.OrFlag == T_Or.OrFlag 
                              select new
                              {
                                  t1.OrDetailID,
@@ -116,7 +116,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -208,7 +209,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -254,7 +256,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -300,7 +303,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -346,7 +350,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -391,7 +396,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -436,6 +442,7 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge) &&
                                    t5.PrID == T_OrD.PrID
                              select new
                              {
@@ -481,7 +488,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -526,7 +534,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -571,7 +580,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -616,7 +626,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -661,7 +672,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -706,7 +718,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -751,7 +764,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -796,7 +810,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -840,7 +855,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -884,7 +900,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -928,7 +945,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -972,7 +990,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1016,7 +1035,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1060,7 +1080,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1104,7 +1125,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1148,7 +1170,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1191,7 +1214,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1234,7 +1258,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1277,7 +1302,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1320,7 +1346,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1363,7 +1390,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1404,7 +1432,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t5.OrDetailID,
@@ -1448,14 +1477,13 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders  
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrFlag == 0 &&
                                    t2.OrStateFlag == 0
-
                              select new
                              {
                                  t1.OrDetailID,
@@ -1549,9 +1577,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t1.OrID == T_Or.OrID &&
@@ -1589,9 +1617,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t1.OrID == T_Or.OrID &&
@@ -1629,9 +1657,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t1.OrID == T_Or.OrID &&
@@ -1670,9 +1698,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrID == T_Or.OrID &&
@@ -1712,9 +1740,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -1759,9 +1787,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -1805,9 +1833,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -1851,9 +1879,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -1897,9 +1925,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -1944,9 +1972,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -1990,9 +2018,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2036,9 +2064,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrDate == T_Or.OrDate &&
@@ -2081,9 +2109,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -2126,9 +2154,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -2172,9 +2200,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -2218,9 +2246,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -2262,9 +2290,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2307,9 +2335,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2353,9 +2381,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2398,9 +2426,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2444,9 +2472,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2490,9 +2518,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2535,9 +2563,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2580,9 +2608,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2626,9 +2654,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2672,9 +2700,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2717,9 +2745,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2761,9 +2789,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2805,9 +2833,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2848,9 +2876,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2892,9 +2920,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -2936,9 +2964,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -2980,9 +3008,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -3023,9 +3051,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -3067,9 +3095,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -3111,9 +3139,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -3157,9 +3185,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrDate == T_Or.OrDate &&
@@ -3200,9 +3228,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrDate == T_Or.OrDate &&
@@ -3244,9 +3272,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrDate == T_Or.OrDate &&
@@ -3288,9 +3316,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrFlag == T_Or.OrFlag &&
@@ -3331,9 +3359,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrFlag == T_Or.OrFlag &&
@@ -3374,9 +3402,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrFlag == 0 &&
@@ -3418,9 +3446,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrFlag == T_Or.OrFlag &&
@@ -3462,9 +3490,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrDate == T_Or.OrDate &&
@@ -3507,9 +3535,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrDate == T_Or.OrDate &&
@@ -3551,9 +3579,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrDate == T_Or.OrDate &&
@@ -3595,9 +3623,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -3640,9 +3668,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -3684,9 +3712,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -3728,9 +3756,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -3773,9 +3801,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -3817,9 +3845,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -3861,9 +3889,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -3906,9 +3934,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -3950,9 +3978,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -3994,9 +4022,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -4039,9 +4067,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -4084,9 +4112,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -4128,9 +4156,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -4173,9 +4201,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -4218,9 +4246,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -4262,9 +4290,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -4307,9 +4335,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrFlag == 0 &&
@@ -4350,9 +4378,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrFlag == T_Or.OrFlag &&
@@ -4392,9 +4420,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrDate == T_Or.OrDate &&
@@ -4436,9 +4464,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.ClID == T_Or.ClID &&
@@ -4479,9 +4507,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.SoID == T_Or.SoID &&
@@ -4522,9 +4550,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrFlag == 0 &&
@@ -4564,9 +4592,9 @@ namespace SalesManagement_SysDev.DataAccess
                 try
                 {
                     var context = new SalesManagement_DevContext();
-                    var tb = from t1 in context.T_OrderDetails
-                             join t2 in context.T_Orders
-                             on t1.OrID equals t2.OrID
+                    var tb = from t2 in context.T_Orders
+                             join t1 in context.T_OrderDetails
+                             on t2.OrID equals t1.OrID
                              join t3 in context.M_Products
                              on t1.PrID equals t3.PrID
                              where t2.OrFlag == 0 &&

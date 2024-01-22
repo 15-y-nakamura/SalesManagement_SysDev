@@ -38,7 +38,8 @@ namespace SalesManagement_SysDev.DataAccess
                          on t1.ChID equals t2.ChID
                          join t3 in context.M_Products
                          on t1.PrID equals t3.PrID
-                         where t2.ChFlag == 0
+                         where t2.ChFlag == 0 &&
+                               t2.ChStateFlag == 0 
                          select new
                          {
                              t1.ChDetailID,
