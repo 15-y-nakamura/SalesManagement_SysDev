@@ -435,8 +435,6 @@ namespace SalesManagement_SysDev
 
                 if (matchingData != null)
                 {
-                    // 一致するデータが見つかった場合の処理
-                    //MessageBox.Show("受注詳細に飛びます");
 
                     //入力チェック
                     if (!InputRegistOrderDetailDataCheck())
@@ -451,8 +449,7 @@ namespace SalesManagement_SysDev
                 }
                 else
                 {
-                    // 一致するデータが見つからなかった場合の処理
-                    //MessageBox.Show("受注登録に飛びます");
+
                     //入力チェック
                     if (!InputRegistOrderDataCheck())
                     {
@@ -486,12 +483,6 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private bool InputRegistOrderDataCheck()
         {
-            /*受注IDの入力チェック
-            if (!InputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
-            {
-                MessageDsp.DspMsg(InputCheck.CheckRegistOrID(JuchuIDTxb.Text).Msg);
-                return false;
-            }*/
 
             //発売日の入力チェック
             if (!JuchuDateDtm.Checked)
@@ -579,8 +570,6 @@ namespace SalesManagement_SysDev
         private T_Order SetOrderData()
         {
             int SoID = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
-            //int EmID = EmployeeDA.GetEmID(ShainIDTxb.Text);
-            //int CIID = ClientDA.GetCIID(KokyakuIDTxb.Text);
 
             int OrFlg;
             int OrStateFlg;

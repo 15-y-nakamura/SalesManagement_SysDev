@@ -716,7 +716,9 @@ namespace SalesManagement_SysDev
 
             var searchdata = SetProductSearchData();
 
-            SearchProduct(searchdata);
+            var majordata = SetMajorClassificatioData();
+
+            SearchProduct(searchdata, majordata);
         }
 
         ///////////////////////////////
@@ -904,14 +906,37 @@ namespace SalesManagement_SysDev
         }
 
         ///////////////////////////////
+        //メソッド名：SetMajorClassificatioData()
+        //引　数   ：なし
+        //戻り値   ：T_OrderDetail
+        //機　能   ：大分類名情報を形式化する
+        ///////////////////////////////
+        private M_MajorClassification SetMajorClassificatioData()
+        {
+            int mcid = 0;
+
+            if (DaibunruiCmb.Text != "")
+            {
+                mcid = MajorClassificationDA.GetMcID(DaibunruiCmb.Text);
+            }
+
+            M_MajorClassification M_MajorClassification = new M_MajorClassification()
+            {
+                McID = mcid
+            };
+
+            return M_MajorClassification;
+        }
+
+        ///////////////////////////////
         //メソッド名：SearchEmployee()
         //引　数   ：M_Employee
         //戻り値   ：なし
         //機　能   ：形式化した社員情報を検索、表示する
         ///////////////////////////////
-        private void SearchProduct(M_Product searchpro)
+        private void SearchProduct(M_Product searchpro, M_MajorClassification searchmaj)
         {
-            var pro = ProductDA.SearchProduct(searchpro);
+            var pro = ProductDA.SearchProduct(searchpro, searchmaj);
 
             if (pro.Count == 0)
             {
@@ -927,28 +952,29 @@ namespace SalesManagement_SysDev
             MakerNameCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
             KakakuTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
             AnzenTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
-            ShoubunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
-            KatabanTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
-            IroTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
-            SellDtm.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+            DaibunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
+            ShoubunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
+            KatabanTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
+            IroTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+            SellDtm.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[9].Value.ToString();
 
             //商品管理フラグを日本語に変換
-            if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[9].Value == 0)
+            if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value == 0)
             {
                 ShohinKanriCmb.Text = "表示";
             }
-            else if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[9].Value == 2)
+            else if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value == 2)
             {
                 ShohinKanriCmb.Text = "非表示";
             }
 
-            if (ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value == null)
+            if (ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[11].Value == null)
             {
                 HihyojiTxb.Text = "";
             }
             else
             {
-                HihyojiTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value.ToString();
+                HihyojiTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[11].Value.ToString();
             }
 
             ShoubunruiCmb.Items.Clear();
