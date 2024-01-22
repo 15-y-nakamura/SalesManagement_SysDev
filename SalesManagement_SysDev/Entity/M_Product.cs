@@ -79,6 +79,9 @@ namespace SalesManagement_SysDev
         [DisplayName("安全在庫数")]
         public int PrSafetyStock { get; set; }
 
+        [DisplayName("大分類名")]
+        public string McName { get; set; }
+
         [DisplayName("小分類名")]
         public string ScName { get; set; }
 
