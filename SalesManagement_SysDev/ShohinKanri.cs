@@ -31,7 +31,7 @@ namespace SalesManagement_SysDev
         MakerDataAccess MakerDA = new MakerDataAccess();
 
         //データグリッドビュー用のスタッフデータ
-        private static List<M_ProductDsp> Product;
+        private static List<M_ProductDsp> Productdsp;
 
         MessageDsp MessageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
@@ -253,10 +253,10 @@ namespace SalesManagement_SysDev
         private void ListDisplay()
         {
             // スタッフデータの取得
-            Product = ProductDA.GetProductData();
+            Productdsp = ProductDA.GetProductData();
 
             // DataGridViewに表示するデータを指定
-            SetDataGridView(Product);
+            SetDataGridView();
         }
 
 
@@ -266,9 +266,9 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：データグリッドビューにデータを反映する
         ///////////////////////////////
-        private void SetDataGridView(List<M_ProductDsp> Product)
+        private void SetDataGridView()
         {
-            ShohinKanriDgv.DataSource = Product.ToList();
+            ShohinKanriDgv.DataSource = Productdsp.ToList();
 
             //すべての列がコントロールの表示領域の幅いっぱいに表示されるよう列幅を調整
             ShohinKanriDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -301,28 +301,29 @@ namespace SalesManagement_SysDev
             MakerNameCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
             KakakuTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
             AnzenTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
-            ShoubunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
-            KatabanTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
-            IroTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
-            SellDtm.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+            DaibunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
+            ShoubunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
+            KatabanTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
+            IroTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+            SellDtm.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[9].Value.ToString();
 
             //商品管理フラグを日本語に変換
-            if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[9].Value == 0)
+            if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value == 0)
             {
                 ShohinKanriCmb.Text = "表示";
             }
-            else if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[9].Value == 2)
+            else if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value == 2)
             {
                 ShohinKanriCmb.Text = "非表示";
             }
 
-            if (ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value == null)
+            if (ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[11].Value == null)
             {
                 HihyojiTxb.Text = "";
             }
             else
             {
-                HihyojiTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value.ToString();
+                HihyojiTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[11].Value.ToString();
             }
 
             ShoubunruiCmb.Items.Clear();
@@ -998,7 +999,8 @@ namespace SalesManagement_SysDev
             {
                 MessageDsp.DspMsg("M2025");
             }
-            SetDataGridView(pro);
+
+            SetDataGridView();
         }
 
         private void ShohinKanriDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
