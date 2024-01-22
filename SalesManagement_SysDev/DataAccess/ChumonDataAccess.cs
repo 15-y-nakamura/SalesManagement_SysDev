@@ -25,8 +25,8 @@ namespace SalesManagement_SysDev.DataAccess
                          on t1.ClID equals t4.ClID
                          join t5 in context.T_Orders
                          on t1.OrID equals t5.OrID
-                         where t1.ChFlag == 0
-
+                         where t1.ChFlag == 0 &&
+                               t1.ChStateFlag == 0
                          select new
                          {
                              t1.ChID,

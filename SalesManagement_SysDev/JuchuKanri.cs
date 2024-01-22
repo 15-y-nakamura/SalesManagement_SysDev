@@ -151,6 +151,8 @@ namespace SalesManagement_SysDev
             SuryoTxb.Text = "";
             GokeiKingakuTxb.Text = "";
             HihyojiTxb.Text = "";
+            ShainNameLbl.Text = "--";
+            KokyakuNameLbl.Text = "--";
 
             //営業所名を取得
             var SoName = SalesOfficeDA.GetSoName();
@@ -178,6 +180,7 @@ namespace SalesManagement_SysDev
 
             HiddenBtn.Enabled = false;
             ConfirmBtn.Enabled = false;
+            JuchuIDTxb.Enabled = true;
         }
 
 
@@ -436,7 +439,6 @@ namespace SalesManagement_SysDev
 
                 if (matchingData != null)
                 {
-
                     //入力チェック
                     if (!InputRegistOrderDetailDataCheck())
                     {
@@ -538,6 +540,12 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private bool InputRegistOrderDetailDataCheck()
         {
+            if (!OrderDA.GetStateflg(int.Parse(JuchuIDTxb.Text)))
+            {
+                MessageDsp.DspMsg("M6041");
+                return false;
+            }
+
             //受注IDの入力チェック
             if (!InputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
             {
@@ -676,6 +684,7 @@ namespace SalesManagement_SysDev
 
                         //データグリッドビューの設定
                         SetFormJuchuKanriGridView();
+                        SetFormJuchuKanriDetailGridView();
                     }
                     else
                     {
@@ -780,9 +789,9 @@ namespace SalesManagement_SysDev
             //顧客IDの入力チェック
             if (KokyakuIDTxb.Text != "")
             {
-                if (!InputCheck.CheckSearchClID(KokyakuIDTxb.Text).flg)
+                if (!InputCheck.CheckClID(KokyakuIDTxb.Text).flg)
                 {
-                    MessageDsp.DspMsg(InputCheck.CheckSearchClID(KokyakuIDTxb.Text).Msg);
+                    MessageDsp.DspMsg(InputCheck.CheckClID(KokyakuIDTxb.Text).Msg);
                     return false;
                 }
             }
@@ -812,7 +821,7 @@ namespace SalesManagement_SysDev
             {
                 if (!InputCheck.CheckRegistOrDetailID(JuchuDetailIDTxb.Text).flg)
                 {
-                    MessageDsp.DspMsg(InputCheck.CheckRegistOrDetailID(ShohinNameCmb.Text).Msg);
+                    MessageDsp.DspMsg(InputCheck.CheckRegistOrDetailID(JuchuDetailIDTxb.Text).Msg);
                     return false;
                 }
             }
@@ -950,7 +959,7 @@ namespace SalesManagement_SysDev
 
             if(JuchuDetailIDTxb.Text != "")
             {
-                ordetailid = int.Parse(JuchuDetailID.Text);
+                ordetailid = int.Parse(JuchuDetailIDTxb.Text);
             }
 
             if(ShohinNameCmb.Text != "")
@@ -1063,6 +1072,7 @@ namespace SalesManagement_SysDev
 
                     //データグリッドビューの設定
                     SetFormJuchuKanriGridView();
+                    SetFormJuchuKanriDetailGridView();
                 }
                 else
                 {
@@ -1175,6 +1185,7 @@ namespace SalesManagement_SysDev
 
                     //データグリッドビューの設定
                     SetFormJuchuKanriGridView();
+                    SetFormJuchuKanriDetailGridView();
                 }
                 else
                 {
@@ -1195,6 +1206,11 @@ namespace SalesManagement_SysDev
 
         private void ShainIDTxb_TextChanged(object sender, EventArgs e)
         {
+            if (ShainIDTxb.Text == "")
+            {
+                ShainNameLbl.Text = "--";
+            }
+
             if (!InputCheck.CheckSuuti(ShainIDTxb.Text))
             {
                 return;
@@ -1205,6 +1221,11 @@ namespace SalesManagement_SysDev
 
         private void KokyakuIDTxb_TextChanged(object sender, EventArgs e)
         {
+            if(KokyakuIDTxb.Text == "")
+            {
+                KokyakuNameLbl.Text = "--";
+            }
+
             if (!InputCheck.CheckSuuti(KokyakuIDTxb.Text))
             {
                 return;
@@ -1237,6 +1258,7 @@ namespace SalesManagement_SysDev
             KokyakuIDTxb.Text = text[2];
             KokyakuTantoNameTxb.Text = text[3];
             JuchuDateDtm.Text = text[4];
+            JuchuDateDtm.Checked = true;
             if (text[6] == "0")
             {
                 JuchuJotaiFlagCmb.Text = "処理受付";
@@ -1271,12 +1293,13 @@ namespace SalesManagement_SysDev
 
             HiddenBtn.Enabled = true;
             ConfirmBtn.Enabled = true;
+            JuchuIDTxb.Enabled = false;
 
             Orderdsp = OrderDA.GetOrDspData((int)JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[1].Value);
-            OrderDetaildsp = OrderDetailDA.GetOrdDspData((int)JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[1].Value);
+            //OrderDetaildsp = OrderDetailDA.GetOrdDspData((int)JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[1].Value);
 
             SetDataOrderGridView();
-            SetDataOrderDetailGridView();
+            //SetDataOrderDetailGridView();
         }
 
         private void JuchuKanriDgv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1294,6 +1317,7 @@ namespace SalesManagement_SysDev
             KokyakuIDTxb.Text = text[2];
             KokyakuTantoNameTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
             JuchuDateDtm.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
+            JuchuDateDtm.Checked = true;
 
             //受注状態フラグを日本語に変換
             if ((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[6].Value == 0)
@@ -1323,18 +1347,56 @@ namespace SalesManagement_SysDev
                 HihyojiTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
             }
 
-            JuchuDateDtm.Checked = true;
-
             HiddenBtn.Enabled = true;
             ConfirmBtn.Enabled = true;
+
+            if (JuchuKanriDetailDgv.Rows.Count == 0)
+            {
+                return;
+            }
 
             Orderdsp = OrderDA.GetOrDspData((int)JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[1].Value);
             OrderDetaildsp = OrderDetailDA.GetOrdDspData((int)JuchuKanriDetailDgv.Rows[JuchuKanriDetailDgv.CurrentRow.Index].Cells[1].Value);
 
             SetDataOrderGridView();
             SetDataOrderDetailGridView();
+        }
 
-            
+        private void SuryoTxb_TextChanged(object sender, EventArgs e)
+        {
+            if(SuryoTxb.Text == "")
+            {
+                GokeiKingakuTxb.Text = "";
+            }
+
+            if (!InputCheck.CheckSuuti(SuryoTxb.Text))
+            {
+                return;
+            }
+
+            if(ShohinNameCmb.Text == "")
+            {
+                return;
+            }
+
+            var sumprice = ProductDA.GetPrice(ShohinNameCmb.Text) * int.Parse(SuryoTxb.Text);
+            GokeiKingakuTxb.Text = sumprice.ToString();
+        }
+
+        private void ShohinNameCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SuryoTxb.Text == "")
+            {
+                return;
+            }
+
+            if (!InputCheck.CheckSuuti(SuryoTxb.Text))
+            {
+                return;
+            }
+
+            var sumprice = ProductDA.GetPrice(ShohinNameCmb.Text) * int.Parse(SuryoTxb.Text);
+            GokeiKingakuTxb.Text = sumprice.ToString();
         }
     }
 }

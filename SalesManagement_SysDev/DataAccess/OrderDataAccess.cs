@@ -391,7 +391,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge) 
                              select new
                              {
                                  t1.OrID,
@@ -451,7 +452,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -511,7 +513,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -571,7 +574,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -631,7 +635,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -687,7 +692,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -746,7 +752,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -805,7 +812,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -864,7 +872,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -919,7 +928,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -978,7 +988,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1037,7 +1048,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1092,7 +1104,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1151,7 +1164,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1206,7 +1220,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1265,7 +1280,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1319,7 +1335,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1373,7 +1390,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1427,7 +1445,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1485,7 +1504,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
                                    t1.OrHidden == null) &&
-                                   t5.PrID == T_OrD.PrID
+                                   t5.PrID == T_OrD.PrID &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1539,7 +1559,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1593,7 +1614,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1651,7 +1673,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1709,7 +1732,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1762,7 +1786,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1815,7 +1840,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1868,7 +1894,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1921,7 +1948,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -1978,7 +2006,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
@@ -2029,7 +2058,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.OrFlag == T_Or.OrFlag &&
                                    t1.OrStateFlag == T_Or.OrStateFlag &&
                                   (t1.OrHidden.Contains(T_Or.OrHidden) ||
-                                   t1.OrHidden == null)
+                                   t1.OrHidden == null) &&
+                                   t1.ClCharge.Contains(T_Or.ClCharge)
                              select new
                              {
                                  t1.OrID,
