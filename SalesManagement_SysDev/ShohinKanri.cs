@@ -41,6 +41,8 @@ namespace SalesManagement_SysDev
         internal static int PoID = 0;
         internal static string Logindate = "";
 
+        int ClickFlg = -1;
+
         public ShohinKanri()
         {
 
@@ -274,7 +276,7 @@ namespace SalesManagement_SysDev
             ShohinKanriDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             //行の高さ設定
-            ShohinKanriDgv.RowTemplate.Height = 40;
+            //ShohinKanriDgv.RowTemplate.Height = 40;
 
             //各列の文字位置の指定
             ShohinKanriDgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -295,6 +297,8 @@ namespace SalesManagement_SysDev
             {
                 return;
             }
+
+            ClickFlg = 0;
 
             ShohinIDTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
             ShohinNameTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
@@ -326,29 +330,31 @@ namespace SalesManagement_SysDev
                 HihyojiTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[11].Value.ToString();
             }
 
-            ShoubunruiCmb.Items.Clear();
-            DaibunruiCmb.Items.Clear();
+            //ShoubunruiCmb.Items.Clear();
+            //DaibunruiCmb.Items.Clear();
 
-            ///小分類を取得
-            var ScName = SmallClassificationDA.GetScName();
+            /////小分類を取得
+            //var ScName = SmallClassificationDA.GetScName();
 
-            //小分類をコンボボックスに追加
-            foreach (string Scname in ScName.Reverse())
-            {
-                ShoubunruiCmb.Items.Add(Scname);
-            }
+            ////小分類をコンボボックスに追加
+            //foreach (string Scname in ScName.Reverse())
+            //{
+            //    ShoubunruiCmb.Items.Add(Scname);
+            //}
 
-            //大分類名を取得
-            var McName = MajorClassificationDA.GetMcName();
+            ////大分類名を取得
+            //var McName = MajorClassificationDA.GetMcName();
 
-            //大分類名をコンボボックスに追加
-            foreach (string Mcname in McName.Reverse())
-            {
-                DaibunruiCmb.Items.Add(Mcname);
-            }
+            ////大分類名をコンボボックスに追加
+            //foreach (string Mcname in McName.Reverse())
+            //{
+            //    DaibunruiCmb.Items.Add(Mcname);
+            //}
 
             UpdateBtn.Enabled = true;
             HiddenBtn.Enabled = true;
+
+            ClickFlg = -1;
         }
 
         //登録ボタンクリック
@@ -1005,64 +1011,69 @@ namespace SalesManagement_SysDev
 
         private void ShohinKanriDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            ShohinIDTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
-            ShohinNameTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
-            MakerNameCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
-            KakakuTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
-            AnzenTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
-            DaibunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
-            ShoubunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
-            KatabanTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
-            IroTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
-            SellDtm.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[9].Value.ToString();
+            //ShohinIDTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
+            //ShohinNameTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
+            //MakerNameCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
+            //KakakuTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
+            //AnzenTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
+            //DaibunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
+            //ShoubunruiCmb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[6].Value.ToString();
+            //KatabanTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[7].Value.ToString();
+            //IroTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[8].Value.ToString();
+            //SellDtm.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[9].Value.ToString();
 
-            //商品管理フラグを日本語に変換
-            if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value == 0)
-            {
-                ShohinKanriCmb.Text = "表示";
-            }
-            else if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value == 2)
-            {
-                ShohinKanriCmb.Text = "非表示";
-            }
+            ////商品管理フラグを日本語に変換
+            //if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value == 0)
+            //{
+            //    ShohinKanriCmb.Text = "表示";
+            //}
+            //else if ((int)ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[10].Value == 2)
+            //{
+            //    ShohinKanriCmb.Text = "非表示";
+            //}
 
-            if (ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[11].Value == null)
-            {
-                HihyojiTxb.Text = "";
-            }
-            else
-            {
-                HihyojiTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[11].Value.ToString();
-            }
+            //if (ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[11].Value == null)
+            //{
+            //    HihyojiTxb.Text = "";
+            //}
+            //else
+            //{
+            //    HihyojiTxb.Text = ShohinKanriDgv.Rows[ShohinKanriDgv.CurrentRow.Index].Cells[11].Value.ToString();
+            //}
 
-            ShoubunruiCmb.Items.Clear();
-            DaibunruiCmb.Items.Clear();
+            //ShoubunruiCmb.Items.Clear();
+            //DaibunruiCmb.Items.Clear();
 
-            ///小分類を取得
-            var ScName = SmallClassificationDA.GetScName();
+            /////小分類を取得
+            //var ScName = SmallClassificationDA.GetScName();
 
-            //小分類をコンボボックスに追加
-            foreach (string Scname in ScName.Reverse())
-            {
-                ShoubunruiCmb.Items.Add(Scname);
-            }
+            ////小分類をコンボボックスに追加
+            //foreach (string Scname in ScName.Reverse())
+            //{
+            //    ShoubunruiCmb.Items.Add(Scname);
+            //}
 
-            //大分類名を取得
-            var McName = MajorClassificationDA.GetMcName();
+            ////大分類名を取得
+            //var McName = MajorClassificationDA.GetMcName();
 
-            //大分類名をコンボボックスに追加
-            foreach (string Mcname in McName.Reverse())
-            {
-                DaibunruiCmb.Items.Add(Mcname);
-            }
+            ////大分類名をコンボボックスに追加
+            //foreach (string Mcname in McName.Reverse())
+            //{
+            //    DaibunruiCmb.Items.Add(Mcname);
+            //}
 
-            UpdateBtn.Enabled = true;
-            HiddenBtn.Enabled = true;
+            //UpdateBtn.Enabled = true;
+            //HiddenBtn.Enabled = true;
         }
 
 
         private void DaibunruiCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(ClickFlg == 0)
+            {
+                return;
+            }
+
             if(ShoubunruiCmb.Text == "")
             {
                 int mcID = SmallClassificationDA.GetMcID(DaibunruiCmb.Text);
@@ -1114,7 +1125,12 @@ namespace SalesManagement_SysDev
 
         private void ShoubunruiCmb_TextChanged(object sender, EventArgs e)
         {
-            if(DaibunruiCmb.Text == "")
+            if (ClickFlg == 0)
+            {
+                return;
+            }
+
+            if (DaibunruiCmb.Text == "")
             {
                 string McName = SmallClassificationDA.GetMcName(ShoubunruiCmb.Text);
                 DaibunruiCmb.Text = McName;
