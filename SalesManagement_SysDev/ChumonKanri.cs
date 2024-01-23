@@ -442,9 +442,9 @@ namespace SalesManagement_SysDev
         private T_Chumon SetChSearchData()
         {
             int chid = -1;
-            int soid = 0;
-            int emid = 0;
-            int clid = 0;
+            int soid = -1;
+            int emid = -1;
+            int clid = -1;
             int orid = -1;
             DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
             int chsflg = -1;
@@ -480,28 +480,22 @@ namespace SalesManagement_SysDev
                 date = ChumonnengappiDtm.Value.Date;
             }
 
-            if(ChumonjyoutaiFlaguCmb.Text != "")
+            if (ChumonjyoutaiFlaguCmb.Text == "処理確定")
             {
-                if (ChumonjyoutaiFlaguCmb.Text == "処理受付")
-                {
-                    chsflg = 0;
-                }
-                else
-                {
-                    chsflg = 1;
-                }
+                chsflg = 1;
+            }
+            else
+            {
+                chsflg = 0;
             }
             
-            if(ChumonKanriFlagCmb.Text != "")
+            if (ChumonKanriFlagCmb.Text == "非表示")
             {
-                if (ChumonKanriFlagCmb.Text == "表示")
-                {
-                    chflg = 0;
-                }
-                else
-                {
-                    chflg = 2;
-                }
+                chflg = 2;
+            }
+            else
+            {
+                chflg = 0;
             }
 
             T_Chumon T_Ch = new T_Chumon()
@@ -524,7 +518,7 @@ namespace SalesManagement_SysDev
         {
             //int chdid = 0;
             int chid = -1;
-            int prid = 0;
+            int prid = -1;
 
             if(ChumonIDTxb.Text != "")
             {

@@ -153,6 +153,8 @@ namespace SalesManagement_SysDev
             HihyojiTxb.Text = "";
             ShainNameLbl.Text = "--";
             KokyakuNameLbl.Text = "--";
+            JuchuDateDtm.Value = DateTime.Now.Date;
+            JuchuDateDtm.Checked = false;
 
             //営業所名を取得
             var SoName = SalesOfficeDA.GetSoName();
@@ -452,7 +454,6 @@ namespace SalesManagement_SysDev
                 }
                 else
                 {
-
                     //入力チェック
                     if (!InputRegistOrderDataCheck())
                     {
@@ -486,7 +487,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private bool InputRegistOrderDataCheck()
         {
-            //受注IDの入力チェック
+            ////受注IDの入力チェック
             //if (!InputCheck.CheckRegistOrID(JuchuIDTxb.Text).flg)
             //{
             //    MessageDsp.DspMsg(InputCheck.CheckRegistOrID(JuchuIDTxb.Text).Msg);
@@ -494,13 +495,13 @@ namespace SalesManagement_SysDev
             //}
 
             //発売日の入力チェック
-            //if (!JuchuDateDtm.Checked)
-            //{
-            //    MessageDsp.DspMsg("M6010");
-            //    return false;
-            //}
+            if (!JuchuDateDtm.Checked)
+            {
+                MessageDsp.DspMsg("M6010");
+                return false;
+            }
 
-            //社員IDの入力チェック
+            ////社員IDの入力チェック
             //if (!InputCheck.CheckRegistOrderEmID(ShainIDTxb.Text).flg)
             //{
             //    MessageDsp.DspMsg(InputCheck.CheckRegistOrderEmID(ShainIDTxb.Text).Msg);
@@ -806,15 +807,15 @@ namespace SalesManagement_SysDev
                 }
             }
 
-            //営業所名の入力チェック
-            if (EigyoushoNameCmb.Text != "")
-            {
-                if (!InputCheck.CheckSoNameCmb(EigyoushoNameCmb.Text).flg)
-                {
-                    MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoushoNameCmb.Text).Msg);
-                    return false;
-                }
-            }
+            ////営業所名の入力チェック
+            //if (EigyoushoNameCmb.Text != "")
+            //{
+            //    if (!InputCheck.CheckSoNameCmb(EigyoushoNameCmb.Text).flg)
+            //    {
+            //        MessageDsp.DspMsg(InputCheck.CheckSoNameCmb(EigyoushoNameCmb.Text).Msg);
+            //        return false;
+            //    }
+            //}
 
             //受注詳細IDの入力チェック
             if (JuchuDetailIDTxb.Text != "")
@@ -836,25 +837,25 @@ namespace SalesManagement_SysDev
                 }
             }
 
-            //数量の入力チェック
-            if (SuryoTxb.Text != "")
-            {
-                if (!InputCheck.CheckRegistSuryo(SuryoTxb.Text).flg)
-                {
-                    MessageDsp.DspMsg(InputCheck.CheckRegistSuryo(SuryoTxb.Text).Msg);
-                    return false;
-                }
-            }
+            ////数量の入力チェック
+            //if (SuryoTxb.Text != "")
+            //{
+            //    if (!InputCheck.CheckRegistSuryo(SuryoTxb.Text).flg)
+            //    {
+            //        MessageDsp.DspMsg(InputCheck.CheckRegistSuryo(SuryoTxb.Text).Msg);
+            //        return false;
+            //    }
+            //}
 
-            //合計金額の入力チェック
-            if (GokeiKingakuTxb.Text != "")
-            {
-                if (!InputCheck.CheckRegistGokeiKingaku(GokeiKingakuTxb.Text).flg)
-                {
-                    MessageDsp.DspMsg(InputCheck.CheckRegistGokeiKingaku(GokeiKingakuTxb.Text).Msg);
-                    return false;
-                }
-            }
+            ////合計金額の入力チェック
+            //if (GokeiKingakuTxb.Text != "")
+            //{
+            //    if (!InputCheck.CheckRegistGokeiKingaku(GokeiKingakuTxb.Text).flg)
+            //    {
+            //        MessageDsp.DspMsg(InputCheck.CheckRegistGokeiKingaku(GokeiKingakuTxb.Text).Msg);
+            //        return false;
+            //    }
+            //}
 
             return true;
         }
