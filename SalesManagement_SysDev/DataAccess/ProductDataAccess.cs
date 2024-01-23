@@ -414,7 +414,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //商品ID入力、商品管理フラグ選択
+            /*//商品ID入力、商品管理フラグ選択
             else if (regProduct.PrID != -1 && regProduct.PrFlag != -1)
             {
                 try
@@ -589,7 +589,7 @@ namespace SalesManagement_SysDev.DataAccess
                 {
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
+            }*/
             // 商品名が選択された場合
             else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID != 0 &&
                 regMajorClassification.McID == -1 && string.IsNullOrEmpty(regProduct.PrModelNumber) && regProduct.PrSafetyStock == 0 && regProduct.Price == 0)
@@ -605,7 +605,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t3.McID equals t4.McID
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 && 
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -664,7 +665,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t3.McID equals t4.McID
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                     t1.PrFlag == regProduct.PrFlag
+                                     t1.PrFlag == regProduct.PrFlag &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -723,7 +725,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                    t1.PrFlag == 0
+                                    t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -782,7 +785,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t2.MaID == regProduct.MaID &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -839,7 +843,8 @@ namespace SalesManagement_SysDev.DataAccess
                              join t4 in context.M_MajorCassifications on t3.McID equals t4.McID
                              where t2.MaID == regProduct.MaID &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -896,7 +901,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t2.MaID == regProduct.MaID &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -954,7 +960,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t2.MaID == regProduct.MaID &&
                                     t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1014,7 +1021,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                   (t1.PrHidden.Contains(regProduct.PrHidden) ||
                                   t1.PrHidden == null) &&
-                                  t1.PrFlag == regProduct.PrFlag
+                                  t1.PrFlag == regProduct.PrFlag &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -1076,7 +1084,8 @@ namespace SalesManagement_SysDev.DataAccess
                                   t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                   (t1.PrHidden.Contains(regProduct.PrHidden) ||
                                   t1.PrHidden == null) &&
-                                  t1.PrFlag == 0
+                                  t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -1138,7 +1147,8 @@ namespace SalesManagement_SysDev.DataAccess
                                   t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                   (t1.PrHidden.Contains(regProduct.PrHidden) ||
                                   t1.PrHidden == null) &&
-                                  t1.PrFlag == regProduct.PrFlag
+                                  t1.PrFlag == regProduct.PrFlag &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -1200,7 +1210,8 @@ namespace SalesManagement_SysDev.DataAccess
                                   t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                   (t1.PrHidden.Contains(regProduct.PrHidden) ||
                                   t1.PrHidden == null) &&
-                                  t1.PrFlag == 0
+                                  t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -1259,7 +1270,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t1.Price == regProduct.Price &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1317,7 +1329,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t1.Price == regProduct.Price &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == regProduct.PrFlag
+                                   t1.PrFlag == regProduct.PrFlag &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1376,7 +1389,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                    t1.Price == regProduct.Price &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1435,7 +1449,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t2.MaID == regProduct.MaID &&
                                    t1.Price == regProduct.Price &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1493,7 +1508,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t1.PrSafetyStock == regProduct.PrSafetyStock &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1551,7 +1567,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t1.PrSafetyStock == regProduct.PrSafetyStock &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == regProduct.PrFlag
+                                   t1.PrFlag == regProduct.PrFlag &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1610,7 +1627,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.PrSafetyStock == regProduct.PrSafetyStock &&
                                    t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1669,7 +1687,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t2.MaID == regProduct.MaID &&
                                    t1.PrSafetyStock == regProduct.PrSafetyStock &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1726,7 +1745,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t3.McID equals t4.McID
                              where t1.PrModelNumber == regProduct.PrModelNumber &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1782,7 +1802,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t3.McID equals t4.McID
                              where t1.PrModelNumber == regProduct.PrModelNumber &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == regProduct.PrFlag
+                                   t1.PrFlag == regProduct.PrFlag &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1840,7 +1861,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrModelNumber == regProduct.PrModelNumber &&
                                    t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1898,7 +1920,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrModelNumber == regProduct.PrModelNumber &&
                                    t2.MaID == regProduct.MaID &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -1955,7 +1978,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t3.McID equals t4.McID
                              where t1.PrColor == regProduct.PrColor &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -2012,7 +2036,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t3.McID equals t4.McID
                              where t1.PrColor == regProduct.PrColor &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == regProduct.PrFlag
+                                   t1.PrFlag == regProduct.PrFlag &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -2070,7 +2095,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrColor == regProduct.PrColor &&
                                    t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -2128,7 +2154,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrColor == regProduct.PrColor &&
                                    t2.MaID == regProduct.MaID &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
                              select new
                              {
                                  t1.PrID,
@@ -2185,7 +2212,8 @@ namespace SalesManagement_SysDev.DataAccess
                                  where t1.PrName.Contains(regProduct.PrName) &&
                                        t4.McID == regMajorClassification.McID &&
                                        (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                       t1.PrFlag == 0
+                                       t1.PrFlag == 0 &&
+                                       t1.PrColor.Contains(regProduct.PrColor)
 
                                  select new
                                  {
@@ -2242,7 +2270,8 @@ namespace SalesManagement_SysDev.DataAccess
                                  where t1.PrName.Contains(regProduct.PrName) &&
                                        t4.McID == regMajorClassification.McID &&
                                        (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                       t1.PrFlag == regProduct.PrFlag
+                                       t1.PrFlag == regProduct.PrFlag &&
+                                       t1.PrColor.Contains(regProduct.PrColor)
 
                                  select new
                                  {
@@ -2300,7 +2329,8 @@ namespace SalesManagement_SysDev.DataAccess
                                        t4.McID == regMajorClassification.McID &&
                                        t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                        (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                       t1.PrFlag == 0
+                                       t1.PrFlag == 0 &&
+                                       t1.PrColor.Contains(regProduct.PrColor)
 
                                  select new
                                  {
@@ -2358,7 +2388,8 @@ namespace SalesManagement_SysDev.DataAccess
                                  where t2.MaID == regProduct.MaID &&
                                        t4.McID == regMajorClassification.McID && 
                                        (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                       t1.PrFlag == 0
+                                       t1.PrFlag == 0 &&
+                                       t1.PrColor.Contains(regProduct.PrColor)
 
                                  select new
                                  {
@@ -2417,7 +2448,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t3.ScID == regProduct.ScID &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -2477,7 +2509,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t3.ScID == regProduct.ScID &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == regProduct.PrFlag
+                                   t1.PrFlag == regProduct.PrFlag &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -2538,7 +2571,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t3.ScID == regProduct.ScID &&
                                    t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -2598,7 +2632,8 @@ namespace SalesManagement_SysDev.DataAccess
                              where t2.MaID == regProduct.MaID &&
                                    t3.ScID == regProduct.ScID &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -2657,7 +2692,8 @@ namespace SalesManagement_SysDev.DataAccess
                                        t4.McID == regMajorClassification.McID &&
                                        t3.ScID == regProduct.ScID &&
                                        (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                       t1.PrFlag == 0
+                                       t1.PrFlag == 0 &&
+                                       t1.PrColor.Contains(regProduct.PrColor)
 
                                  select new
                                  {
@@ -2715,7 +2751,8 @@ namespace SalesManagement_SysDev.DataAccess
                                        t4.McID == regMajorClassification.McID &&
                                        t3.ScID == regProduct.ScID &&
                                        (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                       t1.PrFlag == regProduct.PrFlag
+                                       t1.PrFlag == regProduct.PrFlag &&
+                                       t1.PrColor.Contains(regProduct.PrColor)
 
                                  select new
                                  {
@@ -2777,7 +2814,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    (t1.PrName.Contains(regProduct.PrName) ||
                                    t1.MaID == regProduct.MaID &&
                                    t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
+                                   t1.PrFlag == 0 &&
+                                   t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
@@ -2837,7 +2875,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t3.McID equals t4.McID
                              where t1.PrFlag == 0 &&
                                     (t1.PrHidden.Contains(regProduct.PrHidden) ||
-                                    t1.PrHidden == null)
+                                    t1.PrHidden == null) &&
+                                    t1.PrColor.Contains(regProduct.PrColor)
 
                              select new
                              {
