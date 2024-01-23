@@ -684,7 +684,7 @@ namespace SalesManagement_SysDev
 
                         //データグリッドビューの設定
                         SetFormJuchuKanriGridView();
-                        SetFormJuchuKanriDetailGridView();
+                        //SetFormJuchuKanriDetailGridView();
                     }
                     else
                     {
@@ -758,7 +758,7 @@ namespace SalesManagement_SysDev
 
             var ordseadate = SetOrderSearchData();
 
-            var ordseadetdate = SetOrderDetaiSearchlData();
+            var ordseadetdate = SetOrderDetailSearchlData();
 
             SearchOrder(ordseadate, ordseadetdate);
 
@@ -944,7 +944,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：T_OrderDetail
         //機　能   ：受注詳細情報を形式化する
         ///////////////////////////////
-        private T_OrderDetail SetOrderDetaiSearchlData()
+        private T_OrderDetail SetOrderDetailSearchlData()
         {
             int ordetailid = -1;
             int orid = -1;
@@ -1121,7 +1121,7 @@ namespace SalesManagement_SysDev
             return T_Or;
         }
 
-        private bool RegistChumon()
+        private bool RegistOrder()
         {
             var NeedData = OrderDA.GetChumonNeedData(int.Parse(JuchuIDTxb.Text));
 
@@ -1147,7 +1147,7 @@ namespace SalesManagement_SysDev
             return true;
         }
 
-        private bool RegistChumonDetail()
+        private bool RegistOrderDetail()
         {
             var NeedData = OrderDA.GetNeedData(int.Parse(JuchuIDTxb.Text));
             int OrID = int.Parse(JuchuIDTxb.Text);
@@ -1174,9 +1174,7 @@ namespace SalesManagement_SysDev
         {
             if (DialogResult.OK == MessageDsp.DspMsg("M6031"))
             {
-                if (OrderDA.ConfirmOrderDate(T_Or)
-                    &&RegistChumon() 
-                && RegistChumonDetail())
+                if (OrderDA.ConfirmOrderDate(T_Or)&&RegistOrder() && RegistOrderDetail())
                 {
                     MessageDsp.DspMsg("M6032");
 

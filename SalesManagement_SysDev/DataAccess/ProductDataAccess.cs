@@ -360,29 +360,23 @@ namespace SalesManagement_SysDev.DataAccess
             List<M_ProductDsp> pro = new List<M_ProductDsp>();
             DateTime nulldate = DateTime.ParseExact("00010101", "yyyymmdd", null);
 
-            //商品ID入力
-            if (regProduct.PrID != - 1 && regProduct.PrFlag == -1)
+            // 商品IDが選択された場合
+            if (regProduct.PrID != -1 && regProduct.PrFlag == -1)
             {
-
                 try
                 {
-                    MessageBox.Show("商品ID入力");
                     var context = new SalesManagement_DevContext();
                     var tb = from t1 in context.M_Products
-                             join t2 in context.M_Makers
-                             on t1.MaID equals t2.MaID
-                             join t3 in context.M_SmallClassifications
-                             on t1.ScID equals t3.ScID
-                             join t4 in context.M_MajorCassifications 
-                             on t3.McID equals t4.McID
+                             join t2 in context.M_Makers on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                             join t4 in context.M_MajorCassifications on t3.McID equals t4.McID
                              where t1.PrID == regProduct.PrID &&
                                    t1.PrFlag == 0
-
                              select new
                              {
                                  t1.PrID,
-                                 t2.MaName,
                                  t1.PrName,
+                                 t2.MaName,
                                  t4.McName,
                                  t3.ScName,
                                  t1.Price,
@@ -394,17 +388,18 @@ namespace SalesManagement_SysDev.DataAccess
                                  t1.PrHidden
                              };
 
+                    // IEnumerable型のデータをList型へ
                     foreach (var p in tb)
                     {
                         pro.Add(new M_ProductDsp()
                         {
                             PrID = p.PrID,
-                            MaName = "あ",
+                            MaName = p.MaName,
                             PrName = p.PrName,
-                            McName = p.McName,
-                            ScName = p.ScName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
+                            McName = p.McName,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -420,11 +415,10 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //商品ID入力、商品管理フラグ選択
-            if (regProduct.PrID != -1 && regProduct.PrFlag != -1)
+            else if (regProduct.PrID != -1 && regProduct.PrFlag != -1)
             {
                 try
                 {
-                    MessageBox.Show("商品ID入力、商品管理フラグ選択");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -479,11 +473,10 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //商品IDと発売日を入力
-            if (regProduct.PrID != -1 && regProduct.PrFlag == -1　&& regProduct.PrReleaseDate != nulldate)
+            else if (regProduct.PrID != -1 && regProduct.PrFlag == -1　&& regProduct.PrReleaseDate != nulldate)
             {
                 try
                 {
-                    MessageBox.Show("商品IDと発売日を入力");
                     var context = new SalesManagement_DevContext();
                     var tb = from t1 in context.M_Products
                              join t2 in context.M_Makers
@@ -539,11 +532,10 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //商品IDとメーカ名を入力
-            if (regProduct.PrID != -1 && regProduct.PrFlag == -1　&& regProduct.MaID != 0)
+            else if (regProduct.PrID != -1 && regProduct.PrFlag == -1　&& regProduct.MaID != 0)
             {
                 try
                 {
-                    MessageBox.Show("商品IDとメーカ名を入力");
                     var context = new SalesManagement_DevContext();
                     var tb = from t1 in context.M_Products
                              join t2 in context.M_Makers
@@ -598,75 +590,22 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            ///商品名が選択された場合
-            //else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID != 0)
-            //{
-            //    try
-            //    {
-            //        MessageBox.Show("商品名が選択された場合");
-            //        var context = new SalesManagement_DevContext();
-            //        // tbはIEnumerable型
-            //        var tb = from t1 in context.M_Products
-            //                 join t2 in context.M_Makers on t1.MaID equals t2.MaID
-            //                 join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
-            //                 where t1.PrName.Contains(regProduct.PrName) &&
-            //                       (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-            //                       t1.PrFlag == 0
-
-            //                 select new
-            //                 {
-            //                     t1.PrID,
-            //                     t2.MaName,
-            //                     t1.PrName,
-            //                     t3.ScName,
-            //                     t1.Price,
-            //                     t1.PrSafetyStock,
-            //                     t1.PrModelNumber,
-            //                     t1.PrColor,
-            //                     t1.PrReleaseDate,
-            //                     t1.PrFlag,
-            //                     t1.PrHidden
-            //                 };
-
-            //        // IEnumerable型のデータをList型へ
-            //        foreach (var p in tb)
-            //        {
-            //            pro.Add(new M_ProductDsp()
-            //            {
-            //                PrID = p.PrID,
-            //                MaName = p.MaName,
-            //                PrName = p.PrName,
-            //                ScName = p.ScName,
-            //                Price = p.Price,
-            //                PrSafetyStock = p.PrSafetyStock,
-            //                PrModelNumber = p.PrModelNumber,
-            //                PrColor = p.PrColor,
-            //                PrReleaseDate = p.PrReleaseDate,
-            //                PrFlag = p.PrFlag,
-            //                PrHidden = p.PrHidden
-            //            });
-            //        }
-            //        context.Dispose();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
-            // 商品名と商品管理フラグが選択された場合
-            else if (regProduct.MaID == 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID != 0)
+            // 商品名が選択された場合
+            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID != 0 &&
+                regMajorClassification.McID == -1 && string.IsNullOrEmpty(regProduct.PrModelNumber) && regProduct.PrSafetyStock == 0 && regProduct.Price == 0)
             {
                 try
                 {
-                    MessageBox.Show("商品名と商品管理フラグが選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
                              join t2 in context.M_Makers on t1.MaID equals t2.MaID
                              join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                             join t4 in context.M_MajorCassifications
+                             on t3.McID equals t4.McID
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                     t1.PrFlag == regProduct.PrFlag
+                                   t1.PrFlag == 0
 
                              select new
                              {
@@ -674,6 +613,7 @@ namespace SalesManagement_SysDev.DataAccess
                                  t2.MaName,
                                  t1.PrName,
                                  t3.ScName,
+                                 t4.McName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -691,9 +631,69 @@ namespace SalesManagement_SysDev.DataAccess
                             PrID = p.PrID,
                             MaName = p.MaName,
                             PrName = p.PrName,
-                            ScName = p.ScName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
+                            McName = p.McName,
+                            ScName = p.ScName,
+                            PrModelNumber = p.PrModelNumber,
+                            PrColor = p.PrColor,
+                            PrReleaseDate = p.PrReleaseDate,
+                            PrFlag = p.PrFlag,
+                            PrHidden = p.PrHidden
+                        });
+                    }
+                    context.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            // 商品名と商品管理フラグが選択された場合
+            else if (regProduct.MaID == 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID != 0 && regProduct.ScID == 0 && regMajorClassification.McID == 0 &&
+                string.IsNullOrEmpty(regProduct.PrModelNumber) && regProduct.PrSafetyStock == 0 && regProduct.Price == 0)
+            {
+                try
+                {
+                    var context = new SalesManagement_DevContext();
+                    // tbはIEnumerable型
+                    var tb = from t1 in context.M_Products
+                             join t2 in context.M_Makers on t1.MaID equals t2.MaID
+                             join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                             join t4 in context.M_MajorCassifications
+                             on t3.McID equals t4.McID
+                             where t1.PrName.Contains(regProduct.PrName) &&
+                                   (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
+                                     t1.PrFlag == regProduct.PrFlag
+
+                             select new
+                             {
+                                 t1.PrID,
+                                 t2.MaName,
+                                 t1.PrName,
+                                 t3.ScName,
+                                 t4.McName,
+                                 t1.Price,
+                                 t1.PrSafetyStock,
+                                 t1.PrModelNumber,
+                                 t1.PrColor,
+                                 t1.PrReleaseDate,
+                                 t1.PrFlag,
+                                 t1.PrHidden
+                             };
+
+                    // IEnumerable型のデータをList型へ
+                    foreach (var p in tb)
+                    {
+                        pro.Add(new M_ProductDsp()
+                        {
+                            PrID = p.PrID,
+                            MaName = p.MaName,
+                            PrName = p.PrName,
+                            Price = p.Price,
+                            PrSafetyStock = p.PrSafetyStock,
+                            McName = p.McName,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -709,16 +709,17 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             // 商品名と発売日が選択された場合
-            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate != nulldate && regProduct.PrID != 0)
+            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate != nulldate && regProduct.PrID != 0 &&  string.IsNullOrEmpty(regProduct.PrModelNumber) && regProduct.PrSafetyStock == 0 && regProduct.Price == 0)
             {
                 try
                 {
-                    MessageBox.Show("商品名と発売日が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
                              join t2 in context.M_Makers on t1.MaID equals t2.MaID
                              join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                             join t4 in context.M_MajorCassifications
+                             on t3.McID equals t4.McID
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t1.PrReleaseDate == regProduct.PrReleaseDate &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
@@ -730,6 +731,7 @@ namespace SalesManagement_SysDev.DataAccess
                                  t2.MaName,
                                  t1.PrName,
                                  t3.ScName,
+                                 t4.McName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -747,9 +749,10 @@ namespace SalesManagement_SysDev.DataAccess
                             PrID = p.PrID,
                             MaName = p.MaName,
                             PrName = p.PrName,
-                            ScName = p.ScName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
+                            McName = p.McName,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -765,16 +768,17 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             // 商品名とメーカ名が選択された場合
-            else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID != -1)
+            else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID != -1 && string.IsNullOrEmpty(regProduct.PrModelNumber) && regProduct.PrSafetyStock == 0 && regProduct.Price == 0)
             {
                 try
                 {
-                    MessageBox.Show("商品名とメーカ名が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
                              join t2 in context.M_Makers on t1.MaID equals t2.MaID
                              join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                             join t4 in context.M_MajorCassifications
+                             on t3.McID equals t4.McID
                              where t1.PrName.Contains(regProduct.PrName) &&
                                    t2.MaID == regProduct.MaID &&
                                    (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
@@ -786,6 +790,7 @@ namespace SalesManagement_SysDev.DataAccess
                                  t2.MaName,
                                  t1.PrName,
                                  t3.ScName,
+                                 t4.McName,
                                  t1.Price,
                                  t1.PrSafetyStock,
                                  t1.PrModelNumber,
@@ -803,9 +808,10 @@ namespace SalesManagement_SysDev.DataAccess
                             PrID = p.PrID,
                             MaName = p.MaName,
                             PrName = p.PrName,
-                            ScName = p.ScName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
+                            McName = p.McName,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -820,70 +826,11 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            /* メーカ名が選択された場合
-            else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID == 0)
-            {
-                try
-                {
-                    MessageBox.Show("メーカ名が選択された場合");
-                    var context = new SalesManagement_DevContext();
-                    // tbはIEnumerable型
-                    var tb = from t1 in context.M_Products
-                             join t2 in context.M_Makers on t1.MaID equals t2.MaID
-                             join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
-                             join t4 in context.M_MajorCassifications on t3.McID equals t4.McID
-                             where t1.PrName.Contains(regProduct.PrName) &&
-                                   t2.MaID == regProduct.MaID &&
-                                   (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
-                                   t1.PrFlag == 0
-                             select new
-                             {
-                                 t1.PrID,
-                                 t1.PrName,
-                                 t2.MaName,
-                                 t4.McName,
-                                 t3.ScName,
-                                 t1.Price,
-                                 t1.PrSafetyStock,
-                                 t1.PrModelNumber,
-                                 t1.PrColor,
-                                 t1.PrReleaseDate,
-                                 t1.PrFlag,
-                                 t1.PrHidden
-                             };
-
-                    // IEnumerable型のデータをList型へ
-                    foreach (var p in tb)
-                    {
-                        pro.Add(new M_ProductDsp()
-                        {
-                            PrID = p.PrID,
-                            MaName = p.MaName,
-                            PrName = p.PrName,
-                            McName = p.McName,
-                            ScName = p.ScName,
-                            Price = p.Price,
-                            PrSafetyStock = p.PrSafetyStock,
-                            PrModelNumber = p.PrModelNumber,
-                            PrColor = p.PrColor,
-                            PrReleaseDate = p.PrReleaseDate,
-                            PrFlag = p.PrFlag,
-                            PrHidden = p.PrHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }*/
             // メーカ名が選択された場合
             else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID == -1)
             {
                 try
                 {
-                    MessageBox.Show("メーカ名が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -917,10 +864,10 @@ namespace SalesManagement_SysDev.DataAccess
                             PrID = p.PrID,
                             MaName = p.MaName,
                             PrName = p.PrName,
-                            McName = p.McName,
-                            ScName = p.ScName,
                             Price = p.Price,
                             PrSafetyStock = p.PrSafetyStock,
+                            McName = p.McName,
+                            ScName = p.ScName,
                             PrModelNumber = p.PrModelNumber,
                             PrColor = p.PrColor,
                             PrReleaseDate = p.PrReleaseDate,
@@ -936,11 +883,10 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             // メーカ名と商品管理フラグが選択された場合
-            else if (regProduct.MaID != 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID == 0)
+            else if (regProduct.MaID != 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate == nulldate && regProduct.PrID == 0 && regMajorClassification.McID == 0 && regProduct.ScID == 0)
             {
                 try
                 {
-                    MessageBox.Show("メーカ名と商品管理フラグが選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -997,8 +943,7 @@ namespace SalesManagement_SysDev.DataAccess
             else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate != nulldate && regProduct.PrID == 0)
             {
                 try
-                {
-                    MessageBox.Show("メーカ名と発売日が選択された場合");
+                { 
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1057,7 +1002,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("商品管理フラグのみ選択");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1119,7 +1063,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("発売日のみ選択");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1182,7 +1125,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("発売日と商品管理フラグを選択");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1245,7 +1187,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("発売日とメーカ名を選択");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1308,7 +1249,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("価格のみが選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1367,7 +1307,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("価格と商品管理フラグが選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1426,7 +1365,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("価格と発売日が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1486,7 +1424,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("価格とメーカ名が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1546,7 +1483,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("安全在庫数のみが選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1605,7 +1541,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("安全在庫数と商品管理フラグが選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1664,7 +1599,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("安全在庫数と発売日が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1724,7 +1658,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("安全在庫数とメーカ名が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1784,7 +1717,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("型番のみが選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1842,9 +1774,7 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("型番と商品管理フラグが選択された場合");
                     var context = new SalesManagement_DevContext();
-                    // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
                              join t2 in context.M_Makers on t1.MaID equals t2.MaID
                              join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
@@ -1900,7 +1830,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("型番と発売日が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -1959,7 +1888,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("型番とメーカ名が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -2018,7 +1946,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("色のみが選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -2076,7 +2003,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("色と商品管理フラグが選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -2134,7 +2060,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("色と発売日が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -2193,7 +2118,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("色とメーカ名が選択された場合");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -2248,11 +2172,10 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //大分類名のみ選択された場合
-            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regMajorClassification.McID != 0)
+            else if (regProduct.PrID == -1 && regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regMajorClassification.McID != 0 && regProduct.ScID == 0)
             {
                 try
                 {
-                    MessageBox.Show("大分類名のみ選択された場合");
                     using (var context = new SalesManagement_DevContext())
                     {
                         var tb = from t1 in context.M_Products
@@ -2306,11 +2229,10 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //大分類名と商品管理フラグを選択する
-            else if (regProduct.MaID == 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate == nulldate && regMajorClassification.McID != 0)
+            else if (regProduct.MaID == 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate == nulldate && regMajorClassification.McID != 0 && regProduct.ScID == 0)
             {
                 try
                 {
-                    MessageBox.Show("大分類名と商品管理フラグを選択する");
                     using (var context = new SalesManagement_DevContext())
                     {
                         var tb = from t1 in context.M_Products
@@ -2364,11 +2286,10 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //大分類名と発売日を選択する
-            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate != nulldate && regMajorClassification.McID != 0)
+            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate != nulldate && regMajorClassification.McID != 0 && regProduct.ScID == 0)
             {
                 try
                 {
-                    MessageBox.Show("大分類名と発売日が選択された場合");
                     using (var context = new SalesManagement_DevContext())
                     {
                         var tb = from t1 in context.M_Products
@@ -2423,7 +2344,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //大分類名とメーカ名が選択された
-            else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regMajorClassification.McID != 0)
+            else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regMajorClassification.McID != 0 && regProduct.ScID == 0)
             {
                 try
                 {
@@ -2481,7 +2402,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             // 小分類名が選択された場合
-            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.ScID != 0)
+            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.ScID != 0 && regMajorClassification.McID == 0)
             {
                 try
                 {
@@ -2541,7 +2462,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             // 小分類名と商品管理フラグが選択された場合
-            else if (regProduct.MaID == 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate == nulldate && regProduct.ScID != 0)
+            else if (regProduct.MaID == 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate == nulldate && regProduct.ScID != 0 && regMajorClassification.McID == 0)
             {
                 try
                 {
@@ -2601,7 +2522,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             // 小分類名と発売日が選択された場合
-            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate != nulldate && regProduct.ScID != 0)
+            else if (regProduct.MaID == 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate != nulldate && regProduct.ScID != 0 && regMajorClassification.McID == 0)
             {
                 try
                 {
@@ -2662,7 +2583,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             // 小分類名とメーカ名が選択された場合
-            else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.ScID != 0)
+            else if (regProduct.MaID != 0 && regProduct.PrFlag == -1 && regProduct.PrReleaseDate == nulldate && regProduct.ScID != 0 && regMajorClassification.McID == 0)
             {
                 try
                 {
@@ -2726,7 +2647,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("大分類名と小分類名が選択された場合");
                     using (var context = new SalesManagement_DevContext())
                     {
                         var tb = from t1 in context.M_Products
@@ -2780,12 +2700,70 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            //大分類名と小分類名と商品管理フラグが選択された場合
+            else if (regProduct.MaID == 0 && regProduct.PrFlag != -1 && regProduct.PrReleaseDate == nulldate && regMajorClassification.McID != 0 && regProduct.ScID != 0)
+            {
+                try
+                {
+                    using (var context = new SalesManagement_DevContext())
+                    {
+                        var tb = from t1 in context.M_Products
+                                 join t2 in context.M_Makers on t1.MaID equals t2.MaID
+                                 join t3 in context.M_SmallClassifications on t1.ScID equals t3.ScID
+                                 join t4 in context.M_MajorCassifications on t3.McID equals t4.McID
+                                 where t1.PrName.Contains(regProduct.PrName) &&
+                                       t4.McID == regMajorClassification.McID &&
+                                       t3.ScID == regProduct.ScID &&
+                                       (t1.PrHidden.Contains(regProduct.PrHidden) || t1.PrHidden == null) &&
+                                       t1.PrFlag == regProduct.PrFlag
+
+                                 select new
+                                 {
+                                     t1.PrID,
+                                     t2.MaName,
+                                     t1.PrName,
+                                     t4.McName,
+                                     t3.ScName,
+                                     t1.Price,
+                                     t1.PrSafetyStock,
+                                     t1.PrModelNumber,
+                                     t1.PrColor,
+                                     t1.PrReleaseDate,
+                                     t1.PrFlag,
+                                     t1.PrHidden
+                                 };
+
+                        foreach (var p in tb)
+                        {
+                            pro.Add(new M_ProductDsp()
+                            {
+                                PrID = p.PrID,
+                                MaName = p.MaName,
+                                PrName = p.PrName,
+                                McName = p.McName,
+                                ScName = p.ScName,
+                                Price = p.Price,
+                                PrSafetyStock = p.PrSafetyStock,
+                                PrModelNumber = p.PrModelNumber,
+                                PrColor = p.PrColor,
+                                PrReleaseDate = p.PrReleaseDate,
+                                PrFlag = p.PrFlag,
+                                PrHidden = p.PrHidden
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
             //選択なし
             else if (regProduct.PrID == -1 && regProduct.PrFlag == -1)
             {
                 try
                 {
-                    MessageBox.Show("選択なし");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -2848,7 +2826,6 @@ namespace SalesManagement_SysDev.DataAccess
             {
                 try
                 {
-                    MessageBox.Show("すべて選択");
                     var context = new SalesManagement_DevContext();
                     // tbはIEnumerable型
                     var tb = from t1 in context.M_Products
@@ -2904,6 +2881,7 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
             return pro;
         }
 
