@@ -256,7 +256,7 @@ namespace SalesManagement_SysDev
             Productdsp = ProductDA.GetProductData();
 
             // DataGridViewに表示するデータを指定
-            SetDataGridView();
+            SetDataGridView(Productdsp);
         }
 
 
@@ -266,7 +266,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：データグリッドビューにデータを反映する
         ///////////////////////////////
-        private void SetDataGridView()
+        private void SetDataGridView(List<M_ProductDsp> Productdsp)
         {
             ShohinKanriDgv.DataSource = Productdsp.ToList();
 
@@ -681,7 +681,7 @@ namespace SalesManagement_SysDev
             var pro = SetProdactHideenData();
 
             //更新
-            HiddenEmployee(pro);
+            HiddenOrder(pro);
         }
 
         ///////////////////////////////
@@ -732,7 +732,7 @@ namespace SalesManagement_SysDev
         //戻り値   ：なし
         //機　能   ：形式化した社員情報を非表示設定に更新する
         ///////////////////////////////
-        private void HiddenEmployee(M_Product pro)
+        private void HiddenOrder(M_Product pro)
         {
             if (DialogResult.OK == MessageDsp.DspMsg("M2034"))
             {                
@@ -766,10 +766,10 @@ namespace SalesManagement_SysDev
         //検索ボタンクリック
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            /*if (!InputSearchDataCheck())
+            if (!InputSearchDataCheck())
             {
                 return;
-            }*/
+            }
 
             var searchdata = SetProductSearchData();
 
@@ -970,7 +970,7 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_MajorClassification SetMajorClassificatioData()
         {
-            int mcid = 0;
+            int mcid = -1;
 
             if (DaibunruiCmb.Text != "")
             {
@@ -1000,7 +1000,7 @@ namespace SalesManagement_SysDev
                 MessageDsp.DspMsg("M2025");
             }
 
-            SetDataGridView();
+            SetDataGridView(pro);
         }
 
         private void ShohinKanriDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
