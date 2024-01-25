@@ -177,7 +177,7 @@ namespace SalesManagement_SysDev.DataAccess
                          on t1.OrID equals t2.OrID
                          join t3 in context.M_Products
                          on t1.PrID equals t3.PrID
-                         where t1.OrDetailID == orid
+                         where t1.OrID == orid
                          select new
                          {
                              t1.PrID,
@@ -2216,6 +2216,25 @@ namespace SalesManagement_SysDev.DataAccess
             }
 
             return Order;
+        }
+
+        public int GetOrId()
+        {
+            int orid = -1;
+
+            try
+            {
+                var context = new SalesManagement_DevContext();
+                orid = (from t1 in context.T_Orders
+                        select t1.OrID).Max();
+                context.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return orid;
         }
     }
 }

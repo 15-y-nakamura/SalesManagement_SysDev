@@ -104,6 +104,7 @@ namespace SalesManagement_SysDev
             ShainKanriFlagCmb.Items.Clear();
             ShainKanriFlagCmb.DropDownStyle = ComboBoxStyle.DropDownList;
             HihyojiTxb.Text = "";
+            JoinDateDtm.Value = DateTime.Now.Date;
             JoinDateDtm.Checked = false;
 
             //役職名を取得
@@ -456,6 +457,7 @@ namespace SalesManagement_SysDev
             EigyoushoNameCmb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[2].Value.ToString();
             YakushokuNameCmb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[3].Value.ToString();
             JoinDateDtm.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[4].Value.ToString();
+            JoinDateDtm.Checked = true;
             TelTxb.Text = ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[5].Value.ToString();
             //社員管理フラグを日本語に変換
             if ((int)ShainKanriDgv.Rows[ShainKanriDgv.CurrentRow.Index].Cells[6].Value == 0)
@@ -711,10 +713,10 @@ namespace SalesManagement_SysDev
         ///////////////////////////////
         private M_Employee SetEmployeeSearchData()
         {
-            int poid = 0;
+            int poid = -1;
             int emid = -1;
-            int soid = 0;
-            int emflg = -1;
+            int soid = -1;
+            int emflg;
             DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
 
             if (ShainIDTxb.Text != "")
@@ -731,19 +733,16 @@ namespace SalesManagement_SysDev
             {
                 soid = SalesOfficeDA.GetSoID(EigyoushoNameCmb.Text);
             }
-            
 
-            if(ShainKanriFlagCmb.Text != "")
+            if (ShainKanriFlagCmb.Text == "非表示")
             {
-                if (ShainKanriFlagCmb.Text == "非表示")
-                {
-                    emflg = 2;
-                }
-                else
-                {
-                    emflg = 0;
-                }    
+                emflg = 2;
             }
+            else
+            {
+                emflg = 0;
+            }
+
             
             if (JoinDateDtm.Checked)
             {

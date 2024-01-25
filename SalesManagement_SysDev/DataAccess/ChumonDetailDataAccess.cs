@@ -1671,7 +1671,7 @@ namespace SalesManagement_SysDev.DataAccess
                          on t1.ChID equals t2.ChID
                          join t3 in context.M_Products
                          on t1.PrID equals t3.PrID
-                         where t1.ChDetailID == chid
+                         where t1.ChID == chid
                          select new
                          {
                              t1.PrID,
