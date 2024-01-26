@@ -222,55 +222,7 @@ namespace SalesManagement_SysDev.DataAccess
             DateTime nulldate = DateTime.ParseExact("00010101","yyyymmdd",null);
 
             //社員ID入力
-            if (regEmployee.EmID != -1 && regEmployee.EmFlag == -1)
-            {
-                try
-                {
-                    var context = new SalesManagement_DevContext();
-                    // tbはIEnumerable型
-                    var tb = from t1 in context.M_Employees
-                             join t2 in context.M_Positions
-                             on t1.PoID equals t2.PoID
-                             join t3 in context.M_SalesOffices
-                             on t1.SoID equals t3.SoID
-                             where t1.EmID == regEmployee.EmID &&
-                                   t1.EmFlag == 0
-                             select new
-                             {
-                                 t1.EmID,
-                                 t1.EmName,
-                                 t2.PoName,
-                                 t3.SoName,
-                                 t1.EmHiredate,
-                                 t1.EmPhone,
-                                 t1.EmFlag,
-                                 t1.EmHidden
-                             };
-
-                    // IEnumerable型のデータをList型へ
-                    foreach (var p in tb)
-                    {
-                        emp.Add(new M_EmployeeDsp()
-                        {
-                            EmID = p.EmID,
-                            EmName = p.EmName,
-                            PoName = p.PoName,
-                            SoName = p.SoName,
-                            EmPhone = p.EmPhone,
-                            EmHiredate = p.EmHiredate,
-                            EmFlag = p.EmFlag,
-                            EmHidden = p.EmHidden
-                        });
-                    }
-                    context.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            //社員ID入力、社員管理フラグ選択
-            else if (regEmployee.EmID != -1 && regEmployee.EmFlag != -1)
+            if (regEmployee.EmID != -1)
             {
                 try
                 {
@@ -318,7 +270,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //選択なし
-            else if (regEmployee.SoID == 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate == nulldate)
+            else if (regEmployee.SoID == -1 && regEmployee.PoID == -1 && regEmployee.EmHiredate == nulldate)
             {
                 try
                 {
@@ -333,7 +285,7 @@ namespace SalesManagement_SysDev.DataAccess
                                    (t1.EmHidden.Contains(regEmployee.EmHidden) ||
                                    t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone) &&
-                                   t1.EmFlag == 0
+                                   t1.EmFlag == regEmployee.EmFlag
                              select new
                              {
                                  t1.EmID,
@@ -369,7 +321,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //営業名選択
-            else if(regEmployee.SoID != 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate == nulldate)
+            else if(regEmployee.SoID != -1 && regEmployee.PoID == -1 && regEmployee.EmHiredate == nulldate)
             {
                 try
                 {
@@ -384,8 +336,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    (t1.EmHidden.Contains(regEmployee.EmHidden) ||
                                    t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone) &&
-                                   t1.SoID == (regEmployee.SoID) &&
-                                   t1.EmFlag == 0
+                                   t1.SoID == regEmployee.SoID &&
+                                   t1.EmFlag == regEmployee.EmFlag
                              select new
                              {
                                  t1.EmID,
@@ -420,8 +372,8 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //社員管理フラグ選択
-            else if(regEmployee.SoID == 0 && regEmployee.EmFlag != -1 && regEmployee.EmHiredate == nulldate)
+            //役職名選択
+            else if(regEmployee.SoID == -1 && regEmployee.PoID != -1 && regEmployee.EmHiredate == nulldate)
             {
                 try
                 {
@@ -436,7 +388,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    (t1.EmHidden.Contains(regEmployee.EmHidden) ||
                                    t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone)&&
-                                   t1.EmFlag == regEmployee.EmFlag 
+                                   t1.EmFlag == regEmployee.EmFlag &&
+                                   t1.SoID == regEmployee.SoID 
                              select new
                              {
                                  t1.EmID,
@@ -472,7 +425,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //入社年月日選択
-            else if(regEmployee.SoID == 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate != nulldate) 
+            else if(regEmployee.SoID == -1 && regEmployee.PoID == -1 && regEmployee.EmHiredate != nulldate) 
             {
                 try
                 {
@@ -488,7 +441,7 @@ namespace SalesManagement_SysDev.DataAccess
                                    (t1.EmHidden.Contains(regEmployee.EmHidden) || 
                                    t1.EmHidden == null) &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone) &&
-                                   t1.EmFlag == 0
+                                   t1.EmFlag == regEmployee.EmFlag
                              select new
                              {
                                  t1.EmID,
@@ -524,7 +477,7 @@ namespace SalesManagement_SysDev.DataAccess
                 }
             }
             //営業所名、入社年月日選択
-            else if (regEmployee.SoID != 0 && regEmployee.EmFlag == -1 && regEmployee.EmHiredate != nulldate)
+            else if (regEmployee.SoID != -1 && regEmployee.PoID == -1 && regEmployee.EmHiredate != nulldate)
             {
                 try
                 {
@@ -541,7 +494,7 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.EmHidden == null) &&
                                    t1.EmHiredate == regEmployee.EmHiredate &&
                                    t1.EmPhone.Contains(regEmployee.EmPhone) &&
-                                   t1.EmFlag == 0
+                                   t1.EmFlag == regEmployee.EmFlag
                              select new
                              {
                                  t1.EmID,
@@ -576,8 +529,8 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //社員管理フラグ、入社年月日選択
-            else if(regEmployee.SoID == 0 && regEmployee.EmFlag != -1 && regEmployee.EmHiredate != nulldate)
+            //役職名、入社年月日選択
+            else if (regEmployee.SoID == -1 && regEmployee.PoID != -1 && regEmployee.EmHiredate != nulldate)
             {
                 try
                 {
@@ -593,7 +546,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.EmHiredate == regEmployee.EmHiredate &&
                                    (t1.EmHidden.Contains(regEmployee.EmHidden) ||
                                    t1.EmHidden == null) &&
-                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                                   t1.EmPhone.Contains(regEmployee.EmPhone) &&
+                                   t1.PoID == regEmployee.PoID 
                              select new
                              {
                                  t1.EmID,
@@ -628,8 +582,8 @@ namespace SalesManagement_SysDev.DataAccess
                     MessageBox.Show(ex.Message, "例外エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //営業所名、社員管理フラグ選択
-            else if (regEmployee.SoID != 0 && regEmployee.EmFlag != -1 && regEmployee.EmHiredate == nulldate)
+            //営業所名、役職名選択
+            else if (regEmployee.SoID != -1 && regEmployee.PoID != -1 && regEmployee.EmHiredate == nulldate)
             {
                 try
                 {
@@ -645,7 +599,8 @@ namespace SalesManagement_SysDev.DataAccess
                                    t1.SoID == regEmployee.SoID &&
                                    (t1.EmHidden.Contains(regEmployee.EmHidden) ||
                                    t1.EmHidden == null) &&
-                                   t1.EmPhone.Contains(regEmployee.EmPhone)
+                                   t1.EmPhone.Contains(regEmployee.EmPhone) && 
+                                   t1.PoID == regEmployee.PoID
                              select new
                              {
                                  t1.EmID,
