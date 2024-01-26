@@ -1135,7 +1135,7 @@ namespace SalesManagement_SysDev
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
-        {
+        { 
             if (!ConfirmInputCheck())
             {
                 return;
@@ -1363,6 +1363,7 @@ namespace SalesManagement_SysDev
             var text = OrderDA.GetTxtData((int)JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[0].Value);
 
             JuchuIDTxb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[0].Value.ToString();
+            JuchuIDTxb.Enabled = false;
             EigyoushoNameCmb.Text = JuchuKanriDgv.Rows[JuchuKanriDgv.CurrentRow.Index].Cells[1].Value.ToString();
             ShainIDTxb.Text = text[1];
             KokyakuIDTxb.Text = text[2];
