@@ -875,19 +875,19 @@ namespace SalesManagement_SysDev
                 }
             }
 
-            //発売日の入力チェック
-            if(SellDtm.Checked == true)
-            {
-                DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
+            ////発売日の入力チェック
+            //if(SellDtm.Checked == true)
+            //{
+            //    DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
 
-                date = SellDtm.Value.Date;
+            //    date = SellDtm.Value.Date;
 
-                if (!ProductDA.SonzaiCheckPrReleaseDate(date))
-                {
-                    MessageBox.Show("M2025");
-                    return false;
-                }
-            }
+            //    //if (!ProductDA.SonzaiCheckPrReleaseDate(date))
+            //    //{
+            //    //    MessageBox.Show("M2025");
+            //    //    return false;
+            //    //}
+            //}
 
             return true;
         }
@@ -901,11 +901,11 @@ namespace SalesManagement_SysDev
         private M_Product SetProductSearchData()
         {
             int prid = -1;
-            int scid = 0;
-            int maid = 0;
-            decimal price = 0;
-            int prsafetystock = 0;
-            int PrFlg = -1;
+            int scid = -1;
+            int maid = -1;
+            //decimal price = 0;
+            //int prsafetystock = 0;
+            int PrFlg = 0;
             DateTime date = DateTime.ParseExact("00010101", "yyyymmdd", null);
 
             if (ShohinIDTxb.Text != "")
@@ -923,26 +923,19 @@ namespace SalesManagement_SysDev
                 maid = ProductDA.GetMaID(MakerNameCmb.Text);
             }
 
-            if(KakakuTxb.Text != "")
-            {
-                price = decimal.Parse(KakakuTxb.Text);
-            }
+            //if(KakakuTxb.Text != "")
+            //{
+            //    price = decimal.Parse(KakakuTxb.Text);
+            //}
 
-            if(AnzenTxb.Text != "")
-            {
-                prsafetystock = int.Parse(AnzenTxb.Text);
-            }
+            //if(AnzenTxb.Text != "")
+            //{
+            //    prsafetystock = int.Parse(AnzenTxb.Text);
+            //}
 
-            if (ShohinKanriCmb.Text != "")
+            if (ShohinKanriCmb.Text == "非表示")
             {
-                if (ShohinKanriCmb.Text == "非表示")
-                {
-                    PrFlg = 2;
-                }
-                else
-                {
-                    PrFlg = 0;
-                }
+                PrFlg = 2;
             }
 
             if (SellDtm.Checked)
@@ -955,8 +948,6 @@ namespace SalesManagement_SysDev
                 PrID = prid,
                 MaID = maid,
                 PrName = ShohinNameTxb.Text,
-                Price = price,
-                PrSafetyStock = prsafetystock,
                 ScID = scid,
                 PrModelNumber = KatabanTxb.Text,
                 PrColor = IroTxb.Text,

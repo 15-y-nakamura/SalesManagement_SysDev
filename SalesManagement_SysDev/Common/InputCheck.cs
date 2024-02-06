@@ -678,10 +678,10 @@ namespace SalesManagement_SysDev
                 return (false, "M2007");
             }
 
-            if (!ProductDA.SonzaiCheckPrName(text))
-            {
-                return (false, "M2025");
-            }
+            //if (!ProductDA.SonzaiCheckPrName(text))
+            //{
+            //    return (false, "M2025");
+            //}
           
             return(true, text);
         }

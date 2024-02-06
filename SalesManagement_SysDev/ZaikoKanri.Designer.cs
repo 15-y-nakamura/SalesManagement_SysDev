@@ -39,7 +39,7 @@
             this.MakerIDTxb = new System.Windows.Forms.TextBox();
             this.ShohinNameTxb = new System.Windows.Forms.TextBox();
             this.AnzenTxb = new System.Windows.Forms.TextBox();
-            this.SuryoTxb = new System.Windows.Forms.TextBox();
+            this.ShohinIDTxb = new System.Windows.Forms.TextBox();
             this.HihyojiTxb = new System.Windows.Forms.TextBox();
             this.ZaikoSuTxb = new System.Windows.Forms.TextBox();
             this.ZaikoIDTxb = new System.Windows.Forms.TextBox();
@@ -127,7 +127,7 @@
             this.TopZaikoPnl.Controls.Add(this.MakerIDTxb);
             this.TopZaikoPnl.Controls.Add(this.ShohinNameTxb);
             this.TopZaikoPnl.Controls.Add(this.AnzenTxb);
-            this.TopZaikoPnl.Controls.Add(this.SuryoTxb);
+            this.TopZaikoPnl.Controls.Add(this.ShohinIDTxb);
             this.TopZaikoPnl.Controls.Add(this.HihyojiTxb);
             this.TopZaikoPnl.Controls.Add(this.ZaikoSuTxb);
             this.TopZaikoPnl.Controls.Add(this.ZaikoIDTxb);
@@ -208,15 +208,15 @@
             this.AnzenTxb.Size = new System.Drawing.Size(201, 25);
             this.AnzenTxb.TabIndex = 5;
             // 
-            // SuryoTxb
+            // ShohinIDTxb
             // 
-            this.SuryoTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.ShohinIDTxb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SuryoTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.SuryoTxb.Location = new System.Drawing.Point(642, 150);
-            this.SuryoTxb.Name = "SuryoTxb";
-            this.SuryoTxb.Size = new System.Drawing.Size(201, 25);
-            this.SuryoTxb.TabIndex = 1;
+            this.ShohinIDTxb.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.ShohinIDTxb.Location = new System.Drawing.Point(642, 150);
+            this.ShohinIDTxb.Name = "ShohinIDTxb";
+            this.ShohinIDTxb.Size = new System.Drawing.Size(201, 25);
+            this.ShohinIDTxb.TabIndex = 1;
             // 
             // HihyojiTxb
             // 
@@ -523,7 +523,7 @@
         private System.Windows.Forms.Label MakerIDLbl;
         private System.Windows.Forms.Label ZaikoSuLbl;
         private System.Windows.Forms.Label ZaikoKanriFlagLbl;
-        private System.Windows.Forms.TextBox SuryoTxb;
+        private System.Windows.Forms.TextBox ShohinIDTxb;
         private System.Windows.Forms.TextBox AnzenTxb;
         private System.Windows.Forms.TextBox HihyojiTxb;
         private System.Windows.Forms.Label HihyojiLbl;

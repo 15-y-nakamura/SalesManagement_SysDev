@@ -2676,7 +2676,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t1.OrID equals t5.OrID
                              //join t6 in context.T_ChumonDetails
                              //on t1.ChID equals t6.ChID
-                             where t1.ChFlag == 0 &&
+                             where t1.ChFlag == T_Ch.ChFlag &&
+                                   t1.ChStateFlag == T_Ch.ChStateFlag &&
                                    (t1.ChHidden.Contains(T_Ch.ChHidden) ||
                                    t1.ChHidden == null)
                              select new

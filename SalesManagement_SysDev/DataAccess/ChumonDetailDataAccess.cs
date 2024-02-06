@@ -1595,7 +1595,8 @@ namespace SalesManagement_SysDev.DataAccess
                              on t1.ChID equals t2.ChID
                              join t3 in context.M_Products
                              on t2.PrID equals t3.PrID
-                             where t1.ChFlag == 0 &&
+                             where t1.ChFlag == T_Ch.ChFlag &&
+                                   t1.ChStateFlag == T_Ch.ChStateFlag &&
                                    (t1.ChHidden.Contains(T_Ch.ChHidden) ||
                                    t1.ChHidden == null)
                              select new

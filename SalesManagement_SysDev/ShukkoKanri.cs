@@ -26,7 +26,7 @@ namespace SalesManagement_SysDev
 
         internal static int PoID = 0;
         internal static int EmID = 0;
-        internal static string Logindate = "";
+        internal static string Logindate;
         public ShukkoKanri()
         {
 
@@ -89,21 +89,21 @@ namespace SalesManagement_SysDev
             TopEigyoshoLbl.Text = TopData[2];
             TopJikanLbl.Text = logindate;
 
-            if (PoID == 2)
+            if (PoID == 3)
             {
                 TopHonshaBtn.Enabled = false;
                 TopHonshaBtn.BackColor = Color.DarkGray;
                 TopHonshaBtn.FlatAppearance.BorderSize = 2;
                 TopHonshaBtn.FlatAppearance.BorderColor = Color.Black;
 
-                TopButsuryuBtn.Enabled = false;
-                TopButsuryuBtn.BackColor = Color.DarkGray;
-                TopButsuryuBtn.FlatAppearance.BorderSize = 2;
-                TopButsuryuBtn.FlatAppearance.BorderColor = Color.Black;
-
-                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopEigyoBtn.Enabled = false;
+                TopEigyoBtn.BackColor = Color.DarkGray;
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
-                TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+                TopEigyoBtn.FlatAppearance.BorderColor = Color.Black;
+
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+                TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
             }
             else if (PoID == 1)
@@ -120,7 +120,6 @@ namespace SalesManagement_SysDev
                 TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
             }
 
             SetCtrlFormat();
