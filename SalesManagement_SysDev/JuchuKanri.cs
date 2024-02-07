@@ -1,5 +1,6 @@
 ﻿using SalesManagement_SysDev.DataAccess;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
@@ -43,6 +44,8 @@ namespace SalesManagement_SysDev
 
         //受注詳細テーブルアクセスクラスのインスタンス化
         OrderDetailDataAccess OrderDetailDA = new OrderDetailDataAccess();
+
+        StockDataAccess StockDA = new StockDataAccess();
 
         //データグリッドビュー用の受注データ
         private static List<T_OrderDsp> Orderdsp;
@@ -558,6 +561,16 @@ namespace SalesManagement_SysDev
                 return false;
             }
 
+            //在庫数確認チェック
+            int PrID = ProductDA.GetPrID(ShohinNameCmb.Text);
+            int stock = StockDA.GetStQuantity(PrID);
+            stock = stock - int.Parse(SuryoTxb.Text);
+            if (stock < 0)
+            {
+                MessageDsp.DspMsg("M7037");
+                return false;
+            }
+
             if (JuchuIDTxb.Text != "")
             {
                 if (DialogResult.OK != MessageDsp.DspMsg("M6034"))
@@ -616,6 +629,16 @@ namespace SalesManagement_SysDev
             if (!InputCheck.CheckRegistGokeiKingaku(GokeiKingakuTxb.Text).flg)
             {
                 MessageDsp.DspMsg(InputCheck.CheckRegistGokeiKingaku(GokeiKingakuTxb.Text).Msg);
+                return false;
+            }
+
+            //在庫数確認チェック
+            int PrID = ProductDA.GetPrID(ShohinNameCmb.Text);
+            int stock = StockDA.GetStQuantity(PrID);
+            stock = stock - int.Parse(SuryoTxb.Text);
+            if(stock < 0)
+            {
+                MessageDsp.DspMsg("M7037");
                 return false;
             }
 

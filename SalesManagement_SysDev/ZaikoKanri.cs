@@ -16,7 +16,9 @@ namespace SalesManagement_SysDev
 
         MessageDsp messageDsp = new MessageDsp();
         EmployeeDataAccess empDataAccess = new EmployeeDataAccess();
-        InputCheck inputCheck = new InputCheck();
+        StockDataAccess StDataAccess = new StockDataAccess();
+        InputCheck InputCheck = new InputCheck();
+        private static List<T_StockDsp> Stock;
 
         internal static int PoID = 0;
         internal static int EmID = 0;
@@ -84,41 +86,93 @@ namespace SalesManagement_SysDev
             TopEigyoshoLbl.Text = TopData[2];
             TopJikanLbl.Text = logindate;
 
-            if (PoID == 2)
+            if (PoID == 3)
             {
                 TopHonshaBtn.Enabled = false;
                 TopHonshaBtn.BackColor = Color.DarkGray;
                 TopHonshaBtn.FlatAppearance.BorderSize = 2;
                 TopHonshaBtn.FlatAppearance.BorderColor = Color.Black;
 
-                TopButsuryuBtn.Enabled = false;
-                TopButsuryuBtn.BackColor = Color.DarkGray;
-                TopButsuryuBtn.FlatAppearance.BorderSize = 2;
-                TopButsuryuBtn.FlatAppearance.BorderColor = Color.Black;
-
-                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopEigyoBtn.Enabled = false;
+                TopEigyoBtn.BackColor = Color.DarkGray;
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
-                TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+                TopEigyoBtn.FlatAppearance.BorderColor = Color.Black;
+
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+                TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
             }
             else if (PoID == 1)
             {
 
-                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopHonshaBtn.FlatAppearance.BorderSize = 2;
                 TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopEigyoBtn.FlatAppearance.BorderSize = 2;
                 TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
 
-                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
                 TopButsuryuBtn.FlatAppearance.BorderSize = 2;
                 TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
-
             }
 
+            SetCtrlFormat();
+            SetFormGridView();
+        }
 
+        private void SetCtrlFormat()
+        {
+            ZaikoIDTxb.Text = "";
+            ShohinIDTxb.Text = "";
+            ShohinNameTxb.Text = "";
+            ZaikoSuTxb.Text = "";
+            AnzenTxb.Text = "";
+            HihyojiTxb.Text = "";
+            ZaikoKanriFlagCmb.Items.Clear();
+            ZaikoKanriFlagCmb.Items.Add("表示");
+            ZaikoKanriFlagCmb.Items.Add("非表示");
+        }
+
+        private void SetFormGridView()
+        {
+            //読み取り専用に指定
+            ZaikoKanriDgv.ReadOnly = true;
+            //行内をクリックすることで行を選択
+            ZaikoKanriDgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            //ヘッダー位置の指定
+            ZaikoKanriDgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //データグリッドビューのデータ取得
+            ListDisplay();
+        }
+
+        private void ListDisplay()
+        {
+            Stock = StDataAccess.GetStockData();
+
+            SetDataGridView();
+        }
+
+        private void SetDataGridView()
+        {
+            ZaikoKanriDgv.DataSource = Stock.ToList();
+
+            //すべての列がコントロールの表示領域の幅いっぱいに表示されるよう列幅を調整
+            ZaikoKanriDgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            //各列の文字位置の指定
+            ZaikoKanriDgv.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            ZaikoKanriDgv.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            ZaikoKanriDgv.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            ZaikoKanriDgv.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            ZaikoKanriDgv.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            ZaikoKanriDgv.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            ZaikoKanriDgv.Refresh();
         }
 
         private void button15_Click(object sender, EventArgs e)

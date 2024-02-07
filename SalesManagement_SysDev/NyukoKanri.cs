@@ -69,5 +69,53 @@ namespace SalesManagement_SysDev
             TopButsuryuPage f2 = new TopButsuryuPage();
             f2.Show();
         }
+
+        private void NyukoKanri_Load(object sender, EventArgs e)
+        {
+            string[] TopData = new string[4];
+            TopData = empDataAccess.GetTopData(EmID);
+
+            string emID = EmID.ToString();
+            string logindate = Logindate;
+
+            TopIDLbl.Text = emID;
+            TopNameLbl.Text = TopData[0];
+            TopYakushokuLbl.Text = TopData[1];
+            TopEigyoshoLbl.Text = TopData[2];
+            TopJikanLbl.Text = logindate;
+
+            if (PoID == 3)
+            {
+                TopHonshaBtn.Enabled = false;
+                TopHonshaBtn.BackColor = Color.DarkGray;
+                TopHonshaBtn.FlatAppearance.BorderSize = 2;
+                TopHonshaBtn.FlatAppearance.BorderColor = Color.Black;
+
+                TopEigyoBtn.Enabled = false;
+                TopEigyoBtn.BackColor = Color.DarkGray;
+                TopEigyoBtn.FlatAppearance.BorderSize = 2;
+                TopEigyoBtn.FlatAppearance.BorderColor = Color.Black;
+
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+                TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+            }
+            else if (PoID == 1)
+            {
+
+                TopHonshaBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopHonshaBtn.FlatAppearance.BorderSize = 2;
+                TopHonshaBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+                TopEigyoBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopEigyoBtn.FlatAppearance.BorderSize = 2;
+                TopEigyoBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+
+                TopButsuryuBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(229, 241, 251);
+                TopButsuryuBtn.FlatAppearance.BorderSize = 2;
+                TopButsuryuBtn.FlatAppearance.BorderColor = Color.SteelBlue;
+            }
+        }
     }
 }

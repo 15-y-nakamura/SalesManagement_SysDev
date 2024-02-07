@@ -517,6 +517,7 @@
             this.Name = "NyukoKanri";
             this.Text = "販売在庫管理システム - 物流管理画面 - 入庫管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.NyukoKanri_Load);
             this.TopNyukoPnl.ResumeLayout(false);
             this.TopNyukoPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NyukoKanriDgv)).EndInit();

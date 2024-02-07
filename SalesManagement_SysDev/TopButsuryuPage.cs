@@ -202,7 +202,7 @@ namespace SalesManagement_SysDev
         {
             ShukkoKanri.EmID = EmID;
             ShukkoKanri.PoID = PoID;
-            ShukkaKanri.Logindate = Logindate;
+            ShukkoKanri.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;

@@ -185,6 +185,7 @@ namespace SalesManagement_SysDev
         {
             UriageKanri.EmID = EmID;
             UriageKanri.PoID = PoID;
+            UriageKanri.Logindate = Logindate;
 
             //現画面を非表示
             this.Visible = false;
@@ -197,6 +198,8 @@ namespace SalesManagement_SysDev
         {
             NyukaKanri.EmID = EmID;
             NyukaKanri.PoID = PoID;
+            NyukaKanri.Logindate = Logindate;
+
             //現画面を非表示
             this.Visible = false;
 
@@ -209,6 +212,8 @@ namespace SalesManagement_SysDev
         {
             ShukkaKanri.EmID = EmID;
             ShukkaKanri.PoID = PoID;
+            ShukkaKanri.Logindate= Logindate;
+
             //現画面を非表示
             this.Visible = false;
 

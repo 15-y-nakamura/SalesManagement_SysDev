@@ -542,6 +542,7 @@
             this.Name = "ShukkaKanri";
             this.Text = "販売在庫管理システム - 営業管理画面 - 出荷管理画面";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ShukkaKanri_Load);
             this.TopShukkaPnl.ResumeLayout(false);
             this.TopShukkaPnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShukkaKanriDgv)).EndInit();
